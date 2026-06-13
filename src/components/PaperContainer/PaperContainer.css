@@ -1,0 +1,97 @@
+.torn-paper {
+    --paper: #f6f1e8;
+    --paper-2: #ece2d2;
+    --ink: #221d18;
+    --muted: #6f655b;
+    --edge: #fbf8f1;
+    --shadow: 0 22px 48px rgba(50, 36, 24, 0.18);
+
+    position: relative;
+    isolation: isolate;
+    padding: 3.5rem 2.75rem;
+    margin: 2rem 0;
+    color: var(--ink);
+    font-family: var(--font-heading);
+}
+
+.torn-paper__defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.torn-paper__sheet {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(rgba(70, 52, 35, .05) .6px, transparent .7px),
+        linear-gradient(180deg, var(--paper), var(--paper-2));
+    background-size: 9px 9px, 100% 100%;
+    box-shadow: var(--shadow);
+    filter: url(#paper-tear);
+}
+
+.torn-paper__sheet::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    z-index: -1;
+    background: var(--edge);
+    filter: url(#paper-tear-edge);
+}
+
+.torn-paper__sheet::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 14px rgba(70, 52, 35, .12);
+    filter: url(#paper-tear);
+}
+
+.torn-paper__inner {
+    position: relative;
+    max-width: 62ch;
+    z-index: 2;
+}
+
+.torn-paper__inner::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(120, 92, 58, 0.07), transparent 26%),
+        radial-gradient(circle at 82% 64%, rgba(120, 92, 58, 0.06), transparent 24%);
+    mix-blend-mode: multiply;
+    opacity: .85;
+}
+
+.torn-paper__eyebrow {
+    display: inline-block;
+    margin-bottom: .75rem;
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.torn-paper__title {
+    margin: 0 0 .85rem;
+    font-size: clamp(1.8rem, 2vw, 2.8rem);
+    line-height: .98;
+}
+
+.torn-paper__text {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #40362d;
+}
+
+.torn-paper--note {
+    max-width: 420px;
+    padding: 2rem 1.4rem;
+}

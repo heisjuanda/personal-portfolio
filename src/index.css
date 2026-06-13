@@ -1,0 +1,52 @@
+/* ===========================
+   BASE STYLES — Minimal
+   Only what's needed for scroll + character
+   =========================== */
+
+@font-face {
+  font-family: "collage_font";
+  src: url("/fonts/collage_font.otf") format("opentype");
+}
+
+:root {
+  --color-bg: white;
+  --color-surface: #f5f0e8;
+
+  --color-primary-font: #4a3728;
+
+  --character-size: 80px;
+  --font-heading: "collage_font", serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-surface);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  position: relative;
+}
+
+.scroll-world {
+  position: relative;
+  width: 100%;
+}
+
+.section-separator {
+  margin: 0;
+  padding: 0;
+}

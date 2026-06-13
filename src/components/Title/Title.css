@@ -1,0 +1,66 @@
+.title {
+    width: 100%;
+    height: 100dvh;
+    position: relative;
+    background-image: url('/images/title/hero.webp');
+
+    & .title__img-wrapper {
+        position: relative;
+        margin-top: 10vw;
+        z-index: 102;
+    }
+    & img {
+        min-width: 250px;
+
+        margin-inline: auto;
+        display: block;
+    }
+    & .title__img--juanda {
+        max-width: 600px;
+        width: 60vw;
+    }
+    & .title__img--adventure {
+        max-width: 800px;
+        width: 80vw;
+    }
+
+    & .title__text {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    & .subtitle__text-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-inline: 2vw;
+        transform: translateY(1vw);
+        & a,p {
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+            color: var(--color-primary-font);
+            text-decoration: none;
+        }
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

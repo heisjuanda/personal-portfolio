@@ -1,0 +1,50 @@
+.about {
+    width: 100%;
+
+    & h2 {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    background-image: url('/images/about/floor.webp');
+
+    & .about__animated-elements {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30vw;
+        row-gap: 80px;
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 1024px) {
+        & .about__animated-elements {
+            column-gap: 20vw;
+        }
+    }
+
+    @media (max-width: 768px) {
+        & .about__animated-elements {
+            column-gap: 15vw;
+            row-gap: 100px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        & .about__animated-elements {
+            column-gap: 120px;
+        }
+    }
+
+    & .animated-element {
+        justify-self: center;
+    }
+}
