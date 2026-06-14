@@ -20,7 +20,7 @@
 }
 
 .is-passed {
-    z-index: 1;
+    z-index: 10;
 }
 
 .door-label {
@@ -46,7 +46,7 @@
     height: 100%;
     object-fit: contain;
     transition: opacity 0.3s ease;
-    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
 }
 
 .door-placeholder {

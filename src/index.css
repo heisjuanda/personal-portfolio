@@ -8,6 +8,10 @@
   src: url("/fonts/collage_font.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "sharpie_font";
+  src: url("/fonts/sharpie_font.ttf") format("truetype");
+}
 :root {
   --color-bg: white;
   --color-surface: #f5f0e8;
@@ -16,6 +20,8 @@
 
   --character-size: 80px;
   --font-heading: "collage_font", serif;
+  --font-text: 'Times New Roman', Times, serif;
+  --font-sharpie: "sharpie_font", sans-serif;
 }
 
 *,

@@ -1,32 +1,58 @@
 .animated-element {
     max-width: 120px;
     min-width: 100px;
-
     width: 15vw;
-
-    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-
-    cursor: pointer;
-    user-select: none;
-
     position: relative;
-    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+    user-select: none;
+    cursor: pointer;
+    z-index: 2;
+    
+    animation: floating 4s ease-in-out infinite;
+}
 
-    & img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+.animated-element__content {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.5));
+}
+
+.animated-element__content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-8px) rotate(-1deg);
+    }
+    66% {
+        transform: translateY(-4px) rotate(1deg);
     }
 }
 
-.animated-element--left:hover {
-    transform: scale(1.2) rotate(-10deg);
+.animated-element:hover .animated-element__content {
+    filter: drop-shadow(0px 15px 20px rgba(0, 0, 0, 0.3));
 }
 
-.animated-element--right:hover {
-    transform: scale(1.2) rotate(10deg);
+.animated-element--left:hover .animated-element__content {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.animated-element--right:hover .animated-element__content {
+    transform: scale(1.15) rotate(8deg);
+}
+
+.animated-element {
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
 }
 
 .animated-element:hover {
-    filter: drop-shadow(0px 12px 10px rgba(0, 0, 0, 0.35)); /* Sombra más pronunciada al hacer hover */
+    opacity: 1;
 }
