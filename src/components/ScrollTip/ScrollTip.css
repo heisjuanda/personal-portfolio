@@ -10,10 +10,16 @@
   justify-content: center;
   align-items: center;
 
+  transition:
+    opacity 0.5s ease-in-out,
+    visibility 0.5s ease-in-out;
+  z-index: 90;
+
   & p {
     color: var(--color-primary-font);
     font-family: var(--font-sharpie);
     font-size: 30px;
+    margin: 0;
   }
 
   & img {
@@ -26,11 +32,9 @@
 .visible {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
 .hidden {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }

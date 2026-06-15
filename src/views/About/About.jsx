@@ -58,7 +58,7 @@ const PAPER_CONTENT = {
   },
 };
 
-export default function About({ scrollY }) {
+export default function About() {
   const [isPaperOpen, setIsPaperOpen] = useState(false);
   const [paperContent, setPaperContent] = useState(null);
 
@@ -111,7 +111,6 @@ export default function About({ scrollY }) {
         {paperContent}
       </AnimatedPaper>
       <Door
-        scrollY={scrollY}
         label="About Me"
         openImage="images/door_open.webp"
         closedImage="images/door_close.webp"
@@ -258,7 +257,6 @@ export default function About({ scrollY }) {
       </div>
 
       <Door
-        scrollY={scrollY}
         label="Projects"
         openImage="images/door_open.webp"
         closedImage="images/door_close.webp"

@@ -1,21 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { PX_PER_HOP, FACING, DIRECTION, CHARACTER_IMAGES } from "../../constants/constants";
+import { PX_PER_HOP, CHARACTER_IMAGES } from "../../constants/constants";
 import "./Character.css";
 
-export default function Character({ direction, scrollY }) {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Character() {
   const hopperRef = useRef(null);
   const shadowRef = useRef(null);
-  const prevScrollY = useRef(0);
-  const accumRef = useRef(0);
+  const flipperRef = useRef(null);
   const hopTimeline = useRef(null);
-  const [facing, setFacing] = useState(FACING.FRONT);
-  const isFirstRender = useRef(true);
-
-  useEffect(() => {
-    setFacing(direction === DIRECTION.FORWARD ? FACING.FRONT : FACING.BACK);
-  }, [direction]);
 
   const appendHop = (tl, hopper, shadow) => {
     tl.to(hopper, {
@@ -58,57 +54,67 @@ export default function Character({ direction, scrollY }) {
   useEffect(() => {
     const hopper = hopperRef.current;
     const shadow = shadowRef.current;
-    if (!hopper || !shadow) return;
+    const flipper = flipperRef.current;
+    if (!hopper || !shadow || !flipper) return;
 
-    if (isFirstRender.current) {
-      prevScrollY.current = scrollY;
-      isFirstRender.current = false;
-      return;
-    }
+    const tl = gsap.timeline({ paused: true });
+    appendHop(tl, hopper, shadow);
+    hopTimeline.current = tl;
 
-    const rawDelta = Math.abs(scrollY - prevScrollY.current);
-    prevScrollY.current = scrollY;
+    let prevScrollY = window.scrollY;
+    let accum = 0;
 
-    if (rawDelta === 0) return;
+    const trigger = ScrollTrigger.create({
+      onUpdate: (self) => {
+        const currentScrollY = self.scroll();
+        const rawDelta = Math.abs(currentScrollY - prevScrollY);
+        const scrollDirection = self.direction;
+        prevScrollY = currentScrollY;
 
-    if (rawDelta < 0.5) {
-      accumRef.current = 0;
-      return;
-    }
+        if (rawDelta === 0) return;
 
-    accumRef.current += rawDelta;
+        if (scrollDirection === 1) {
+          flipper.classList.remove("character-flipper--back");
+        } else if (scrollDirection === -1) {
+          flipper.classList.add("character-flipper--back");
+        }
 
-    if (hopTimeline.current?.isActive()) {
-      accumRef.current = Math.min(accumRef.current, PX_PER_HOP * 2);
-      return;
-    }
+        if (rawDelta < 0.5) {
+          accum = 0;
+          return;
+        }
 
-    if (accumRef.current >= PX_PER_HOP) {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          hopTimeline.current = null;
-        },
-      });
+        accum += rawDelta;
 
-      hopTimeline.current = tl;
+        if (tl.isActive()) {
+          accum = Math.min(accum, PX_PER_HOP * 2);
+          return;
+        }
 
-      appendHop(tl, hopper, shadow);
-      accumRef.current -= PX_PER_HOP;
-    }
-  }, [scrollY]);
+        if (accum >= PX_PER_HOP) {
+          tl.restart();
+          accum -= PX_PER_HOP;
+        }
+      },
+    });
+
+    return () => {
+      trigger.kill();
+      if (hopTimeline.current) hopTimeline.current.kill();
+    };
+  }, []);
 
   return (
     <div className="character-wrapper">
       <div className="character-hopper" ref={hopperRef}>
-        <div
-          className={`character-flipper ${facing === FACING.BACK ? "character-flipper--back" : ""}`}
-        >
+        <div ref={flipperRef} className="character-flipper">
           <img
             loading="eager"
             src={CHARACTER_IMAGES.FRONT}
             alt="Character front"
             className="character__img character__img--front"
             draggable={false}
+            fetchpriority="high"
           />
           <img
             loading="eager"
@@ -116,6 +122,7 @@ export default function Character({ direction, scrollY }) {
             alt="Character back"
             className="character__img character__img--back"
             draggable={false}
+            fetchpriority="high"
           />
         </div>
       </div>

@@ -2,7 +2,7 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard.jsx";
 
 import "./Projects.css";
 
-export default function Projects({ scrollY }) {
+export default function Projects() {
   const projects = [
     {
       name: "Josh Wood Colour",
@@ -44,7 +44,7 @@ export default function Projects({ scrollY }) {
   return (
     <section className="projects">
       {projects.map((project) => (
-        <ProjectCard key={project.name} project={project} scrollY={scrollY} />
+        <ProjectCard key={project.name} project={project} />
       ))}
     </section>
   );

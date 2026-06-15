@@ -1,26 +1,71 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SCROLL_TIP_THRESHOLD } from "../../constants/constants";
-
 import "./ScrollTip.css";
 
-export default function ScrollTip({ scrollY }) {
-  const chevronDownIcon = "/icons/chevron.webp";
+gsap.registerPlugin(ScrollTrigger);
 
-  const [isVisible, setIsVisible] = useState(false);
+export default function ScrollTip() {
+  const chevronDownIcon = "/icons/chevron.webp";
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
-    setIsVisible(false);
-    const timer = setTimeout(() => {
-      if (scrollY <= SCROLL_TIP_THRESHOLD) {
-        setIsVisible(true);
+    const element = wrapperRef.current;
+    if (!element) return;
+
+    let timer = null;
+    let isElementVisible = false;
+
+    const hideTip = () => {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
       }
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [scrollY]);
+      if (isElementVisible) {
+        element.classList.add("hidden");
+        element.classList.remove("visible");
+        isElementVisible = false;
+      }
+    };
+
+    const startIdleTimer = () => {
+      if (timer) clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        if (!isElementVisible) {
+          element.classList.add("visible");
+          element.classList.remove("hidden");
+          isElementVisible = true;
+        }
+      }, 5000);
+    };
+
+    if (window.scrollY <= SCROLL_TIP_THRESHOLD) {
+      startIdleTimer();
+    }
+
+    const st = ScrollTrigger.create({
+      onUpdate: (self) => {
+        const currentScroll = self.scroll();
+
+        if (currentScroll > SCROLL_TIP_THRESHOLD) {
+          hideTip();
+        } else {
+          hideTip();
+          startIdleTimer();
+        }
+      },
+    });
+
+    return () => {
+      if (timer) clearTimeout(timer);
+      st.kill();
+    };
+  }, []);
 
   return (
-    <div className={`scroll-down-wrapper ${isVisible ? "visible" : "hidden"}`}>
+    <div ref={wrapperRef} className="scroll-down-wrapper hidden">
       <p>Scroll down</p>
       <img src={chevronDownIcon} alt="Scroll down" loading="lazy" />
       <img src={chevronDownIcon} alt="Scroll down" loading="lazy" />

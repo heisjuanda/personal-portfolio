@@ -1,91 +1,71 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 import PaperContainer from "../PaperContainer/PaperContainer.jsx";
+import { DOOR_MARGIN } from "../../constants/constants";
 
-import { DOOR_MARGIN } from '../../constants/constants';
 import "./Door.css";
 
-export default function Door({ scrollY, openImage, closedImage, label }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isPassed, setIsPassed] = useState(false);
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Door({ openImage, closedImage, label }) {
   const doorRef = useRef(null);
-
-  const doorTopRef = useRef(null);
-  const doorHeightRef = useRef(null);
-  const viewportCenterRef = useRef(window.innerHeight / 2);
-  const lastWidthRef = useRef(window.innerWidth);
+  const imageRef = useRef(null);
 
   useEffect(() => {
-    const updateDimensions = () => {
-      if (doorRef.current) {
-        const rect = doorRef.current.getBoundingClientRect();
-        doorTopRef.current = rect.top + window.scrollY;
-        doorHeightRef.current = rect.height;
-        viewportCenterRef.current = window.innerHeight / 2;
-      }
-    };
+    if (!doorRef.current) return;
 
-    updateDimensions();
+    const ctx = gsap.context(() => {
+      const wrapper = doorRef.current;
+      const img = imageRef.current;
 
-    const handleResize = () => {
-      if (window.innerWidth !== lastWidthRef.current) {
-        lastWidthRef.current = window.innerWidth;
-        updateDimensions();
-      }
-    };
+      ScrollTrigger.create({
+        trigger: wrapper,
+        start: `top center+=${DOOR_MARGIN}`,
+        end: `bottom center-=${DOOR_MARGIN}`,
+        onToggle: (self) => {
+          if (self.isActive) {
+            wrapper.classList.add("is-open");
+            wrapper.classList.remove("is-closed");
+            if (img && openImage) img.src = openImage;
+          } else {
+            wrapper.classList.add("is-closed");
+            wrapper.classList.remove("is-open");
+            if (img && closedImage) img.src = closedImage;
+          }
+        },
+      });
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("load", updateDimensions);
+      ScrollTrigger.create({
+        trigger: wrapper,
+        start: "bottom center",
+        onToggle: (self) => {
+          if (self.isActive) {
+            wrapper.classList.add("is-passed");
+            wrapper.classList.remove("is-approaching");
+          } else {
+            wrapper.classList.add("is-approaching");
+            wrapper.classList.remove("is-passed");
+          }
+        },
+      });
+    });
 
-    const timer = setTimeout(updateDimensions, 1000);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("load", updateDimensions);
-      clearTimeout(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (doorTopRef.current !== null && doorHeightRef.current !== null) {
-      const doorTop = doorTopRef.current;
-      const doorHeight = doorHeightRef.current;
-      const viewportCenter = viewportCenterRef.current;
-
-      const rectTop = doorTop - scrollY;
-      const rectBottom = rectTop + doorHeight;
-
-      if (
-        rectTop < viewportCenter + DOOR_MARGIN &&
-        rectBottom > viewportCenter - DOOR_MARGIN
-      ) {
-        setIsOpen(true);
-      } else {
-        setIsOpen(false);
-      }
-
-      if (rectBottom < viewportCenter) {
-        setIsPassed(true);
-      } else {
-        setIsPassed(false);
-      }
-    }
-  }, [scrollY]);
+    return () => ctx.revert();
+  }, [openImage, closedImage]);
 
   return (
-    <div
-      ref={doorRef}
-      className={`door-wrapper ${isOpen ? "is-open" : "is-closed"} ${
-        isPassed ? "is-passed" : "is-approaching"
-      }`}
-    >
+    <div ref={doorRef} className="door-wrapper is-closed is-approaching">
       <PaperContainer className="door__paper-container">
         {label && <div className="door-label">{label}</div>}
       </PaperContainer>
+
       <div className="door-frame">
         {openImage && closedImage ? (
           <img
-            src={isOpen ? openImage : closedImage}
+            ref={imageRef}
+            src={closedImage}
             alt="Door"
             className="door-image"
             draggable={false}

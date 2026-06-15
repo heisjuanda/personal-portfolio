@@ -16,6 +16,9 @@ export default function SmoothScroll() {
       smoothWheel: true,
       wheelMultiplier: 0.6,
       touchMultiplier: 1.0,
+
+      smoothTouch: false,
+      syncTouch: false,
     })
 
     lenisRef.current = lenis

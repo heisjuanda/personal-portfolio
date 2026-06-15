@@ -1,63 +1,37 @@
 import { useRef, useEffect } from "react";
-
 import PaperContainer from "../PaperContainer/PaperContainer";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./ProjectCard.css";
 
-export default function ProjectCard({ project, scrollY }) {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function ProjectCard({ project }) {
   const cardRef = useRef(null);
-  const cardTopRef = useRef(null);
-  const windowHeightRef = useRef(window.innerHeight);
-  const lastWidthRef = useRef(window.innerWidth);
+  const realImageRef = useRef(null);
 
   useEffect(() => {
-    const updateDimensions = () => {
-      if (cardRef.current) {
-        const rect = cardRef.current.getBoundingClientRect();
-        cardTopRef.current = rect.top + window.scrollY;
-        windowHeightRef.current = window.innerHeight;
-      }
-    };
+    if (!cardRef.current || !realImageRef.current) return;
 
-    updateDimensions();
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        realImageRef.current,
+        { clipPath: "inset(0% 0% 100% 0%)" },
+        {
+          clipPath: "inset(0% 0% 0% 0%)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top bottom",
+            end: "center center",
+            scrub: true,
+          },
+        },
+      );
+    });
 
-    const handleResize = () => {
-      if (window.innerWidth !== lastWidthRef.current) {
-        lastWidthRef.current = window.innerWidth;
-        updateDimensions();
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("load", updateDimensions);
-
-    const timer = setTimeout(updateDimensions, 1000);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("load", updateDimensions);
-      clearTimeout(timer);
-    };
+    return () => ctx.revert();
   }, []);
-
-  useEffect(() => {
-    if (!cardRef.current || cardTopRef.current === null) return;
-
-    const cardTopRelativeToDocument = cardTopRef.current;
-    const winHeight = windowHeightRef.current;
-
-    const startAnimationAt = cardTopRelativeToDocument - winHeight;
-    const endAnimationAt = cardTopRelativeToDocument - winHeight / 8;
-
-    const totalDistance = endAnimationAt - startAnimationAt;
-    const currentProgress = scrollY - startAnimationAt;
-
-    let percentage = (currentProgress / totalDistance) * 100;
-    if (percentage < 0) percentage = 0;
-    if (percentage > 100) percentage = 100;
-
-    cardRef.current.style.setProperty("--reveal-progress", `${percentage}%`);
-  }, [scrollY]);
 
   return (
     <div ref={cardRef} className="project-spec-row">
@@ -72,6 +46,7 @@ export default function ProjectCard({ project, scrollY }) {
           />
 
           <img
+            ref={realImageRef}
             src={project.blueprintSrc}
             alt={project.name}
             className="blueprint-card__img blueprint-card__img--real"

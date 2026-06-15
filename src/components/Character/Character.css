@@ -13,6 +13,9 @@
 
 .character-hopper {
   transform-origin: center bottom;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   will-change: transform;
 }
 

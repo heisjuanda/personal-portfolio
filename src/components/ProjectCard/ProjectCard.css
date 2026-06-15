@@ -1,5 +1,4 @@
 .project-spec-row {
-  --reveal-progress: 0%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,7 +42,11 @@
 
 .blueprint-card__img--real {
   z-index: 2;
-  clip-path: inset(0 0 calc(100% - var(--reveal-progress)) 0);
+  will-change: clip-path; 
+}
+
+.project-spec-row.is-visible .blueprint-card__img--real {
+  clip-path: inset(0 0 0 0);
 }
 
 .project-spec-row__details {
@@ -66,9 +69,6 @@
   color: var(--color-project-title);
   opacity: 0.85;
   letter-spacing: 1px;
-
-  /* overflow-wrap: break-word;
-  word-break: break-word; */
 }
 
 .project-spec-row__description {
@@ -77,6 +77,18 @@
   line-height: 1.6;
   margin: 0;
   opacity: 0.85;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .blueprint-card__scanner-zone {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .blueprint-card__img--real {
+    will-change: auto;
+  }
 }
 
 @media (max-width: 768px) {
