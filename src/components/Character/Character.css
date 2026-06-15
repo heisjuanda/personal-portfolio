@@ -2,7 +2,7 @@
   --character-size: 200px;
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: calc(var(--vh, 1vh) * 50);
   transform: translate(-50%, -50%);
   z-index: 100;
   display: flex;

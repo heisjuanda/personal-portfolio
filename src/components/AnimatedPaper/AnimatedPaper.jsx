@@ -28,33 +28,38 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
 
   const getPaperFrame = () => {
     switch (step) {
-      case 1: return "images/animatedPaper/frame_01.webp";
-      case 2: return "images/animatedPaper/frame_02.webp";
-      default: return "";
+      case 1:
+        return "images/animatedPaper/frame_01.webp";
+      case 2:
+        return "images/animatedPaper/frame_02.webp";
+      default:
+        return "";
     }
   };
 
   return (
-    <div 
-      className={`paper-overlay ${isOpen ? "is-open" : "is-closing"}`} 
+    <div
+      className={`paper-overlay ${isOpen ? "is-open" : "is-closing"}`}
       onClick={onClose}
     >
-      <div 
-        className={`paper-modal__container step-${step}`} 
+      <div
+        className={`paper-modal__container step-${step}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <img 
-          src={getPaperFrame()} 
-          alt="" 
-          className="paper-modal__frame" 
-          draggable={false}
-          loading="lazy"
-        />
+        {getPaperFrame() && (
+          <img
+            src={getPaperFrame()}
+            alt="Paper frame animation"
+            className="paper-modal__frame"
+            draggable={false}
+            loading="eager"
+          />
+        )}
 
         {step === 3 && (
           <div className="paper-modal__inner-content">
             <PaperContainer className="paper-modal__paper">
-                {children}
+              {children}
             </PaperContainer>
           </div>
         )}

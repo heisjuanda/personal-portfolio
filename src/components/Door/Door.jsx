@@ -10,21 +10,61 @@ export default function Door({ scrollY, openImage, closedImage, label }) {
   const [isPassed, setIsPassed] = useState(false);
   const doorRef = useRef(null);
 
+  const doorTopRef = useRef(null);
+  const doorHeightRef = useRef(null);
+  const viewportCenterRef = useRef(window.innerHeight / 2);
+  const lastWidthRef = useRef(window.innerWidth);
+
   useEffect(() => {
-    if (doorRef.current) {
-      const rect = doorRef.current.getBoundingClientRect();
-      const viewportCenter = window.innerHeight / 2;
+    const updateDimensions = () => {
+      if (doorRef.current) {
+        const rect = doorRef.current.getBoundingClientRect();
+        doorTopRef.current = rect.top + window.scrollY;
+        doorHeightRef.current = rect.height;
+        viewportCenterRef.current = window.innerHeight / 2;
+      }
+    };
+
+    updateDimensions();
+
+    const handleResize = () => {
+      if (window.innerWidth !== lastWidthRef.current) {
+        lastWidthRef.current = window.innerWidth;
+        updateDimensions();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("load", updateDimensions);
+
+    const timer = setTimeout(updateDimensions, 1000);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", updateDimensions);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (doorTopRef.current !== null && doorHeightRef.current !== null) {
+      const doorTop = doorTopRef.current;
+      const doorHeight = doorHeightRef.current;
+      const viewportCenter = viewportCenterRef.current;
+
+      const rectTop = doorTop - scrollY;
+      const rectBottom = rectTop + doorHeight;
 
       if (
-        rect.top < viewportCenter + DOOR_MARGIN &&
-        rect.bottom > viewportCenter - DOOR_MARGIN
+        rectTop < viewportCenter + DOOR_MARGIN &&
+        rectBottom > viewportCenter - DOOR_MARGIN
       ) {
         setIsOpen(true);
       } else {
         setIsOpen(false);
       }
 
-      if ((rect.bottom) < viewportCenter) {
+      if (rectBottom < viewportCenter) {
         setIsPassed(true);
       } else {
         setIsPassed(false);
@@ -49,7 +89,9 @@ export default function Door({ scrollY, openImage, closedImage, label }) {
             alt="Door"
             className="door-image"
             draggable={false}
-            loading="lazy"
+            loading="eager"
+            width={170}
+            height={300}
           />
         ) : (
           <div className="door-placeholder">

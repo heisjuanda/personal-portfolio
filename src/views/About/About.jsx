@@ -25,7 +25,7 @@ const LAPTOP_DECORATIONS = [
 
 const PAPER_CONTENT = {
   laptop: {
-    title: "Code & Architecture",
+    title: "CoDe & Architecture",
     content:
       "With +4 years of experience in the field, React is my ultimate playground for building dynamic front-end interfaces. I'm a versatile team player who loves collaborating to ship great products, but I'm equally sharp when diving into solo deep-work sessions to architect full-stack solutions and cloud infrastructure.",
     experience: [
@@ -42,17 +42,17 @@ const PAPER_CONTENT = {
     ],
   },
   chair: {
-    title: "Remote Headquarters",
+    title: "ReMote headquarters",
     content:
       "A great setup and a good cup of coffee are my foundation for high performance. I thrive in remote environments because they allow me to seamlessly switch between team syncs and intense focus blocks. I believe in engineering clean, simple, and minimalist solutions for complex problems.",
   },
   globe: {
-    title: "Wanderlust & Curiosity",
+    title: "waNDerlust & Curiosity",
     content:
       "Exploring new horizons keeps my mind sharp. My journey to Rio de Janeiro, Brazil, has been my farthest and most unforgettable adventure so far—the energy there was unmatched! I bring that same exploratory mindset to software: I'm always curious to learn and adapt to new tech stacks.",
   },
   gym: {
-    title: "Consistency & Health",
+    title: "Consistency & health",
     content:
       "I hit the gym as a commitment to my health and to continuous self-improvement. It's not just about building a better self-image, but also about cultivating the mental stamina and discipline required to tackle long coding sessions. Consistency inside the rack fuels my consistency in the terminal.",
   },
@@ -87,7 +87,7 @@ export default function About({ scrollY }) {
         <p className="about__paper-text">{value.content}</p>
         {value.experience && (
           <div className="paper-modal__experience-section">
-            <h4 className="paper-modal__experience-title">Achievements:</h4>
+            <h4 className="paper-modal__experience-title">AchieveMents:</h4>
 
             {value.experience.map((work, index) => (
               <div key={index} className="paper-modal__work-item">
@@ -148,14 +148,18 @@ export default function About({ scrollY }) {
               draggable={false}
               aria-hidden="true"
             />
-            <img
-              src="images/about/doodles/doodle_stack.webp"
-              alt="Tech Stack Scratch"
-              className="about__doodle about__doodle--floor-scratch"
-              loading="lazy"
-              draggable={false}
+            <h4
+              className="about__doodle about__doodle--welcome"
               aria-hidden="true"
-            />
+            >
+              Welcome!!!
+            </h4>
+            <h4
+              className="about__doodle about__doodle--floor-scratch"
+              aria-hidden="true"
+            >
+              My Tech Stack
+            </h4>
           </div>
           <div className="about__scatter" aria-hidden="true">
             {LAPTOP_DECORATIONS.map((deco) => (

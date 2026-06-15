@@ -1,7 +1,5 @@
 .projects {
     width: 100%;
 
-    & img {
-        width: 20vw;
-    }
+    background-image: url("/images/projects/blue_print.webp");
 }

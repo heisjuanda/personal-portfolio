@@ -21,6 +21,8 @@ export default function AnimatedElement({
           aria-label={alt}
           draggable={false}
           data-value={value}
+          width={120}
+          height={100}
         />
       </div>
     </div>

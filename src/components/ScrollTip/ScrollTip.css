@@ -1,6 +1,6 @@
 .scroll-down-wrapper {
   position: fixed;
-  bottom: 4dvh;
+  bottom: calc(var(--vh, 1vh) * 4);
   left: 0;
   width: 100%;
   height: 100px;
