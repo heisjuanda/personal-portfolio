@@ -15,6 +15,9 @@
 .project-spec-row__visual {
   width: 300px;
   flex-shrink: 0;
+
+  transform-origin: top center;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .blueprint-card__scanner-zone {
@@ -25,6 +28,36 @@
   border-radius: 8px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+  .project-spec-row:hover .project-spec-row__visual {
+    transform: rotate(-2deg) translateY(2px);
+  }
+
+  .project-spec-row:hover .blueprint-card__scanner-zone {
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .project-spec-row:hover .project-spec-row__title {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.blueprint-card__pin {
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  object-fit: contain;
 }
 
 .blueprint-card__img {
@@ -42,7 +75,7 @@
 
 .blueprint-card__img--real {
   z-index: 2;
-  will-change: clip-path; 
+  will-change: clip-path;
 }
 
 .project-spec-row.is-visible .blueprint-card__img--real {

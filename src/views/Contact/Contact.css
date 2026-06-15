@@ -1,13 +1,224 @@
 .contact {
   width: 100%;
+  min-height: 100vh;
   background-image: url("/images/contact/kraft_paper.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  position: relative;
+}
 
-  & .contact__title {
-    font-family: var(--font-sharpie);
-    font-size: 100px;
-    margin: 0;
-    color: var(--color-primary-font);
-    letter-spacing: 1px;
-    /* transform: rotate(-20deg); */
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.contact__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 50px;
+}
+
+.contact__title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact .contact__title {
+  font-family: var(--font-sharpie);
+  font-size: 100px;
+  margin: 0;
+  color: var(--color-primary-font);
+  letter-spacing: 1px;
+  line-height: 1;
+  width: max-content;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.contact__notes-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 65px;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.contact__note {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  padding: 26px;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+
+  display: flex;
+  flex-direction: column;
+
+  transform-origin: top center;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.4s ease;
+
+  box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+.contact__note--yellow {
+  background: #fff59d;
+  transform: rotate(-3.5deg);
+}
+.contact__note--cyan {
+  background: #b2ebf2;
+  transform: rotate(2deg);
+}
+.contact__note--pink {
+  background: #ffcdd2;
+  transform: rotate(-1.5deg);
+  cursor: pointer;
+}
+
+.contact__note-glue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.contact__note-content {
+  font-family: var(--font-sharpie);
+  color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.contact__note-tag {
+  font-size: 0.95rem;
+  opacity: 0.6;
+  letter-spacing: 1.5px;
+}
+
+.contact__note-text {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.contact__note-action {
+  font-size: 1.05rem;
+  opacity: 0.85;
+}
+
+.contact__note-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 15px;
+}
+
+.contact__note-socials a {
+  color: #1e1e1e;
+  text-decoration: none;
+  font-size: 1.5rem;
+  width: fit-content;
+  transition: transform 0.2s ease;
+}
+
+.contact__note-socials a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+.contact__note-stamp {
+  align-self: center;
+  font-size: 1.25rem;
+  border: 2px dashed #b84a39;
+  color: #b84a39;
+  padding: 6px 16px;
+  border-radius: 4px;
+  transform: rotate(-4deg);
+  font-weight: bold;
+}
+
+@media (hover: hover) {
+  .contact__note:hover {
+    transform: scale(1.06) rotate(0deg) translateY(-8px);
+    box-shadow: 12px 20px 28px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact__container {
+    gap: 30px;
+  }
+  .contact__notes-grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact__container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact__title-wrapper {
+    width: 100%;
+  }
+
+  .contact .contact__title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 65px;
+    text-align: center;
+    width: auto;
+  }
+
+  .contact__notes-grid {
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+  }
+
+  .contact__note {
+    transform: none !important;
+    width: 100%;
+    max-width: 290px;
+    height: 220px;
+    padding: 20px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .contact__note-text {
+    font-size: 1.1rem;
+  }
+
+  .contact__note-socials a {
+    font-size: 1.3rem;
   }
 }

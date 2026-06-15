@@ -38,6 +38,13 @@ export default function ProjectCard({ project }) {
       <div className="project-spec-row__visual">
         <div className="blueprint-card__scanner-zone">
           <img
+            src="images/pin.webp"
+            alt="Pin"
+            className="blueprint-card__pin"
+            loading="lazy"
+            draggable={false}
+          />
+          <img
             src={project.realSrc}
             alt={project.name}
             className="blueprint-card__img blueprint-card__img--sketch"
