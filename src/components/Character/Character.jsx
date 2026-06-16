@@ -8,16 +8,18 @@ import "./Character.css";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Character() {
+  const wrapperRef = useRef(null);
   const hopperRef = useRef(null);
   const shadowRef = useRef(null);
   const flipperRef = useRef(null);
   const isHopping = useRef(false);
 
   useEffect(() => {
+    const wrapper = wrapperRef.current;
     const hopper = hopperRef.current;
     const shadow = shadowRef.current;
     const flipper = flipperRef.current;
-    if (!hopper || !shadow || !flipper) return;
+    if (!wrapper || !hopper || !shadow || !flipper) return;
 
     const triggerHop = () => {
       if (isHopping.current) return;
@@ -36,6 +38,7 @@ export default function Character() {
 
     let prevScrollY = window.scrollY;
     let accum = 0;
+    let idleTimer = null;
 
     const trigger = ScrollTrigger.create({
       onUpdate: (self) => {
@@ -43,6 +46,14 @@ export default function Character() {
         const rawDelta = Math.abs(currentScrollY - prevScrollY);
         const scrollDirection = self.direction;
         prevScrollY = currentScrollY;
+
+        if (idleTimer) clearTimeout(idleTimer);
+
+        gsap.to(wrapper, {
+          opacity: 1,
+          duration: 0.15,
+          overwrite: "auto",
+        });
 
         if (rawDelta === 0) return;
 
@@ -68,17 +79,26 @@ export default function Character() {
           triggerHop();
           accum -= PX_PER_HOP;
         }
+
+        idleTimer = setTimeout(() => {
+          gsap.to(wrapper, {
+            opacity: 0.25,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        }, 800);
       },
     });
 
     return () => {
       trigger.kill();
       hopper.removeEventListener("animationend", onHopEnd);
+      if (idleTimer) clearTimeout(idleTimer);
     };
   }, []);
 
   return (
-    <div className="character-wrapper">
+    <div ref={wrapperRef} className="character-wrapper">
       <div className="character-hopper" ref={hopperRef}>
         <div ref={flipperRef} className="character-flipper">
           <img
