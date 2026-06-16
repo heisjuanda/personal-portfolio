@@ -9,24 +9,28 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ProjectCard({ project }) {
   const cardRef = useRef(null);
   const realImageRef = useRef(null);
+  const revealRef = useRef(null);
 
   useEffect(() => {
-    if (!cardRef.current || !realImageRef.current) return;
+    if (!cardRef.current || !realImageRef.current || !revealRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        realImageRef.current,
-        { clipPath: "inset(0% 0% 100% 0%)" },
-        {
-          clipPath: "inset(0% 0% 0% 0%)",
-          ease: "none",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top bottom",
-            end: "center center",
-            scrub: true,
-          },
+      gsap.set(revealRef.current, { yPercent: -100 });
+      gsap.set(realImageRef.current, { yPercent: 100 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top bottom",
+          end: "center center",
+          scrub: true,
         },
+      });
+
+      tl.to(revealRef.current, { yPercent: 0, ease: "none" }, 0).to(
+        realImageRef.current,
+        { yPercent: 0, ease: "none" },
+        0,
       );
     });
 
@@ -52,14 +56,16 @@ export default function ProjectCard({ project }) {
             loading="lazy"
           />
 
-          <img
-            ref={realImageRef}
-            src={project.blueprintSrc}
-            alt={project.name}
-            className="blueprint-card__img blueprint-card__img--real"
-            draggable={false}
-            loading="lazy"
-          />
+          <div ref={revealRef} className="blueprint-card__reveal">
+            <img
+              ref={realImageRef}
+              src={project.blueprintSrc}
+              alt={project.name}
+              className="blueprint-card__img blueprint-card__img--real"
+              draggable={false}
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 

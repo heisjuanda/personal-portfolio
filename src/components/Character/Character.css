@@ -19,6 +19,51 @@
   will-change: transform;
 }
 
+.character-hopper--hop {
+  animation: character-hop 0.31s ease-out;
+}
+
+@keyframes character-hop {
+  0% {
+    transform: translateZ(0) translateY(0) scaleY(1) scaleX(1);
+  }
+  40% {
+    transform: translateZ(0) translateY(-20px) scaleY(1.1) scaleX(0.92);
+  }
+  72% {
+    transform: translateZ(0) translateY(0) scaleY(0.88) scaleX(1.1);
+  }
+  88% {
+    transform: translateZ(0) translateY(0) scaleY(1.04) scaleX(0.98);
+  }
+  100% {
+    transform: translateZ(0) translateY(0) scaleY(1) scaleX(1);
+  }
+}
+
+.character-shadow--hop {
+  animation: character-shadow-hop 0.31s ease-out;
+}
+
+@keyframes character-shadow-hop {
+  0% {
+    transform: scaleX(1);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scaleX(0.55);
+    opacity: 0.15;
+  }
+  72% {
+    transform: scaleX(1.25);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.4;
+  }
+}
+
 .character-flipper {
   width: var(--character-size, 80px);
   height: calc(var(--character-size, 80px) * 1.5);

@@ -73,13 +73,16 @@
   filter: brightness(0.85) contrast(1.1);
 }
 
-.blueprint-card__img--real {
+.blueprint-card__reveal {
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  will-change: clip-path;
+  overflow: hidden;
+  will-change: transform;
 }
 
-.project-spec-row.is-visible .blueprint-card__img--real {
-  clip-path: inset(0 0 0 0);
+.blueprint-card__img--real {
+  will-change: transform;
 }
 
 .project-spec-row__details {
@@ -119,8 +122,8 @@
     backface-visibility: hidden;
   }
 
-  .blueprint-card__img--real {
-    will-change: auto;
+  .blueprint-card__reveal {
+    transform: translateZ(0);
   }
 }
 
