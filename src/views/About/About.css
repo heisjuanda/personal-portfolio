@@ -87,6 +87,20 @@
     filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.25));
   }
 
+  & .about__job--title {
+    position: absolute;
+    width: 200px;
+    font-family: var(--font-sharpie);
+    font-size: 60px;
+    color: black;
+    opacity: 0.7;
+    text-align: center;
+    z-index: -1;
+    transform: rotate(-30deg);
+    bottom: -30vh;
+    left: -60vw;
+  }
+
   & .about__job {
     position: absolute;
     left: -60vw;
@@ -97,7 +111,7 @@
     gap: 10px;
 
     & img {
-      width: 100px !important;
+      width: 80px !important;
       height: auto !important;
       object-fit: contain;
     }
@@ -277,6 +291,11 @@
     & .about__job {
       left: -40vw;
       bottom: -15vh;
+    }
+
+    & .about__job--title {
+      left: -50vw;
+      bottom: -15vh
     }
 
     & .about__section--globe {

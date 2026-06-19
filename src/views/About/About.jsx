@@ -36,7 +36,7 @@ const PAPER_CONTENT = {
   },
   cressco: {
     title: "Cressco",
-    content: "",
+    content: "Led frontend architecture, technical SEO overhauls, and infrastructure configurations (DNS) to deliver high-performance web applications and seamless deployments.",
     experience: {
       role: "Software Developer",
       achievement: [
@@ -47,7 +47,7 @@ const PAPER_CONTENT = {
   },
   truora: {
     title: "Truora (Current)",
-    content: "",
+    content: "Architecting high-throughput full-stack features and edge computing workflows across AWS infrastructure (Lambda, DynamoDB, CloudFront Functions), while spearheading technical proposals to optimize backend data processing.",
     experience:
     {
       role: "Software Engineer",
@@ -208,6 +208,9 @@ export default function About() {
               loading="lazy"
               draggable={false}
             />
+            <p className="about__job--title" aria-hidden="true">
+              Work Experience
+            </p>
             <div className="about__job">
               <AnimatedElement
                 imageSrc="images/about/cressco_logo.webp"

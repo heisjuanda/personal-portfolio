@@ -12,6 +12,7 @@
   font-family: "sharpie_font";
   src: url("/fonts/sharpie_font.ttf") format("truetype");
 }
+
 :root {
   --color-bg: white;
   --color-surface: #f5f0e8;
@@ -62,4 +63,24 @@ body {
   margin: 0;
   padding: 0;
   z-index: 10;
+}
+
+.blueprint-bg {
+  --bg: #0d4f7c;
+  --thin: rgba(255, 255, 255, 0.15);
+  --thick: rgba(255, 255, 255, 0.30);
+  --cell: 20px;
+  --block: 100px;
+
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--thick) 1px, transparent 1px),
+    linear-gradient(90deg, var(--thick) 1px, transparent 1px),
+    linear-gradient(var(--thin) 1px, transparent 1px),
+    linear-gradient(90deg, var(--thin) 1px, transparent 1px);
+  background-size:
+    var(--block) var(--block),
+    var(--block) var(--block),
+    var(--cell) var(--cell),
+    var(--cell) var(--cell);
 }

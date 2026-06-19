@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "react-router-dom";
 import Home from "./views/Home/Home.jsx";
 import ProjectDetails from "./views/ProjectDetails/ProjectDetails.jsx";
+import NotFound from "./views/NotFound/NotFound.jsx";
 
 function RootLayout() {
   return (
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         element: <ProjectDetails />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
