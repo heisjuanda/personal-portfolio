@@ -1,0 +1,30 @@
+.project-details {
+  background-image: url("/images/projects/blue_print.webp");
+}
+
+.project-details__header {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.project-details__title {
+  font-family: var(--font-sharpie);
+  font-size: 80px;
+  line-height: 1.1;
+  color: var(--color-primary-font);
+  margin: 0 0 16px 0;
+}
+
+.project-details__content {
+  height: 100vh;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}

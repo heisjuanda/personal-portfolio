@@ -74,9 +74,7 @@
     width: 50px;
     object-fit: contain;
 
-    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
-      drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-      drop-shadow(3px 4px 5px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(3px 4px 5px rgba(0, 0, 0, 0.15));
 
     transition:
       scale 0.2s ease-out,
@@ -86,9 +84,23 @@
   & .about__scatter-img:hover {
     cursor: pointer;
     scale: 1.18;
-    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
-      drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-      drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.25));
+  }
+
+  & .about__job {
+    position: absolute;
+    left: -60vw;
+    bottom: -20vh;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    & img {
+      width: 100px !important;
+      height: auto !important;
+      object-fit: contain;
+    }
   }
 
   & .about__window-stack {
@@ -165,7 +177,7 @@
     top: -140%;
     right: 1%;
     z-index: 2;
-    
+
     font-family: var(--font-sharpie);
     font-size: 80px;
     color: black;
@@ -221,16 +233,21 @@
     height: max-content;
 
     & .paper-modal__experience-title {
-        margin-top: 10px;
-        font-family: var(--font-heading);
-        font-size: 20px;
-        color: var(--color-primary-font);
+      margin-top: 10px;
+      font-family: var(--font-sharpie);
+      font-size: 25px;
+      color: var(--color-primary-font);
     }
-    & .paper-modal__company-name {
-        display: inline-block;
-        margin-top: 10px;
-        font-family: var(--font-sharpie);
-        font-size: 25px;
+
+    & .paper-modal__role-name {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--font-text);
+      font-size: 25px;
+    }
+
+    & .paper-modal__achievement-text {
+      margin: 5px 0 5px 0;
     }
   }
 
@@ -257,6 +274,11 @@
       align-items: center;
     }
 
+    & .about__job {
+      left: -40vw;
+      bottom: -15vh;
+    }
+
     & .about__section--globe {
       min-height: 160px;
     }
@@ -264,7 +286,7 @@
     & .about__section--globe .about__main--left {
       position: absolute;
       left: 4%;
-      top: 15%; 
+      top: 15%;
       margin: 0;
 
       transform: none;
@@ -334,9 +356,9 @@
     }
 
     & .about__polaroid-img {
-        width: 300px;
-        top: 0%;
-      }
+      width: 300px;
+      top: 0%;
+    }
   }
 
   @media (max-width: 480px) {

@@ -1,15 +1,35 @@
 import { useEffect } from "react";
-import SmoothScroll from "./components/SmoothScroll/SmoothScroll.jsx";
-import Title from "./components/Title/Title.jsx";
-import Character from "./components/Character/Character.jsx";
-import ScrollTip from "./components/ScrollTip/ScrollTip.jsx";
-import About from "./views/About/About.jsx";
-import Projects from "./views/Projects/Projects.jsx";
-import Contact from "./views/Contact/Contact.jsx";
+import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "react-router-dom";
+import Home from "./views/Home/Home.jsx";
+import ProjectDetails from "./views/ProjectDetails/ProjectDetails.jsx";
 
-import PaperContainer from "./components/PaperContainer/PaperContainer.jsx";
+function RootLayout() {
+  return (
+    <>
+      <Outlet />
+      <ScrollRestoration />
+    </>
+  );
+}
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "projects/:id",
+        element: <ProjectDetails />,
+      },
+    ],
+  },
+]);
+
 export default function App() {
-
   useEffect(() => {
     const calculateVh = () => {
       const vh = window.innerHeight * 0.01;
@@ -35,18 +55,6 @@ export default function App() {
     };
   }, []);
 
-  return (
-    <>
-      <SmoothScroll />
-      <Title />
-      <ScrollTip />
-      <Character />
-      <PaperContainer className="section-separator" />
-      <About />
-      <PaperContainer className="section-separator" />
-      <Projects />
-      <PaperContainer className="section-separator" />
-      <Contact />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
+

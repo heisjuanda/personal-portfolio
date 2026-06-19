@@ -12,7 +12,7 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
       setStep(1);
 
       const frame2 = setTimeout(() => setStep(2), 300);
-      const frame3 = setTimeout(() => setStep(3), 700);
+      const frame3 = setTimeout(() => setStep(3), 500);
 
       return () => {
         clearTimeout(frame2);

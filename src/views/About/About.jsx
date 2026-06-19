@@ -28,23 +28,34 @@ const PAPER_CONTENT = {
     title: "CoDe & Architecture",
     content:
       "With +4 years of experience in the field, React is my ultimate playground for building dynamic front-end interfaces. I'm a versatile team player who loves collaborating to ship great products, but I'm equally sharp when diving into solo deep-work sessions to architect full-stack solutions and cloud infrastructure.",
-    experience: [
-      {
-        company: "Truora (Current)",
-        achievement:
-          "Cut manual review time from 60s to 30s without sacrificing quality.",
-      },
-      {
-        company: "Cressco",
-        achievement:
-          "Added autosave to critical care-record forms, reducing manual re-entry, preventing data loss, and improving documentation efficiency for staff.",
-      },
-    ],
   },
   chair: {
     title: "ReMote headquarters",
     content:
       "A great setup and a good cup of coffee are my foundation for high performance. I thrive in remote environments because they allow me to seamlessly switch between team syncs and intense focus blocks. I believe in engineering clean, simple, and minimalist solutions for complex problems.",
+  },
+  cressco: {
+    title: "Cressco",
+    content: "",
+    experience: {
+      role: "Software Developer",
+      achievement: [
+        "Developed an autosave feature for Reddocares forms, eliminating data loss and streamlining staff workflows.",
+        "Optimized joshwoodcolour.com performance by 20% and enhanced SEO architecture, directly driving an increase in digital sales."
+      ],
+    }
+  },
+  truora: {
+    title: "Truora (Current)",
+    content: "",
+    experience:
+    {
+      role: "Software Engineer",
+      achievement: [
+        "Halved manual review time from 60s to 30s while maintaining strict data quality standards.",
+        "Enhanced data extraction and validation for Colombian driver's licenses at InDrive, generating $X in revenue."
+      ],
+    },
   },
   globe: {
     title: "waNDerlust & Curiosity",
@@ -66,6 +77,8 @@ export default function About() {
   const chairValue = "chair";
   const globeValue = "globe";
   const gymValue = "gym";
+  const truoraValue = "truora";
+  const cresscoValue = "cressco";
 
   const handlePaperOpen = (e) => {
     e.preventDefault();
@@ -87,18 +100,18 @@ export default function About() {
         <p className="about__paper-text">{value.content}</p>
         {value.experience && (
           <div className="paper-modal__experience-section">
-            <h4 className="paper-modal__experience-title">AchieveMents:</h4>
+            <h4 className="paper-modal__experience-title">Achievements:</h4>
 
-            {value.experience.map((work, index) => (
-              <div key={index} className="paper-modal__work-item">
-                <span className="paper-modal__company-name">
-                  {work.company}
-                </span>
-                <p className="paper-modal__achievement-text">
-                  <span>•</span> {work.achievement}
+            <div className="paper-modal__work-item">
+              <span className="paper-modal__role-name">
+                {value.experience.role}
+              </span>
+              {value.experience.achievement.map((achievement, index) => (
+                <p key={index} className="paper-modal__achievement-text">
+                  <span>•</span> {achievement}
                 </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>
@@ -195,6 +208,22 @@ export default function About() {
               loading="lazy"
               draggable={false}
             />
+            <div className="about__job">
+              <AnimatedElement
+                imageSrc="images/about/cressco_logo.webp"
+                alt="Cressco Logo"
+                side={SIDE.LEFT}
+                onClick={handlePaperOpen}
+                value={cresscoValue}
+              />
+              <AnimatedElement
+                imageSrc="images/about/truora_logo.webp"
+                alt="Truora Logo"
+                side={SIDE.LEFT}
+                onClick={handlePaperOpen}
+                value={truoraValue}
+              />
+            </div>
           </div>
           <div className="about__window-stack" aria-hidden="true">
             <img
