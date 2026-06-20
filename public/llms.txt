@@ -1,0 +1,20 @@
+# Juan David Moreno | Software Engineer & Creative Developer
+
+> Juan David Moreno is a Full Stack Software Engineer crafting high-performance, beautiful, and interactive web experiences. Currently leading impact at Truora.
+
+## Key Information
+- **Domain**: https://juandamoreno.dev/
+- **GitHub**: https://github.com/heisjuanda
+- **LinkedIn**: https://www.linkedin.com/in/juan-david-moreno-883a46233/
+- **Email**: heisjuanda@gmail.com
+
+## Main Navigation
+- [Home Page](https://juandamoreno.dev/) - Introduction, experience, contact, and core skillset.
+
+## Projects
+- [Josh Wood Colour](https://juandamoreno.dev/projects/josh-wood-colour) - Premium haircare e-commerce platform built with React and Shopify.
+- [Juanda Bot](https://juandamoreno.dev/projects/juandabot) - RAG-based conversational AI Telegram assistant for academic thesis support.
+- [Lambda Lang](https://juandamoreno.dev/projects/lambda-lang) - A functional programming language evaluator built from scratch in Dr Racket.
+- [Patitas a Casa](https://juandamoreno.dev/projects/patitas-a-casa) - A centralized pet adoption platform supporting shelters in Argentina.
+- [My Portfolio](https://juandamoreno.dev/projects/portfolio) - Creative, motion-driven portfolio showing motion design, performance, and structure.
+- [My Thesis](https://juandamoreno.dev/projects/thesis) - An interactive AI platform for oratory and critical thinking training for systems engineering students.

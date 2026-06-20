@@ -8,23 +8,30 @@ export default function AnimatedElement({
   side,
   onClick,
   value,
+  delay = 0,
 }) {
   return (
     <div
       className={`animated-element animated-element--${side === SIDE.LEFT ? "left" : "right"}`}
+      style={{ animationDelay: `${delay}s` }}
     >
-      <div className="animated-element__content" onClick={onClick}>
+      <button
+        className="animated-element__content"
+        onClick={onClick}
+        type="button"
+        aria-label={`Learn more about ${alt}`}
+        data-value={value}
+      >
         <img
           src={imageSrc}
           alt={alt}
           loading="lazy"
-          aria-label={alt}
           draggable={false}
           data-value={value}
           width={120}
           height={100}
         />
-      </div>
+      </button>
     </div>
   );
 }

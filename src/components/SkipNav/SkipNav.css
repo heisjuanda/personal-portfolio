@@ -1,0 +1,25 @@
+/* Skip Navigation — visible solo al recibir focus */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background-color: #4a3728;
+  color: #f5f0e8;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  border: 2px solid #f5f0e8;
+  transition: top 0.15s ease;
+  white-space: nowrap;
+}
+
+.skip-nav:focus {
+  top: 0;
+  outline: 3px solid #f6ac7c;
+  outline-offset: 2px;
+}

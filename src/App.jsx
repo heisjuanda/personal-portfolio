@@ -3,10 +3,12 @@ import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "
 import Home from "./views/Home/Home.jsx";
 import ProjectDetails from "./views/ProjectDetails/ProjectDetails.jsx";
 import NotFound from "./views/NotFound/NotFound.jsx";
+import SkipNav from "./components/SkipNav/SkipNav.jsx";
 
 function RootLayout() {
   return (
     <>
+      <SkipNav />
       <Outlet />
       <ScrollRestoration />
     </>

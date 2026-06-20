@@ -133,7 +133,7 @@ export default function About() {
       </h2>
 
       <div className="about__sections">
-        <section className="about__section about__section--laptop">
+        <section className="about__section about__section--laptop" id="main-content">
           <div className="about__main about__main--left">
             <AnimatedElement
               imageSrc="images/about/laptop.webp"
@@ -200,6 +200,7 @@ export default function About() {
               side={SIDE.RIGHT}
               onClick={handlePaperOpen}
               value={chairValue}
+              delay={0.3}
             />
             <img
               className="about__secondary-image"
@@ -218,6 +219,7 @@ export default function About() {
                 side={SIDE.LEFT}
                 onClick={handlePaperOpen}
                 value={cresscoValue}
+                delay={0.7}
               />
               <AnimatedElement
                 imageSrc="images/about/truora_logo.webp"
@@ -225,6 +227,7 @@ export default function About() {
                 side={SIDE.LEFT}
                 onClick={handlePaperOpen}
                 value={truoraValue}
+                delay={1}
               />
             </div>
           </div>
@@ -247,6 +250,7 @@ export default function About() {
               side={SIDE.LEFT}
               onClick={handlePaperOpen}
               value={globeValue}
+              delay={1.2}
             />
           </div>
           <img
@@ -275,12 +279,21 @@ export default function About() {
               side={SIDE.RIGHT}
               onClick={handlePaperOpen}
               value={gymValue}
+              delay={1.4}
             />
           </div>
           <img
             className="about__headsets-img"
             src="images/about/headsets.webp"
             alt="Headset"
+            aria-hidden="true"
+            loading="lazy"
+            draggable={false}
+          />
+          <img
+            className="about__doodle-arrow-img"
+            src="images/about/doodles/doodle_arrow.webp"
+            alt="Doodle Arrow"
             aria-hidden="true"
             loading="lazy"
             draggable={false}

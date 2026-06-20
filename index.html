@@ -1,18 +1,78 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juanda's Adventure</title>
-    <meta
-      name="description"
-      content="Juanda's Adventure — newspaper collage style"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
+
+  <!-- Primary Meta Tags -->
+  <title>Juan David Moreno | Software Engineer &amp; Creative Developer</title>
+  <meta name="title" content="Juan David Moreno | Software Engineer &amp; Creative Developer" />
+  <meta name="description"
+    content="Juan David Moreno is a Full Stack Software Engineer crafting high-performance, beautiful, and interactive web experiences. Currently leading impact at Truora." />
+  <meta name="keywords"
+    content="Juan David Moreno, Software Engineer, Full Stack Developer, Creative Developer, React Developer, Kotlin Developer, Truora, Colombia, Portfolio, Motion Design, Web Performance" />
+  <meta name="author" content="Juan David Moreno" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#4a3728" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://juandamoreno.dev/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://juandamoreno.dev/" />
+  <meta property="og:title" content="Juan David Moreno | Software Engineer &amp; Creative Developer" />
+  <meta property="og:description"
+    content="Obsessed with motion, performance, and structure. Check out my Full Stack and Creative Developer portfolio." />
+  <meta property="og:image" content="https://juandamoreno.dev/images/og-cover.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Juan David Moreno — Software Engineer Portfolio" />
+  <meta property="og:site_name" content="Juan David Moreno Portfolio" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://juandamoreno.dev/" />
+  <meta name="twitter:title" content="Juan David Moreno | Software Engineer &amp; Creative Developer" />
+  <meta name="twitter:description"
+    content="Obsessed with motion, performance, and structure. Check out my Full Stack and Creative Developer portfolio." />
+  <meta name="twitter:image" content="https://juandamoreno.dev/images/og-cover.webp" />
+  <meta name="twitter:image:alt" content="Juan David Moreno — Software Engineer Portfolio" />
+
+  <!-- Preload critical fonts to eliminate FOIT -->
+  <link rel="preload" href="/fonts/collage_font.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="/fonts/sharpie_font.ttf" as="font" type="font/truetype" crossorigin />
+
+  <!-- GA4: preconnect to resolve DNS/TCP ahead of time without blocking -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  <!-- Google Analytics -->
+  <script>
+    const gaId = "%VITE_GA4_ID%";
+    if (gaId && gaId.startsWith("G-")) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId, { 'anonymize_ip': true });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

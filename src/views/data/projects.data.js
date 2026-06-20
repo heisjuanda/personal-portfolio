@@ -234,7 +234,7 @@ export const PROJECTS_DATA = [
     // project resources
     image: null,
     logo: null,
-    links: { live: "https://juanda.dev", repo: null },
+    links: { live: "https://juandamoreno.dev", repo: null },
     images: null,
     designSystem: null,
   },
@@ -274,7 +274,7 @@ export const PROJECTS_DATA = [
       { value: "92%", label: "Participants with stronger debate coherence" },
       { value: "95%", label: "Positive usability feedback" },
     ],
-    
+
     // project resources
     image: null,
     logo: null,

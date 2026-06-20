@@ -38,7 +38,7 @@ export default function ScrollTip() {
           element.classList.remove("hidden");
           isElementVisible = true;
         }
-      }, 5000);
+      }, 4000);
     };
 
     if (window.scrollY <= SCROLL_TIP_THRESHOLD) {
@@ -67,8 +67,8 @@ export default function ScrollTip() {
   return (
     <div ref={wrapperRef} className="scroll-down-wrapper hidden">
       <p>Scroll down</p>
-      <img src={chevronDownIcon} alt="Scroll down" loading="lazy" />
-      <img src={chevronDownIcon} alt="Scroll down" loading="lazy" />
+      <img src={chevronDownIcon} alt="Scroll down" loading="lazy" width={24} height={24} />
+      <img src={chevronDownIcon} alt="Scroll down" loading="lazy" width={24} height={24} />
     </div>
   );
 }

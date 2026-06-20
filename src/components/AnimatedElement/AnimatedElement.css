@@ -4,9 +4,8 @@
     width: 15vw;
     position: relative;
     user-select: none;
-    cursor: pointer;
     z-index: 2;
-    
+
     animation: floating 4s ease-in-out infinite;
 }
 
@@ -15,6 +14,10 @@
     height: 100%;
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
     filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.5));
+
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .animated-element__content img {
@@ -25,12 +28,16 @@
 }
 
 @keyframes floating {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
+
     33% {
         transform: translateY(-8px) rotate(-1deg);
     }
+
     66% {
         transform: translateY(-4px) rotate(1deg);
     }
