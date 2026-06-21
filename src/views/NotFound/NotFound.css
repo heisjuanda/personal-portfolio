@@ -1,6 +1,13 @@
 .not-found {
+    background-image: url("/images/notFound/notFound.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
     width: 100vw;
     height: calc(var(--vh, 1vh) * 100);
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,36 +22,146 @@
     }
 
     .not-found--404_img {
-        width: 300px;
-        margin: 20px auto 20px auto;
+        max-width: 300px;
+        min-width: 250px;
+        width: 25vw;
+        margin: 50px auto 20px auto;
         display: inherit;
         object-fit: cover;
+        will-change: transform;
+        animation: float-404 6s ease-in-out infinite;
+        filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.4));
     }
 
     .not-found--character_img {
-        height: 400px;
+        height: 300px;
         width: auto;
+        will-change: transform;
+        filter: drop-shadow(0px 14px 12px rgba(0, 0, 0, 0.5));
+        animation: float-confused 5s ease-in-out infinite;
     }
 
-    .not-found__home-link {
-        margin-top: 16px;
-        font-family: var(--font-text);
-        font-size: 1rem;
-        color: #f5f0e8;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        padding: 0.6rem 1.4rem;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background-color 0.2s ease;
+    & .container--not-found {
+        margin: 0;
+        padding: 5px;
+        max-width: 500px;
+        min-width: 250px;
+        width: 40vw;
 
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-
-        &:focus-visible {
-            outline: 3px solid #f6ac7c;
-            outline-offset: 3px;
-        }
+        font-family: var(--font-sharpie);
+        font-size: 30px;
+        color: var(--color-primary-font);
+        filter: drop-shadow(0px 8px 10px rgba(0, 0, 0, 0.3));
     }
-}
+
+    & .not-found__back--container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+.not-found__paper-btn {
+    background: rgba(198, 40, 40, 0.9);
+    backdrop-filter: blur(2px);
+    border: none;
+    padding: 14px 45px;
+    cursor: pointer;
+    position: relative;
+    z-index: 110;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    clip-path: polygon(2% 0%, 98% 4%, 100% 35%, 97% 85%, 99% 100%,
+            1% 94%, 3% 65%, 0% 30%);
+
+    border-left: 2px dashed rgba(255, 255, 255, 0.2);
+    border-right: 2px dashed rgba(255, 255, 255, 0.2);
+
+    filter: drop-shadow(3px 8px 12px rgba(0, 0, 0, 0.5));
+    transform: rotate(-1.5deg);
+
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 0.3s ease,
+        filter 0.3s ease;
+}
+
+.not-found__btn-text {
+    font-family: var(--font-sharpie);
+    color: #fdfdfb;
+    text-transform: uppercase;
+    font-size: clamp(16px, 2vw, 22px);
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+@media (hover: hover) {
+    .not-found__paper-btn:hover {
+        transform: scale(1.08) rotate(0deg) translateY(-4px);
+        filter: drop-shadow(6px 15px 18px rgba(0, 0, 0, 0.6));
+        background: rgba(224, 49, 49, 0.95);
+    }
+}
+
+@keyframes float-404 {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+@keyframes float-confused {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(-1.5deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .not-found {
+        gap: 12px;
+        padding: 20px;
+    }
+
+    .not-found .not-found--404_img {
+        width: 55vw;
+        margin: 20px auto 10px auto;
+    }
+
+    .not-found .container--not-found {
+        width: 85vw;
+        font-size: 22px;
+    }
+
+    .not-found .not-found__back--container {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .not-found .not-found--character_img {
+        height: 35vh;
+        min-height: 250px;
+    }
+
+    .not-found__paper-btn {
+        margin-top: 5px;
+        padding: 12px 35px;
+        width: 80vw;
+        max-width: 260px;
+    }
+}

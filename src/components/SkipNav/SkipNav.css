@@ -1,4 +1,3 @@
-/* Skip Navigation — visible solo al recibir focus */
 .skip-nav {
   position: absolute;
   top: -100%;

@@ -83,10 +83,10 @@ export default function Character() {
         idleTimer = setTimeout(() => {
           gsap.to(wrapper, {
             opacity: 0.25,
-            duration: 0.4,
+            duration: 0.2,
             ease: "power2.out",
           });
-        }, 800);
+        }, 500);
       },
     });
 

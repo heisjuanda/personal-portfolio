@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
+
 import { PROJECTS_DATA } from "../data/projects.data.js";
-import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
+import NotFound from "../NotFound/NotFound.jsx";
+
 import "./ProjectDetails.css";
 
 export default function ProjectDetails() {
@@ -16,11 +18,7 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <main className="project-details__error" id="main-content">
-        <h1>Project not found</h1>
-        <p>The project you are looking for does not exist.</p>
-        <Link to="/">← Back to Home</Link>
-      </main>
+      <NotFound />
     );
   }
 
@@ -49,7 +47,7 @@ export default function ProjectDetails() {
         ogImage={`/${project.realSrc}`}
       />
       <JsonLd data={projectSchema} />
-      <main className="project-details" id="main-content">
+      <main className="project-details blueprint-bg" id="main-content">
         <header className="project-details__header">
           <h1
             className="project-details__title"
