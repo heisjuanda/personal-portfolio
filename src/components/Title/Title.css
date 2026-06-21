@@ -51,10 +51,19 @@
 
         & a,
         p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-family: var(--font-heading);
-            color: var(--color-primary-font);
-            text-decoration: none;
+            color: var(--color-bg);
+        }
+
+        & .subtitle__year {
+            padding: 0px;
+            margin: 0;
+
+            & p {
+                color: var(--color-primary-font);
+                font-size: 1.1rem;
+            }
         }
     }
 }

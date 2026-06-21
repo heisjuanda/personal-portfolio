@@ -41,7 +41,7 @@ export default function NotFound({ isProjectView }) {
             height={400}
           />
 
-          <Link to="/" className="not-found__paper-btn">
+          <Link to="/" className="not-found__paper-btn tape-button">
             <span className="not-found__btn-text">
               &lt;&lt; Back to Home
             </span>

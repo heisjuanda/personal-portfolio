@@ -63,33 +63,6 @@
     }
 }
 
-.not-found__paper-btn {
-    background: rgba(198, 40, 40, 0.9);
-    backdrop-filter: blur(2px);
-    border: none;
-    padding: 14px 45px;
-    cursor: pointer;
-    position: relative;
-    z-index: 110;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    clip-path: polygon(2% 0%, 98% 4%, 100% 35%, 97% 85%, 99% 100%,
-            1% 94%, 3% 65%, 0% 30%);
-
-    border-left: 2px dashed rgba(255, 255, 255, 0.2);
-    border-right: 2px dashed rgba(255, 255, 255, 0.2);
-
-    filter: drop-shadow(3px 8px 12px rgba(0, 0, 0, 0.5));
-    transform: rotate(-1.5deg);
-
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        background-color 0.3s ease,
-        filter 0.3s ease;
-}
-
 .not-found__btn-text {
     font-family: var(--font-sharpie);
     color: #fdfdfb;
@@ -97,14 +70,6 @@
     font-size: clamp(16px, 2vw, 22px);
     letter-spacing: 1px;
     font-weight: bold;
-}
-
-@media (hover: hover) {
-    .not-found__paper-btn:hover {
-        transform: scale(1.08) rotate(0deg) translateY(-4px);
-        filter: drop-shadow(6px 15px 18px rgba(0, 0, 0, 0.6));
-        background: rgba(224, 49, 49, 0.95);
-    }
 }
 
 @keyframes float-404 {

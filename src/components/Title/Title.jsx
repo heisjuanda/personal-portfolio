@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+import PaperContainer from "../PaperContainer/PaperContainer";
+
 import "./Title.css";
 
 export default function Title() {
@@ -44,14 +46,20 @@ export default function Title() {
         <span>Adventure</span>
       </h1>
       <div className="subtitle__text-wrapper">
-        <p className="subtitle__handle">
-          <a href="https://github.com/heisjuanda" target="_blank" rel="noopener noreferrer">
-            @heisjuanda
-          </a>
-        </p>
-        <p className="subtitle__year">
-          @{new Date().getFullYear()}
-        </p>
+        <a
+          href="https://github.com/heisjuanda"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="subtitle__handle tape-button"
+          aria-label="Juan David Moreno on GitHub (opens in new tab)"
+        >
+          @heisjuanda
+        </a>
+        <PaperContainer className="subtitle__year">
+          <p>
+            @{new Date().getFullYear()}
+          </p>
+        </PaperContainer>
       </div>
       <div className="title__img-wrapper" ref={imgWrapperRef}>
         <img
