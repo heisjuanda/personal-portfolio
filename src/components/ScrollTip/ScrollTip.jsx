@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SCROLL_TIP_THRESHOLD } from "../../constants/constants";
+import { SCROLL_TIP_DELAY, SCROLL_TIP_THRESHOLD } from "../../constants/constants";
 import "./ScrollTip.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,7 +38,7 @@ export default function ScrollTip() {
           element.classList.remove("hidden");
           isElementVisible = true;
         }
-      }, 4000);
+      }, SCROLL_TIP_DELAY);
     };
 
     if (window.scrollY <= SCROLL_TIP_THRESHOLD) {

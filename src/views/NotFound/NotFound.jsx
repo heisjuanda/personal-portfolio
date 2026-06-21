@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
+import { CHARACTER_IMAGES } from "../../constants/constants.js";
+
 
 import './NotFound.css'
 
@@ -32,7 +35,7 @@ export default function NotFound({ isProjectView }) {
         <div className="not-found__back--container">
           <img
             className="not-found--character_img"
-            src="/images/character/character_thinking.webp"
+            src={CHARACTER_IMAGES.THINKING_FRONT}
             alt="Juanda scratching his head, looking confused"
             loading="eager"
             height={400}

@@ -5,6 +5,7 @@ import { PROJECTS_DATA } from "../data/projects.data.js";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
+import Character from "../../components/Character/Character.jsx";
 
 import "./ProjectDetails.css";
 
@@ -47,6 +48,7 @@ export default function ProjectDetails() {
         ogImage={`/${project.realSrc}`}
       />
       <JsonLd data={projectSchema} />
+      <Character isProjectView />
       <main className="project-details blueprint-bg" id="main-content">
         <header className="project-details__header">
           <h1

@@ -7,7 +7,7 @@ import "./Character.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Character() {
+export default function Character({ isProjectView }) {
   const wrapperRef = useRef(null);
   const hopperRef = useRef(null);
   const shadowRef = useRef(null);
@@ -103,7 +103,7 @@ export default function Character() {
         <div ref={flipperRef} className="character-flipper">
           <img
             loading="eager"
-            src={CHARACTER_IMAGES.FRONT}
+            src={isProjectView ? CHARACTER_IMAGES.THINKING_FRONT : CHARACTER_IMAGES.FRONT}
             alt="Character front"
             className="character__img character__img--front"
             draggable={false}
@@ -111,7 +111,7 @@ export default function Character() {
           />
           <img
             loading="eager"
-            src={CHARACTER_IMAGES.BACK}
+            src={isProjectView ? CHARACTER_IMAGES.THINKING_BACK : CHARACTER_IMAGES.BACK}
             alt="Character back"
             className="character__img character__img--back"
             draggable={false}
