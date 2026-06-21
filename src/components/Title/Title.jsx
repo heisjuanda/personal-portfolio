@@ -62,22 +62,28 @@ export default function Title() {
         </PaperContainer>
       </div>
       <div className="title__img-wrapper" ref={imgWrapperRef}>
-        <img
-          className="title__img title__img--juanda"
-          src="images/title/juanda's.webp"
-          alt="Juanda's paper collage style title"
-          aria-label="Juanda's"
-          loading="eager"
-          fetchpriority="high"
-        />
-        <img
-          className="title__img title__img--adventure"
-          src="images/title/adventure.webp"
-          alt="Adventure paper collage style title"
-          aria-label="Adventure"
-          loading="eager"
-          fetchpriority="high"
-        />
+        <picture>
+          <source media="(max-width: 550px)" srcSet="images/title/juanda's--mobile.webp" />
+          <img
+            className="title__img title__img--juanda"
+            src="images/title/juanda's.webp"
+            alt="Juanda's paper collage style title"
+            aria-label="Juanda's"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
+        <picture>
+          <source media="(max-width: 550px)" srcSet="images/title/adventure--mobile.webp" />
+          <img
+            className="title__img title__img--adventure"
+            src="images/title/adventure.webp"
+            alt="Adventure paper collage style title"
+            aria-label="Adventure"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
     </section>
   );

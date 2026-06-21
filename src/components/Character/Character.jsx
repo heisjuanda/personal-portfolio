@@ -55,6 +55,14 @@ export default function Character({ isProjectView }) {
           overwrite: "auto",
         });
 
+        idleTimer = setTimeout(() => {
+          gsap.to(wrapper, {
+            opacity: 0.25,
+            duration: 0.2,
+            ease: "power2.out",
+          });
+        }, 500);
+
         if (rawDelta === 0) return;
 
         if (scrollDirection === 1) {
@@ -79,14 +87,6 @@ export default function Character({ isProjectView }) {
           triggerHop();
           accum -= PX_PER_HOP;
         }
-
-        idleTimer = setTimeout(() => {
-          gsap.to(wrapper, {
-            opacity: 0.25,
-            duration: 0.2,
-            ease: "power2.out",
-          });
-        }, 500);
       },
     });
 
