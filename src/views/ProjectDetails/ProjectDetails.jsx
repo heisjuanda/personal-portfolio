@@ -18,7 +18,7 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <NotFound />
+      <NotFound isProjectView />
     );
   }
 

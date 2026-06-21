@@ -4,7 +4,7 @@ import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
 
 import './NotFound.css'
 
-export default function NotFound() {
+export default function NotFound({ isProjectView }) {
   return (
     <>
       <SEOHead
@@ -25,7 +25,7 @@ export default function NotFound() {
 
         <PaperContainer className="container--not-found">
           <h3>
-            The page you are looking for does not exist.
+            The {isProjectView ? "project" : "page"} you are looking for does not exist.
           </h3>
         </PaperContainer>
 
