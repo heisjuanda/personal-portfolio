@@ -53,7 +53,7 @@ const PAPER_CONTENT = {
       role: "Software Engineer",
       achievement: [
         "Halved manual review time from 60s to 30s while maintaining strict data quality standards.",
-        "Enhanced data extraction and validation for Colombian driver's licenses at InDrive, generating $X in revenue."
+        "Enhanced data extraction and validation for Colombian driver's licenses at InDrive, projected to generate $500K in Annual Recurring Revenue (ARR)."
       ],
     },
   },

@@ -63,10 +63,10 @@ export default function Title() {
       </div>
       <div className="title__img-wrapper" ref={imgWrapperRef}>
         <picture>
-          <source media="(max-width: 550px)" srcSet="images/title/juanda's--mobile.webp" />
+          <source media="(max-width: 550px)" srcSet="/images/title/juanda's--mobile.webp" />
           <img
             className="title__img title__img--juanda"
-            src="images/title/juanda's.webp"
+            src="/images/title/juanda's.webp"
             alt="Juanda's paper collage style title"
             aria-label="Juanda's"
             loading="eager"
@@ -74,10 +74,10 @@ export default function Title() {
           />
         </picture>
         <picture>
-          <source media="(max-width: 550px)" srcSet="images/title/adventure--mobile.webp" />
+          <source media="(max-width: 550px)" srcSet="/images/title/adventure--mobile.webp" />
           <img
             className="title__img title__img--adventure"
-            src="images/title/adventure.webp"
+            src="/images/title/adventure.webp"
             alt="Adventure paper collage style title"
             aria-label="Adventure"
             loading="eager"
