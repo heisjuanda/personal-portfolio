@@ -6,6 +6,7 @@ import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Character from "../../components/Character/Character.jsx";
+import SmoothScroll from "../../components/SmoothScroll/SmoothScroll.jsx"
 
 import "./ProjectDetails.css";
 
@@ -55,6 +56,7 @@ export default function ProjectDetails() {
       />
       <JsonLd data={projectSchema} />
       <Character isProjectView />
+      <SmoothScroll />
 
       <main className="project-details blueprint-bg" id="main-content">
 
