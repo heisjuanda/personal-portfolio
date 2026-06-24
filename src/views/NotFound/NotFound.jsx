@@ -20,7 +20,7 @@ export default function NotFound({ isProjectView }) {
 
         <img
           className="not-found--404_img"
-          src="/images/notFound/404.webp"
+          src="/images/notFound/404.avif"
           alt="404 — Page not found"
           loading="eager"
           width={300}

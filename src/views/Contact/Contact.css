@@ -1,7 +1,7 @@
 .contact {
   width: 100%;
   min-height: 100vh;
-  background-image: url("/images/contact/kraft_paper.webp");
+  background-image: url("/images/contact/kraft_paper.avif");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -87,10 +87,12 @@
   background: #fff59d;
   transform: rotate(-3.5deg);
 }
+
 .contact__note--cyan {
   background: #b2ebf2;
   transform: rotate(2deg);
 }
+
 .contact__note--pink {
   background: #ffcdd2;
   transform: rotate(-1.5deg);
@@ -176,6 +178,7 @@
   .contact__container {
     gap: 30px;
   }
+
   .contact__notes-grid {
     gap: 40px;
   }

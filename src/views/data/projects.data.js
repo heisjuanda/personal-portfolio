@@ -4,8 +4,8 @@ export const PROJECTS_DATA = [
     id: "josh-wood-colour",
     name: "Josh Wood Colour",
     stack: "React • Shopify • Gatsby • E-commerce",
-    realSrc: "images/projects/josh_wood_colour.webp",
-    blueprintSrc: "images/projects/josh_wood_colour_blueprint.webp",
+    realSrc: "images/projects/josh_wood_colour.avif",
+    blueprintSrc: "images/projects/josh_wood_colour_blueprint.avif",
 
     // project details
     year: "2023",
@@ -64,8 +64,8 @@ export const PROJECTS_DATA = [
     id: "juandabot",
     name: "Juanda Bot",
     stack: "Python • AI Models • Telegram API",
-    realSrc: "images/projects/juandabot.webp",
-    blueprintSrc: "images/projects/juandabot_blueprint.webp",
+    realSrc: "images/projects/juandabot.avif",
+    blueprintSrc: "images/projects/juandabot_blueprint.avif",
 
     // project details
     year: "2025",
@@ -106,8 +106,8 @@ export const PROJECTS_DATA = [
     id: "lambda-lang",
     name: "Lambda Lang",
     stack: "Dr Racket • Research • Lambda Calculus",
-    realSrc: "images/projects/lambda_lang.webp",
-    blueprintSrc: "images/projects/lambda_lang_blueprint.webp",
+    realSrc: "images/projects/lambda_lang.avif",
+    blueprintSrc: "images/projects/lambda_lang_blueprint.avif",
 
     // project details
     year: "2023",
@@ -143,8 +143,8 @@ export const PROJECTS_DATA = [
     id: "patitas-a-casa",
     name: "Patitas a Casa",
     stack: "React • PostgreSQL • Tailwind CSS",
-    realSrc: "images/projects/patitas_a_casa.webp",
-    blueprintSrc: "images/projects/patitas_a_casa_blueprint.webp",
+    realSrc: "images/projects/patitas_a_casa.avif",
+    blueprintSrc: "images/projects/patitas_a_casa_blueprint.avif",
 
     // project details
     year: "2023",
@@ -202,8 +202,8 @@ export const PROJECTS_DATA = [
     id: "portfolio",
     name: "My Portfolio",
     stack: "React • CSS • JavaScript",
-    realSrc: "images/projects/portfolio.webp",
-    blueprintSrc: "images/projects/portfolio_blueprint.webp",
+    realSrc: "images/projects/portfolio.avif",
+    blueprintSrc: "images/projects/portfolio_blueprint.avif",
 
     // project details
     year: "2026",
@@ -243,8 +243,8 @@ export const PROJECTS_DATA = [
     id: "thesis",
     name: "My Thesis",
     stack: "Fast API • Python • React • Academic Project",
-    realSrc: "images/projects/thesis.webp",
-    blueprintSrc: "images/projects/thesis_blueprint.webp",
+    realSrc: "images/projects/thesis.avif",
+    blueprintSrc: "images/projects/thesis_blueprint.avif",
 
     // project details
     year: "2025",

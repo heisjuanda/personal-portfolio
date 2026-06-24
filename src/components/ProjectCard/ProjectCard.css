@@ -32,6 +32,10 @@
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
+
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @media (hover: hover) {
@@ -69,7 +73,7 @@
 
 .blueprint-card__img--sketch {
   z-index: 1;
-  filter: brightness(0.85) contrast(1.1);
+  opacity: 0.85;
 }
 
 .blueprint-card__reveal {
@@ -82,6 +86,7 @@
 
 .blueprint-card__img--real {
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .project-spec-row__details {

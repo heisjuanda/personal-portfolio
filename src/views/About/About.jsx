@@ -125,8 +125,8 @@ export default function About() {
       </AnimatedPaper>
       <Door
         label="About Me"
-        openImage="images/door_open.webp"
-        closedImage="images/door_close.webp"
+        openImage="images/door_open.avif"
+        closedImage="images/door_close.avif"
       />
       <h2 className="about__title" aria-label="About Juan David Moreno Alfonso">
         About Juan David Moreno Alfonso
@@ -136,7 +136,7 @@ export default function About() {
         <section className="about__section about__section--laptop" id="main-content">
           <div className="about__main about__main--left">
             <AnimatedElement
-              imageSrc="images/about/laptop.webp"
+              imageSrc="images/about/laptop.avif"
               alt="Laptop on the desk"
               side={SIDE.LEFT}
               onClick={handlePaperOpen}
@@ -144,7 +144,7 @@ export default function About() {
             />
             <img
               className="about__secondary-image"
-              src="images/about/desk.webp"
+              src="images/about/desk.avif"
               alt="Laptop on the desk"
               loading="lazy"
               draggable={false}
@@ -153,7 +153,7 @@ export default function About() {
 
           <div className="about__doodles" aria-hidden="true">
             <img
-              src="images/about/doodles/doodle_arrow.webp"
+              src="images/about/doodles/doodle_arrow.avif"
               alt="Arrow Doodle Opening the Map"
               className="about__doodle about__doodle--arrow"
               loading="lazy"
@@ -195,7 +195,7 @@ export default function About() {
         <section className="about__section about__section--chair">
           <div className="about__main about__main--right">
             <AnimatedElement
-              imageSrc="images/about/chair.webp"
+              imageSrc="images/about/chair.avif"
               alt="Chair in the office"
               side={SIDE.RIGHT}
               onClick={handlePaperOpen}
@@ -204,7 +204,7 @@ export default function About() {
             />
             <img
               className="about__secondary-image"
-              src="images/about/rug.webp"
+              src="images/about/rug.avif"
               alt="Chair in the office"
               loading="lazy"
               draggable={false}
@@ -214,7 +214,7 @@ export default function About() {
             </p>
             <div className="about__job">
               <AnimatedElement
-                imageSrc="images/about/cressco_logo.webp"
+                imageSrc="images/about/cressco_logo.avif"
                 alt="Cressco Logo"
                 side={SIDE.LEFT}
                 onClick={handlePaperOpen}
@@ -222,7 +222,7 @@ export default function About() {
                 delay={0.7}
               />
               <AnimatedElement
-                imageSrc="images/about/truora_logo.webp"
+                imageSrc="images/about/truora_logo.avif"
                 alt="Truora Logo"
                 side={SIDE.LEFT}
                 onClick={handlePaperOpen}
@@ -234,7 +234,7 @@ export default function About() {
           <div className="about__window-stack" aria-hidden="true">
             <img
               className="about__window-img"
-              src="images/about/window.webp"
+              src="images/about/window.avif"
               alt=""
               loading="lazy"
               draggable={false}
@@ -245,7 +245,7 @@ export default function About() {
         <section className="about__section about__section--globe">
           <div className="about__main about__main--left">
             <AnimatedElement
-              imageSrc="images/about/travel.webp"
+              imageSrc="images/about/travel.avif"
               alt="Traveling earth globe"
               side={SIDE.LEFT}
               onClick={handlePaperOpen}
@@ -255,7 +255,7 @@ export default function About() {
           </div>
           <img
             className="about__plane-img"
-            src="images/about/plane.webp"
+            src="images/about/plane.avif"
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -266,7 +266,7 @@ export default function About() {
         <section className="about__section about__section--gym">
           <img
             className="about__polaroid-img"
-            src="images/about/polaroid.webp"
+            src="images/about/polaroid.avif"
             alt="Polaroid of Juanda with his friends"
             aria-hidden="true"
             loading="lazy"
@@ -274,7 +274,7 @@ export default function About() {
           />
           <div className="about__main about__main--right">
             <AnimatedElement
-              imageSrc="images/about/gym.webp"
+              imageSrc="images/about/gym.avif"
               alt="Gym bell weights"
               side={SIDE.RIGHT}
               onClick={handlePaperOpen}
@@ -284,7 +284,7 @@ export default function About() {
           </div>
           <img
             className="about__headsets-img"
-            src="images/about/headsets.webp"
+            src="images/about/headsets.avif"
             alt="Headset"
             aria-hidden="true"
             loading="lazy"
@@ -292,7 +292,7 @@ export default function About() {
           />
           <img
             className="about__doodle-arrow-img"
-            src="images/about/doodles/doodle_arrow.webp"
+            src="images/about/doodles/doodle_arrow.avif"
             alt="Doodle Arrow"
             aria-hidden="true"
             loading="lazy"
@@ -303,8 +303,8 @@ export default function About() {
 
       <Door
         label="Projects"
-        openImage="images/door_open.webp"
-        closedImage="images/door_close.webp"
+        openImage="images/door_open.avif"
+        closedImage="images/door_close.avif"
       />
     </section>
   );

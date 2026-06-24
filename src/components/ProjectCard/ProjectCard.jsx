@@ -24,7 +24,7 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
           trigger: cardRef.current,
           start: "top bottom",
           end: "center center",
-          scrub: true,
+          scrub: 0.5,
         },
       });
 
@@ -42,14 +42,14 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
     <div ref={cardRef} className="project-spec-row">
       <div className="project-spec-row__visual">
         <Link
-            to={`/projects/${id}`}
-            viewTransition
-            className="project-spec-row__visual-link"
-            aria-label={`View project: ${name}`}
-          >
+          to={`/projects/${id}`}
+          viewTransition
+          className="project-spec-row__visual-link"
+          aria-label={`View project: ${name}`}
+        >
           <div className="blueprint-card__scanner-zone">
             <img
-              src="images/pin.webp"
+              src="images/pin.avif"
               alt="Pin"
               className="blueprint-card__pin"
               loading="lazy"

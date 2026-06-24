@@ -9,10 +9,10 @@ const FACING = {
 }
 
 const CHARACTER_IMAGES = {
-    FRONT: '/images/character/front.webp',
-    BACK: '/images/character/back.webp',
-    THINKING_FRONT: '/images/character/front_thinking.webp',
-    THINKING_BACK: '/images/character/back_thinking.webp',
+    FRONT: '/images/character/front.avif',
+    BACK: '/images/character/back.avif',
+    THINKING_FRONT: '/images/character/front_thinking.avif',
+    THINKING_BACK: '/images/character/back_thinking.avif',
 }
 
 const SIDE = {

@@ -84,9 +84,9 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
   const getPaperFrame = () => {
     switch (step) {
       case 1:
-        return "images/animatedPaper/frame_01.webp";
+        return "images/animatedPaper/frame_01.avif";
       case 2:
-        return "images/animatedPaper/frame_02.webp";
+        return "images/animatedPaper/frame_02.avif";
       default:
         return "";
     }
