@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "vite-plugin-compression2": "^2.5.3",
+    "vite-plugin-css-injected-by-js": "^5.0.1"
   },
   "dependencies": {
     "gsap": "^3.15.0",

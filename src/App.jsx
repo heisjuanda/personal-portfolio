@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "react-router-dom";
-import Home from "./views/Home/Home.jsx";
-import ProjectDetails from "./views/ProjectDetails/ProjectDetails.jsx";
-import NotFound from "./views/NotFound/NotFound.jsx";
 import SkipNav from "./components/SkipNav/SkipNav.jsx";
+
+import Home from "./views/Home/Home";
+import ProjectDetails from "./views/ProjectDetails/ProjectDetails";
+
+const NotFound = lazy(() => import("./views/NotFound/NotFound"));
 
 function RootLayout() {
   return (
@@ -32,7 +34,11 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: (
+      <Suspense fallback={<div className="blueprint-bg" />}>
+        <NotFound />
+      </Suspense>
+    ),
   },
 ]);
 
