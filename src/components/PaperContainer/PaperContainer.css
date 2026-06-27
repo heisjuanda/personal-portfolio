@@ -32,7 +32,7 @@
         linear-gradient(180deg, var(--paper), var(--paper-2));
     background-size: 9px 9px, 100% 100%;
     box-shadow: var(--shadow);
-    filter: url(#paper-tear);
+    filter: var(--filter-tear, url(#paper-tear));
 }
 
 .torn-paper__sheet::before {
@@ -41,7 +41,7 @@
     inset: -7px;
     z-index: -1;
     background: var(--edge);
-    filter: url(#paper-tear-edge);
+    filter: var(--filter-tear-edge, url(#paper-tear-edge));
 }
 
 .torn-paper__sheet::after {
@@ -49,7 +49,7 @@
     position: absolute;
     inset: 0;
     box-shadow: inset 0 0 14px rgba(70, 52, 35, .12);
-    filter: url(#paper-tear);
+    filter: var(--filter-tear, url(#paper-tear));
 }
 
 .torn-paper__inner {

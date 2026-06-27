@@ -1,10 +1,33 @@
+import { useId, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./PaperContainer.css";
 
 export default function PaperContainer({ children, className }) {
+  const uniqueId = useId();
+  const location = useLocation();
+  const [filterBase, setFilterBase] = useState("");
+
+  useEffect(() => {
+    setFilterBase(window.location.href.split("#")[0]);
+  }, [location]);
+
+  const idSafe = uniqueId.replace(/:/g, "-");
+  const filterId = `paper-tear-${idSafe}`;
+  const filterEdgeId = `paper-tear-edge-${idSafe}`;
+
+  const paperTear = `url(${filterBase}#${filterId})`;
+  const paperTearEdge = `url(${filterBase}#${filterEdgeId})`;
+
   return (
-    <section className={`torn-paper ${className}`}>
+    <section
+      className={`torn-paper ${className}`}
+      style={{
+        "--filter-tear": paperTear,
+        "--filter-tear-edge": paperTearEdge,
+      }}
+    >
       <svg className="torn-paper__defs" aria-hidden="true" focusable="false">
-        <filter id="paper-tear" x="-15%" y="-15%" width="130%" height="130%">
+        <filter id={filterId} x="-15%" y="-15%" width="130%" height="130%">
           <feTurbulence
             type="fractalNoise"
             baseFrequency="0.014 0.018"
@@ -21,7 +44,7 @@ export default function PaperContainer({ children, className }) {
           />
         </filter>
         <filter
-          id="paper-tear-edge"
+          id={filterEdgeId}
           x="-15%"
           y="-15%"
           width="130%"
