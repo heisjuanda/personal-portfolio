@@ -76,7 +76,8 @@ body {
 .section-separator {
   margin: 0;
   padding: 0;
-  z-index: 10;
+  z-index: 50;
+  top: -2px;
 }
 
 .blueprint-bg {

@@ -87,7 +87,8 @@ export default function ProjectDetails() {
         </header>
 
         {/* ── EXPEDIENTE / HOJA TÉCNICA PRINCIPAL ── */}
-        <PaperContainer className="project-details__content">
+        <PaperContainer className="section-separator separator-prject--top" />
+        <div className="project-details__content">
           <div className="pd-dossier">
 
             {/* BLOQUE 1: RECUADRO DE ROTULACIÓN (TITLE BLOCK INDUSTRIAL) */}
@@ -235,7 +236,8 @@ export default function ProjectDetails() {
             </section>
 
           </div>
-        </PaperContainer>
+        </div>
+        <PaperContainer className="section-separator separator-prject--bottom" />
       </main>
     </>
   );

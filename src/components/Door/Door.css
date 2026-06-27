@@ -17,6 +17,7 @@
 .is-approaching {
   z-index: 101;
 }
+
 .is-passed {
   z-index: 10;
 }
@@ -37,6 +38,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 5px 5px 0 0;
+  margin-bottom: 12px;
 }
 
 .door-image {

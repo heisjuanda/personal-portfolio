@@ -3,6 +3,14 @@
   min-height: 100vh;
   padding-bottom: 100px;
   box-sizing: border-box;
+
+  & .separator-prject--top {
+    top: 2px;
+  }
+
+  & .separator-prject--bottom {
+    top: -2px;
+  }
 }
 
 .project-details__header {
@@ -51,22 +59,15 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  display: block;
 
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  padding: 40px;
 
-  isolation: isolate;
-
-  will-change: transform;
-}
-
-.project-details__content .torn-paper__inner {
-  margin: 0 auto;
+  background-color: #F9F6EE;
 }
 
 .pd-dossier {
   padding: 0px;
+  margin: 0 auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
