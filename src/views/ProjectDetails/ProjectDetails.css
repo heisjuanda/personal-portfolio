@@ -50,8 +50,11 @@
 .project-details__content {
   width: 100vw;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  display: block;
+}
+
+.project-details__content .torn-paper__inner {
+  margin: 0 auto;
 }
 
 .pd-dossier {
@@ -719,15 +722,15 @@
   }
 
   .pd-swatch__hex {
-    font-size: 1.2rem;
+    font-size: 14px;
   }
 
   .pd-swatch__name {
-    font-size: 1rem;
+    font-size: 12px;
   }
 
   .pd-swatch__usage {
-    font-size: 0.75rem;
+    font-size: 10px;
   }
 
   .pd-swatch:hover {
@@ -738,6 +741,14 @@
   .pd-swatch:hover::before {
     transform: translateY(-50%);
   }
+}
+
+@media screen and (max-width: 350px) {
+
+  .pd-swatch__usage {
+    display: none;
+  }
+
 }
 
 .pd-actions-wrapper {
