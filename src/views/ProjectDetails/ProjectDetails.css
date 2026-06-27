@@ -48,9 +48,17 @@
 }
 
 .project-details__content {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   display: block;
+
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  isolation: isolate;
+
+  will-change: transform;
 }
 
 .project-details__content .torn-paper__inner {
@@ -148,6 +156,8 @@
   border-left: none;
 
   filter: drop-shadow(2px 8px 20px rgba(0, 0, 0, 0.05));
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .pd-card--problem::after {
