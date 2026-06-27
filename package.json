@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.42.3",
     "@vitejs/plugin-react": "^4.5.2",
     "vite": "^8.0.12",
     "vite-plugin-compression2": "^2.5.3",
-    "vite-plugin-css-injected-by-js": "^5.0.1"
+    "vite-plugin-css-injected-by-js": "^5.0.1",
+    "wrangler": "^4.105.0"
   },
   "dependencies": {
     "gsap": "^3.15.0",
