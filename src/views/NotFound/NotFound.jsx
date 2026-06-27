@@ -27,9 +27,9 @@ export default function NotFound({ isProjectView }) {
         />
 
         <PaperContainer className="container--not-found">
-          <h3>
+          <h2>
             The {isProjectView ? "project" : "page"} you are looking for does not exist.
-          </h3>
+          </h2>
         </PaperContainer>
 
         <div className="not-found__back--container">

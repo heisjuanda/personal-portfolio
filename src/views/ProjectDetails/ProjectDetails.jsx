@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { PROJECTS_DATA } from "../data/projects.data.js";
@@ -7,11 +7,14 @@ import JsonLd from "../../components/JsonLd/JsonLd.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Character from "../../components/Character/Character.jsx";
 import SmoothScroll from "../../components/SmoothScroll/SmoothScroll.jsx"
+import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
 
 import "./ProjectDetails.css";
 
 export default function ProjectDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const project = PROJECTS_DATA.find((p) => p.id === id);
   const [copiedHex, setCopiedHex] = useState(null);
 
@@ -21,6 +24,14 @@ export default function ProjectDetails() {
 
   if (!project) {
     return <NotFound isProjectView />;
+  }
+
+  const handleBack = () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => navigate(-1));
+    } else {
+      navigate(-1);
+    }
   }
 
   const handleCopyColor = (hex) => {
@@ -59,12 +70,10 @@ export default function ProjectDetails() {
       <SmoothScroll />
 
       <main className="project-details blueprint-bg" id="main-content">
-
-        {/* ── ENCABEZADO ESTILO PLANO DE DISEÑO ── */}
         <header className="project-details__header">
           <div className="project-details__header-inner">
             <span className="project-details__meta-tag">
-              {project.category} // SYSTEM-SPEC-{project.year}
+              {project.category}-{project.year}
             </span>
             <h1
               className="project-details__title"
@@ -72,12 +81,13 @@ export default function ProjectDetails() {
             >
               {project.name}
             </h1>
-            <p className="project-details__context">➔ CONTEXT: {project.context}</p>
+            <p className="project-details__context">
+              <span>&rarr; CONTEXT:</span> {project.context}</p>
           </div>
         </header>
 
         {/* ── EXPEDIENTE / HOJA TÉCNICA PRINCIPAL ── */}
-        <div className="project-details__content">
+        <PaperContainer className="project-details__content">
           <div className="pd-dossier">
 
             {/* BLOQUE 1: RECUADRO DE ROTULACIÓN (TITLE BLOCK INDUSTRIAL) */}
@@ -92,7 +102,6 @@ export default function ProjectDetails() {
             {/* BLOQUE 2: MAQUETA INTERACTIVA (BLUEPRINT TO REALITY) */}
             <section className="pd-section pd-section--visual">
               <div className="pd-visual-frame">
-                <div className="pd-tech-line pd-tech-line--horiz"><span>MEASURE_SCALE_100%</span></div>
                 <img
                   className="pd-visual-image"
                   src={`/${project.realSrc}`}
@@ -102,66 +111,95 @@ export default function ProjectDetails() {
               </div>
             </section>
 
-            {/* BLOQUE 3: NARRATIVA CIENTÍFICA (PROBLEMA Y SOLUCIÓN) */}
+            {/* 📝 BLOQUE 3: NARRATIVA CIENTÍFICA (RELAJO VISUAL CON RECORTES Y CINTAS) */}
             <section className="pd-section pd-section--narrative">
+
               <div className="pd-card pd-card--problem">
-                <span className="pd-card__stamp">BLOCK 01 // PROBLEM</span>
+                <div className="pd-tape pd-tape--top-left" />
+                <div className="pd-tape pd-tape--bottom-right" />
+
+                <div className="pd-card__header">
+                  <span className="pd-card__stamp">BLOCK // PROBLEM</span>
+                  <span className="pd-card__number">01</span>
+                </div>
                 <p>{project.problem}</p>
               </div>
+
               <div className="pd-card pd-card--solution">
-                <span className="pd-card__stamp">BLOCK 02 // SOLUTION</span>
+                <div className="pd-tape pd-tape--top-left" />
+                <div className="pd-tape pd-tape--top-right" />
+
+                <div className="pd-card__header">
+                  <span className="pd-card__stamp">BLOCK // SOLUTION</span>
+                  <span className="pd-card__number">02</span>
+                </div>
                 <p>{project.solution}</p>
               </div>
+
             </section>
 
-            {/* BLOQUE 4: MÉTRICAS E IMPACTO (SELLOS INDUSTRIALES) */}
+            {/* 📊 BLOQUE 4: MÉTRICAS E IMPACTO (ORGANIZACIÓN HORIZONTAL OPTIMIZADA) */}
             {(project.metrics || project.impact) && (
               <section className="pd-section pd-section--impact">
+
                 {project.impact && (
-                  <div className="pd-impact-folder">
-                    <h3>ENGINEERING IMPACT REPORT</h3>
+                  <div className="pd-impact-folder pd-swatch">
+                    <h2>ENGINEERING IMPACT REPORT</h2>
                     <p>{project.impact}</p>
                   </div>
                 )}
+
                 {project.metrics && (
-                  <div className="pd-metrics-grid">
+                  <div className="pd-metrics-display">
                     {project.metrics.map((metric, i) => (
-                      <div key={i} className="pd-metric-stamp">
-                        <span className="pd-metric-stamp__value">{metric.value}</span>
-                        <span className="pd-metric-stamp__label">{metric.label}</span>
+                      <div key={i} className="pd-metric-circle-item">
+                        <div className="pd-metric-circle__wrapper">
+                          <span className="pd-metric-circle__value">{metric.value}</span>
+                        </div>
+                        <span className="pd-metric-circle__label">{metric.label}</span>
                       </div>
                     ))}
                   </div>
                 )}
+
               </section>
             )}
 
             {/* BLOQUE 5: HIGHLIGHTS (NOTAS DE CAMPO) */}
             {project.highlights && (
               <section className="pd-section pd-section--highlights">
-                <div className="pd-highlights-sheet">
-                  <h3>FIELD NOTES & DEVELOPMENT HIGHLIGHTS</h3>
-                  <ul>
-                    {project.highlights.map((highlight, i) => (
-                      <li key={i}>
-                        <span className="pd-bullet">✓</span> {highlight}
-                      </li>
-                    ))}
-                  </ul>
+                <h2 className="pd-highlights-title">FIELD NOTES & DEVELOPMENT HIGHLIGHTS</h2>
+
+                <div className="pd-highlights-grid">
+                  {project.highlights.map((highlight, i) => {
+                    const colors = ["yellow", "cyan", "pink"];
+                    const colorClass = colors[i % colors.length];
+
+                    return (
+                      <div key={i} className={`pd-highlight-note pd-highlight-note--${colorClass}`}>
+                        <div className="pd-highlight-note__glue" />
+
+                        <div className="pd-highlight-note__content">
+                          <span className="pd-highlight-note__tag">NOTE_0{i + 1}</span>
+                          <p className="pd-highlight-note__text">{highlight}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </section>
             )}
 
-            {/* BLOQUE 6: SISTEMA DE DISEÑO (CINTAS AISLANTES EXPANDIBLES :HAS) */}
+            {/* BLOQUE 6: SISTEMA DE DISEÑO (ACTUALIZADO CON VARIABLE CSS) */}
             {project.designSystem?.palette && (
               <section className="pd-section pd-section--design">
-                <h3 className="pd-design-title">CORE SYSTEM PALETTE</h3>
+                <h2 className="pd-design-title">CORE SYSTEM PALETTE</h2>
                 <div className="pd-palette-strip">
                   {project.designSystem.palette.map((color, idx) => (
                     <div
                       key={idx}
                       className="pd-swatch"
-                      style={{ backgroundColor: color.hex }}
+                      style={{ "--swatch-color": color.hex }}
                       onClick={() => handleCopyColor(color.hex)}
                       title={`Click to copy ${color.hex}`}
                     >
@@ -178,27 +216,26 @@ export default function ProjectDetails() {
               </section>
             )}
 
-            {/* BLOQUE 7: ENLACES DE ACCIÓN (CINTAS ROJAS DE SALIDA DE EMERGENCIA) */}
             <section className="pd-section pd-section--actions">
               <div className="pd-actions-wrapper">
                 {project.links?.live && (
                   <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="pd-action-btn pd-action-btn--live">
-                    <span>DEPLOYED SYSTEM ➔</span>
+                    <span>DEPLOYED SYSTEM &rarr;</span>
                   </a>
                 )}
                 {project.links?.repo && (
                   <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="pd-action-btn pd-action-btn--repo">
-                    <span>SOURCE REPOSITORY ➔</span>
+                    <span>SOURCE REPOSITORY &rarr;</span>
                   </a>
                 )}
-                <Link to="/" className="pd-action-btn pd-action-btn--back">
-                  <span>{"\uFE0E"}← BACK TO BLUEPRINTS</span>
-                </Link>
+                <button onClick={handleBack} className="pd-action-btn pd-action-btn--back">
+                  <span>&larr; BACK TO BLUEPRINTS</span>
+                </button>
               </div>
             </section>
 
           </div>
-        </div>
+        </PaperContainer>
       </main>
     </>
   );

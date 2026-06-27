@@ -160,18 +160,18 @@ export default function About() {
               draggable={false}
               aria-hidden="true"
             />
-            <h4
+            <span
               className="about__doodle about__doodle--welcome"
               aria-hidden="true"
             >
               Welcome!!!
-            </h4>
-            <h4
+            </span>
+            <span
               className="about__doodle about__doodle--floor-scratch"
               aria-hidden="true"
             >
               My Tech Stack
-            </h4>
+            </span>
           </div>
           <div className="about__scatter" aria-hidden="true">
             {LAPTOP_DECORATIONS.map((deco) => (

@@ -236,7 +236,29 @@ export const PROJECTS_DATA = [
     logo: null,
     links: { live: "https://juandamoreno.dev", repo: null },
     images: null,
-    designSystem: null,
+    designSystem: {
+      fonts: [],
+      palette: [
+        {
+          hex: "#EBE8DD",
+          name: "Drafting Cream",
+          role: "primary",
+          usage: "Backgrounds & surfaces",
+        },
+        {
+          hex: "#285C82",
+          name: "Blueprint Blue",
+          role: "secondary",
+          usage: "borders & structural elements",
+        },
+        {
+          hex: "#A98055",
+          name: "Kraft Paper",
+          role: "accent",
+          usage: "CTAs, highlights & interactive notes",
+        },
+      ],
+    },
   },
   {
     // project card data

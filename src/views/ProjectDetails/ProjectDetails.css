@@ -1,6 +1,3 @@
-/* =========================================================
-   CONTENEDOR PRINCIPAL Y ENCABEZADO
-   ========================================================= */
 .project-details {
   width: 100%;
   min-height: 100vh;
@@ -24,58 +21,51 @@
 }
 
 .project-details__meta-tag {
-  font-family: monospace;
-  color: #63b3ed;
+  font-family: var(--font-text);
+  color: var(--color-secondary-font);
   font-size: 0.9rem;
   letter-spacing: 2px;
 }
 
 .project-details__title {
   font-family: var(--font-sharpie);
-  font-size: clamp(40px, 6vw, 85px);
+  font-size: clamp(80px, 15vw, 100px);
   line-height: 1;
-  color: var(--color-primary-font);
+  color: var(--color-project-title);
   margin: 15px 0;
 }
 
 .project-details__context {
-  font-family: var(--font-sharpie);
-  font-size: 1.2rem;
-  color: #a0aec0;
+  font-size: 16px;
+  color: var(--color-secondary-font);
   margin: 0;
+  font-family: var(--font-text);
+
+  & span {
+    font-family: var(--font-sharpie);
+    font-size: 20px;
+  }
 }
 
-/* =========================================================
-   EL DOSSIER (CARPETA TÉCNICA CENTRAL)
-   ========================================================= */
 .project-details__content {
-  width: 100%;
-  padding: 0 20px;
+  width: 100vw;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
 }
 
 .pd-dossier {
-  background: #fdfdfb;
-  /* Papel técnico grueso */
-  width: 100%;
-  max-width: 1100px;
-  border-radius: 4px;
-  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.4);
-  padding: 45px;
+  padding: 0px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  clip-path: polygon(0.5% 0%, 99.5% 0.5%, 100% 99%, 0% 99.5%);
 }
 
 .pd-section {
   width: 100%;
 }
 
-/* 📐 BLOQUE TÉCNICO DE ROTULACIÓN (TITLE BLOCK) */
 .pd-specs-table {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -129,166 +119,420 @@
   opacity: 1;
 }
 
-.pd-tech-line {
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  right: 20px;
-  height: 1px;
-  border-top: 1px dashed #63b3ed;
-  font-family: monospace;
-  font-size: 11px;
-  color: #63b3ed;
-  text-align: center;
-}
-
-/* 📝 NARRATIVA (PROBLEMA Y SOLUCIÓN) */
+/* =========================================================
+   📝 NARRATIVA (RECORTES DE PAPEL CON CINTA ADHESIVA)
+   ========================================================= */
 .pd-section--narrative {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 40px;
+  position: relative;
+  padding: 20px 0;
 }
 
 .pd-card {
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  padding: 30px;
-  border-radius: 6px;
   position: relative;
-  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 35px 30px;
+  box-sizing: border-box;
+  box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
 }
 
 .pd-card--problem {
-  transform: rotate(-0.5deg);
-  border-left: 4px solid #e53e3e;
+  background: transparent;
+  box-shadow: none;
+  transform: rotate(-1.2deg);
+  border-left: none;
+
+  filter: drop-shadow(2px 8px 20px rgba(0, 0, 0, 0.05));
+}
+
+.pd-card--problem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  z-index: 1;
+
+  clip-path: polygon(0% 2%, 15% 0%, 35% 1%, 65% 0%, 85% 2%, 100% 1%,
+      99% 35%, 100% 65%, 98% 100%, 82% 98%, 50% 99%, 18% 98%, 0% 100%,
+      1% 72%, 0% 38%);
+}
+
+.pd-card--problem .pd-card__header,
+.pd-card--problem p {
+  position: relative;
+  z-index: 2;
 }
 
 .pd-card--solution {
-  transform: rotate(0.5deg);
-  border-left: 4px solid #319795;
+  background-color: #f4fafd;
+  background-image: linear-gradient(rgba(49, 151, 149, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(49, 151, 149, 0.06) 1px, transparent 1px);
+  background-size: 15px 15px;
+
+  transform: rotate(1deg);
+  border: 1px solid rgba(49, 151, 149, 0.15);
+}
+
+.pd-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 .pd-card__stamp {
-  font-family: monospace;
-  font-size: 0.75rem;
+  font-family: var(--font-sharpie);
+  font-size: 18px;
   font-weight: bold;
-  color: #a0aec0;
-  display: block;
-  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
 }
 
-.pd-card p {
-  font-family: var(--font-sharpie);
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #2d3748;
-  margin: 0;
-}
-
-/* 📊 MÉTRICAS E IMPACTO */
-.pd-section--impact {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 30px;
-  align-items: center;
-}
-
-.pd-impact-folder {
-  border: 2px solid #2d3748;
-  padding: 25px;
-  background: #f7fafc;
-}
-
-.pd-impact-folder h3 {
-  font-family: var(--font-sharpie);
-  margin: 0 0 12px 0;
-  font-size: 1.15rem;
-  letter-spacing: 1px;
-}
-
-.pd-impact-folder p {
-  font-family: var(--font-sharpie);
-  font-size: 1.05rem;
-  line-height: 1.5;
-  color: #4a5568;
-  margin: 0;
-}
-
-.pd-metrics-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.pd-metric-stamp {
-  border: 2px dashed #e53e3e;
-  /* Sello de aprobación rojo */
-  padding: 15px;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: rotate(-1.5deg);
-}
-
-.pd-metric-stamp__value {
-  font-family: var(--font-sharpie);
-  font-size: 2.8rem;
-  font-weight: 900;
+.pd-card--problem .pd-card__stamp {
   color: #e53e3e;
+}
+
+.pd-card--solution .pd-card__stamp {
+  color: #319795;
+}
+
+.pd-card__number {
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 900;
   line-height: 1;
 }
 
-.pd-metric-stamp__label {
-  font-family: var(--font-sharpie);
-  font-size: 0.85rem;
-  color: #718096;
-  text-align: center;
-  margin-top: 5px;
+.pd-card--problem .pd-card__number {
+  color: #e53e3e;
 }
 
-/* 📋 NOTAS DE CAMPO (HIGHLIGHTS) */
-.pd-highlights-sheet {
-  background: #fff;
-  border: 1px solid #cbd5e0;
-  padding: 35px;
-  background-image: linear-gradient(#edf2f7 1px, transparent 1px);
-  /* Hojas rayadas */
-  background-size: 100% 28px;
-  line-height: 28px;
+.pd-card--solution .pd-card__number {
+  color: #319795;
 }
 
-.pd-highlights-sheet h3 {
-  font-family: var(--font-sharpie);
-  margin: 0 0 20px 0;
-  font-size: 1.1rem;
-  color: #4a5568;
-}
-
-.pd-highlights-sheet ul {
-  list-style: none;
-  padding: 0;
+.pd-card p {
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 1.55;
+  color: #2d3748;
   margin: 0;
 }
 
-.pd-highlights-sheet li {
-  font-family: var(--font-sharpie);
-  font-size: 1.05rem;
-  color: #2d3748;
-  margin-bottom: 8px;
+.pd-tape {
+  position: absolute;
+  width: 90px;
+  height: 28px;
+  background: rgba(255, 255, 250, 0.45);
+  z-index: 10;
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.03);
+
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  border-right: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.pd-tape--top-left {
+  top: -12px;
+  left: -20px;
+  transform: rotate(-35deg);
+}
+
+.pd-tape--top-right {
+  top: -12px;
+  right: -20px;
+  transform: rotate(35deg);
+}
+
+.pd-tape--bottom-right {
+  bottom: -10px;
+  right: -15px;
+  transform: rotate(-28deg);
+}
+
+.pd-card:hover {
+  transform: scale(1.01) translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .pd-section--narrative {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 10px 0;
+  }
+
+  .pd-card {
+    transform: none !important;
+    padding: 30px 22px;
+  }
+
+  .pd-tape--top-left {
+    left: -10px;
+  }
+
+  .pd-tape--top-right {
+    right: -10px;
+  }
+
+  .pd-tape--bottom-right {
+    right: -10px;
+  }
+}
+
+/* =========================================================
+   📊 MÉTRICAS E IMPACTO (CÍRCULOS DE MARCADOR LIBRES)
+   ========================================================= */
+.pd-section--impact {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 45px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.pd-bullet {
-  color: #319795;
-  font-weight: bold;
+.pd-impact-folder {
+  width: 100%;
+  box-sizing: border-box;
+  border: 3px solid #2d3748;
+  padding: 30px !important;
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 4px 5px 0px #2d3748;
+  height: max-content !important;
+
+  & h2 {
+    font-family: var(--font-sharpie);
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    color: #2d3748;
+    letter-spacing: 1px;
+  }
+
+  & p {
+    font-family: var(--font-text);
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4a5568;
+    margin: 0;
+  }
 }
 
-/* 🎨 PALETA DE COLORES (ESTILO CINTAS AISLANTES CON LÓGICA DE PROPORCIÓN) */
+@media screen and (max-width: 750px) {
+  .pd-impact-folder {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+.pd-metrics-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: auto;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+}
+
+.pd-metric-circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  max-width: 340px;
+}
+
+.pd-metric-circle__wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 36px;
+  min-width: 150px;
+}
+
+.pd-metric-circle__wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 70'><path d='M 60,6 C 28,6 6,18 6,35 C 6,52 32,64 65,64 C 98,64 114,52 114,35 C 114,16 82,10 52,12 C 35,13 14,18 12,28' fill='none' stroke='%23e53e3e' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.12));
+
+  transform: rotate(-1deg);
+}
+
+.pd-metric-circle-item:nth-child(2n) .pd-metric-circle__wrapper::before {
+  transform: rotate(2deg) scaleX(-1);
+}
+
+.pd-metric-circle__value {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 900;
+  color: #e53e3e;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  letter-spacing: -1px;
+}
+
+.pd-metric-circle__label {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: #718096;
+  margin-top: 12px;
+  max-width: 260px;
+  line-height: 1.35;
+}
+
+@media (max-width: 768px) {
+  .pd-metric-circle__wrapper {
+    min-width: 130px;
+  }
+}
+
+/* =========================================================
+   📋 NOTAS DE CAMPO (STICKY NOTES RECTANGULARES - LEFT GLUE)
+   ========================================================= */
+.pd-highlights-title {
+  font-family: var(--font-sharpie);
+  margin: 0 0 30px 0;
+  font-size: 20px;
+  color: #718096;
+  letter-spacing: 1px;
+}
+
+.pd-highlights-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pd-highlight-note {
+  position: relative;
+  width: 340px;
+  height: 180px;
+  padding: 22px 24px 22px 36px;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+
+  display: flex;
+  flex-direction: column;
+
+  transform-origin: center left;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.4s ease;
+
+  box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+.pd-highlight-note--yellow {
+  background: #fff59d;
+  transform: rotate(-2.5deg);
+}
+
+.pd-highlight-note--cyan {
+  background: #b2ebf2;
+  transform: rotate(1.5deg);
+}
+
+.pd-highlight-note--pink {
+  background: #ffcdd2;
+  transform: rotate(-1deg);
+}
+
+.pd-highlight-note__glue {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.pd-highlight-note__content {
+  font-family: var(--font-text);
+  color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.pd-highlight-note__tag {
+  font-size: 18px;
+  opacity: 0.5;
+  letter-spacing: 1.5px;
+  font-family: var(--font-sharpie);
+}
+
+.pd-highlight-note__text {
+  font-size: 14px;
+  margin: 12px 0 0 0;
+  line-height: 1.35;
+  color: #1e1e1e;
+}
+
+@media (hover: hover) {
+  .pd-highlight-note:hover {
+    transform: scale(1.05) rotate(0deg) translateX(6px);
+    box-shadow: 12px 16px 26px rgba(0, 0, 0, 0.22);
+    z-index: 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-highlights-grid {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .pd-highlight-note {
+    transform: none !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 130px;
+    padding: 20px 20px 20px 32px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .pd-highlight-note__glue {
+    width: 14px;
+  }
+}
+
+/* =========================================================
+   🎨 PALETA DE COLORES (ESTILO GARABATO DE NIÑO)
+   ========================================================= */
 .pd-design-title {
   font-family: var(--font-sharpie);
-  font-size: 1.1rem;
+  font-size: 20px;
   color: #718096;
   margin: 0 0 15px 0;
 }
@@ -296,21 +540,80 @@
 .pd-palette-strip {
   display: flex;
   width: 100%;
-  height: 140px;
-  gap: 8px;
+  height: 160px;
+  gap: 12px;
 }
 
 .pd-swatch {
-  border-radius: 4px;
+  background-color: #ffffff;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 10px 10px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
 
-  /* Lógica de proporción por defecto 60-30-10 */
-  transition: flex 0.4s cubic-bezier(0.25, 1, 0.3, 1), transform 0.3s ease;
+  border: 3px solid #2d3748;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 3px 5px 0px #2d3748;
+
+  transition: flex 0.5s cubic-bezier(0.25, 1, 0.3, 1), transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pd-swatch::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  background-color: var(--swatch-color);
+  z-index: 1;
+
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'><path d='M6,42 L22,8 L12,54 L38,10 L28,56 L55,14 L42,52 L74,10 L60,56 L90,12 L78,54 L108,14 L95,52 L114,24' fill='none' stroke='black' stroke-width='13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'><path d='M6,42 L22,8 L12,54 L38,10 L28,56 L55,14 L42,52 L74,10 L60,56 L90,12 L78,54 L108,14 L95,52 L114,24' fill='none' stroke='black' stroke-width='13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.08)) drop-shadow(-0.5px -0.5px 0.5px rgba(0, 0, 0, 0.04));
+
+  transition: transform 0.4s ease;
+}
+
+.pd-swatch__info {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 2px solid #2d3748;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pd-swatch__hex {
+  font-family: var(--font-text);
+  font-size: 16px;
+  color: #1a202c;
+  font-weight: bold;
+}
+
+.pd-swatch__name {
+  font-family: var(--font-sharpie);
+  font-size: 18px;
+  color: #4a5568;
+}
+
+.pd-swatch__usage {
+  font-family: var(--font-text);
+  font-size: 0.72rem;
+  color: #718096;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pd-swatch:nth-child(1) {
@@ -325,38 +628,6 @@
   flex: 10;
 }
 
-.pd-swatch__info {
-  background: rgba(0, 0, 0, 0.75);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  backdrop-filter: blur(4px);
-}
-
-.pd-swatch__hex {
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #fff;
-  font-weight: bold;
-}
-
-.pd-swatch__name {
-  font-family: var(--font-sharpie);
-  font-size: 0.8rem;
-  color: #e2e8f0;
-}
-
-.pd-swatch__usage {
-  font-family: var(--font-sharpie);
-  font-size: 0.7rem;
-  color: #a0aec0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ⚡ SISTEMA :HAS() PARA EXPANDIR FLUIDAMENTE LAS CINTAS COCOON */
 .pd-palette-strip:has(.pd-swatch:nth-child(1):hover) .pd-swatch:nth-child(1) {
   flex: 75;
 }
@@ -394,10 +665,81 @@
 }
 
 .pd-swatch:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 5px 8px 0px #2d3748;
 }
 
-/* 🚧 CINTAS DE ACCIÓN ROJAS (BOTONES DE SALIDA) */
+.pd-swatch:hover::before {
+  transform: scale(1.03) rotate(0.5deg);
+}
+
+@media (max-width: 768px) {
+  .pd-palette-strip {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+  }
+
+  .pd-swatch {
+    flex: none !important;
+    height: 120px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .pd-swatch::before {
+    content: "";
+    inset: auto 20px auto auto;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 140px;
+    height: 70px;
+    z-index: 1;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .pd-swatch__info {
+    background: transparent !important;
+    border-top: none !important;
+    padding: 0;
+    z-index: 2;
+
+    width: calc(100% - 180px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pd-swatch__hex {
+    font-size: 1.2rem;
+  }
+
+  .pd-swatch__name {
+    font-size: 1rem;
+  }
+
+  .pd-swatch__usage {
+    font-size: 0.75rem;
+  }
+
+  .pd-swatch:hover {
+    transform: none;
+    box-shadow: 3px 5px 0px #2d3748;
+  }
+
+  .pd-swatch:hover::before {
+    transform: translateY(-50%);
+  }
+}
+
 .pd-actions-wrapper {
   display: flex;
   flex-direction: row;
@@ -408,7 +750,6 @@
 
 .pd-action-btn {
   background: rgba(198, 40, 40, 0.9);
-  /* Rojo de advertencia */
   border: none;
   padding: 14px 30px;
   cursor: pointer;
@@ -424,7 +765,6 @@
 
 .pd-action-btn--back {
   background: rgba(45, 55, 72, 0.9);
-  /* Gris pizarra para volver */
 }
 
 .pd-action-btn span {
@@ -443,7 +783,6 @@
    ========================================================= */
 @media (max-width: 1024px) {
   .pd-dossier {
-    padding: 30px;
     gap: 40px;
   }
 
@@ -484,7 +823,6 @@
 
   .pd-swatch {
     flex: none !important;
-    /* Desactivamos el :has() horizontal en mobile */
     height: 75px;
   }
 
