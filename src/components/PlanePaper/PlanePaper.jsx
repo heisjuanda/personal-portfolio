@@ -264,9 +264,11 @@ export default function PlanePaper() {
                     <img
                         ref={planeRef}
                         src="images/paperPlane/paper-plane.avif"
-                        alt=""
+                        alt="Paper plane flying"
                         className="plane-paper__img"
                         draggable={false}
+                        loading="lazy"
+                        width="70px"
                     />
                 </>
             )}
