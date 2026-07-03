@@ -77,7 +77,8 @@ body {
   margin: 0;
   padding: 0;
   z-index: 50;
-  top: -2px;
+  height: 2px;
+  top: 0px;
 }
 
 .blueprint-bg {

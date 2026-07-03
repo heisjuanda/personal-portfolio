@@ -8,6 +8,7 @@ import Contact from "../Contact/Contact.jsx";
 import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
+import PlanePaper from "../../components/PlanePaper/PlanePaper.jsx";
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -56,6 +57,7 @@ export default function Home() {
       <JsonLd data={personSchema} />
       <JsonLd data={websiteSchema} />
       <SmoothScroll />
+      <PlanePaper />
       <main id="main-content">
         <Title />
         <ScrollTip />
