@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { PROJECTS_DATA } from "../data/projects.data.js";
@@ -229,9 +229,16 @@ export default function ProjectDetails() {
                     <span>SOURCE REPOSITORY &rarr;</span>
                   </a>
                 )}
-                <button onClick={handleBack} className="pd-action-btn pd-action-btn--back">
+                <Link
+                  to="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleBack();
+                  }}
+                  className="pd-action-btn pd-action-btn--back"
+                >
                   <span>&larr; BACK TO BLUEPRINTS</span>
-                </button>
+                </Link>
               </div>
             </section>
 
