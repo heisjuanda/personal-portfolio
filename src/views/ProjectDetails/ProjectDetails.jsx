@@ -1,15 +1,16 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy } from "react";
 
 import { PROJECTS_DATA } from "../data/projects.data.js";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
-import NotFound from "../NotFound/NotFound.jsx";
 import Character from "../../components/Character/Character.jsx";
 import SmoothScroll from "../../components/SmoothScroll/SmoothScroll.jsx"
 import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
 
 import "./ProjectDetails.css";
+
+const NotFound = lazy(() => import("../NotFound/NotFound.jsx"));
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -23,7 +24,11 @@ export default function ProjectDetails() {
   }, [id]);
 
   if (!project) {
-    return <NotFound isProjectView />;
+    return (
+      <Suspense fallback={<div className="blueprint-bg" />}>
+        <NotFound isProjectView />
+      </Suspense>
+    );
   }
 
   const handleBack = () => {

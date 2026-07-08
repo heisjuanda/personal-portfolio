@@ -69,18 +69,42 @@
 
   <!-- Google Analytics -->
   <script>
-    const gaId = "%VITE_GA4_ID%";
-    if (gaId && gaId.startsWith("G-")) {
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
-      document.head.appendChild(script);
+    window.addEventListener('DOMContentLoaded', () => {
+      const gaId = "%VITE_GA4_ID%";
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', gaId, { 'anonymize_ip': true });
-    }
+      if (!gaId || !gaId.startsWith("G-")) return;
+
+      let gaLoaded = false;
+
+      function loadGA4() {
+        if (gaLoaded) return;
+        gaLoaded = true;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+
+        window.gtag('js', new Date());
+        window.gtag('config', gaId, {
+          'anonymize_ip': true,
+          'page_path': window.location.pathname
+        });
+
+        window.removeEventListener('scroll', loadGA4);
+        window.removeEventListener('mousemove', loadGA4);
+        window.removeEventListener('touchstart', loadGA4);
+      }
+
+      window.addEventListener('scroll', loadGA4, { passive: true });
+      window.addEventListener('mousemove', loadGA4, { passive: true });
+      window.addEventListener('touchstart', loadGA4, { passive: true });
+
+      setTimeout(loadGA4, 2000);
+    });
   </script>
 </head>
 
