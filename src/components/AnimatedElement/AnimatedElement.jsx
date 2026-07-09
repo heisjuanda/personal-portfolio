@@ -7,13 +7,11 @@ export default function AnimatedElement({
   alt,
   side,
   onClick,
-  value,
-  delay = 0,
+  value
 }) {
   return (
     <div
       className={`animated-element animated-element--${side === SIDE.LEFT ? "left" : "right"}`}
-      style={{ animationDelay: `${delay}s` }}
     >
       <button
         className="animated-element__content"

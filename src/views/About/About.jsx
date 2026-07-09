@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import AnimatedElement from "../../components/AnimatedElement/AnimatedElement.jsx";
 import Door from "../../components/Door/Door.jsx";
@@ -7,6 +9,9 @@ import AnimatedPaper from "../../components/AnimatedPaper/AnimatedPaper.jsx";
 import { SIDE } from "../../constants/constants";
 
 import "./About.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const LAPTOP_DECORATIONS = [
   { src: "images/about/aws.webp", top: "5%", left: "20%", rotate: -15 },
@@ -73,6 +78,8 @@ export default function About() {
   const [isPaperOpen, setIsPaperOpen] = useState(false);
   const [paperContent, setPaperContent] = useState(null);
 
+  const contentRef = useRef(null);
+
   const laptopValue = "laptop";
   const chairValue = "chair";
   const globeValue = "globe";
@@ -92,6 +99,47 @@ export default function About() {
   const handlePaperClose = () => {
     setIsPaperOpen(false);
   };
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const sections = contentRef.current.querySelectorAll('.about__section');
+
+      sections.forEach((section) => {
+        const elements = section.querySelectorAll('.animated-element');
+        if (elements.length === 0) return;
+
+        const tl = gsap.timeline({
+          repeat: -1,
+          repeatDelay: 1.5,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 70%",
+            toggleActions: "play pause resume pause",
+          },
+        });
+
+        tl.to(elements, {
+          scale: 1.14,
+          rotation: () => (Math.random() - 0.5) * 14,
+          duration: 0.3,
+          ease: "power2.out",
+          stagger: 0.1,
+        })
+          .to(elements, {
+            scale: 1,
+            rotation: 0,
+            duration: 0.25,
+            ease: "back.out(1.7)",
+            stagger: 0.08,
+          });
+      });
+
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const getPaperContent = (value) => {
     return (
@@ -119,7 +167,7 @@ export default function About() {
   };
 
   return (
-    <section className="about">
+    <section className="about" ref={contentRef}>
       <AnimatedPaper isOpen={isPaperOpen} onClose={handlePaperClose}>
         {paperContent}
       </AnimatedPaper>
@@ -200,7 +248,6 @@ export default function About() {
               side={SIDE.RIGHT}
               onClick={handlePaperOpen}
               value={chairValue}
-              delay={0.3}
             />
             <img
               className="about__secondary-image"
@@ -219,7 +266,6 @@ export default function About() {
                 side={SIDE.LEFT}
                 onClick={handlePaperOpen}
                 value={cresscoValue}
-                delay={0.7}
               />
               <AnimatedElement
                 imageSrc="images/about/truora_logo.avif"
@@ -227,7 +273,6 @@ export default function About() {
                 side={SIDE.LEFT}
                 onClick={handlePaperOpen}
                 value={truoraValue}
-                delay={1}
               />
             </div>
           </div>
@@ -250,7 +295,6 @@ export default function About() {
               side={SIDE.LEFT}
               onClick={handlePaperOpen}
               value={globeValue}
-              delay={1.2}
             />
           </div>
           <img
@@ -279,7 +323,6 @@ export default function About() {
               side={SIDE.RIGHT}
               onClick={handlePaperOpen}
               value={gymValue}
-              delay={1.4}
             />
           </div>
           <img
