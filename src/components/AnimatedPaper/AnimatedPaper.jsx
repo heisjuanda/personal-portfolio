@@ -109,7 +109,7 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
         {getPaperFrame() && (
           <img
             src={getPaperFrame()}
-            alt=""
+            alt="Paper frame for modal"
             aria-hidden="true"
             className="paper-modal__frame"
             draggable={false}

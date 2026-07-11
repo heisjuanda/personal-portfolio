@@ -280,7 +280,7 @@ export default function About() {
             <img
               className="about__window-img"
               src="images/about/window.avif"
-              alt=""
+              alt="View from the window draw"
               loading="lazy"
               draggable={false}
             />
@@ -300,7 +300,7 @@ export default function About() {
           <img
             className="about__plane-img"
             src="images/about/plane.avif"
-            alt=""
+            alt="Airplane flying in the sky"
             aria-hidden="true"
             loading="lazy"
             draggable={false}
