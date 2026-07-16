@@ -1,5 +1,5 @@
 import { useEffect, lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration, Navigate } from "react-router-dom";
 import SkipNav from "./components/SkipNav/SkipNav.jsx";
 
 import Home from "./views/Home/Home";
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "projects",
+        element: <Navigate to="/" replace />,
       },
       {
         path: "projects/:id",
