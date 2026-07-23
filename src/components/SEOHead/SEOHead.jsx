@@ -25,7 +25,7 @@ export default function SEOHead({
       ) : (
         <meta name="robots" content="index, follow" />
       )}
-      <link rel="canonical" href={fullCanonical} />
+      {!noIndex && <link rel="canonical" href={fullCanonical} />}
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

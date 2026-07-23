@@ -41,9 +41,8 @@ export default function Title() {
 
   return (
     <section className="title">
-      <h1 className="title__text">
-        <span>Juanda's</span>
-        <span>Adventure</span>
+      <h1 className="title__text sr-only">
+        Juan David Moreno | Software Engineer &amp; Creative Developer
       </h1>
       <div className="subtitle__text-wrapper">
         <a
