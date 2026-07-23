@@ -2,11 +2,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "personal-portfolio",
   "compatibility_date": "2026-07-07",
+  "main": "./worker.js",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "run_worker_first": true
   },
   "compatibility_flags": [
     "nodejs_compat"
