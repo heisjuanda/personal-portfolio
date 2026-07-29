@@ -1,6 +1,5 @@
 const VALID_PAGE_PATHS = new Set([
   "/",
-  "/projects",
   "/projects/josh-wood-colour",
   "/projects/juandabot",
   "/projects/lambda-lang",
@@ -37,8 +36,13 @@ async function serveAppShell(request, env, status) {
 export default {
   async fetch(request, env) {
     const method = request.method;
-    const pathname = normalizePath(new URL(request.url).pathname);
+    const url = new URL(request.url);
+    const pathname = normalizePath(url.pathname);
     const isPageRequest = method === "GET" || method === "HEAD";
+
+    if (isPageRequest && pathname === "/projects") {
+      return Response.redirect(new URL("/", url).href, 301);
+    }
 
     if (isPageRequest && VALID_PAGE_PATHS.has(pathname)) {
       return serveAppShell(request, env, 200);
