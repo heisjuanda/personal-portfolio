@@ -108,3 +108,15 @@
   transform-origin: center center;
   will-change: transform, opacity;
 }
+
+@media (min-width: 1000px) {
+  .character-wrapper {
+    --character-size: 240px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .character-wrapper {
+    --character-size: 270px;
+  }
+}

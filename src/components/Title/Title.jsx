@@ -41,6 +41,13 @@ export default function Title() {
 
   return (
     <section className="title">
+      <div className="title__scraps" aria-hidden="true">
+        <span className="title__scrap title__scrap--tape-l" />
+        <span className="title__scrap title__scrap--paper-l" />
+        <span className="title__scrap title__scrap--map-r" />
+        <span className="title__scrap title__scrap--tape-r" />
+        <span className="title__scrap title__scrap--stamp" />
+      </div>
       <h1 className="title__text sr-only">
         Juan David Moreno | Software Engineer &amp; Creative Developer
       </h1>

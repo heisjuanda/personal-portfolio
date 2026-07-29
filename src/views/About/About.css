@@ -283,6 +283,174 @@
     }
   }
 
+  @media (min-width: 1400px) {
+    & .about__sections {
+      max-width: 1480px;
+      margin-inline: auto;
+      gap: 160px;
+      padding: 100px 0;
+    }
+
+    & .about__main--left {
+      margin-left: 6%;
+    }
+
+    & .about__main--right {
+      margin-right: 6%;
+    }
+
+    & .about__secondary-image {
+      width: 300px;
+    }
+
+    & .about__scatter {
+      width: 520px;
+      right: 4%;
+    }
+
+    & .about__scatter-img {
+      width: 64px;
+    }
+
+    & .about__doodle--arrow {
+      width: 360px;
+      left: 8%;
+    }
+
+    & .about__doodle--welcome {
+      width: 340px;
+      font-size: 96px;
+      right: 2%;
+    }
+
+    & .about__doodle--floor-scratch {
+      width: 340px;
+      font-size: 96px;
+      right: 8%;
+    }
+
+    & .about__window-stack {
+      left: 6%;
+    }
+
+    & .about__window-img {
+      width: 370px;
+    }
+
+    & .about__plane-img {
+      max-width: 1400px;
+    }
+
+    & .about__section--globe .about__main--left {
+      left: calc(50% - 700px + 95px);
+    }
+
+    & .about__polaroid-img {
+      width: 470px;
+      left: 4%;
+    }
+
+    & .about__headsets-img {
+      width: 360px;
+      right: 8%;
+    }
+
+    & .about__doodle-arrow-img {
+      width: 400px;
+    }
+
+    & .about__job--title {
+      width: 240px;
+      font-size: 72px;
+      left: -48vw;
+    }
+
+    & .about__job {
+      left: -48vw;
+      gap: 14px;
+
+      & img {
+        width: 96px !important;
+      }
+    }
+
+    & .animated-element {
+      max-width: 150px;
+      min-width: 120px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    & .about__sections {
+      max-width: 1680px;
+      gap: 180px;
+    }
+
+    & .about__secondary-image {
+      width: 340px;
+    }
+
+    & .about__scatter {
+      width: 580px;
+    }
+
+    & .about__scatter-img {
+      width: 72px;
+    }
+
+    & .about__doodle--arrow {
+      width: 400px;
+    }
+
+    & .about__doodle--welcome,
+    & .about__doodle--floor-scratch {
+      width: 380px;
+      font-size: 110px;
+    }
+
+    & .about__window-img {
+      width: 420px;
+    }
+
+    & .about__plane-img {
+      max-width: 1580px;
+    }
+
+    & .about__section--globe .about__main--left {
+      left: calc(50% - 790px + 105px);
+    }
+
+    & .about__polaroid-img {
+      width: 520px;
+    }
+
+    & .about__headsets-img {
+      width: 400px;
+    }
+
+    & .about__doodle-arrow-img {
+      width: 440px;
+    }
+
+    & .about__job--title {
+      font-size: 80px;
+      left: -42vw;
+    }
+
+    & .about__job {
+      left: -42vw;
+
+      & img {
+        width: 110px !important;
+      }
+    }
+
+    & .animated-element {
+      max-width: 170px;
+      min-width: 140px;
+    }
+  }
+
   @media (max-width: 768px) {
     & .about__sections {
       gap: 100px;

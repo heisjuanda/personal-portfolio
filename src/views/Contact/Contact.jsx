@@ -7,6 +7,14 @@ export default function Contact() {
 
   return (
     <section className="contact">
+      <div className="contact__scraps" aria-hidden="true">
+        <span className="contact__scrap contact__scrap--tape-tl" />
+        <span className="contact__scrap contact__scrap--paper-bl" />
+        <span className="contact__scrap contact__scrap--tape-tr" />
+        <span className="contact__scrap contact__scrap--stamp-br" />
+        <span className="contact__scrap contact__scrap--paper-tr" />
+      </div>
+
       <div className="contact__container">
         <div className="contact__title-wrapper">
           <h2 className="contact__title">Contact Me</h2>
