@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef } from "react";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import AnimatedElement from "../../components/AnimatedElement/AnimatedElement.jsx";
 import Door from "../../components/Door/Door.jsx";
 import AnimatedPaper from "../../components/AnimatedPaper/AnimatedPaper.jsx";
+import DoodleArrow from "../../svg/DoodleArrow/DoodleArrow.jsx";
+import DoodlePlane from "../../svg/DoodlePlane/DoodlePlane.jsx";
+import DoodleHeadset from "../../svg/DoodleHeadset/DoodleHeadset.jsx";
 
 import { SIDE } from "../../constants/constants";
 
 import "./About.css";
 
 gsap.registerPlugin(ScrollTrigger);
-
 
 const LAPTOP_DECORATIONS = [
   { src: "images/about/aws.webp", top: "5%", left: "20%", rotate: -15 },
@@ -41,24 +43,25 @@ const PAPER_CONTENT = {
   },
   cressco: {
     title: "Cressco",
-    content: "Led frontend architecture, technical SEO overhauls, and infrastructure configurations (DNS) to deliver high-performance web applications and seamless deployments.",
+    content:
+      "Led frontend architecture, technical SEO overhauls, and infrastructure configurations (DNS) to deliver high-performance web applications and seamless deployments.",
     experience: {
       role: "Software Developer",
       achievement: [
         "Developed an autosave feature for Reddocares forms, eliminating data loss and streamlining staff workflows.",
-        "Optimized joshwoodcolour.com performance by 20% and enhanced SEO architecture, directly driving an increase in digital sales."
+        "Optimized joshwoodcolour.com performance by 20% and enhanced SEO architecture, directly driving an increase in digital sales.",
       ],
-    }
+    },
   },
   truora: {
     title: "Truora (Current)",
-    content: "Architecting high-throughput full-stack features and edge computing workflows across AWS infrastructure (Lambda, DynamoDB, CloudFront Functions), while spearheading technical proposals to optimize backend data processing.",
-    experience:
-    {
+    content:
+      "Architecting high-throughput full-stack features and edge computing workflows across AWS infrastructure (Lambda, DynamoDB, CloudFront Functions), while spearheading technical proposals to optimize backend data processing.",
+    experience: {
       role: "Software Engineer",
       achievement: [
         "Halved manual review time from 60s to 30s while maintaining strict data quality standards.",
-        "Enhanced data extraction and validation for Colombian driver's licenses at InDrive, projected to generate $500K in Annual Recurring Revenue (ARR)."
+        "Enhanced data extraction and validation for Colombian driver's licenses at InDrive, projected to generate $500K in Annual Recurring Revenue (ARR).",
       ],
     },
   },
@@ -104,10 +107,10 @@ export default function About() {
     if (!contentRef.current) return;
 
     const ctx = gsap.context(() => {
-      const sections = contentRef.current.querySelectorAll('.about__section');
+      const sections = contentRef.current.querySelectorAll(".about__section");
 
       sections.forEach((section) => {
-        const elements = section.querySelectorAll('.animated-element');
+        const elements = section.querySelectorAll(".animated-element");
         if (elements.length === 0) return;
 
         const tl = gsap.timeline({
@@ -126,16 +129,14 @@ export default function About() {
           duration: 0.3,
           ease: "power2.out",
           stagger: 0.1,
-        })
-          .to(elements, {
-            scale: 1,
-            rotation: 0,
-            duration: 0.25,
-            ease: "back.out(1.7)",
-            stagger: 0.08,
-          });
+        }).to(elements, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.25,
+          ease: "back.out(1.7)",
+          stagger: 0.08,
+        });
       });
-
     });
 
     return () => ctx.revert();
@@ -181,7 +182,10 @@ export default function About() {
       </h2>
 
       <div className="about__sections">
-        <section className="about__section about__section--laptop" id="main-content">
+        <section
+          className="about__section about__section--laptop"
+          id="main-content"
+        >
           <div className="about__main about__main--left">
             <AnimatedElement
               imageSrc="images/about/laptop.avif"
@@ -200,13 +204,10 @@ export default function About() {
           </div>
 
           <div className="about__doodles" aria-hidden="true">
-            <img
-              src="images/about/doodles/doodle_arrow.avif"
-              alt="Arrow Doodle Opening the Map"
+            <DoodleArrow
               className="about__doodle about__doodle--arrow"
-              loading="lazy"
-              draggable={false}
-              aria-hidden="true"
+              color="#1e1e1e"
+              width="130px"
             />
             <span
               className="about__doodle about__doodle--welcome"
@@ -297,13 +298,10 @@ export default function About() {
               value={globeValue}
             />
           </div>
-          <img
+          <DoodlePlane
             className="about__plane-img"
-            src="images/about/plane.avif"
-            alt="Airplane flying in the sky"
-            aria-hidden="true"
-            loading="lazy"
-            draggable={false}
+            color="#1e1e1e"
+            width="260px"
           />
         </section>
 
@@ -325,21 +323,15 @@ export default function About() {
               value={gymValue}
             />
           </div>
-          <img
+          <DoodleHeadset
             className="about__headsets-img"
-            src="images/about/headsets.avif"
-            alt="Headset"
-            aria-hidden="true"
-            loading="lazy"
-            draggable={false}
+            color="#1e1e1e"
+            width="280px"
           />
-          <img
+          <DoodleArrow
             className="about__doodle-arrow-img"
-            src="images/about/doodles/doodle_arrow.avif"
-            alt="Doodle Arrow"
-            aria-hidden="true"
-            loading="lazy"
-            draggable={false}
+            color="#1e1e1e"
+            width="130px"
           />
         </section>
       </div>
