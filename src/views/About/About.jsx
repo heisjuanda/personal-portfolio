@@ -207,7 +207,6 @@ export default function About() {
             <DoodleArrow
               className="about__doodle about__doodle--arrow"
               color="#1e1e1e"
-              width="130px"
             />
             <span
               className="about__doodle about__doodle--welcome"
@@ -301,7 +300,6 @@ export default function About() {
           <DoodlePlane
             className="about__plane-img"
             color="#1e1e1e"
-            width="260px"
           />
         </section>
 
@@ -326,7 +324,6 @@ export default function About() {
           <DoodleHeadset
             className="about__headsets-img"
             color="#1e1e1e"
-            width="280px"
           />
           <DoodleArrow
             className="about__doodle-arrow-img"

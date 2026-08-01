@@ -1,9 +1,7 @@
-export default function DoodleArrow({ className = "", color = "#1e1e1e", width = "120px" }) {
+export default function DoodleArrow({ className = "", color = "#1e1e1e" }) {
     return (
       <svg 
         viewBox="0 0 500 550" 
-        width={width} 
-        height="auto" 
         fill="none" 
         className={className}
         aria-hidden="true"

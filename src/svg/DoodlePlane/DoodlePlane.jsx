@@ -1,9 +1,7 @@
-export default function DoodlePlane({ className = "", color = "#1e1e1e", width = "100%" }) {
+export default function DoodlePlane({ className = "", color = "#1e1e1e" }) {
     return (
       <svg 
         viewBox="0 0 850 380" 
-        width={width} 
-        height="auto" 
         fill="none" 
         className={className}
         aria-hidden="true"

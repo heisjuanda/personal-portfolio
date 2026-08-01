@@ -1,9 +1,7 @@
-export default function DoodleHeadset({ className = "", color = "#1e1e1e", width = "280px" }) {
+export default function DoodleHeadset({ className = "", color = "#1e1e1e" }) {
     return (
       <svg 
         viewBox="0 0 600 300" 
-        width={width} 
-        height="auto" 
         fill="none" 
         className={className}
         aria-hidden="true"
