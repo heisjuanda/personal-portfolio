@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import PaperContainer from "../PaperContainer/PaperContainer.jsx";
 import "./AnimatedPaper.css";
 
+const SOUND_PATH = "/sounds/Paper.webm";
+const FRAME_1 = "images/animatedPaper/frame_01.avif";
+const FRAME_2 = "images/animatedPaper/frame_02.avif";
+
 const FOCUSABLE = [
   'a[href]',
   'button:not([disabled])',
@@ -14,31 +18,60 @@ const FOCUSABLE = [
 export default function AnimatedPaper({ isOpen, onClose, children }) {
   const [step, setStep] = useState(1);
   const [shouldRender, setShouldRender] = useState(isOpen);
+  
   const modalRef = useRef(null);
   const previousFocusRef = useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
+    const img1 = new Image();
+    img1.src = FRAME_1;
+    const img2 = new Image();
+    img2.src = FRAME_2;
+
+    const audio = new Audio(SOUND_PATH);
+    audio.preload = "auto";
+    audio.volume = 0.5;
+    audioRef.current = audio;
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let frame2Timer, frame3Timer, closeTimer;
+
     if (isOpen) {
       previousFocusRef.current = document.activeElement;
       setShouldRender(true);
       setStep(1);
 
-      const frame2 = setTimeout(() => setStep(2), 300);
-      const frame3 = setTimeout(() => setStep(3), 500);
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {
+        });
+      }
 
-      return () => {
-        clearTimeout(frame2);
-        clearTimeout(frame3);
-      };
+      frame2Timer = setTimeout(() => setStep(2), 300);
+      frame3Timer = setTimeout(() => setStep(3), 500);
     } else {
-      const closeTimeout = setTimeout(() => {
+      closeTimer = setTimeout(() => {
         setShouldRender(false);
-        if (previousFocusRef.current) {
+        if (previousFocusRef.current && typeof previousFocusRef.current.focus === "function") {
           previousFocusRef.current.focus();
         }
       }, 200);
-      return () => clearTimeout(closeTimeout);
     }
+
+    return () => {
+      clearTimeout(frame2Timer);
+      clearTimeout(frame3Timer);
+      clearTimeout(closeTimer);
+    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -82,14 +115,9 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
   if (!shouldRender) return null;
 
   const getPaperFrame = () => {
-    switch (step) {
-      case 1:
-        return "images/animatedPaper/frame_01.avif";
-      case 2:
-        return "images/animatedPaper/frame_02.avif";
-      default:
-        return "";
-    }
+    if (step === 1) return FRAME_1;
+    if (step === 2) return FRAME_2;
+    return "";
   };
 
   return (
@@ -118,25 +146,24 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
         )}
 
         {step === 3 && (
-          <div className="paper-modal__inner-content">
-            <PaperContainer className="paper-modal__paper">
-              {children}
-            </PaperContainer>
-          </div>
-        )}
+          <>
+            <div className="paper-modal__inner-content">
+              <PaperContainer className="paper-modal__paper">
+                {children}
+              </PaperContainer>
+            </div>
 
-        {step === 3 && (
-          <button
-            className="paper-modal__close-btn"
-            onClick={onClose}
-            aria-label="Close dialog"
-            type="button"
-          >
-            ×
-          </button>
+            <button
+              className="paper-modal__close-btn"
+              onClick={onClose}
+              aria-label="Close dialog"
+              type="button"
+            >
+              ×
+            </button>
+          </>
         )}
       </div>
     </div>
   );
 }
-
