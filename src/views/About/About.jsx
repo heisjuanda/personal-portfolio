@@ -77,6 +77,31 @@ const PAPER_CONTENT = {
   },
 };
 
+const getPaperContent = (value) => {
+  return (
+    <div className="about__paper-content">
+      <h3 className="about__paper-title">{value.title}</h3>
+      <p className="about__paper-text">{value.content}</p>
+      {value.experience && (
+        <div className="paper-modal__experience-section">
+          <h4 className="paper-modal__experience-title">Achievements:</h4>
+
+          <div className="paper-modal__work-item">
+            <span className="paper-modal__role-name">
+              {value.experience.role}
+            </span>
+            {value.experience.achievement.map((achievement) => (
+              <p key={achievement} className="paper-modal__achievement-text">
+                <span>•</span> {achievement}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function About() {
   const [isPaperOpen, setIsPaperOpen] = useState(false);
   const [paperContent, setPaperContent] = useState(null);
@@ -141,31 +166,6 @@ export default function About() {
 
     return () => ctx.revert();
   }, []);
-
-  const getPaperContent = (value) => {
-    return (
-      <div className="about__paper-content">
-        <h3 className="about__paper-title">{value.title}</h3>
-        <p className="about__paper-text">{value.content}</p>
-        {value.experience && (
-          <div className="paper-modal__experience-section">
-            <h4 className="paper-modal__experience-title">Achievements:</h4>
-
-            <div className="paper-modal__work-item">
-              <span className="paper-modal__role-name">
-                {value.experience.role}
-              </span>
-              {value.experience.achievement.map((achievement, index) => (
-                <p key={index} className="paper-modal__achievement-text">
-                  <span>•</span> {achievement}
-                </p>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  };
 
   return (
     <section className="about" ref={contentRef}>

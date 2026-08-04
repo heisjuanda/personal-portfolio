@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState, lazy } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 
 import { PROJECTS_DATA } from "../data/projects.data.js";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
@@ -157,8 +157,8 @@ export default function ProjectDetails() {
 
                 {project.metrics && (
                   <div className="pd-metrics-display">
-                    {project.metrics.map((metric, i) => (
-                      <div key={i} className="pd-metric-circle-item">
+                    {project.metrics.map((metric) => (
+                      <div key={metric.label} className="pd-metric-circle-item">
                         <div className="pd-metric-circle__wrapper">
                           <span className="pd-metric-circle__value">{metric.value}</span>
                         </div>
@@ -182,7 +182,7 @@ export default function ProjectDetails() {
                     const colorClass = colors[i % colors.length];
 
                     return (
-                      <div key={i} className={`pd-highlight-note pd-highlight-note--${colorClass}`}>
+                      <div key={highlight} className={`pd-highlight-note pd-highlight-note--${colorClass}`}>
                         <div className="pd-highlight-note__glue" />
 
                         <div className="pd-highlight-note__content">
@@ -201,9 +201,10 @@ export default function ProjectDetails() {
               <section className="pd-section pd-section--design">
                 <h2 className="pd-design-title">CORE SYSTEM PALETTE</h2>
                 <div className="pd-palette-strip">
-                  {project.designSystem.palette.map((color, idx) => (
-                    <div
-                      key={idx}
+                  {project.designSystem.palette.map((color) => (
+                    <button
+                      type="button"
+                      key={color.hex}
                       className="pd-swatch"
                       style={{ "--swatch-color": color.hex }}
                       onClick={() => handleCopyColor(color.hex)}
@@ -216,7 +217,7 @@ export default function ProjectDetails() {
                         <span className="pd-swatch__name">{color.name}</span>
                         <span className="pd-swatch__usage">{color.usage}</span>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </section>

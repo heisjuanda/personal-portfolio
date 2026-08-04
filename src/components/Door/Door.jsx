@@ -31,7 +31,7 @@ export default function Door({ openImage, closedImage, label }) {
 
     window.addEventListener("pointerdown", unlockAudio, { once: true });
     window.addEventListener("keydown", unlockAudio, { once: true });
-    window.addEventListener("touchstart", unlockAudio, { once: true });
+    window.addEventListener("touchstart", unlockAudio, { once: true, passive: true });
 
     return () => {
       window.removeEventListener("pointerdown", unlockAudio);

@@ -7,6 +7,12 @@ import ProjectDetails from "./views/ProjectDetails/ProjectDetails";
 
 const NotFound = lazy(() => import("./views/NotFound/NotFound"));
 
+const routeErrorElement = (
+  <Suspense fallback={<div className="blueprint-bg" />}>
+    <NotFound />
+  </Suspense>
+);
+
 function RootLayout() {
   return (
     <>
@@ -21,6 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: routeErrorElement,
     children: [
       {
         path: "",
@@ -43,6 +50,7 @@ const router = createBrowserRouter([
         <NotFound />
       </Suspense>
     ),
+    errorElement: routeErrorElement,
   },
 ]);
 

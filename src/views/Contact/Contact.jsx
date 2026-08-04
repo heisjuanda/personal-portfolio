@@ -1,10 +1,10 @@
 import "./Contact.css";
 
-export default function Contact() {
-  const handleDownloadCV = () => {
-    window.open("/cv/cv.pdf", "_blank");
-  };
+const handleDownloadCV = () => {
+  window.open("/cv/cv.pdf", "_blank");
+};
 
+export default function Contact() {
   return (
     <section className="contact">
       <div className="contact__scraps" aria-hidden="true">

@@ -7,11 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "doctor": "npx react-doctor@latest"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.43.0",
     "@vitejs/plugin-react": "^4.5.2",
+    "react-doctor": "^0.9.4",
     "vite": "^8.0.12",
     "vite-plugin-compression2": "^2.5.3",
     "vite-plugin-css-injected-by-js": "^5.0.1",

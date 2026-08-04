@@ -107,7 +107,7 @@ export default function Character({ isProjectView }) {
             alt="Character front"
             className="character__img character__img--front"
             draggable={false}
-            fetchpriority="high"
+            fetchPriority="high"
           />
           <img
             loading="eager"
@@ -115,7 +115,7 @@ export default function Character({ isProjectView }) {
             alt="Character back"
             className="character__img character__img--back"
             draggable={false}
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </div>
       </div>

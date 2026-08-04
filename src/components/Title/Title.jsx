@@ -76,7 +76,7 @@ export default function Title() {
             alt="Juanda's paper collage style title"
             aria-label="Juanda's"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </picture>
         <picture>
@@ -87,7 +87,7 @@ export default function Title() {
             alt="Adventure paper collage style title"
             aria-label="Adventure"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </picture>
       </div>
