@@ -88,6 +88,11 @@
   transform: rotate(-3.5deg);
 }
 
+.contact__note--green {
+  background: #c8e6c9;
+  transform: rotate(1.5deg);
+}
+
 .contact__note--cyan {
   background: #b2ebf2;
   transform: rotate(2deg);

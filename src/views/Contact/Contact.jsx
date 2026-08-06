@@ -33,6 +33,21 @@ export default function Contact() {
             </div>
           </a>
 
+          <a
+            href="https://wa.me/soyjuandamoreno"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact__note contact__note--green"
+            aria-label="Message Juan David Moreno on WhatsApp as @soyjuandamoreno (opens in new tab)"
+          >
+            <div className="contact__note-glue"></div>
+            <div className="contact__note-content">
+              <span className="contact__note-tag">[ WHATSAPP ]</span>
+              <p className="contact__note-text">@soyjuandamoreno</p>
+              <span className="contact__note-action">{"\u2794\uFE0E"} Message me</span>
+            </div>
+          </a>
+
           <div className="contact__note contact__note--cyan">
             <div className="contact__note-glue"></div>
             <div className="contact__note-content">

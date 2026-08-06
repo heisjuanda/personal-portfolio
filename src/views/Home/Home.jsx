@@ -21,6 +21,14 @@ const personSchema = {
     "https://www.linkedin.com/in/juan-david-moreno-883a46233/",
     "https://www.instagram.com/soyjuandamoreno/",
   ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "personal",
+    name: "WhatsApp",
+    identifier: "@soyjuandamoreno",
+    url: "https://wa.me/soyjuandamoreno",
+    availableLanguage: ["Spanish", "English"],
+  },
   knowsAbout: [
     "React",
     "JavaScript",
