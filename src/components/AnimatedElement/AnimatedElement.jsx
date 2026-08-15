@@ -7,7 +7,7 @@ export default function AnimatedElement({
   alt,
   side,
   onClick,
-  value
+  value,
 }) {
   return (
     <div
@@ -18,6 +18,7 @@ export default function AnimatedElement({
         onClick={onClick}
         type="button"
         aria-label={`Learn more about ${alt}`}
+        aria-controls={`about-${value}`}
         data-value={value}
       >
         <img

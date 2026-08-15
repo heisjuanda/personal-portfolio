@@ -15,7 +15,31 @@ const personSchema = {
   "@type": "Person",
   name: "Juan David Moreno Alfonso",
   jobTitle: "Software Engineer & Creative Developer",
+  description:
+    "Full Stack Software Engineer with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces.",
   url: "https://juandamoreno.dev",
+  worksFor: [
+    {
+      "@type": "EmployeeRole",
+      roleName: "Software Engineer",
+      description:
+        "Current role building full-stack features and AWS edge workflows.",
+      worksFor: {
+        "@type": "Organization",
+        name: "Truora",
+      },
+    },
+    {
+      "@type": "EmployeeRole",
+      roleName: "Software Developer",
+      description:
+        "Previous role leading frontend architecture, SEO improvements, and infrastructure setup.",
+      worksFor: {
+        "@type": "Organization",
+        name: "Cressco",
+      },
+    },
+  ],
   sameAs: [
     "https://github.com/heisjuanda",
     "https://www.linkedin.com/in/juan-david-moreno-883a46233/",

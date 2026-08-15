@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
+    "deploy:staging": "npm run build && wrangler deploy --name personal-portfolio-staging",
     "doctor": "npx react-doctor@latest"
   },
   "devDependencies": {

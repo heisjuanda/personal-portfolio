@@ -34,46 +34,46 @@ const PAPER_CONTENT = {
   laptop: {
     title: "CoDe & Architecture",
     content:
-      "With +4 years of experience in the field, React is my ultimate playground for building dynamic front-end interfaces. I'm a versatile team player who loves collaborating to ship great products, but I'm equally sharp when diving into solo deep-work sessions to architect full-stack solutions and cloud infrastructure.",
+      "I have +4 years of experience building web apps. I love working with React and creating clear, useful interfaces. I work well in a team, and I also enjoy focused solo work on full-stack features and cloud infrastructure.",
   },
   chair: {
     title: "ReMote headquarters",
     content:
-      "A great setup and a good cup of coffee are my foundation for high performance. I thrive in remote environments because they allow me to seamlessly switch between team syncs and intense focus blocks. I believe in engineering clean, simple, and minimalist solutions for complex problems.",
+      "A good desk setup and a cup of coffee help me do my best work. I like remote work because I can switch between team meetings and deep focus time. I aim for clean, simple solutions to complex problems.",
   },
   cressco: {
     title: "Cressco",
     content:
-      "Led frontend architecture, technical SEO overhauls, and infrastructure configurations (DNS) to deliver high-performance web applications and seamless deployments.",
+      "I led frontend architecture, SEO improvements, and infrastructure setup (DNS) to ship fast web apps with smooth deployments.",
     experience: {
       role: "Software Developer",
       achievement: [
-        "Developed an autosave feature for Reddocares forms, eliminating data loss and streamlining staff workflows.",
-        "Optimized joshwoodcolour.com performance by 20% and enhanced SEO architecture, directly driving an increase in digital sales.",
+        "Built an autosave feature for Reddocares forms, so staff no longer lose their work.",
+        "Improved joshwoodcolour.com speed by 20% and strengthened SEO, helping digital sales grow.",
       ],
     },
   },
   truora: {
     title: "Truora (Current)",
     content:
-      "Architecting high-throughput full-stack features and edge computing workflows across AWS infrastructure (Lambda, DynamoDB, CloudFront Functions), while spearheading technical proposals to optimize backend data processing.",
+      "I build full-stack features and edge workflows on AWS (Lambda, DynamoDB, CloudFront Functions). I also propose ways to make backend data processing faster and more reliable.",
     experience: {
       role: "Software Engineer",
       achievement: [
-        "Halved manual review time from 60s to 30s while maintaining strict data quality standards.",
-        "Enhanced data extraction and validation for Colombian driver's licenses at InDrive, projected to generate $500K in Annual Recurring Revenue (ARR).",
+        "Cut manual review time from 60s to 30s without lowering data quality.",
+        "Improved data extraction and validation for Colombian driver's licenses at InDrive, with an expected $500K in Annual Recurring Revenue (ARR).",
       ],
     },
   },
   globe: {
     title: "waNDerlust & Curiosity",
     content:
-      "Exploring new horizons keeps my mind sharp. My journey to Rio de Janeiro, Brazil, has been my farthest and most unforgettable adventure so far—the energy there was unmatched! I bring that same exploratory mindset to software: I'm always curious to learn and adapt to new tech stacks.",
+      "Travel keeps me curious. My trip to Rio de Janeiro, Brazil, was my farthest and most memorable so far. I bring that same curiosity to software—I'm always ready to learn new tools and tech stacks.",
   },
   gym: {
     title: "Consistency & health",
     content:
-      "I hit the gym as a commitment to my health and to continuous self-improvement. It's not just about building a better self-image, but also about cultivating the mental stamina and discipline required to tackle long coding sessions. Consistency inside the rack fuels my consistency in the terminal.",
+      "I go to the gym to stay healthy and keep improving. It builds the discipline I need for long coding sessions. Being consistent in training helps me stay consistent at work too.",
   },
 };
 
@@ -180,6 +180,26 @@ export default function About() {
       <h2 className="about__title" aria-label="About Juan David Moreno Alfonso">
         About Juan David Moreno Alfonso
       </h2>
+
+      <div className="sr-only">
+        {Object.entries(PAPER_CONTENT).map(([key, value]) => (
+          <article key={key} id={`about-${key}`}>
+            <h3>{value.title}</h3>
+            <p>{value.content}</p>
+            {value.experience && (
+              <>
+                <p>{value.experience.role}</p>
+                <h4>Achievements:</h4>
+                <ul>
+                  {value.experience.achievement.map((achievement) => (
+                    <li key={achievement}>{achievement}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </article>
+        ))}
+      </div>
 
       <div className="about__sections">
         <section
