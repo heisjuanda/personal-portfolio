@@ -1,11 +1,16 @@
-# Juan David Moreno | Software Engineer & Creative Developer
+# Juan David Moreno Alfonso | Software Engineer in Colombia
 
-> Juan David Moreno is a Full Stack Software Engineer crafting high-performance, beautiful, and interactive web experiences. Currently leading impact at Truora.
+> Juan David Moreno Alfonso, also known as Juanda and heisjuanda, is a Full Stack Software Engineer at Truora based in Cali, Colombia. He builds high-performance, creative web products for teams worldwide.
 
 ## Key Information
+- **Aliases**: Juan David Moreno, Juanda, heisjuanda, soyjuandamoreno
+- **Location**: Cali, Valle del Cauca, Colombia
+- **Languages**: English, Spanish
 - **Domain**: https://juandamoreno.dev/
 - **GitHub**: https://github.com/heisjuanda
 - **LinkedIn**: https://www.linkedin.com/in/juan-david-moreno-883a46233/
+- **Instagram**: https://www.instagram.com/soyjuandamoreno/
+- **WhatsApp**: @soyjuandamoreno
 - **Email**: heisjuanda@gmail.com
 
 ## Main Navigation

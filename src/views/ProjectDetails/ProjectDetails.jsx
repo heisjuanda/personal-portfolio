@@ -53,8 +53,9 @@ export default function ProjectDetails() {
     description: project.solution,
     author: {
       "@type": "Person",
+      "@id": "https://juandamoreno.dev/#person",
       name: "Juan David Moreno Alfonso",
-      url: "https://juandamoreno.dev",
+      url: "https://juandamoreno.dev/",
     },
     dateCreated: project.year,
     keywords: project.tags?.join(", "),

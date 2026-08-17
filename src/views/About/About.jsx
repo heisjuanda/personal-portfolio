@@ -39,7 +39,7 @@ const PAPER_CONTENT = {
   chair: {
     title: "ReMote headquarters",
     content:
-      "A good desk setup and a cup of coffee help me do my best work. I like remote work because I can switch between team meetings and deep focus time. I aim for clean, simple solutions to complex problems.",
+      "I am based in Cali, Colombia, and work with distributed teams worldwide. A good desk setup and a cup of coffee help me switch between team meetings and deep focus time. I aim for clean, simple solutions to complex problems.",
   },
   cressco: {
     title: "Cressco",
