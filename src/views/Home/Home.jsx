@@ -98,7 +98,7 @@ const profileSchema = {
       description:
         "Professional profile and portfolio of Juan David Moreno Alfonso.",
       inLanguage: "en",
-      dateModified: "2026-08-16",
+      dateModified: "2026-08-16T12:34:00-05:00",
       isPartOf: {
         "@id": WEBSITE_ID,
       },
