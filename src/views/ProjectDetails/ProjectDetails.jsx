@@ -4,6 +4,7 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { PROJECTS_DATA } from "../data/projects.data.js";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
+import { getSeoForPath } from "../../routes.seo.js";
 import Character from "../../components/Character/Character.jsx";
 import SmoothScroll from "../../components/SmoothScroll/SmoothScroll.jsx"
 import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
@@ -46,32 +47,22 @@ export default function ProjectDetails() {
     });
   };
 
-  const projectSchema = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.name,
-    description: project.solution,
-    author: {
-      "@type": "Person",
-      "@id": "https://juandamoreno.dev/#person",
-      name: "Juan David Moreno Alfonso",
-      url: "https://juandamoreno.dev/",
-    },
-    dateCreated: project.year,
-    keywords: project.tags?.join(", "),
-    ...(project.links?.live && { url: project.links.live }),
-    ...(project.links?.repo && { codeRepository: project.links.repo }),
-  };
+  const projectSeo = getSeoForPath(`/projects/${project.id}`);
+  const projectIndex = PROJECTS_DATA.findIndex(({ id: projectId }) => projectId === id);
+  const relatedProjects = [1, 2].map(
+    (offset) => PROJECTS_DATA[(projectIndex + offset) % PROJECTS_DATA.length],
+  );
 
   return (
     <>
       <SEOHead
         title={project.name}
-        description={project.solution || project.context}
-        canonical={`/projects/${project.id}`}
-        ogImage={`/${project.realSrc}`}
+        description={projectSeo.description}
+        canonical={projectSeo.canonicalPath}
+        ogImage={projectSeo.ogImage}
+        ogImageAlt={projectSeo.ogImageAlt}
       />
-      <JsonLd data={projectSchema} />
+      <JsonLd data={projectSeo.jsonLd} />
       <Character isProjectView />
       <SmoothScroll />
 
@@ -236,6 +227,15 @@ export default function ProjectDetails() {
                     <span>SOURCE REPOSITORY &rarr;</span>
                   </a>
                 )}
+                {relatedProjects.map((relatedProject) => (
+                  <Link
+                    key={relatedProject.id}
+                    to={`/projects/${relatedProject.id}`}
+                    className="pd-action-btn pd-action-btn--back"
+                  >
+                    <span>VIEW {relatedProject.name.toUpperCase()} CASE STUDY &rarr;</span>
+                  </Link>
+                ))}
                 <Link
                   to="/"
                   onClick={(e) => {

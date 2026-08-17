@@ -4,6 +4,8 @@ export const PROJECTS_DATA = [
     id: "josh-wood-colour",
     name: "Josh Wood Colour",
     stack: "React • Shopify • Gatsby • E-commerce",
+    seoDescription:
+      "Josh Wood Colour is a React, Gatsby and Shopify e-commerce platform optimized for 20% faster initial loads, responsive shopping and stronger email delivery.",
     realSrc: "images/projects/josh_wood_colour.avif",
     blueprintSrc: "images/projects/josh_wood_colour_blueprint.avif",
 
@@ -64,6 +66,8 @@ export const PROJECTS_DATA = [
     id: "juandabot",
     name: "Juanda Bot",
     stack: "Python • AI Models • Telegram API",
+    seoDescription:
+      "Juanda Bot is a Python and RAG Telegram assistant using Ollama, OpenAI and Groq to provide resilient, contextual 24/7 support for an AI learning platform.",
     realSrc: "images/projects/juandabot.avif",
     blueprintSrc: "images/projects/juandabot_blueprint.avif",
 
@@ -76,7 +80,7 @@ export const PROJECTS_DATA = [
     problem:
       "Users needed a fast, Telegram-native way to navigate the AI platform, access the right modules, and resolve questions about the thesis without waiting for manual support.",
     solution:
-      "A RAG-based conversational assistant built on the full thesis documentation, capable of answering contextual questions, guiding users through the platform, and providing instant support through Telegram.",
+      "A RAG-based conversational assistant built on the full thesis documentation, capable of answering contextual questions, guiding users through the platform, and providing instant support through Telegram. Its Python backend uses Ollama for local inference and n8n fallbacks to OpenAI and Groq.",
     highlights: [
       "Enabled users to get instant, contextual answers about the platform directly within Telegram",
       "24/7 contextual support through Telegram, reducing friction and wait times for users",
@@ -106,6 +110,8 @@ export const PROJECTS_DATA = [
     id: "lambda-lang",
     name: "Lambda Lang",
     stack: "Dr Racket • Research • Lambda Calculus",
+    seoDescription:
+      "Lambda Lang is a functional language and visual REPL built in Dr Racket to demonstrate parsing, evaluation and lambda-calculus reductions step by step.",
     realSrc: "images/projects/lambda_lang.avif",
     blueprintSrc: "images/projects/lambda_lang_blueprint.avif",
 
@@ -143,6 +149,8 @@ export const PROJECTS_DATA = [
     id: "patitas-a-casa",
     name: "Patitas a Casa",
     stack: "React • PostgreSQL • Tailwind CSS",
+    seoDescription:
+      "Patitas a Casa is a nonprofit React and PostgreSQL adoption platform that centralizes listings, location search and status tracking for shelters in Argentina.",
     realSrc: "images/projects/patitas_a_casa.avif",
     blueprintSrc: "images/projects/patitas_a_casa_blueprint.avif",
 
@@ -155,7 +163,7 @@ export const PROJECTS_DATA = [
     problem:
       "Stray dogs in Argentina have very low adoption visibility — shelters rely on fragmented social media posts.",
     solution:
-      "A centralized platform where shelters and individuals can post dogs available for adoption with location, photos and status tracking.",
+      "A React and Tailwind CSS platform backed by PostgreSQL where shelters and individuals can publish dogs available for adoption with location, photos, search filters, and status tracking.",
     highlights: [
       "Led the frontend implementation of the platform's core views and user flows",
       "Developed shelter-related views to improve visibility for organizations and their available dogs",
@@ -202,6 +210,8 @@ export const PROJECTS_DATA = [
     id: "portfolio",
     name: "My Portfolio",
     stack: "React • CSS • JavaScript",
+    seoDescription:
+      "Juan David Moreno's React portfolio combines GSAP motion, accessible interactions and technical storytelling to showcase full-stack and frontend work.",
     realSrc: "images/projects/portfolio.avif",
     blueprintSrc: "images/projects/portfolio_blueprint.avif",
 
@@ -220,7 +230,7 @@ export const PROJECTS_DATA = [
     problem:
       "Most developer portfolios look like resumes. I wanted mine to feel like a creative piece.",
     solution:
-      "A scrolling telling my story, my projects, and my skills through a highly crafted frontend experience",
+      "A React and GSAP scrolling experience that tells my story, presents my projects and skills, and combines accessible interactions with carefully optimized motion.",
     highlights: [
       "Built a scrolling telling my story, my projects, and my skills through a highly crafted frontend experience",
       "Communicates who I am, what I build, and why I care about frontend craftsmanship and problem solving",
@@ -265,6 +275,8 @@ export const PROJECTS_DATA = [
     id: "thesis",
     name: "My Thesis",
     stack: "Fast API • Python • React • Academic Project",
+    seoDescription:
+      "An AI learning platform built with FastAPI, Python and React that improved students' speaking confidence, debate coherence and achieved 95% usability approval.",
     realSrc: "images/projects/thesis.avif",
     blueprintSrc: "images/projects/thesis_blueprint.avif",
 
@@ -282,7 +294,7 @@ export const PROJECTS_DATA = [
     problem:
       "Systems engineering students needed a practical way to improve communication and critical thinking skills to strengthen their academic and professional profile.",
     solution:
-      "An interactive AI-powered platform with two learning modules: one for critical thinking through structured debates, and another for oratory through guided speech exercises, asynchronous evaluation, and personalized feedback.",
+      "A FastAPI, Python and React platform with two AI-powered learning modules: one for critical thinking through structured debates, and another for oratory through guided speech exercises, asynchronous evaluation, and personalized feedback.",
     highlights: [
       "Built two complete learning modules focused on oratory and critical thinking, from UX to AI integration",
       "Improved speaking confidence, with 85% of students reporting a noticeable increase after using the platform",

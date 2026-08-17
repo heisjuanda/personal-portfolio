@@ -26,6 +26,7 @@ export default function SEOHead({
   return (
     <Helmet>
       <title>{fullTitle}</title>
+      <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
       {noIndex ? (
         <meta name="robots" content="noindex, nofollow" />
