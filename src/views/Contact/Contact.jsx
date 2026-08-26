@@ -1,9 +1,5 @@
 import "./Contact.css";
 
-const handleDownloadCV = () => {
-  window.open("/cv/cv.pdf", "_blank");
-};
-
 export default function Contact() {
   return (
     <section className="contact">
@@ -81,11 +77,12 @@ export default function Contact() {
             </div>
           </div>
 
-          <button
-            onClick={handleDownloadCV}
+          <a
+            href="/cv/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="contact__note contact__note--pink"
-            aria-label="Download my CV as PDF"
-            type="button"
+            aria-label="Juan David Moreno — Software Engineer CV as PDF (opens in new tab)"
           >
             <div className="contact__note-glue"></div>
             <div className="contact__note-content">
@@ -93,7 +90,7 @@ export default function Contact() {
               <p className="contact__note-text">cv.pdf</p>
               <span className="contact__note-stamp">DOWNLOAD</span>
             </div>
-          </button>
+          </a>
         </div>
       </div>
     </section>

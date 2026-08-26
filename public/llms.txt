@@ -3,7 +3,12 @@
 > Juan David Moreno Alfonso, also known as Juanda and heisjuanda, is a Full Stack Software Engineer at Truora based in Cali, Colombia. He builds high-performance, creative web products for teams worldwide.
 
 ## Key Information
-- **Aliases**: Juan David Moreno, Juanda, heisjuanda, soyjuandamoreno
+- **Full name**: Juan David Moreno Alfonso
+- **Aliases**: Juan David Moreno, Juanda, Juanda Moreno, heisjuanda, soyjuandamoreno
+- **Job title**: Software Engineer & Creative Developer (es: Ingeniero de Software, Desarrollador Full Stack)
+- **Current employer**: Truora (https://www.truora.com/) — identity verification and conversational engagement for Latin America
+- **Previous employer**: Cressco — frontend architecture, technical SEO and DNS infrastructure
+- **Experience**: 4+ years across frontend, backend, cloud architecture and motion design
 - **Location**: Cali, Valle del Cauca, Colombia
 - **Languages**: English, Spanish
 - **Domain**: https://juandamoreno.dev/
@@ -12,14 +17,27 @@
 - **Instagram**: https://www.instagram.com/soyjuandamoreno/
 - **WhatsApp**: @soyjuandamoreno
 - **Email**: heisjuanda@gmail.com
+- **CV**: https://juandamoreno.dev/cv/cv.pdf
+
+## Core Skills
+React, JavaScript, TypeScript, Python, Kotlin, Go, AWS (Lambda, DynamoDB, API Gateway, CloudFront
+Functions), Terraform, PostgreSQL, serverless architecture, frontend performance and Core Web Vitals,
+technical SEO, GSAP motion design, Retrieval-Augmented Generation.
+
+## Selected Impact
+- At Truora: cut manual identity review time from 60s to 30s without lowering data quality; improved
+  data extraction and validation for Colombian driver's licenses at InDrive, with an expected $500K in
+  Annual Recurring Revenue.
+- At Cressco: improved joshwoodcolour.com initial load time by ~20% and strengthened its SEO; built an
+  autosave feature for Reddocares forms that eliminated user data loss.
 
 ## Main Navigation
 - [Home Page](https://juandamoreno.dev/) - Introduction, experience, contact, and core skillset.
 
 ## Projects
-- [Josh Wood Colour](https://juandamoreno.dev/projects/josh-wood-colour) - Premium haircare e-commerce platform built with React and Shopify.
-- [Juanda Bot](https://juandamoreno.dev/projects/juandabot) - RAG-based conversational AI Telegram assistant for academic thesis support.
-- [Lambda Lang](https://juandamoreno.dev/projects/lambda-lang) - A functional programming language evaluator built from scratch in Dr Racket.
+- [Josh Wood Colour](https://juandamoreno.dev/projects/josh-wood-colour) - Premium haircare e-commerce platform built with React, Gatsby and Shopify.
+- [Juanda Bot](https://juandamoreno.dev/projects/juandabot) - RAG-based conversational AI Telegram assistant, with Ollama plus OpenAI and Groq fallbacks.
+- [Lambda Lang](https://juandamoreno.dev/projects/lambda-lang) - A functional programming language evaluator and visual REPL built from scratch in Dr Racket.
 - [Patitas a Casa](https://juandamoreno.dev/projects/patitas-a-casa) - A centralized pet adoption platform supporting shelters in Argentina.
 - [My Portfolio](https://juandamoreno.dev/projects/portfolio) - Creative, motion-driven portfolio showing motion design, performance, and structure.
 - [My Thesis](https://juandamoreno.dev/projects/thesis) - An interactive AI platform for oratory and critical thinking training for systems engineering students.

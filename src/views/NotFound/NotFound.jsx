@@ -15,7 +15,11 @@ export default function NotFound({ isProjectView }) {
         description="The page you are looking for does not exist."
         noIndex={true}
       />
-      <main className="not-found" aria-labelledby="not-found-heading">
+      <main
+        className="not-found"
+        id="main-content"
+        aria-labelledby="not-found-heading"
+      >
         <h1 id="not-found-heading" className="not-found__title">404</h1>
 
         <img

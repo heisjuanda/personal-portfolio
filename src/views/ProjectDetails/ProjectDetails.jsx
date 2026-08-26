@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense } from "react";
 
 import { PROJECTS_DATA } from "../data/projects.data.js";
@@ -15,7 +15,6 @@ const NotFound = lazy(() => import("../NotFound/NotFound.jsx"));
 
 export default function ProjectDetails() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const project = PROJECTS_DATA.find((p) => p.id === id);
   const [copiedHex, setCopiedHex] = useState(null);
@@ -30,14 +29,6 @@ export default function ProjectDetails() {
         <NotFound isProjectView />
       </Suspense>
     );
-  }
-
-  const handleBack = () => {
-    if (document.startViewTransition) {
-      document.startViewTransition(() => navigate(-1));
-    } else {
-      navigate(-1);
-    }
   }
 
   const handleCopyColor = (hex) => {
@@ -238,10 +229,7 @@ export default function ProjectDetails() {
                 ))}
                 <Link
                   to="/"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleBack();
-                  }}
+                  viewTransition
                   className="pd-action-btn pd-action-btn--back"
                 >
                   <span>&larr; BACK TO BLUEPRINTS</span>

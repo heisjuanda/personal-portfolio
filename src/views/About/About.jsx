@@ -202,10 +202,7 @@ export default function About() {
       </div>
 
       <div className="about__sections">
-        <section
-          className="about__section about__section--laptop"
-          id="main-content"
-        >
+        <section className="about__section about__section--laptop">
           <div className="about__main about__main--left">
             <AnimatedElement
               imageSrc="images/about/laptop.avif"
@@ -217,7 +214,7 @@ export default function About() {
             <img
               className="about__secondary-image"
               src="images/about/desk.avif"
-              alt="Laptop on the desk"
+              alt=""
               loading="lazy"
               draggable={false}
             />
@@ -246,7 +243,7 @@ export default function About() {
               <img
                 key={deco.src}
                 src={deco.src}
-                alt="Tech Stack Decoration"
+                alt=""
                 className="about__scatter-img"
                 style={{
                   top: deco.top,
@@ -272,7 +269,7 @@ export default function About() {
             <img
               className="about__secondary-image"
               src="images/about/rug.avif"
-              alt="Chair in the office"
+              alt=""
               loading="lazy"
               draggable={false}
             />
@@ -300,7 +297,7 @@ export default function About() {
             <img
               className="about__window-img"
               src="images/about/window.avif"
-              alt="View from the window draw"
+              alt=""
               loading="lazy"
               draggable={false}
             />
@@ -327,7 +324,7 @@ export default function About() {
           <img
             className="about__polaroid-img"
             src="images/about/polaroid.avif"
-            alt="Polaroid of Juanda with his friends"
+            alt=""
             aria-hidden="true"
             loading="lazy"
             draggable={false}

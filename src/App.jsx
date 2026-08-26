@@ -18,7 +18,14 @@ function RootLayout() {
     <>
       <SkipNav />
       <Outlet />
-      <ScrollRestoration />
+      {/* Home is keyed by pathname rather than by history entry, so returning
+          to "/" restores where the visitor left off even on a forward (push)
+          navigation. Every other route keeps the default per-entry behaviour. */}
+      <ScrollRestoration
+        getKey={(location) =>
+          location.pathname === "/" ? location.pathname : location.key
+        }
+      />
     </>
   );
 }

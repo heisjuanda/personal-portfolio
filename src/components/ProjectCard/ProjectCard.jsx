@@ -50,7 +50,7 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
           <div className="blueprint-card__scanner-zone">
             <img
               src="images/pin.avif"
-              alt="Pin"
+              alt=""
               className="blueprint-card__pin"
               loading="lazy"
               draggable={false}
@@ -67,7 +67,7 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
               <img
                 ref={realImageRef}
                 src={blueprintSrc}
-                alt={name}
+                alt=""
                 className="blueprint-card__img blueprint-card__img--real"
                 draggable={false}
                 loading="lazy"
