@@ -44,26 +44,26 @@ const PAPER_CONTENT = {
   cressco: {
     title: "Cressco",
     content:
-      "Agency work across client products — I owned frontend architecture and the infrastructure around it (DNS, deployments, email deliverability), shipping for teams in healthcare and e-commerce with very different constraints.",
+      "Agency work for client products. I led the frontend and also handled the infrastructure around it: DNS, deployments and email delivery, for healthcare and e-commerce teams.",
     experience: {
       role: "Software Developer",
       achievement: [
-        "Built autosave for Reddocares' clinical intake forms, where staff filled out long records in a single session and lost everything on a dropped connection or accidental close.",
-        "Cut page load time by 20% on joshwoodcolour.com, an e-commerce storefront.",
-        "Recovered email campaign deliverability for Josh Wood whose sends were landing in spam: audited and cleaned sending IP reputation in their automation tooling, then reworked message content to clear Gmail's spam filters.",
+        "Added autosave to Reddocares' medical forms, so staff no longer lost long records when a tab closed or the connection dropped.",
+        "Made joshwoodcolour.com, an online store, load 20% faster.",
+        "Fixed Josh Wood's email campaigns that were going to spam, by cleaning up their sending reputation and rewriting the messages.",
       ],
     },
   },
   truora: {
     title: "Truora (Current)",
     content:
-      "Truora builds identity verification and fraud prevention for companies across LatAm. I work end-to-end on the products that decide whether a person is who they claim to be — full-stack features, REST APIs in Go, Android SDK components, and edge workflows on AWS (Lambda, DynamoDB, CloudFront Functions).",
+      "Truora checks identities and prevents fraud for companies across Latin America. I build the products that decide if a person really is who they say they are: web features, APIs in Go, Android SDK components and services on AWS.",
     experience: {
       role: "Software Engineer",
       achievement: [
-        "Halved manual review time (60s → 30s per case) on the human-in-the-loop platform reviewers use when our models flag a validation as ambiguous — no drop in decision quality.",
-        "Designed the architecture for Labeling Review, extending the manual review system into a labeling layer so incoming validations become training and evaluation data for Truora's internal AI models. Reused existing infrastructure instead of building a parallel pipeline.",
-        "Rebuilt data extraction and validation for Colombian driver's licenses, unblocking a key requirement for one of Truora's largest enterprise accounts.",
+        "Cut review time in half (from 60 to 30 seconds per case) on the tool people use to check validations our models are unsure about, with the same quality of decisions.",
+        "Designed Labeling Review, which turns those same validations into training data for Truora's internal AI models, reusing what we already had instead of building a new system.",
+        "Rebuilt how we read and validate Colombian driver's licenses, a key requirement for one of Truora's biggest clients.",
       ],
     },
   },
