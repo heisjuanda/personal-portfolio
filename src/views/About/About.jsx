@@ -44,24 +44,26 @@ const PAPER_CONTENT = {
   cressco: {
     title: "Cressco",
     content:
-      "I led frontend architecture, SEO improvements, and infrastructure setup (DNS) to ship fast web apps with smooth deployments.",
+      "Agency work across client products — I owned frontend architecture and the infrastructure around it (DNS, deployments, email deliverability), shipping for teams in healthcare and e-commerce with very different constraints.",
     experience: {
       role: "Software Developer",
       achievement: [
-        "Built an autosave feature for Reddocares forms, so staff no longer lose their work.",
-        "Improved joshwoodcolour.com speed by 20% and strengthened SEO, helping digital sales grow.",
+        "Built autosave for Reddocares' clinical intake forms, where staff filled out long records in a single session and lost everything on a dropped connection or accidental close.",
+        "Cut page load time by 20% on joshwoodcolour.com, an e-commerce storefront.",
+        "Recovered email campaign deliverability for Josh Wood whose sends were landing in spam: audited and cleaned sending IP reputation in their automation tooling, then reworked message content to clear Gmail's spam filters.",
       ],
     },
   },
   truora: {
     title: "Truora (Current)",
     content:
-      "I build full-stack features and edge workflows on AWS (Lambda, DynamoDB, CloudFront Functions). I also propose ways to make backend data processing faster and more reliable.",
+      "Truora builds identity verification and fraud prevention for companies across LatAm. I work end-to-end on the products that decide whether a person is who they claim to be — full-stack features, REST APIs in Go, Android SDK components, and edge workflows on AWS (Lambda, DynamoDB, CloudFront Functions).",
     experience: {
       role: "Software Engineer",
       achievement: [
-        "Cut manual review time from 60s to 30s without lowering data quality.",
-        "Improved data extraction and validation for Colombian driver's licenses at InDrive, with an expected $500K in Annual Recurring Revenue (ARR).",
+        "Halved manual review time (60s → 30s per case) on the human-in-the-loop platform reviewers use when our models flag a validation as ambiguous — no drop in decision quality.",
+        "Designed the architecture for Labeling Review, extending the manual review system into a labeling layer so incoming validations become training and evaluation data for Truora's internal AI models. Reused existing infrastructure instead of building a parallel pipeline.",
+        "Rebuilt data extraction and validation for Colombian driver's licenses, unblocking a key requirement for one of Truora's largest enterprise accounts.",
       ],
     },
   },

@@ -7,7 +7,7 @@ const WEBSITE_ID = `${BASE_URL}/#website`;
 const PROFILE_PAGE_ID = `${BASE_URL}/#profile-page`;
 
 /** Bump when the profile content itself meaningfully changes. */
-const LAST_REVIEWED = "2026-08-25T00:00:00-05:00";
+const LAST_REVIEWED = "2026-08-27T00:00:00-05:00";
 
 const HOME_DESCRIPTION =
   "Juan David Moreno Alfonso (heisjuanda) is a Full Stack Software Engineer at Truora, based in Cali, Colombia, building fast, creative web products worldwide.";
@@ -34,7 +34,7 @@ const personSchema = {
     "Desarrollador Full Stack",
   ],
   description:
-    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces.",
+    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces. At Truora he works end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS.",
   url: `${BASE_URL}/`,
   mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
   image: {
@@ -71,6 +71,8 @@ const personSchema = {
     "@type": "Organization",
     name: "Truora",
     url: "https://www.truora.com/",
+    description:
+      "Identity verification and fraud prevention platform for companies across Latin America.",
     sameAs: [
       "https://www.linkedin.com/company/truora/",
       "https://www.ycombinator.com/companies/truora",
@@ -85,21 +87,32 @@ const personSchema = {
       name: "Cali",
     },
     skills:
-      "Full stack web development, serverless architecture on AWS, frontend performance, motion design",
+      "Full stack web development, identity verification and fraud prevention systems, REST API design in Go, serverless architecture on AWS, Android SDK development, frontend performance, motion design",
   },
-  // NOTE: confirm this matches your record before the next deploy.
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Universidad del Valle",
-    alternateName: "Univalle",
-    url: "https://www.univalle.edu.co/",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Cali",
-      addressRegion: "Valle del Cauca",
-      addressCountry: "CO",
+  // alumniOf covers both education and past employers (schema.org allows
+  // Organization here), which is how Cressco stays in the graph without
+  // implying it is a current role.
+  alumniOf: [
+    // NOTE: confirm this matches your record before the next deploy.
+    {
+      "@type": "CollegeOrUniversity",
+      name: "Universidad del Valle",
+      alternateName: "Univalle",
+      url: "https://www.univalle.edu.co/",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Cali",
+        addressRegion: "Valle del Cauca",
+        addressCountry: "CO",
+      },
     },
-  },
+    {
+      "@type": "Organization",
+      name: "Cressco",
+      description:
+        "Digital agency where he worked as a Software Developer on frontend architecture and infrastructure for healthcare and e-commerce clients.",
+    },
+  ],
   sameAs: [
     "https://github.com/heisjuanda",
     "https://www.linkedin.com/in/juan-david-moreno-883a46233/",
@@ -136,6 +149,13 @@ const personSchema = {
     "Technical SEO",
     "Motion Design",
     "Retrieval-Augmented Generation",
+    "Identity Verification",
+    "Fraud Prevention",
+    "REST API Design",
+    "Android Development",
+    "Edge Computing",
+    "Data Labeling",
+    "Email Deliverability",
   ],
 };
 
@@ -162,7 +182,7 @@ const profileSchema = {
       name: "Juan David Moreno — Software Engineer in Colombia",
       url: `${BASE_URL}/`,
       description:
-        "Professional profile and portfolio of Juan David Moreno Alfonso.",
+        "Professional profile and portfolio of Juan David Moreno Alfonso, Software Engineer at Truora working on identity verification and fraud prevention, with earlier agency work on frontend architecture and infrastructure.",
       inLanguage: "en",
       dateModified: LAST_REVIEWED,
       isPartOf: { "@id": WEBSITE_ID },
