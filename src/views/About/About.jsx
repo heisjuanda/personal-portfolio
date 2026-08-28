@@ -135,7 +135,6 @@ export default function About() {
   useEffect(() => {
     if (!contentRef.current) return;
 
-    // The looping pulse is decoration only: the objects stay clickable at rest.
     if (reducedMotion) return;
 
     const ctx = gsap.context(() => {
@@ -175,7 +174,7 @@ export default function About() {
   }, [reducedMotion]);
 
   return (
-    <section className="about" ref={contentRef}>
+    <section className="about" id="about" ref={contentRef}>
       <AnimatedPaper isOpen={isPaperOpen} onClose={handlePaperClose}>
         {paperContent}
       </AnimatedPaper>

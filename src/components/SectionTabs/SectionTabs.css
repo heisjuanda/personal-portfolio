@@ -1,0 +1,207 @@
+.section-tabs {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 9050;
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.section-tabs.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.section-tabs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.section-tabs__item--yellow {
+  --note: #fff59d;
+}
+
+.section-tabs__item--cyan {
+  --note: #b2ebf2;
+}
+
+.section-tabs__item--green {
+  --note: #c8e6c9;
+}
+
+.section-tabs__item--pink {
+  --note: #ffcdd2;
+}
+
+.section-tabs__item:nth-child(1) { --tilt: -2.5deg; }
+.section-tabs__item:nth-child(2) { --tilt: 1.5deg; }
+.section-tabs__item:nth-child(3) { --tilt: -1deg; }
+.section-tabs__item:nth-child(4) { --tilt: 2deg; }
+
+.section-tab {
+  --note-width: 150px;
+  --note-peek: 50px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: var(--note-width);
+  height: 50px;
+  padding-left: 13px;
+
+  background: var(--note);
+  color: var(--color-primary-font);
+  text-decoration: none;
+
+  box-shadow: 3px 4px 9px rgba(35, 25, 15, 0.28);
+
+  transform: translateX(calc((var(--note-width) - var(--note-peek)) * -1))
+    rotate(var(--tilt, 0deg));
+
+  transition:
+    transform 0.34s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.34s ease;
+}
+
+.section-tab__glue {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 14px;
+  background: rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+}
+
+.section-tab__label {
+  font-family: var(--font-sharpie);
+  font-size: 2rem;
+  line-height: 1;
+  white-space: nowrap;
+
+  opacity: 0;
+  transition: opacity 0.24s ease;
+}
+
+.section-tab__icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: var(--note-peek);
+  height: 23px;
+
+  transform: translateY(-50%);
+
+  transition: opacity 0.24s ease;
+}
+
+.section-tab__curl {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 13px;
+  height: 100%;
+
+  border-radius: 0 9px 9px 0 / 0 50% 50% 0;
+  background: linear-gradient(
+    to left,
+    rgba(35, 25, 15, 0.3),
+    rgba(255, 255, 255, 0.42) 42%,
+    rgba(35, 25, 15, 0.09) 74%,
+    transparent
+  );
+  box-shadow: 3px 0 7px rgba(35, 25, 15, 0.32);
+
+  transform-origin: right center;
+  pointer-events: none;
+
+  transition:
+    opacity 0.34s ease,
+    transform 0.34s ease;
+}
+
+.section-tabs__list:hover .section-tab:hover,
+.section-tab:focus-visible,
+.section-tab.is-active,
+.section-tabs.is-peeking .section-tab {
+  transform: translateX(0) rotate(0deg);
+  box-shadow: 4px 6px 14px rgba(35, 25, 15, 0.34);
+}
+
+.section-tabs__list:hover .section-tab:hover .section-tab__label,
+.section-tab:focus-visible .section-tab__label,
+.section-tab.is-active .section-tab__label,
+.section-tabs.is-peeking .section-tab__label {
+  opacity: 1;
+}
+
+.section-tabs__list:hover .section-tab:hover .section-tab__icon,
+.section-tab:focus-visible .section-tab__icon,
+.section-tab.is-active .section-tab__icon,
+.section-tabs.is-peeking .section-tab__icon {
+  opacity: 0;
+}
+
+.section-tabs__list:hover .section-tab:hover .section-tab__curl,
+.section-tab:focus-visible .section-tab__curl,
+.section-tab.is-active .section-tab__curl,
+.section-tabs.is-peeking .section-tab__curl {
+  opacity: 0.2;
+  transform: scaleX(0.35);
+}
+
+.section-tab__pin {
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  width: 25px;
+  height: auto;
+
+  object-fit: contain;
+  transform: rotate(9deg);
+  filter: drop-shadow(1px 2px 3px rgba(35, 25, 15, 0.45));
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease;
+}
+
+.section-tab.is-active .section-tab__pin {
+  opacity: 1;
+}
+
+.section-tab:focus-visible {
+  outline: 3px dashed var(--color-primary-font);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-tab {
+    transform: none;
+  }
+
+  .section-tab__label {
+    opacity: 1;
+  }
+
+  .section-tab__icon,
+  .section-tab__curl {
+    display: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .section-tabs {
+    display: none;
+  }
+}

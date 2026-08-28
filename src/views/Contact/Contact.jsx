@@ -2,7 +2,7 @@ import "./Contact.css";
 
 export default function Contact() {
   return (
-    <section className="contact">
+    <section className="contact" id="contact">
       <div className="contact__scraps" aria-hidden="true">
         <span className="contact__scrap contact__scrap--tape-tl" />
         <span className="contact__scrap contact__scrap--paper-bl" />

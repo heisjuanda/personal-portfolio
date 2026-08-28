@@ -9,6 +9,7 @@ import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
 import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
 import PlanePaper from "../../components/PlanePaper/PlanePaper.jsx";
+import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
 import { getSeoForPath } from "../../routes.seo.js";
 
 const homeSeo = getSeoForPath("/");
@@ -23,6 +24,7 @@ export default function Home() {
       <JsonLd data={homeSeo.jsonLd} />
       <SmoothScroll />
       <PlanePaper />
+      <SectionTabs />
       <main id="main-content">
         <Title />
         <ScrollTip />
