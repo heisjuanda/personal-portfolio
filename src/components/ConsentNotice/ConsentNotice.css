@@ -1,0 +1,120 @@
+.consent-notice {
+  position: fixed;
+  left: clamp(12px, 2vw, 28px);
+  bottom: clamp(12px, 2vw, 28px);
+
+  z-index: 9100;
+
+  width: min(360px, calc(100vw - 2rem));
+}
+
+.consent-notice__paper.torn-paper {
+  --shadow: 0 10px 26px rgba(50, 36, 24, 0.32);
+  --notice-padding-top: 1.6rem;
+
+  margin: 0;
+  padding: var(--notice-padding-top) 1.4rem 1.3rem;
+}
+
+.consent-notice__paper .torn-paper__inner {
+  max-width: none;
+}
+
+.consent-notice__title {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-sharpie);
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.consent-notice__text {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #40362d;
+}
+
+.consent-notice__tape {
+  position: absolute;
+  top: calc((var(--notice-padding-top) + 11px) * -1);
+  left: 14px;
+  width: 78px;
+  height: 22px;
+
+  background: rgba(198, 40, 40, 0.85);
+  clip-path: polygon(1% 12%, 98% 0%, 100% 48%, 97% 100%, 3% 88%, 0% 52%);
+  transform: rotate(-6deg);
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.25);
+
+  pointer-events: none;
+}
+
+.consent-notice__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 1.2rem;
+}
+
+.consent-notice__btn.tape-button {
+  flex: 1 1 auto;
+  padding: 11px 24px;
+  font-family: var(--font-sharpie);
+  font-size: 1.35rem;
+  color: var(--color-bg);
+}
+
+.consent-notice__btn--decline.tape-button {
+  background: rgba(74, 55, 40, 0.88);
+}
+
+@media (hover: hover) {
+  .consent-notice__btn--decline.tape-button:hover {
+    background: rgba(92, 70, 51, 0.95);
+  }
+}
+
+.consent-notice__btn.tape-button:focus-visible {
+  outline: 3px dashed var(--color-primary-font);
+  outline-offset: 4px;
+}
+
+.consent-notice--shown {
+  animation: consent-notice-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.consent-notice--leaving {
+  animation: consent-notice-out 0.4s ease both;
+}
+
+@keyframes consent-notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(-6deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+
+@keyframes consent-notice-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(22px) rotate(-5deg);
+  }
+}
+
+@media (max-width: 620px) {
+  .consent-notice {
+    bottom: 92px;
+  }
+}

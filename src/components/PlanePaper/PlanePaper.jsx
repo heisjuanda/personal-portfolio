@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { cubicBezierPoint, cubicBezierTangent, buildSegments, easeInOutCubic, pitchOscillation, rotationFlutter } from './helpers'
 import { PLANE } from '../../constants/constants'
+import useReducedMotion from '../../hooks/useReducedMotion.js'
 
 import './PlanePaper.css'
 
@@ -9,6 +10,7 @@ export default function PlanePaper() {
     const canvasRef = useRef(null)
     const planeRef = useRef(null)
     const rafRef = useRef(null)
+    const reducedMotion = useReducedMotion()
 
     const [visible, setVisible] = useState(false)
     const [done, setDone] = useState(false)
@@ -16,12 +18,15 @@ export default function PlanePaper() {
     const [scrollTop, setScrollTop] = useState(0)
 
     useEffect(() => {
+        // Purely decorative fly-by: never scheduled when motion is reduced.
+        if (reducedMotion) return
+
         const t = setTimeout(() => {
             setScrollTop(window.scrollY)
             setVisible(true)
         }, PLANE.TIMEOUT)
         return () => clearTimeout(t)
-    }, [])
+    }, [reducedMotion])
 
     useEffect(() => {
         if (!visible) return
@@ -139,7 +144,7 @@ export default function PlanePaper() {
         }
     }, [visible])
 
-    if (done) return null
+    if (done || reducedMotion) return null
 
     return (
         <div

@@ -71,44 +71,80 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-  <!-- Google Analytics -->
+  <!-- Google Analytics with Consent Mode v2.
+       Runs synchronously and before the tag itself, so no identifier is ever
+       written on a visit that has not answered the notice. The tag is only
+       requested once consent has actually been granted: a visitor who declines,
+       or who never answers, causes zero requests to googletagmanager.com. -->
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const gaId = "%VITE_GA4_ID%";
+    (function () {
+      var STORAGE_KEY = "juanda:analytics-consent";
+      var GA_ID = "%VITE_GA4_ID%";
+      var isConfigured = GA_ID.indexOf("G-") === 0;
 
-      if (!gaId || !gaId.startsWith("G-")) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
 
-      let gaLoaded = false;
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied"
+      });
 
-      function loadGA4() {
-        if (gaLoaded) return;
-        gaLoaded = true;
+      var stored = null;
+      try { stored = window.localStorage.getItem(STORAGE_KEY); } catch (e) { }
 
-        const script = document.createElement('script');
+      var tagLoaded = false;
+
+      function loadTag() {
+        if (tagLoaded || !isConfigured) return;
+        tagLoaded = true;
+
+        window.removeEventListener("scroll", loadTag);
+        window.removeEventListener("mousemove", loadTag);
+        window.removeEventListener("touchstart", loadTag);
+
+        var script = document.createElement("script");
         script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
         document.head.appendChild(script);
 
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { dataLayer.push(arguments); };
-
-        window.gtag('js', new Date());
-        window.gtag('config', gaId, {
-          'anonymize_ip': true,
-          'page_path': window.location.pathname
+        gtag("js", new Date());
+        gtag("config", GA_ID, {
+          anonymize_ip: true,
+          page_path: window.location.pathname
         });
-
-        window.removeEventListener('scroll', loadGA4);
-        window.removeEventListener('mousemove', loadGA4);
-        window.removeEventListener('touchstart', loadGA4);
       }
 
-      window.addEventListener('scroll', loadGA4, { passive: true });
-      window.addEventListener('mousemove', loadGA4, { passive: true });
-      window.addEventListener('touchstart', loadGA4, { passive: true });
+      // Returning visitor who already said yes: keep the original lazy trigger
+      // so the tag never competes with the first paint.
+      function loadTagWhenIdle() {
+        window.addEventListener("scroll", loadTag, { passive: true });
+        window.addEventListener("mousemove", loadTag, { passive: true });
+        window.addEventListener("touchstart", loadTag, { passive: true });
+        setTimeout(loadTag, 2000);
+      }
 
-      setTimeout(loadGA4, 2000);
-    });
+      if (stored === "granted") {
+        gtag("consent", "update", { analytics_storage: "granted" });
+        loadTagWhenIdle();
+      }
+
+      window.__analyticsConsent = {
+        storageKey: STORAGE_KEY,
+        stored: stored,
+        isConfigured: isConfigured,
+        update: function (granted) {
+          gtag("consent", "update", {
+            analytics_storage: granted ? "granted" : "denied"
+          });
+          // Answered from the notice, so the visitor is already interacting:
+          // load now instead of waiting for the idle trigger.
+          if (granted) loadTag();
+        }
+      };
+    })();
   </script>
 </head>
 

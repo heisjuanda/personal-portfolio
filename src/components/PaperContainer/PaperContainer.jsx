@@ -1,7 +1,12 @@
 import { useId } from "react";
 import "./PaperContainer.css";
 
-export default function PaperContainer({ children, className = "" }) {
+export default function PaperContainer({
+  children,
+  className = "",
+  tearScale = 22,
+  edgeTearScale = 28,
+}) {
   const uniqueId = useId();
   const idSafe = uniqueId.replace(/:/g, "-");
 
@@ -29,7 +34,7 @@ export default function PaperContainer({ children, className = "" }) {
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale="22"
+              scale={tearScale}
               xChannelSelector="R"
               yChannelSelector="G"
             />
@@ -46,7 +51,7 @@ export default function PaperContainer({ children, className = "" }) {
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale="28"
+              scale={edgeTearScale}
               xChannelSelector="R"
               yChannelSelector="G"
             />

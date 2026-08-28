@@ -1,6 +1,8 @@
 import { useEffect, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration, Navigate } from "react-router-dom";
 import SkipNav from "./components/SkipNav/SkipNav.jsx";
+import SoundToggle from "./components/SoundToggle/SoundToggle.jsx";
+import ConsentNotice from "./components/ConsentNotice/ConsentNotice.jsx";
 
 import Home from "./views/Home/Home";
 import ProjectDetails from "./views/ProjectDetails/ProjectDetails";
@@ -17,10 +19,9 @@ function RootLayout() {
   return (
     <>
       <SkipNav />
+      <ConsentNotice />
       <Outlet />
-      {/* Home is keyed by pathname rather than by history entry, so returning
-          to "/" restores where the visitor left off even on a forward (push)
-          navigation. Every other route keeps the default per-entry behaviour. */}
+      <SoundToggle />
       <ScrollRestoration
         getKey={(location) =>
           location.pathname === "/" ? location.pathname : location.key

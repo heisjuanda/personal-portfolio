@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
 import { PX_PER_HOP, CHARACTER_IMAGES } from "../../constants/constants";
+import useReducedMotion from "../../hooks/useReducedMotion.js";
 import "./Character.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ export default function Character({ isProjectView }) {
   const shadowRef = useRef(null);
   const flipperRef = useRef(null);
   const isHopping = useRef(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -22,7 +24,8 @@ export default function Character({ isProjectView }) {
     if (!wrapper || !hopper || !shadow || !flipper) return;
 
     const triggerHop = () => {
-      if (isHopping.current) return;
+      // The character still tracks scroll direction, it just stops bouncing.
+      if (reducedMotion || isHopping.current) return;
       isHopping.current = true;
       hopper.classList.add("character-hopper--hop");
       shadow.classList.add("character-shadow--hop");
@@ -95,7 +98,7 @@ export default function Character({ isProjectView }) {
       hopper.removeEventListener("animationend", onHopEnd);
       if (idleTimer) clearTimeout(idleTimer);
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div ref={wrapperRef} className="character-wrapper">

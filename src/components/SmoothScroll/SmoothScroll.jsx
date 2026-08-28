@@ -3,12 +3,19 @@ import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import useReducedMotion from '../../hooks/useReducedMotion.js'
+
 gsap.registerPlugin(ScrollTrigger)
 
 export default function SmoothScroll() {
   const lenisRef = useRef(null)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
+    // Lenis' easing *is* the motion effect here, so visitors who ask for less
+    // motion keep the browser's native scrolling instead.
+    if (reducedMotion) return
+
     const lenis = new Lenis({
       autoRaf: false,
       lerp: 0.06,
@@ -35,7 +42,7 @@ export default function SmoothScroll() {
       lenis.destroy()
       lenisRef.current = null
     }
-  }, [])
+  }, [reducedMotion])
 
   return null
 }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PaperContainer from "../PaperContainer/PaperContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useReducedMotion from "../../hooks/useReducedMotion.js";
 import "./ProjectCard.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,9 +12,16 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
   const cardRef = useRef(null);
   const realImageRef = useRef(null);
   const revealRef = useRef(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!cardRef.current || !realImageRef.current || !revealRef.current) return;
+
+    // Settle on the revealed blueprint instead of scrubbing it in on scroll.
+    if (reducedMotion) {
+      gsap.set([revealRef.current, realImageRef.current], { yPercent: 0 });
+      return;
+    }
 
     const ctx = gsap.context(() => {
       gsap.set(revealRef.current, { yPercent: -100 });
@@ -36,7 +44,7 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div ref={cardRef} className="project-spec-row">

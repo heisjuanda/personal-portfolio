@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 import PaperContainer from "../PaperContainer/PaperContainer";
+import useReducedMotion from "../../hooks/useReducedMotion.js";
 
 import "./Title.css";
 
 export default function Title() {
   const imgWrapperRef = useRef(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     const wrapper = imgWrapperRef.current;
@@ -14,6 +16,14 @@ export default function Title() {
 
     const juandaImg = wrapper.querySelector(".title__img--juanda");
     const adventureImg = wrapper.querySelector(".title__img--adventure");
+
+    // Land on the resting pose directly: no zoom-in, and no "is-idle" class so
+    // the floating loop never starts.
+    if (reducedMotion) {
+      gsap.set(juandaImg, { opacity: 1, scale: 1, rotation: -1 });
+      gsap.set(adventureImg, { opacity: 1, scale: 1, rotation: 1 });
+      return;
+    }
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -37,7 +47,7 @@ export default function Title() {
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section className="title">

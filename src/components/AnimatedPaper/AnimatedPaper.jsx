@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import PaperContainer from "../PaperContainer/PaperContainer.jsx";
+import useReducedMotion from "../../hooks/useReducedMotion.js";
+import { playSound } from "../../utils/soundManager.js";
 import "./AnimatedPaper.css";
 
-const SOUND_PATH = "/sounds/Paper.webm";
 const FRAME_1 = "images/animatedPaper/frame_01.avif";
 const FRAME_2 = "images/animatedPaper/frame_02.avif";
 
@@ -19,27 +20,16 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
   const [step, setStep] = useState(1);
   const [shouldRender, setShouldRender] = useState(isOpen);
   
+  const reducedMotion = useReducedMotion();
+
   const modalRef = useRef(null);
   const previousFocusRef = useRef(null);
-  const audioRef = useRef(null);
 
   useEffect(() => {
     const img1 = new Image();
     img1.src = FRAME_1;
     const img2 = new Image();
     img2.src = FRAME_2;
-
-    const audio = new Audio(SOUND_PATH);
-    audio.preload = "auto";
-    audio.volume = 0.5;
-    audioRef.current = audio;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -48,16 +38,15 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
     if (isOpen) {
       previousFocusRef.current = document.activeElement;
       setShouldRender(true);
-      setStep(1);
+      // Skip the paper-unfolding frames and show the note straight away.
+      setStep(reducedMotion ? 3 : 1);
 
-      if (audioRef.current) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(() => {
-        });
+      playSound("paper");
+
+      if (!reducedMotion) {
+        frame2Timer = setTimeout(() => setStep(2), 300);
+        frame3Timer = setTimeout(() => setStep(3), 500);
       }
-
-      frame2Timer = setTimeout(() => setStep(2), 300);
-      frame3Timer = setTimeout(() => setStep(3), 500);
     } else {
       closeTimer = setTimeout(() => {
         setShouldRender(false);
@@ -72,7 +61,7 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
       clearTimeout(frame3Timer);
       clearTimeout(closeTimer);
     };
-  }, [isOpen]);
+  }, [isOpen, reducedMotion]);
 
   useEffect(() => {
     if (!isOpen || step < 3 || !modalRef.current) return;

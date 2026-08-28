@@ -135,3 +135,34 @@ body {
     background: rgba(224, 49, 49, 0.95);
   }
 }
+
+/* ── Reduced motion ────────────────────────────────────────────────────────
+   Companion to the useReducedMotion hook, which handles the GSAP/Lenis side.
+   This kills the CSS-driven motion: the floating title, the character hop,
+   the scroll-tip chevrons, the door swing and every hover/state transition.
+   Durations are near-zero rather than "none" so animationend/transitionend
+   listeners still fire. Opacity-only fades are left alone: they carry meaning
+   here (the character dimming so it never covers the content) and are not a
+   vestibular trigger. */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Scale/lift hovers turn into a colour-only cue. */
+  .tape-button:hover {
+    transform: rotate(-1.5deg) !important;
+  }
+}

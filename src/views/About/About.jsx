@@ -10,6 +10,7 @@ import DoodlePlane from "../../svg/DoodlePlane/DoodlePlane.jsx";
 import DoodleHeadset from "../../svg/DoodleHeadset/DoodleHeadset.jsx";
 
 import { SIDE } from "../../constants/constants";
+import useReducedMotion from "../../hooks/useReducedMotion.js";
 
 import "./About.css";
 
@@ -109,6 +110,7 @@ export default function About() {
   const [paperContent, setPaperContent] = useState(null);
 
   const contentRef = useRef(null);
+  const reducedMotion = useReducedMotion();
 
   const laptopValue = "laptop";
   const chairValue = "chair";
@@ -132,6 +134,9 @@ export default function About() {
 
   useEffect(() => {
     if (!contentRef.current) return;
+
+    // The looping pulse is decoration only: the objects stay clickable at rest.
+    if (reducedMotion) return;
 
     const ctx = gsap.context(() => {
       const sections = contentRef.current.querySelectorAll(".about__section");
@@ -167,7 +172,7 @@ export default function About() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section className="about" ref={contentRef}>
