@@ -3,17 +3,12 @@
   right: clamp(12px, 2vw, 28px);
   bottom: clamp(12px, 2vw, 28px);
 
-  /* Doors sit at 101 and .tape-button at 110, and both are in-flow elements
-     that scroll over this corner, so anything lower gets buried. Stays under
-     the paper modal overlay and SkipNav (9999), which must cover it. */
   z-index: 9000;
 
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
-/* ── The sheet ─────────────────────────────────────────────────────────── */
 
 .sound-toggle__paper.torn-paper {
   --shadow: 0 5px 12px rgba(50, 36, 24, 0.32);
@@ -28,27 +23,16 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Graph-paper ruling over the same cream stock as every other sheet. Denser
-   and darker than .pd-card--solution's 15px/6% because only ~36px of paper is
-   left exposed around the icon. Kept on the sheet, so the tear filter bends the
-   ruling with the page instead of leaving it dead straight. */
-.sound-toggle__paper .torn-paper__sheet {
-  background:
-    linear-gradient(rgba(74, 55, 40, 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 55, 40, 0.3) 1px, transparent 1px),
-    linear-gradient(180deg, var(--paper), var(--paper-2));
-  background-size:
-    11px 11px,
-    11px 11px,
-    100% 100%;
+.sound-toggle__paper.torn-paper {
+  --rule-size: 10px;
+  --rule-color: rgba(74, 55, 40, 0.26);
+  --rule-inset: 4px;
 }
 
-/* A 14px inset vignette covers a 58px sheet end to end and kills the ruling. */
 .sound-toggle__paper .torn-paper__sheet::after {
   display: none;
 }
 
-/* The torn white edge is sized for full-width sheets. */
 .sound-toggle__paper .torn-paper__sheet::before {
   inset: -3px;
 }
@@ -59,12 +43,9 @@
   height: 100%;
 }
 
-/* Coffee-stain gradients read as dirt at this size. */
 .sound-toggle__paper .torn-paper__inner::before {
   display: none;
 }
-
-/* ── The button ────────────────────────────────────────────────────────── */
 
 .sound-toggle {
   display: block;
@@ -87,13 +68,10 @@
   opacity: 0.5;
 }
 
-/* Nothing clips the button, so its own outline is safe to use. */
 .sound-toggle:focus-visible {
   outline: 3px dashed var(--color-primary-font);
   outline-offset: 2px;
 }
-
-/* ── The tape ──────────────────────────────────────────────────────────── */
 
 .sound-toggle__tape {
   position: absolute;
@@ -111,10 +89,6 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* ── Lift ──────────────────────────────────────────────────────────────── */
-
-/* The sheet pivots under the tape: the tape straightens slightly instead of
-   staying welded at the same angle. */
 @media (hover: hover) {
   .sound-toggle__paper.torn-paper:hover {
     transform: rotate(0deg) scale(1.1) translateY(-3px);
@@ -132,8 +106,6 @@
 .sound-toggle__paper.torn-paper:has(.sound-toggle:focus-visible) .sound-toggle__tape {
   transform: rotate(-3deg) translateY(2px);
 }
-
-/* ── First-visit invitation ────────────────────────────────────────────── */
 
 .sound-toggle__hint {
   font-family: var(--font-sharpie);

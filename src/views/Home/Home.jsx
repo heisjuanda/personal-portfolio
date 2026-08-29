@@ -10,6 +10,7 @@ import SEOHead from "../../components/SEOHead/SEOHead.jsx";
 import JsonLd from "../../components/JsonLd/JsonLd.jsx";
 import PlanePaper from "../../components/PlanePaper/PlanePaper.jsx";
 import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
+import NavMap from "../../components/NavMap/NavMap.jsx";
 import { getSeoForPath } from "../../routes.seo.js";
 
 const homeSeo = getSeoForPath("/");
@@ -25,6 +26,7 @@ export default function Home() {
       <SmoothScroll />
       <PlanePaper />
       <SectionTabs />
+      <NavMap />
       <main id="main-content">
         <Title />
         <ScrollTip />

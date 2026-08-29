@@ -39,11 +39,20 @@
 }
 
 .paper-modal__paper.torn-paper {
+    --paper: #f4ead4;
+    --paper-2: #e6d7ba;
+
     margin: 0;
     padding: 3rem 2.5rem;
     width: auto;
     height: auto;
     min-width: 200px;
+}
+
+.paper-modal__paper.torn-paper {
+    --rule-size: 26px;
+    --rule-color: rgba(74, 55, 40, 0.17);
+    --rule-inset: 18px;
 }
 
 .paper-modal__paper .torn-paper__inner {

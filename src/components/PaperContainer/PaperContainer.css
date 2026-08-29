@@ -52,6 +52,20 @@
     filter: var(--filter-tear, url(#paper-tear));
 }
 
+.torn-paper__ruling {
+    position: absolute;
+    inset: var(--rule-inset, 14px);
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        linear-gradient(var(--rule-color, rgba(74, 55, 40, 0.16)) 1px, transparent 1px),
+        linear-gradient(90deg, var(--rule-color, rgba(74, 55, 40, 0.16)) 1px, transparent 1px);
+    background-size:
+        var(--rule-size, 24px) var(--rule-size, 24px),
+        var(--rule-size, 24px) var(--rule-size, 24px);
+}
+
 .torn-paper__inner {
     position: relative;
     max-width: 62ch;

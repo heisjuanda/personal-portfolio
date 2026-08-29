@@ -6,6 +6,7 @@ export default function PaperContainer({
   className = "",
   tearScale = 22,
   edgeTearScale = 28,
+  ruled = false,
 }) {
   const uniqueId = useId();
   const idSafe = uniqueId.replace(/:/g, "-");
@@ -60,6 +61,7 @@ export default function PaperContainer({
       </svg>
 
       <div className="torn-paper__sheet" aria-hidden="true" />
+      {ruled && <div className="torn-paper__ruling" aria-hidden="true" />}
       <div className="torn-paper__inner">{children}</div>
     </section>
   );

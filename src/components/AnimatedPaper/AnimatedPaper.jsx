@@ -16,7 +16,7 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(', ');
 
-export default function AnimatedPaper({ isOpen, onClose, children }) {
+export default function AnimatedPaper({ isOpen, onClose, children, label = "Details" }) {
   const [step, setStep] = useState(1);
   const [shouldRender, setShouldRender] = useState(isOpen);
   
@@ -121,7 +121,7 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label="Details"
+        aria-label={label}
       >
         {getPaperFrame() && (
           <img
@@ -137,7 +137,7 @@ export default function AnimatedPaper({ isOpen, onClose, children }) {
         {step === 3 && (
           <>
             <div className="paper-modal__inner-content">
-              <PaperContainer className="paper-modal__paper">
+              <PaperContainer className="paper-modal__paper" ruled>
                 {children}
               </PaperContainer>
             </div>

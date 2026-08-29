@@ -1,0 +1,249 @@
+.nav-map__trigger {
+  position: fixed;
+  top: clamp(12px, 2vw, 28px);
+  right: clamp(12px, 2vw, 28px);
+
+  z-index: 9050;
+
+  width: 66px;
+  height: 66px;
+  padding: 7px 4px 5px;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+
+  color: #3d4636;
+
+  background:
+    repeating-linear-gradient(90deg, rgba(60, 70, 55, 0.11) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(0deg, rgba(60, 70, 55, 0.09) 0 1px, transparent 1px 9px),
+    rgba(216, 211, 190, 0.97);
+
+  clip-path: polygon(6% 2%, 97% 0%, 100% 38%, 96% 97%, 40% 100%, 3% 95%, 0% 44%);
+  filter: drop-shadow(2px 5px 10px rgba(35, 25, 15, 0.45));
+  transform: rotate(-3deg);
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease,
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* The creases. Each panel catches a different amount of light and every fold
+   is a dark line with a lit one beside it, which is what makes a flat square
+   read as folded paper rather than as a textured tile. */
+.nav-map__trigger-fold {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.26) 0 30%,
+      rgba(45, 55, 42, 0.14) 30% 32%,
+      rgba(255, 255, 255, 0.07) 32% 64%,
+      rgba(45, 55, 42, 0.13) 64% 66%,
+      rgba(255, 255, 255, 0.22) 66% 100%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0 44%,
+      rgba(255, 255, 255, 0.22) 44% 47%,
+      rgba(45, 55, 42, 0.15) 47% 50%,
+      transparent 50% 100%
+    );
+}
+
+.nav-map__trigger-compass {
+  width: 27px;
+  height: 27px;
+  position: relative;
+  opacity: 0.82;
+}
+
+.nav-map__trigger.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-map__trigger-label {
+  /* Positioned so it paints above the crease overlay. */
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--color-primary-font);
+  display: block;
+  transform: rotate(-7deg);
+}
+
+@media (hover: hover) {
+  .nav-map__trigger:hover {
+    transform: rotate(0deg) scale(1.08) translateY(-3px);
+  }
+}
+
+.nav-map__trigger:focus-visible {
+  outline: 3px dashed var(--color-primary-font);
+  outline-offset: 4px;
+}
+
+/* The desktop notes take over from here. */
+@media (min-width: 900px) {
+  .nav-map__trigger {
+    display: none;
+  }
+}
+
+.nav-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-map__title {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1;
+  text-align: center;
+  color: var(--ink);
+}
+
+.nav-map__canvas {
+  position: relative;
+  aspect-ratio: 100 / 140;
+  height: min(calc(var(--vh, 1vh) * 90 - 180px), 470px);
+  width: auto;
+  max-width: min(74vw, 360px);
+}
+
+.nav-map__trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(45, 55, 72, 0.55);
+}
+
+.nav-map__stop {
+  --marker-size: 52px;
+  --marker-half: 26px;
+
+  position: absolute;
+  transform: translate(calc(var(--marker-half) * -1), -50%);
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  text-decoration: none;
+  color: var(--color-primary-font);
+  white-space: nowrap;
+}
+
+.nav-map__stop--left {
+  flex-direction: row-reverse;
+  transform: translate(calc(var(--marker-half) - 100%), -50%);
+}
+
+.nav-map__stop--yellow { --note: #fff59d; }
+.nav-map__stop--cyan { --note: #b2ebf2; }
+.nav-map__stop--green { --note: #c8e6c9; }
+
+.nav-map__marker {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+
+  width: var(--marker-size);
+  height: var(--marker-size);
+  padding: 11px;
+
+  background: var(--note);
+  border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%;
+  box-shadow: 2px 3px 7px rgba(35, 25, 15, 0.26);
+
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-map__icon {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-map__label {
+  font-family: var(--font-sharpie);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.nav-map__stop[aria-current="location"] .nav-map__label {
+  text-decoration: underline wavy;
+  text-underline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .nav-map__stop:hover .nav-map__marker {
+    transform: scale(1.1) rotate(-4deg);
+  }
+}
+
+.nav-map__stop:focus-visible {
+  outline: 3px dashed var(--color-primary-font);
+  outline-offset: 4px;
+}
+
+/* Stands on top of the marker for the stop you are currently in. */
+.nav-map__character {
+  position: absolute;
+  width: 46px;
+  height: auto;
+  transform: translate(-50%, -100%) translateY(-18px);
+  pointer-events: none;
+  filter: drop-shadow(1px 3px 4px rgba(35, 25, 15, 0.3));
+}
+
+/* ── CV, off the trail ─────────────────────────────────────────────────── */
+
+/* Not a place on the page, so it is not a stop on the route. */
+.nav-map__cv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: fit-content;
+  margin: 1rem auto 0;
+  padding: 9px 18px;
+
+  font-family: var(--font-sharpie);
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--color-primary-font);
+
+  background: #ffcdd2;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 72%, 88% 100%, 0% 100%);
+  box-shadow: 2px 3px 7px rgba(35, 25, 15, 0.26);
+  transform: rotate(-1.5deg);
+}
+
+.nav-map__cv-icon {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+}
+
+.nav-map__cv:focus-visible {
+  outline: 3px dashed var(--color-primary-font);
+  outline-offset: 4px;
+}

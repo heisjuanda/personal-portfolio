@@ -12,8 +12,6 @@ export default function SoundToggle() {
   const [isHintVisible, setIsHintVisible] = useState(false);
 
   useEffect(() => {
-    // First visit gets an invitation to turn sound on. Once the visitor has
-    // answered either way, the hint never comes back.
     if (hasChosen) {
       setIsHintVisible(false);
       return;
@@ -40,11 +38,11 @@ export default function SoundToggle() {
         Sound?
       </span>
 
-      {/* The tape lives inside the sheet so both lift together on hover. */}
       <PaperContainer
         className="sound-toggle__paper"
         tearScale={6}
         edgeTearScale={8}
+        ruled
       >
         <button
           type="button"
