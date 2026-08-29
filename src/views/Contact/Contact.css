@@ -130,14 +130,14 @@
 }
 
 .contact__note-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 15px 0;
   word-break: break-all;
   line-height: 1.3;
 }
 
 .contact__note-action {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   opacity: 0.85;
 }
 
