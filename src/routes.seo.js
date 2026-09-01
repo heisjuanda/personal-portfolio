@@ -109,8 +109,10 @@ const personSchema = {
     {
       "@type": "Organization",
       name: "Cressco",
+      url: "https://www.cressco.dev/",
       description:
         "Digital agency where he worked as a Software Developer on frontend architecture and infrastructure for healthcare and e-commerce clients.",
+      sameAs: ["https://www.linkedin.com/company/cressco/"],
     },
   ],
   sameAs: [

@@ -9,6 +9,9 @@ import DoodleArrow from "../../svg/DoodleArrow/DoodleArrow.jsx";
 import DoodlePlane from "../../svg/DoodlePlane/DoodlePlane.jsx";
 import DoodleHeadset from "../../svg/DoodleHeadset/DoodleHeadset.jsx";
 
+import PaperContent from "../../components/PaperContent/PaperContent.jsx";
+
+import { PAPER_CONTENT } from "../data/about.data.js";
 import { SIDE } from "../../constants/constants";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
 
@@ -31,83 +34,9 @@ const LAPTOP_DECORATIONS = [
   { src: "images/about/shopify.webp", top: "76%", left: "78%", rotate: -8 },
 ];
 
-const PAPER_CONTENT = {
-  laptop: {
-    title: "CoDe & Architecture",
-    content:
-      "I have +4 years of experience building web apps. I love working with React and creating clear, useful interfaces. I work well in a team, and I also enjoy focused solo work on full-stack features and cloud infrastructure.",
-  },
-  chair: {
-    title: "ReMote headquarters",
-    content:
-      "I am based in Cali, Colombia, and work with distributed teams worldwide. A good desk setup and a cup of coffee help me switch between team meetings and deep focus time. I aim for clean, simple solutions to complex problems.",
-  },
-  cressco: {
-    title: "Cressco",
-    content:
-      "Agency work for client products. I led the frontend and also handled the infrastructure around it: DNS, deployments and email delivery, for healthcare and e-commerce teams.",
-    experience: {
-      role: "Software Developer",
-      achievement: [
-        "Added autosave to Reddocares' medical forms, so staff no longer lost long records when a tab closed or the connection dropped.",
-        "Made joshwoodcolour.com, an online store, load 20% faster.",
-        "Fixed Josh Wood's email campaigns that were going to spam, by cleaning up their sending reputation and rewriting the messages.",
-      ],
-    },
-  },
-  truora: {
-    title: "Truora (Current)",
-    content:
-      "Truora checks identities and prevents fraud for companies across Latin America. I build the products that decide if a person really is who they say they are: web features, APIs in Go, Android SDK components and services on AWS.",
-    experience: {
-      role: "Software Engineer",
-      achievement: [
-        "Cut review time in half (from 60 to 30 seconds per case) on the tool people use to check validations our models are unsure about, with the same quality of decisions.",
-        "Designed Labeling Review, which turns those same validations into training data for Truora's internal AI models, reusing what we already had instead of building a new system.",
-        "Rebuilt how we read and validate Colombian driver's licenses, a key requirement for one of Truora's biggest clients.",
-      ],
-    },
-  },
-  globe: {
-    title: "waNDerlust & Curiosity",
-    content:
-      "Travel keeps me curious. My trip to Rio de Janeiro, Brazil, was my farthest and most memorable so far. I bring that same curiosity to software—I'm always ready to learn new tools and tech stacks.",
-  },
-  gym: {
-    title: "Consistency & health",
-    content:
-      "I go to the gym to stay healthy and keep improving. It builds the discipline I need for long coding sessions. Being consistent in training helps me stay consistent at work too.",
-  },
-};
-
-const getPaperContent = (value) => {
-  return (
-    <div className="about__paper-content">
-      <h3 className="about__paper-title">{value.title}</h3>
-      <p className="about__paper-text">{value.content}</p>
-      {value.experience && (
-        <div className="paper-modal__experience-section">
-          <h4 className="paper-modal__experience-title">Achievements:</h4>
-
-          <div className="paper-modal__work-item">
-            <span className="paper-modal__role-name">
-              {value.experience.role}
-            </span>
-            {value.experience.achievement.map((achievement) => (
-              <p key={achievement} className="paper-modal__achievement-text">
-                <span>•</span> {achievement}
-              </p>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
 export default function About() {
   const [isPaperOpen, setIsPaperOpen] = useState(false);
-  const [paperContent, setPaperContent] = useState(null);
+  const [paperKey, setPaperKey] = useState(null);
 
   const contentRef = useRef(null);
   const reducedMotion = useReducedMotion();
@@ -123,7 +52,7 @@ export default function About() {
     e.preventDefault();
     const value = e.target.dataset.value;
     if (value) {
-      setPaperContent(getPaperContent(PAPER_CONTENT[value]));
+      setPaperKey(value);
     }
     setIsPaperOpen(true);
   };
@@ -175,8 +104,12 @@ export default function About() {
 
   return (
     <section className="about" id="about" ref={contentRef}>
-      <AnimatedPaper isOpen={isPaperOpen} onClose={handlePaperClose}>
-        {paperContent}
+      <AnimatedPaper
+        isOpen={isPaperOpen}
+        onClose={handlePaperClose}
+        label={paperKey ? PAPER_CONTENT[paperKey].title : undefined}
+      >
+        {paperKey && <PaperContent entry={PAPER_CONTENT[paperKey]} />}
       </AnimatedPaper>
       <Door
         label="About Me"
@@ -190,19 +123,7 @@ export default function About() {
       <div className="sr-only">
         {Object.entries(PAPER_CONTENT).map(([key, value]) => (
           <article key={key} id={`about-${key}`}>
-            <h3>{value.title}</h3>
-            <p>{value.content}</p>
-            {value.experience && (
-              <>
-                <p>{value.experience.role}</p>
-                <h4>Achievements:</h4>
-                <ul>
-                  {value.experience.achievement.map((achievement) => (
-                    <li key={achievement}>{achievement}</li>
-                  ))}
-                </ul>
-              </>
-            )}
+            <PaperContent entry={value} variant="outline" />
           </article>
         ))}
       </div>

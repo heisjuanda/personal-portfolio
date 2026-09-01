@@ -87,10 +87,17 @@
 
 .pd-specs-cell {
   padding: 15px 20px;
-  font-family: var(--font-sharpie);
-  font-size: 1.05rem;
   color: #2d3748;
   border-right: 1px dashed #b0bec5;
+
+  & strong {
+    font-family: var(--font-sharpie);
+    font-size: 1.2rem;
+  }
+  & span {
+    font-family: var(--font-text);
+    font-size: 1rem;
+  }
 }
 
 .pd-specs-cell:last-child {

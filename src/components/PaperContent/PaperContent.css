@@ -1,0 +1,42 @@
+.paper-link {
+  color: #8c3b2e;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: rgba(140, 59, 46, 0.45);
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.paper-link--title {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgba(140, 59, 46, 0.55);
+}
+
+.paper-link__arrow {
+  font-size: 0.8em;
+  padding-left: 0.15em;
+}
+
+@media (hover: hover) {
+  .paper-link:hover {
+    color: #c0392b;
+    text-decoration-color: currentColor;
+  }
+}
+
+.paper-link:focus-visible {
+  outline: 2px solid #8c3b2e;
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-link {
+    transition: none;
+  }
+}
