@@ -259,7 +259,10 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
 const projectSeoRoutes = PROJECTS_DATA.map((project) => {
   const path = `/projects/${project.id}`;
   const canonical = `${BASE_URL}${path}`;
-  const ogImage = new URL(project.realSrc, `${BASE_URL}/`).href;
+  // Prefer the generated 1200x630 JPEG card: social crawlers cannot decode
+  // the AVIF artwork the site itself displays.
+  const ogImage = new URL(project.ogImage ?? project.realSrc, `${BASE_URL}/`)
+    .href;
   const title = `${project.name} — Juan David Moreno`;
 
   return [

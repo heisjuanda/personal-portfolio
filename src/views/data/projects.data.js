@@ -8,6 +8,7 @@ export const PROJECTS_DATA = [
       "Josh Wood Colour is a React, Gatsby and Shopify e-commerce platform optimized for 20% faster initial loads, responsive shopping and stronger email delivery.",
     realSrc: "images/projects/josh_wood_colour.avif",
     blueprintSrc: "images/projects/josh_wood_colour_blueprint.avif",
+    ogImage: "images/og/josh-wood-colour.jpg",
 
     // project details
     year: "2023",
@@ -70,6 +71,7 @@ export const PROJECTS_DATA = [
       "Juanda Bot is a Python and RAG Telegram assistant using Ollama, OpenAI and Groq to provide resilient, contextual 24/7 support for an AI learning platform.",
     realSrc: "images/projects/juandabot.avif",
     blueprintSrc: "images/projects/juandabot_blueprint.avif",
+    ogImage: "images/og/juandabot.jpg",
 
     // project details
     year: "2025",
@@ -114,6 +116,7 @@ export const PROJECTS_DATA = [
       "Lambda Lang is a functional language and visual REPL built in Dr Racket to demonstrate parsing, evaluation and lambda-calculus reductions step by step.",
     realSrc: "images/projects/lambda_lang.avif",
     blueprintSrc: "images/projects/lambda_lang_blueprint.avif",
+    ogImage: "images/og/lambda-lang.jpg",
 
     // project details
     year: "2023",
@@ -153,6 +156,7 @@ export const PROJECTS_DATA = [
       "Patitas a Casa is a nonprofit React and PostgreSQL adoption platform that centralizes listings, location search and status tracking for shelters in Argentina.",
     realSrc: "images/projects/patitas_a_casa.avif",
     blueprintSrc: "images/projects/patitas_a_casa_blueprint.avif",
+    ogImage: "images/og/patitas-a-casa.jpg",
 
     // project details
     year: "2023",
@@ -214,6 +218,7 @@ export const PROJECTS_DATA = [
       "Juan David Moreno's React portfolio combines GSAP motion, accessible interactions and technical storytelling to showcase full-stack and frontend work.",
     realSrc: "images/projects/portfolio.avif",
     blueprintSrc: "images/projects/portfolio_blueprint.avif",
+    ogImage: "images/og/portfolio.jpg",
 
     // project details
     year: "2026",
@@ -279,6 +284,7 @@ export const PROJECTS_DATA = [
       "An AI learning platform built with FastAPI, Python and React that improved students' speaking confidence, debate coherence and achieved 95% usability approval.",
     realSrc: "images/projects/thesis.avif",
     blueprintSrc: "images/projects/thesis_blueprint.avif",
+    ogImage: "images/og/thesis.jpg",
 
     // project details
     year: "2025",
