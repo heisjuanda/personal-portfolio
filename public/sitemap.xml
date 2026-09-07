@@ -3,57 +3,56 @@
 
   <url>
     <loc>https://juandamoreno.dev/</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Text-based PDF: indexable as its own document -->
   <url>
     <loc>https://juandamoreno.dev/cv/cv.pdf</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/josh-wood-colour</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/juandabot</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/lambda-lang</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/patitas-a-casa</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/portfolio</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/thesis</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

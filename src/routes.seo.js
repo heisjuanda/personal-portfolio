@@ -1,3 +1,4 @@
+import { LAST_MODIFIED } from "./build-info.js";
 import { PROJECTS_DATA } from "./views/data/projects.data.js";
 
 export const BASE_URL = "https://juandamoreno.dev";
@@ -7,8 +8,6 @@ const WEBSITE_ID = `${BASE_URL}/#website`;
 const PROFILE_PAGE_ID = `${BASE_URL}/#profile-page`;
 const UNIVALLE_ID = `${BASE_URL}/#univalle`;
 
-/** Bump when the profile content itself meaningfully changes. */
-const LAST_REVIEWED = "2026-08-27T00:00:00-05:00";
 
 const HOME_DESCRIPTION =
   "Juan David Moreno Alfonso (heisjuanda) is a Full Stack Software Engineer at Truora, based in Cali, Colombia, building fast, creative web products worldwide.";
@@ -205,7 +204,7 @@ const profileSchema = {
       description:
         "Professional profile and portfolio of Juan David Moreno Alfonso, Software Engineer at Truora working on identity verification and fraud prevention, with earlier agency work on frontend architecture and infrastructure.",
       inLanguage: "en",
-      dateModified: LAST_REVIEWED,
+      dateModified: LAST_MODIFIED,
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
       mainEntity: { "@id": PERSON_ID },
