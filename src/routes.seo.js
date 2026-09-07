@@ -136,7 +136,7 @@ const personSchema = {
   },
   sameAs: [
     "https://github.com/heisjuanda",
-    "https://www.linkedin.com/in/juan-david-moreno-883a46233/",
+    "https://www.linkedin.com/in/juandamoreno/",
     "https://www.instagram.com/soyjuandamoreno/",
   ],
   contactPoint: {

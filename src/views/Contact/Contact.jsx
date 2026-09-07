@@ -50,7 +50,7 @@ export default function Contact() {
               <span className="contact__note-tag">[ NETWORKS ]</span>
               <div className="contact__note-socials">
                 <a
-                  href="https://www.linkedin.com/in/juan-david-moreno-883a46233/"
+                  href="https://www.linkedin.com/in/juandamoreno/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Juan David Moreno on LinkedIn (opens in new tab)"
