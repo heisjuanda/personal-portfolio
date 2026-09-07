@@ -1,0 +1,12 @@
+{
+  "name": "Juan David Moreno — Software Engineer",
+  "short_name": "Juanda Moreno",
+  "description": "Portfolio of Juan David Moreno Alfonso, Full Stack Software Engineer based in Cali, Colombia.",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#4a3728",
+  "background_color": "#ffffff",
+  "start_url": "/"
+}

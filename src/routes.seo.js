@@ -5,6 +5,7 @@ export const BASE_URL = "https://juandamoreno.dev";
 const PERSON_ID = `${BASE_URL}/#person`;
 const WEBSITE_ID = `${BASE_URL}/#website`;
 const PROFILE_PAGE_ID = `${BASE_URL}/#profile-page`;
+const UNIVALLE_ID = `${BASE_URL}/#univalle`;
 
 /** Bump when the profile content itself meaningfully changes. */
 const LAST_REVIEWED = "2026-08-27T00:00:00-05:00";
@@ -93,17 +94,25 @@ const personSchema = {
   // Organization here), which is how Cressco stays in the graph without
   // implying it is a current role.
   alumniOf: [
-    // NOTE: confirm this matches your record before the next deploy.
+    // Wrapped in OrganizationRole so the study period is machine-readable;
+    // the university itself is still a fully described node via @id.
     {
-      "@type": "CollegeOrUniversity",
-      name: "Universidad del Valle",
-      alternateName: "Univalle",
-      url: "https://www.univalle.edu.co/",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Cali",
-        addressRegion: "Valle del Cauca",
-        addressCountry: "CO",
+      "@type": "OrganizationRole",
+      roleName: "Systems Engineering undergraduate",
+      startDate: "2020",
+      endDate: "2025",
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        "@id": UNIVALLE_ID,
+        name: "Universidad del Valle",
+        alternateName: "Univalle",
+        url: "https://www.univalle.edu.co/",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Cali",
+          addressRegion: "Valle del Cauca",
+          addressCountry: "CO",
+        },
       },
     },
     {
@@ -115,6 +124,16 @@ const personSchema = {
       sameAs: ["https://www.linkedin.com/company/cressco/"],
     },
   ],
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    name: "Systems Engineering",
+    alternateName: "Ingeniería de Sistemas",
+    description:
+      "Five-year undergraduate degree in Systems Engineering, completed 2020–2025.",
+    credentialCategory: "degree",
+    educationalLevel: "Undergraduate",
+    recognizedBy: { "@id": UNIVALLE_ID },
+  },
   sameAs: [
     "https://github.com/heisjuanda",
     "https://www.linkedin.com/in/juan-david-moreno-883a46233/",
