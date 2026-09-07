@@ -3,3 +3,23 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+# Browser caching. Cloudflare Cache Rules own the edge TTL, but their Browser TTL
+# cannot reach the client here: Origin Cache Control is on by default on this plan
+# and passes the origin's Cache-Control downstream, and Workers Assets stamps
+# max-age=0 on every asset. So the browser-facing value is declared here.
+#
+# HTML, /cv/, sitemap.xml, robots.txt and llms.txt are deliberately absent: they
+# must keep revalidating so a deploy reaches returning visitors immediately.
+
+# Content-hashed by the build — the bytes at a given URL can never change.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Unhashed but stable. Renaming the file is the only way to bust these, so they
+# get a shorter life than the hashed assets.
+/fonts/*
+  Cache-Control: public, max-age=2592000
+
+/images/*
+  Cache-Control: public, max-age=86400
