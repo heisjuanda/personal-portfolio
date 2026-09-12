@@ -25,6 +25,7 @@
   <meta name="description"
     content="Juan David Moreno Alfonso (heisjuanda) is a Full Stack Software Engineer at Truora, based in Cali, Colombia, building fast, creative web products worldwide." data-rh="true" />
   <meta name="author" content="Juan David Moreno Alfonso" />
+  <meta http-equiv="content-language" content="en" />
   <meta name="geo.region" content="CO-VAC" />
   <meta name="geo.placename" content="Cali" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -151,56 +152,12 @@
 </head>
 
 <body>
+  <!-- Filled at build time by scripts/prerender.mjs with the fully rendered
+       page for this route, so crawlers that do not run JavaScript (Bingbot,
+       GPTBot, ClaudeBot, PerplexityBot) get the real document and Googlebot
+       indexes it on the first pass. React hydrates it in main.jsx. The old
+       <noscript> fallback became redundant: the same content is now in #root. -->
   <div id="root"></div>
-
-  <!-- Fallback for visitors without JavaScript, and for crawlers that do not
-       execute it (GPTBot, ClaudeBot, PerplexityBot and similar). Kept short and
-       factual: it mirrors the page, it is not a place to repeat keywords. -->
-  <noscript>
-    <h1>Juan David Moreno | Software Engineer in Colombia</h1>
-
-    <p>I am Juan David Moreno Alfonso &mdash; also known as Juanda, or
-      <strong>@heisjuanda</strong>. I am a full stack software engineer based in
-      Cali, Colombia, with more than four years of experience.</p>
-
-    <p>I currently work at <a href="https://www.truora.com/" rel="noopener">Truora</a>,
-      where I build identity verification and fraud prevention products: full-stack
-      features, REST APIs in Go, Android SDK components and serverless workflows on
-      AWS. Before that I was a Software Developer at
-      <a href="https://www.cressco.dev/en/" rel="noopener">Cressco</a>, leading
-      frontend architecture, technical SEO and infrastructure for client products.
-      I hold a degree in Systems Engineering from Universidad del Valle.</p>
-
-    <p>This portfolio is an interactive experience and needs JavaScript to run.
-      The pages below hold the same work as regular documents.</p>
-
-    <nav aria-label="Projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><a href="/projects/josh-wood-colour">Josh Wood Colour</a> &mdash; premium
-          haircare e-commerce built with React, Gatsby and Shopify.</li>
-        <li><a href="/projects/juandabot">Juanda Bot</a> &mdash; a RAG Telegram
-          assistant in Python, using Ollama with OpenAI and Groq fallbacks.</li>
-        <li><a href="/projects/thesis">AI Speech Platform</a> &mdash; my thesis:
-          FastAPI, Python and React, with speech analysis for oratory and debate.</li>
-        <li><a href="/projects/patitas-a-casa">Patitas a Casa</a> &mdash; a nonprofit
-          pet adoption platform for shelters in Argentina.</li>
-        <li><a href="/projects/lambda-lang">Lambda Lang</a> &mdash; a functional
-          language, parser and visual REPL written from scratch in Dr Racket.</li>
-        <li><a href="/projects/portfolio">This portfolio</a> &mdash; React and GSAP
-          on a Cloudflare Worker.</li>
-      </ul>
-    </nav>
-
-    <h2>Contact</h2>
-    <p>
-      <a href="mailto:heisjuanda@gmail.com">heisjuanda@gmail.com</a> &middot;
-      <a href="https://github.com/heisjuanda" rel="noopener">GitHub</a> &middot;
-      <a href="https://www.linkedin.com/in/juandamoreno/" rel="noopener">LinkedIn</a> &middot;
-      <a href="https://wa.me/soyjuandamoreno" rel="noopener">WhatsApp</a> &middot;
-      <a href="/cv/cv.pdf">CV (PDF)</a>
-    </p>
-  </noscript>
 
   <script type="module" src="/src/main.jsx"></script>
 </body>

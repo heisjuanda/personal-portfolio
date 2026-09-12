@@ -18,7 +18,15 @@
         display: block;
         will-change: transform;
 
+        opacity: 0;
+
         filter: drop-shadow(0px 12px 20px rgba(35, 25, 15, 0.22)) drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.15));
+    }
+
+    @media (scripting: none) {
+        & img {
+            opacity: 1;
+        }
     }
 
     & .title__img--juanda {

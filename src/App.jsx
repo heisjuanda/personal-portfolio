@@ -1,68 +1,7 @@
-import { useEffect, lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration, Navigate } from "react-router-dom";
-import SkipNav from "./components/SkipNav/SkipNav.jsx";
-import SoundToggle from "./components/SoundToggle/SoundToggle.jsx";
-import ConsentNotice from "./components/ConsentNotice/ConsentNotice.jsx";
+import { useEffect } from "react";
+import { RouterProvider, StaticRouterProvider } from "react-router-dom";
 
-import Home from "./views/Home/Home";
-import ProjectDetails from "./views/ProjectDetails/ProjectDetails";
-
-const NotFound = lazy(() => import("./views/NotFound/NotFound"));
-
-const routeErrorElement = (
-  <Suspense fallback={<div className="blueprint-bg" />}>
-    <NotFound />
-  </Suspense>
-);
-
-function RootLayout() {
-  return (
-    <>
-      <SkipNav />
-      <ConsentNotice />
-      <Outlet />
-      <SoundToggle />
-      <ScrollRestoration
-        getKey={(location) =>
-          location.pathname === "/" ? location.pathname : location.key
-        }
-      />
-    </>
-  );
-}
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    errorElement: routeErrorElement,
-    children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "projects",
-        element: <Navigate to="/" replace />,
-      },
-      {
-        path: "projects/:id",
-        element: <ProjectDetails />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: (
-      <Suspense fallback={<div className="blueprint-bg" />}>
-        <NotFound />
-      </Suspense>
-    ),
-    errorElement: routeErrorElement,
-  },
-]);
-
-export default function App() {
+export default function App({ router, staticContext }) {
   useEffect(() => {
     const calculateVh = () => {
       const vh = window.innerHeight * 0.01;
@@ -88,6 +27,15 @@ export default function App() {
     };
   }, []);
 
+  if (staticContext) {
+    return (
+      <StaticRouterProvider
+        router={router}
+        context={staticContext}
+        hydrate={false}
+      />
+    );
+  }
+
   return <RouterProvider router={router} />;
 }
-

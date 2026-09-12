@@ -22,7 +22,7 @@ This portfolio is optimized for speed, accessibility, SEO, and best practices. I
 ### Optimization Techniques Implemented:
 - **Font & Asset Preloading**: Critical fonts (`collage_font`, `sharpie_font`) and LCP (Largest Contentful Paint) images are preloaded to eliminate Flash of Invisible Text (FOIT) and improve request discovery.
 - **Resource Compression**: Utilizes `vite-plugin-compression2` to generate compressed assets during build.
-- **CSS Injection**: Injects styles directly using `vite-plugin-css-injected-by-js` to optimize styling delivery.
+- **Build-time Pre-rendering**: Every route is rendered to static HTML during `npm run build` (`scripts/prerender.mjs`, `react-dom/static`) and hydrated on the client, so crawlers that do not execute JavaScript (Bingbot, AI crawlers) receive the full document and Googlebot indexes it on the first pass. The Worker serves the per-route file and still rewrites the `<head>` at the edge.
 - **Semantic SEO**: Includes semantic HTML, complete Open Graph / Twitter cards, meta descriptions, and custom JSON-LD schemas for search engines.
 - **Smooth Layout Rendering**: Designed with GSAP and Lenis for fluid, hardware-accelerated animations and scrolling without layout shifts.
 

@@ -35,9 +35,7 @@ function gitDate(path) {
 const repoDate = gitDate();
 
 // URLs that are real files rather than app routes.
-const EXTRA_URLS = [
-  { loc: `${BASE_URL}/cv/cv.pdf`, file: "public/cv/cv.pdf", changefreq: "yearly", priority: "0.7" },
-];
+const EXTRA_URLS = [];
 
 const entries = [
   ...Object.keys(SEO_ROUTES).map((path) => ({

@@ -17,14 +17,14 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
   useEffect(() => {
     if (!cardRef.current || !realImageRef.current || !revealRef.current) return;
 
-    // Settle on the revealed blueprint instead of scrubbing it in on scroll.
     if (reducedMotion) {
       gsap.set([revealRef.current, realImageRef.current], { yPercent: 0 });
+      gsap.set(revealRef.current, { visibility: "visible" });
       return;
     }
 
     const ctx = gsap.context(() => {
-      gsap.set(revealRef.current, { yPercent: -100 });
+      gsap.set(revealRef.current, { yPercent: -100, visibility: "visible" });
       gsap.set(realImageRef.current, { yPercent: 100 });
 
       const tl = gsap.timeline({

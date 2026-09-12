@@ -82,11 +82,18 @@
   z-index: 2;
   overflow: hidden;
   will-change: transform;
+  visibility: hidden;
 }
 
 .blueprint-card__img--real {
   will-change: transform;
   transform: translateZ(0);
+}
+
+@media (scripting: none) {
+  .blueprint-card__reveal {
+    visibility: visible;
+  }
 }
 
 .project-spec-row__details {
