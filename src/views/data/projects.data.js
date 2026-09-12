@@ -3,6 +3,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "josh-wood-colour",
     name: "Josh Wood Colour",
+    seoTitle: "Josh Wood Colour: Gatsby & Shopify E-commerce",
     stack: "React • Shopify • Gatsby • E-commerce",
     seoDescription:
       "Josh Wood Colour is a React, Gatsby and Shopify e-commerce platform optimized for 20% faster initial loads, responsive shopping and stronger email delivery.",
@@ -66,6 +67,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "juandabot",
     name: "Juanda Bot",
+    seoTitle: "Juanda Bot: RAG Telegram Assistant in Python",
     stack: "Python • AI Models • Telegram API",
     seoDescription:
       "Juanda Bot is a Python and RAG Telegram assistant using Ollama, OpenAI and Groq to provide resilient, contextual 24/7 support for an AI learning platform.",
@@ -111,6 +113,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "lambda-lang",
     name: "Lambda Lang",
+    seoTitle: "Lambda Lang: Functional Language in Racket",
     stack: "Dr Racket • Research • Lambda Calculus",
     seoDescription:
       "Lambda Lang is a functional language and visual REPL built in Dr Racket to demonstrate parsing, evaluation and lambda-calculus reductions step by step.",
@@ -151,6 +154,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "patitas-a-casa",
     name: "Patitas a Casa",
+    seoTitle: "Patitas a Casa: Pet Adoption Platform in React",
     stack: "React • PostgreSQL • Tailwind CSS",
     seoDescription:
       "Patitas a Casa is a nonprofit React and PostgreSQL adoption platform that centralizes listings, location search and status tracking for shelters in Argentina.",
@@ -213,6 +217,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "portfolio",
     name: "My Portfolio",
+    seoTitle: "React & GSAP Portfolio on Cloudflare Workers",
     stack: "React • CSS • JavaScript",
     seoDescription:
       "Juan David Moreno's React portfolio combines GSAP motion, accessible interactions and technical storytelling to showcase full-stack and frontend work.",
@@ -279,6 +284,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "thesis",
     name: "My Thesis",
+    seoTitle: "AI Speech & Debate Training Platform (Thesis)",
     stack: "Fast API • Python • React • Academic Project",
     seoDescription:
       "An AI learning platform built with FastAPI, Python and React that improved students' speaking confidence, debate coherence and achieved 95% usability approval.",

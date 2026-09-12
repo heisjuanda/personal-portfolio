@@ -281,7 +281,7 @@ const projectSeoRoutes = PROJECTS_DATA.map((project) => {
   // the AVIF artwork the site itself displays.
   const ogImage = new URL(project.ogImage ?? project.realSrc, `${BASE_URL}/`)
     .href;
-  const title = `${project.name} — Juan David Moreno`;
+  const title = `${project.seoTitle ?? project.name} — Juan David Moreno`;
 
   return [
     path,

@@ -11,6 +11,6 @@ export default defineConfig({
     sourcemap: false,
   },
   ssr: {
-    noExternal: ["gsap", "lenis", "react-helmet-async"],
+    noExternal: ["gsap", "lenis"],
   },
 });

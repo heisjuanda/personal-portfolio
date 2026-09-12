@@ -19,11 +19,10 @@ import { writeFileSync } from "node:fs";
 
 import { BASE_URL, SEO_ROUTES } from "../src/routes.seo.js";
 
-/** Last commit date, optionally scoped to one path. Falls back to now. */
-function gitDate(path) {
+function gitDate(...paths) {
   try {
     const args = ["log", "-1", "--format=%cI"];
-    if (path) args.push("--", path);
+    if (paths.length) args.push("--", ...paths);
     const out = execFileSync("git", args, { encoding: "utf8" }).trim();
     if (out) return out;
   } catch {
@@ -34,13 +33,19 @@ function gitDate(path) {
 
 const repoDate = gitDate();
 
+const projectsDate = gitDate(
+  "src/views/data/projects.data.js",
+  "src/views/ProjectDetails",
+  "src/routes.seo.js",
+);
+
 // URLs that are real files rather than app routes.
 const EXTRA_URLS = [];
 
 const entries = [
   ...Object.keys(SEO_ROUTES).map((path) => ({
     loc: path === "/" ? `${BASE_URL}/` : `${BASE_URL}${path}`,
-    lastmod: repoDate.slice(0, 10),
+    lastmod: (path === "/" ? repoDate : projectsDate).slice(0, 10),
     changefreq: "monthly",
     priority: path === "/" ? "1.0" : "0.8",
   })),

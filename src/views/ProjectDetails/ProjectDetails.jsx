@@ -47,7 +47,7 @@ export default function ProjectDetails() {
   return (
     <>
       <SEOHead
-        title={project.name}
+        title={project.seoTitle ?? project.name}
         description={projectSeo.description}
         canonical={projectSeo.canonicalPath}
         ogImage={projectSeo.ogImage}
