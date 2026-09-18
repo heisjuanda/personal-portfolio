@@ -34,7 +34,7 @@ const personSchema = {
     "Desarrollador Full Stack",
   ],
   description:
-    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces. At Truora he works end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS.",
+    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces. At Truora he works end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS. He also interviews engineering candidates and mentors interns.",
   url: `${BASE_URL}/`,
   mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
   image: {
@@ -87,7 +87,9 @@ const personSchema = {
       name: "Cali",
     },
     skills:
-      "Full stack web development, identity verification and fraud prevention systems, REST API design in Go, serverless architecture on AWS, Android SDK development, frontend performance, motion design",
+      "Full stack web development, identity verification and fraud prevention systems, REST API design in Go, serverless architecture on AWS, Android SDK development, frontend performance, motion design, technical interviewing, mentoring",
+    responsibilities:
+      "Leads projects end to end, interviews engineering candidates and mentors interns.",
   },
   // alumniOf covers both education and past employers (schema.org allows
   // Organization here), which is how Cressco stays in the graph without
@@ -176,6 +178,8 @@ const personSchema = {
     "Edge Computing",
     "Data Labeling",
     "Email Deliverability",
+    "Technical Interviewing",
+    "Mentoring",
   ],
 };
 

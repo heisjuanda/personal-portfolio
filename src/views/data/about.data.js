@@ -49,6 +49,7 @@ export const PAPER_CONTENT = {
         "Cut review time in half (from 60 to 30 seconds per case) on the tool people use to check validations our models are unsure about, with the same quality of decisions.",
         "Designed Labeling Review, which turns those same validations into training data for Truora's internal AI models, reusing what we already had instead of building a new system.",
         "Rebuilt how we read and validate Colombian driver's licenses, a key requirement for one of Truora's biggest clients.",
+        "I also interview engineering candidates and mentor interns at Truora, and lead projects end to end.",
       ],
     },
   },

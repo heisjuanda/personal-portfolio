@@ -9,6 +9,7 @@
 - **Current employer**: Truora (https://www.truora.com/) — identity verification and conversational engagement for Latin America
 - **Previous employer**: Cressco — frontend architecture, technical SEO and DNS infrastructure
 - **Experience**: 4+ years across frontend, backend, cloud architecture and motion design
+- **Also at Truora**: interviews engineering candidates, mentors interns and leads projects end to end
 - **Location**: Cali, Valle del Cauca, Colombia
 - **Languages**: English, Spanish
 - **Domain**: https://juandamoreno.dev/
@@ -27,7 +28,7 @@ technical SEO, GSAP motion design, Retrieval-Augmented Generation.
 ## Selected Impact
 - At Truora: cut manual identity review time from 60s to 30s without lowering data quality; improved
   data extraction and validation for Colombian driver's licenses at InDrive, with an expected $500K in
-  Annual Recurring Revenue.
+  Annual Recurring Revenue. Interviews engineering candidates and mentors interns on the team.
 - At Cressco: improved joshwoodcolour.com initial load time by ~20% and strengthened its SEO; built an
   autosave feature for Reddocares forms that eliminated user data loss.
 
