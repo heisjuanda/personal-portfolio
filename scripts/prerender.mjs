@@ -39,10 +39,27 @@ if (!existsSync(SERVER_ENTRY)) {
   );
 }
 
-const template = readFileSync(TEMPLATE_PATH, "utf8");
+let template = readFileSync(TEMPLATE_PATH, "utf8");
 if (!template.includes(ROOT_PLACEHOLDER)) {
   throw new Error(`index.html no longer contains ${ROOT_PLACEHOLDER}; cannot inject markup.`);
 }
+
+// Inline the stylesheet. The HTML is served from Cloudflare's edge cache, so
+// a separate render-blocking CSS request costs a full round trip that the
+// pre-rendered markup then waits on. Inlined, the first response already
+// carries everything needed to paint the hero. The lazy NotFound chunk keeps
+// its own CSS file; only the entry stylesheet is inlined.
+const STYLESHEET_LINK = /<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/;
+const linkMatch = template.match(STYLESHEET_LINK);
+if (!linkMatch) {
+  throw new Error("index.html has no entry stylesheet <link> to inline.");
+}
+const css = readFileSync(resolve(CLIENT_DIR, `.${linkMatch[1]}`), "utf8");
+if (css.includes("</style")) {
+  throw new Error("Stylesheet contains '</style'; cannot be inlined safely.");
+}
+template = template.replace(linkMatch[0], `<style>${css}</style>`);
+console.log(`  inline css: ${linkMatch[1]} (${(css.length / 1024).toFixed(1)} KB)`);
 
 const { render } = await import(pathToFileURL(SERVER_ENTRY).href);
 

@@ -1,54 +1,8 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-
 import PaperContainer from "../PaperContainer/PaperContainer";
-import useReducedMotion from "../../hooks/useReducedMotion.js";
 
 import "./Title.css";
 
 export default function Title() {
-  const imgWrapperRef = useRef(null);
-  const reducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    const wrapper = imgWrapperRef.current;
-    if (!wrapper) return;
-
-    const juandaImg = wrapper.querySelector(".title__img--juanda");
-    const adventureImg = wrapper.querySelector(".title__img--adventure");
-
-    // Land on the resting pose directly: no zoom-in, and no "is-idle" class so
-    // the floating loop never starts.
-    if (reducedMotion) {
-      gsap.set(juandaImg, { opacity: 1, scale: 1, rotation: -1 });
-      gsap.set(adventureImg, { opacity: 1, scale: 1, rotation: 1 });
-      return;
-    }
-
-    const tl = gsap.timeline({
-      onComplete: () => {
-        wrapper.classList.add("is-idle");
-      }
-    });
-
-    gsap.set([juandaImg, adventureImg], { opacity: 0 });
-
-    tl.fromTo(
-      juandaImg,
-      { scale: 2.5, rotation: -25, opacity: 0 },
-      { scale: 1, rotation: -1, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }
-    ).fromTo(
-      adventureImg,
-      { scale: 2.5, rotation: 25, opacity: 0 },
-      { scale: 1, rotation: 1, opacity: 1, duration: 0.45, ease: "back.out(1.4)" },
-      "-=0.25"
-    );
-
-    return () => {
-      tl.kill();
-    };
-  }, [reducedMotion]);
-
   return (
     <section className="title">
       <div className="title__scraps" aria-hidden="true">
@@ -77,7 +31,7 @@ export default function Title() {
           </p>
         </PaperContainer>
       </div>
-      <div className="title__img-wrapper" ref={imgWrapperRef}>
+      <div className="title__img-wrapper">
         <picture>
           <source media="(max-width: 550px)" srcSet="/images/title/juanda's--mobile.avif" />
           <img
