@@ -23,7 +23,7 @@ export default function SEOHead({
 }) {
   const fullTitle = title
     ? `${title} — Juan David Moreno`
-    : "Juan David Moreno | Software Engineer in Colombia";
+    : "Juan David Moreno Alfonso | Software Engineer in Colombia";
   const fullCanonical = `${BASE_URL}${canonical}`;
   const fullOgImage = new URL(ogImage, `${BASE_URL}/`).href;
 

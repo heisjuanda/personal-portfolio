@@ -203,7 +203,7 @@ const profileSchema = {
     {
       "@type": "ProfilePage",
       "@id": PROFILE_PAGE_ID,
-      name: "Juan David Moreno — Software Engineer in Colombia",
+      name: "Juan David Moreno Alfonso — Software Engineer in Colombia",
       url: `${BASE_URL}/`,
       description:
         "Professional profile and portfolio of Juan David Moreno Alfonso, Software Engineer at Truora working on identity verification and fraud prevention, with earlier agency work on frontend architecture and infrastructure.",
@@ -312,7 +312,7 @@ export const SEO_ROUTES = Object.freeze(
     [
       "/",
       {
-        title: "Juan David Moreno | Software Engineer in Colombia",
+        title: "Juan David Moreno Alfonso | Software Engineer in Colombia",
         description: HOME_DESCRIPTION,
         canonical: `${BASE_URL}/`,
         canonicalPath: "/",
