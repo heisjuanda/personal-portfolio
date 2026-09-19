@@ -71,24 +71,47 @@ export default function ProjectDetails() {
             </h1>
             <p className="project-details__context">
               <span>&rarr; CONTEXT:</span> {project.context}</p>
+            {project.alternateName && (
+              <p className="project-details__context project-details__alt-name" lang="es">
+                <span>&rarr; OFFICIAL TITLE:</span> {project.alternateName}
+              </p>
+            )}
           </div>
         </header>
 
-        {/* ── EXPEDIENTE / HOJA TÉCNICA PRINCIPAL ── */}
         <PaperContainer className="section-separator separator-prject--top" />
         <div className="project-details__content">
           <div className="pd-dossier">
 
-            {/* BLOQUE 1: RECUADRO DE ROTULACIÓN (TITLE BLOCK INDUSTRIAL) */}
             <section className="pd-section pd-section--specs">
               <div className="pd-specs-table">
                 <div className="pd-specs-cell"><strong>ROLE:</strong> <span>{project.role}</span></div>
                 <div className="pd-specs-cell"><strong>YEAR:</strong> <span>{project.year}</span></div>
                 <div className="pd-specs-cell"><strong>STACK:</strong> <span>{project.stack}</span></div>
+                {project.team?.credits?.length > 0 && (
+                  <div className="pd-specs-cell pd-specs-cell--team">
+                    <strong>TEAM:</strong>{" "}
+                    <span>
+                      {project.team.size && `${project.team.size} people · with `}
+                      {project.team.credits.map((credit, i) => (
+                        <span key={credit.name}>
+                          {i > 0 && ", "}
+                          {credit.url ? (
+                            <a href={credit.url} target="_blank" rel="noopener noreferrer">
+                              {credit.name}
+                            </a>
+                          ) : (
+                            credit.name
+                          )}
+                          {credit.role && ` (${credit.role})`}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                )}
               </div>
             </section>
 
-            {/* BLOQUE 2: MAQUETA INTERACTIVA (BLUEPRINT TO REALITY) */}
             <section className="pd-section pd-section--visual">
               <div className="pd-visual-frame">
                 <img
@@ -100,7 +123,6 @@ export default function ProjectDetails() {
               </div>
             </section>
 
-            {/* 📝 BLOQUE 3: NARRATIVA CIENTÍFICA (RELAJO VISUAL CON RECORTES Y CINTAS) */}
             <section className="pd-section pd-section--narrative">
 
               <div className="pd-card pd-card--problem">
@@ -127,7 +149,6 @@ export default function ProjectDetails() {
 
             </section>
 
-            {/* 📊 BLOQUE 4: MÉTRICAS E IMPACTO (ORGANIZACIÓN HORIZONTAL OPTIMIZADA) */}
             {(project.metrics || project.impact) && (
               <section className="pd-section pd-section--impact">
 
@@ -151,10 +172,13 @@ export default function ProjectDetails() {
                   </div>
                 )}
 
+                {project.metricsNote && (
+                  <p className="pd-metrics-note">{project.metricsNote}</p>
+                )}
+
               </section>
             )}
 
-            {/* BLOQUE 5: HIGHLIGHTS (NOTAS DE CAMPO) */}
             {project.highlights && (
               <section className="pd-section pd-section--highlights">
                 <h2 className="pd-highlights-title">FIELD NOTES & DEVELOPMENT HIGHLIGHTS</h2>
@@ -179,7 +203,6 @@ export default function ProjectDetails() {
               </section>
             )}
 
-            {/* BLOQUE 6: SISTEMA DE DISEÑO (ACTUALIZADO CON VARIABLE CSS) */}
             {project.designSystem?.palette && (
               <section className="pd-section pd-section--design">
                 <h2 className="pd-design-title">CORE SYSTEM PALETTE</h2>
@@ -216,6 +239,11 @@ export default function ProjectDetails() {
                 {project.links?.repo && (
                   <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="pd-action-btn pd-action-btn--repo">
                     <span>SOURCE REPOSITORY &rarr;</span>
+                  </a>
+                )}
+                {project.links?.paper && (
+                  <a href={project.links.paper} target="_blank" rel="noopener noreferrer" className="pd-action-btn pd-action-btn--repo">
+                    <span>READ THE THESIS &rarr;</span>
                   </a>
                 )}
                 {relatedProjects.map((relatedProject) => (

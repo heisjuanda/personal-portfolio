@@ -218,7 +218,16 @@ const profileSchema = {
 };
 
 function createProjectGraph(project, canonical, ogImage, title, description) {
-  const sameAs = [project.links?.live, project.links?.repo].filter(Boolean);
+  const sameAs = [
+    project.links?.live,
+    project.links?.repo,
+    project.links?.paper,
+  ].filter(Boolean);
+  const contributors = (project.team?.credits ?? []).map((credit) => ({
+    "@type": "Person",
+    name: credit.name,
+    ...(credit.url && { url: credit.url }),
+  }));
 
   return {
     "@context": "https://schema.org",
@@ -257,6 +266,7 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
         "@type": "CreativeWork",
         "@id": `${canonical}#creative-work`,
         name: project.name,
+        ...(project.alternateName && { alternateName: project.alternateName }),
         description: project.seoDescription,
         url: canonical,
         image: ogImage,
@@ -273,6 +283,7 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
         genre: project.category,
         keywords: project.tags?.join(", "),
         ...(project.role && { creditText: `${project.role} — ${project.name}` }),
+        ...(contributors.length > 0 && { contributor: contributors }),
         ...(sameAs.length > 0 && { sameAs }),
       },
     ],

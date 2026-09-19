@@ -3,10 +3,10 @@ export const PROJECTS_DATA = [
     // project card data
     id: "josh-wood-colour",
     name: "Josh Wood Colour",
-    seoTitle: "Josh Wood Colour: Gatsby & Shopify E-commerce",
-    stack: "React • Shopify • Gatsby • E-commerce",
+    seoTitle: "Josh Wood Colour: Headless Shopify Store with Gatsby",
+    stack: "Gatsby • React • Shopify • Storyblok",
     seoDescription:
-      "Josh Wood Colour is a React, Gatsby and Shopify e-commerce platform optimized for 20% faster initial loads, responsive shopping and stronger email delivery.",
+      "Josh Wood Colour is a headless Shopify store built with Gatsby, React and Storyblok at Cressco: ~20% faster loads, responsive redesign and fixed email deliverability.",
     realSrc: "images/projects/josh_wood_colour.avif",
     blueprintSrc: "images/projects/josh_wood_colour_blueprint.avif",
     ogImage: "images/og/josh-wood-colour.jpg",
@@ -14,23 +14,33 @@ export const PROJECTS_DATA = [
     // project details
     year: "2023",
     category: "E-commerce",
-    tags: ["React", "Shopify", "Gatsby", "E-commerce"],
-    role: "Full Stack Developer",
-    context: "Premium haircare e-commerce platform",
+    tags: [
+      "Gatsby",
+      "React",
+      "Shopify Storefront API",
+      "Storyblok",
+      "Netlify",
+      "E-commerce",
+      "Web Performance",
+      "Email Deliverability",
+    ],
+    role: "Software Developer · Cressco (agency)",
+    context:
+      "Premium at-home hair colour e-commerce for a UK brand, delivered as agency work at Cressco",
     problem:
-      "Customers needed a seamless way to discover, personalize, and purchase premium haircare products online.",
+      "Josh Wood Colour sells premium at-home hair colour to customers who need guidance before buying. The store had to combine editorial content, a product-matching quiz, subscriptions and a fast checkout, while its initial load was slow and its campaign emails were landing in spam.",
     solution:
-      "A high-performance e-commerce experience built with React and Shopify, supporting product catalog management, secure checkout, subscriptions, discount codes, bundles, and customer-specific personalization.",
+      "A headless storefront: Gatsby 5 and React render the site statically from Shopify (catalog, cart, checkout, subscriptions, discount codes and bundles) and Storyblok (editorial content), deployed on Netlify Edge behind Cloudflare. I worked on frontend performance, the responsive redesign and the email-sending infrastructure.",
     highlights: [
-      "Improved initial load performance by ~20% through frontend optimizations",
-      "Enhanced Shopify campaign email deliverability and reduced automated messages being flagged as spam",
-      "Led a responsive UX redesign to deliver a consistent shopping experience across mobile, tablet, and desktop",
+      "Improved initial load performance by ~20% through frontend optimizations on the Gatsby storefront",
+      "Fixed campaign emails going to spam by cleaning up the sending reputation and rewriting the message templates",
+      "Led a responsive UX redesign to deliver a consistent shopping experience across mobile, tablet and desktop",
     ],
     impact:
-      "Delivered a high-performance, fully responsive e-commerce platform that improved load times by ~20% and elevated the brand's digital presence across mobile, tablet, and desktop.",
+      "A faster, fully responsive headless storefront whose marketing emails reach the inbox again: ~20% quicker initial loads and a consistent shopping experience across mobile, tablet and desktop.",
     metrics: [
       { value: "~20%", label: "Initial load performance gain" },
-      { value: "x2", label: "Increases the campaign email deliverability" },
+      { value: "x2", label: "Campaign email deliverability" },
     ],
 
     // project resources
@@ -38,6 +48,7 @@ export const PROJECTS_DATA = [
     logo: null,
     links: { live: "https://joshwoodcolour.com", repo: null },
     images: [],
+    team: null,
 
     designSystem: {
       fonts: [],
@@ -67,10 +78,10 @@ export const PROJECTS_DATA = [
     // project card data
     id: "juandabot",
     name: "Juanda Bot",
-    seoTitle: "Juanda Bot: RAG Telegram Assistant in Python",
-    stack: "Python • AI Models • Telegram API",
+    seoTitle: "Juanda Bot: Telegram Assistant with Groq, Ollama & n8n",
+    stack: "Python • Telegram API • Groq • n8n",
     seoDescription:
-      "Juanda Bot is a Python and RAG Telegram assistant using Ollama, OpenAI and Groq to provide resilient, contextual 24/7 support for an AI learning platform.",
+      "Juanda Bot is a Python Telegram assistant for an AI learning platform: a public Groq Llama 3 build on Render and a private n8n version with Ollama and cloud fallbacks.",
     realSrc: "images/projects/juandabot.avif",
     blueprintSrc: "images/projects/juandabot_blueprint.avif",
     ogImage: "images/og/juandabot.jpg",
@@ -78,18 +89,31 @@ export const PROJECTS_DATA = [
     // project details
     year: "2025",
     category: "AI · Bot",
-    tags: ["Python", "Telegram API", "OpenAI", "Ollama", "Groq", "n8n"],
+    tags: [
+      "Python",
+      "Telegram API",
+      "python-telegram-bot",
+      "Groq",
+      "Llama 3",
+      "Flask",
+      "Render",
+      "n8n",
+      "Ollama",
+      "OpenAI",
+      "RAG",
+    ],
     role: "Backend Developer · AI Engineer",
-    context: "Conversational support tool for the thesis platform",
+    context:
+      "Conversational support companion for the thesis platform (Universidad del Valle)",
     problem:
       "Users needed a fast, Telegram-native way to navigate the AI platform, access the right modules, and resolve questions about the thesis without waiting for manual support.",
     solution:
-      "A RAG-based conversational assistant built on the full thesis documentation, capable of answering contextual questions, guiding users through the platform, and providing instant support through Telegram. Its Python backend uses Ollama for local inference and n8n fallbacks to OpenAI and Groq.",
+      "A Telegram assistant with two builds. The public one (repo linked below) is a Python bot on python-telegram-bot and Flask/Gunicorn, deployed on Render, that answers with Groq's Llama 3 70B and exposes commands for the oratory and critical-thinking modules, a usability survey and a QR code to the web app. A private iteration replaces the direct SDK call with n8n workflows: a RAG step retrieves context from the thesis documentation, Ollama runs inference locally first, and the flow falls back automatically to OpenAI and Groq.",
     highlights: [
-      "Enabled users to get instant, contextual answers about the platform directly within Telegram",
-      "24/7 contextual support through Telegram, reducing friction and wait times for users",
-      "Reduced user friction by providing guided, conversational onboarding and support",
-      "Designed a resilient inference architecture with Ollama as the primary backend and n8n-based fallback flows using OpenAI and Groq",
+      "Instant, contextual answers about the platform directly inside Telegram, 24/7, with no manual support queue",
+      "Commands for each learning module (/oratoria, /pensamiento), a Nielsen-heuristics usability survey (/encuesta) and a QR code to the web app (/start)",
+      "Public build: python-telegram-bot + Flask on Render, answering with Groq Llama 3 70B for near-zero latency and cost",
+      "Private build: n8n workflows with RAG over the thesis docs, Ollama as primary local inference and automatic fallbacks to OpenAI and Groq",
     ],
     impact:
       "A resilient, always-on Telegram assistant that eliminated wait times for platform support, providing users with instant contextual guidance through natural conversation.",
@@ -98,6 +122,8 @@ export const PROJECTS_DATA = [
       { value: "92%", label: "Participants with stronger debate coherence" },
       { value: "95%", label: "Positive usability feedback" },
     ],
+    metricsNote:
+      "Results measured on the thesis platform this bot supports, not on the bot itself.",
 
     // project resources
     image: null,
@@ -107,16 +133,17 @@ export const PROJECTS_DATA = [
       repo: "https://github.com/heisjuanda/Juan-Dabot",
     },
     images: [],
+    team: null,
     designSystem: null,
   },
   {
     // project card data
     id: "lambda-lang",
     name: "Lambda Lang",
-    seoTitle: "Lambda Lang: Functional Language in Racket",
-    stack: "Dr Racket • Research • Lambda Calculus",
+    seoTitle: "Lambda Lang: Interpreter in Racket (EOPL)",
+    stack: "Racket • EOPL • Interpreter Design",
     seoDescription:
-      "Lambda Lang is a functional language and visual REPL built in Dr Racket to demonstrate parsing, evaluation and lambda-calculus reductions step by step.",
+      "Lambda Lang is a programming language and interpreter built in Racket with the EOPL approach: scanner, parser, AST and evaluator with procedures, objects and methods.",
     realSrc: "images/projects/lambda_lang.avif",
     blueprintSrc: "images/projects/lambda_lang_blueprint.avif",
     ogImage: "images/og/lambda-lang.jpg",
@@ -124,20 +151,30 @@ export const PROJECTS_DATA = [
     // project details
     year: "2023",
     category: "Programming Languages · Research",
-    tags: ["Dr Racket", "Lambda Calculus", "Scheme"],
-    role: "Language Designer · Researcher",
-    context: "University programming languages course",
+    tags: [
+      "Racket",
+      "EOPL",
+      "Scheme",
+      "Interpreter",
+      "Parser",
+      "AST",
+      "Programming Languages",
+      "Universidad del Valle",
+    ],
+    role: "Interpreter Developer · Team of 4",
+    context:
+      "Final project for Fundamentals of Programming Languages (FLP), Universidad del Valle, 2022–2023",
     problem:
-      "Understanding lambda calculus by reading theory alone is abstract — building it forces real comprehension.",
+      "Reading about how programming languages work is abstract. The course asked us to build one: a language with its own grammar, an interpreter that executes it, and a REPL to try it live.",
     solution:
-      "A minimal functional language with custom syntax, parser, evaluator and reduction rules built from scratch in Dr Racket.",
+      "A language and interpreter written in Racket with the EOPL toolkit (#lang eopl). sllgen generates the scanner and parser from the grammar; the evaluator walks the AST with environments that support variables, let and letrec, assignment, procedures, methods and objects with send, update and clone. A REPL prints the parsed AST next to each result, so you can see how every expression is understood before it runs.",
     highlights: [
-      "A learning‑driven, experimental language project to see how programming languages really work behind the syntax",
-      "Built a small functional language in Dr Racket to deeply understand parsing, evaluation, and lambda calculus logic",
-      "Created a visual REPL that shows reductions step‑by‑step, turning abstract concepts into tangible execution",
+      "Grammar to interpreter in one pipeline: sllgen scanner and parser, AST datatypes and an environment-based evaluator",
+      "Objects, methods and clone semantics on top of a functional core with let, letrec, procedures and apply",
+      "REPL that prints the AST for each expression, making parsing and evaluation visible instead of theoretical",
     ],
     impact:
-      "A from-scratch functional language built to deeply understand how programming languages work — from parsing to reduction — resulting in a visual REPL that makes abstract lambda calculus tangible.",
+      "A from-scratch language and interpreter that turned parsing, environments and evaluation into working code, with a REPL that shows the AST behind every expression.",
     metrics: null,
 
     // project resources
@@ -148,16 +185,24 @@ export const PROJECTS_DATA = [
       repo: "https://github.com/heisjuanda/Program-language",
     },
     images: null,
+    team: {
+      size: 4,
+      credits: [
+        { name: "Valentina Cobo", role: "Co-author" },
+        { name: "Paola Andrea Domínguez", role: "Co-author" },
+        { name: "Juan Felipe Jaramillo", role: "Co-author" },
+      ],
+    },
     designSystem: null,
   },
   {
     // project card data
     id: "patitas-a-casa",
     name: "Patitas a Casa",
-    seoTitle: "Patitas a Casa: Pet Adoption Platform in React",
-    stack: "React • PostgreSQL • Tailwind CSS",
+    seoTitle: "Patitas a Casa: Pet Adoption Platform in React & Node",
+    stack: "React • TypeScript • Node • MongoDB",
     seoDescription:
-      "Patitas a Casa is a nonprofit React and PostgreSQL adoption platform that centralizes listings, location search and status tracking for shelters in Argentina.",
+      "Patitas a Casa is a volunteer pet adoption platform in Argentina: React, Vite and TypeScript frontend, Express and MongoDB API, centralizing adoption and lost-pet listings.",
     realSrc: "images/projects/patitas_a_casa.avif",
     blueprintSrc: "images/projects/patitas_a_casa_blueprint.avif",
     ogImage: "images/og/patitas-a-casa.jpg",
@@ -165,13 +210,25 @@ export const PROJECTS_DATA = [
     // project details
     year: "2023",
     category: "Social Impact · Web App",
-    tags: ["Non-profit", "Adoption Platform", "Social Impact", "Community"],
+    tags: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "CSS Modules",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Cloudinary",
+      "Non-profit",
+      "Adoption Platform",
+    ],
     role: "Full Stack Developer · Co-founder",
-    context: "Non-profit, community-driven project",
+    context:
+      "Volunteer, community-driven non-profit project based in Mendoza, Argentina (2023–2024)",
     problem:
       "Stray dogs in Argentina have very low adoption visibility — shelters rely on fragmented social media posts.",
     solution:
-      "A React and Tailwind CSS platform backed by PostgreSQL where shelters and individuals can publish dogs available for adoption with location, photos, search filters, and status tracking.",
+      "A React, Vite and TypeScript frontend with CSS Modules and react-hook-form, backed by a Node/Express API in TypeScript with MongoDB (Mongoose), Cloudinary for pet photos and Brevo for email. Shelters and individuals publish dogs for adoption and lost-and-found reports with location, photos, search filters and status tracking. The team also explored a parallel .NET API.",
     highlights: [
       "Led the frontend implementation of the platform's core views and user flows",
       "Developed shelter-related views to improve visibility for organizations and their available dogs",
@@ -189,6 +246,20 @@ export const PROJECTS_DATA = [
       repo: "https://github.com/adanj27/Patitas-a-casa",
     },
     images: null,
+    team: {
+      size: 10,
+      credits: [
+        { name: "LeoPaez", url: "https://github.com/LeoPaez" },
+        { name: "adanj27", url: "https://github.com/adanj27" },
+        { name: "Spai26", url: "https://github.com/Spai26" },
+        { name: "mauricioMedinaHM", url: "https://github.com/mauricioMedinaHM" },
+        { name: "Bynox4", url: "https://github.com/Bynox4" },
+        { name: "augustobor", url: "https://github.com/augustobor" },
+        { name: "rctoa", url: "https://github.com/rctoa" },
+        { name: "lizardwine", url: "https://github.com/lizardwine" },
+        { name: "leapereira", url: "https://github.com/leapereira" },
+      ],
+    },
     designSystem: {
       fonts: [],
       palette: [
@@ -256,6 +327,7 @@ export const PROJECTS_DATA = [
     logo: null,
     links: { live: "https://juandamoreno.dev", repo: null },
     images: null,
+    team: null,
     designSystem: {
       fonts: [],
       palette: [
@@ -284,10 +356,12 @@ export const PROJECTS_DATA = [
     // project card data
     id: "thesis",
     name: "My Thesis",
-    seoTitle: "AI Speech & Debate Training Platform (Thesis)",
-    stack: "Fast API • Python • React • Academic Project",
+    seoTitle: "AI Oratory & Debate Training Platform (Univalle Thesis)",
+    alternateName:
+      "Creación de módulos interactivos para el desarrollo continuo de la oratoria y el pensamiento crítico en el prototipo de enseñanza de habilidades blandas",
+    stack: "FastAPI • Python • React • Groq",
     seoDescription:
-      "An AI learning platform built with FastAPI, Python and React that improved students' speaking confidence, debate coherence and achieved 95% usability approval.",
+      "Undergraduate thesis at Universidad del Valle: an AI platform built with FastAPI, React, Whisper and Llama 3 that trains oratory and critical thinking, with 95% usability approval.",
     realSrc: "images/projects/thesis.avif",
     blueprintSrc: "images/projects/thesis_blueprint.avif",
     ogImage: "images/og/thesis.jpg",
@@ -296,17 +370,25 @@ export const PROJECTS_DATA = [
     year: "2025",
     category: "AI · Web App",
     tags: [
-      "AI Integration",
-      "Academic Research",
+      "FastAPI",
+      "Python",
+      "React",
+      "PostgreSQL",
+      "Whisper",
+      "Groq",
+      "Llama 3",
+      "GPT-4o mini",
+      "Auth0",
       "Speech Recognition",
-      "Full Stack",
+      "Academic Research",
     ],
     role: "Full Stack Developer · Researcher",
-    context: "Academic thesis project",
+    context:
+      "Undergraduate thesis in Systems Engineering, Universidad del Valle (2025), built on the soft-skills platform started by Juan Azcárate",
     problem:
       "Systems engineering students needed a practical way to improve communication and critical thinking skills to strengthen their academic and professional profile.",
     solution:
-      "A FastAPI, Python and React platform with two AI-powered learning modules: one for critical thinking through structured debates, and another for oratory through guided speech exercises, asynchronous evaluation, and personalized feedback.",
+      "A FastAPI and React platform with modules for oratory, critical thinking and debate. Speech exercises are recorded in the browser, transcribed with Whisper through Groq and evaluated asynchronously; Groq's Llama 3.3 70B and OpenAI's GPT-4o mini generate the debate topics and structured, personalized feedback. PostgreSQL stores progress and Auth0 handles sign-in.",
     highlights: [
       "Built two complete learning modules focused on oratory and critical thinking, from UX to AI integration",
       "Improved speaking confidence, with 85% of students reporting a noticeable increase after using the platform",
@@ -325,10 +407,22 @@ export const PROJECTS_DATA = [
     image: null,
     logo: null,
     links: {
-      live: null,
+      live: "https://trabajo-de-grado-2-front.vercel.app/",
       repo: "https://github.com/heisjuanda/trabajo-de-grado-2",
+      paper: "https://hdl.handle.net/10893/39431",
     },
     images: null,
+    team: {
+      size: 2,
+      credits: [
+        {
+          name: "Juan Azcárate",
+          role: "Base platform author",
+          url: "https://github.com/azcaratejuan",
+        },
+        { name: "Joshua David Triana Madrid", role: "Thesis advisor" },
+      ],
+    },
     designSystem: {
       fonts: [],
       palette: [

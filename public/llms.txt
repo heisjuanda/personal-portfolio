@@ -36,9 +36,9 @@ technical SEO, GSAP motion design, Retrieval-Augmented Generation.
 - [Home Page](https://juandamoreno.dev/) - Introduction, experience, contact, and core skillset.
 
 ## Projects
-- [Josh Wood Colour](https://juandamoreno.dev/projects/josh-wood-colour) - Premium haircare e-commerce platform built with React, Gatsby and Shopify.
-- [Juanda Bot](https://juandamoreno.dev/projects/juandabot) - RAG-based conversational AI Telegram assistant, with Ollama plus OpenAI and Groq fallbacks.
-- [Lambda Lang](https://juandamoreno.dev/projects/lambda-lang) - A functional programming language evaluator and visual REPL built from scratch in Dr Racket.
-- [Patitas a Casa](https://juandamoreno.dev/projects/patitas-a-casa) - A centralized pet adoption platform supporting shelters in Argentina.
+- [Josh Wood Colour](https://juandamoreno.dev/projects/josh-wood-colour) - Headless Shopify store for a UK premium hair colour brand, built with Gatsby 5, React and Storyblok at Cressco; ~20% faster loads and fixed email deliverability.
+- [Juanda Bot](https://juandamoreno.dev/projects/juandabot) - Python Telegram assistant for the thesis platform: public build on python-telegram-bot, Flask and Groq Llama 3 (Render); private build on n8n workflows with RAG, Ollama and OpenAI/Groq fallbacks.
+- [Lambda Lang](https://juandamoreno.dev/projects/lambda-lang) - Programming language and interpreter built in Racket with the EOPL toolkit (sllgen scanner/parser, AST, environment-based evaluator, objects and methods, REPL). Team of four, Universidad del Valle.
+- [Patitas a Casa](https://juandamoreno.dev/projects/patitas-a-casa) - Volunteer pet adoption platform in Mendoza, Argentina: React, Vite and TypeScript frontend with an Express and MongoDB API; adoption and lost-and-found listings for shelters.
 - [My Portfolio](https://juandamoreno.dev/projects/portfolio) - Creative, motion-driven portfolio showing motion design, performance, and structure.
-- [My Thesis](https://juandamoreno.dev/projects/thesis) - An interactive AI platform for oratory and critical thinking training for systems engineering students.
+- [My Thesis](https://juandamoreno.dev/projects/thesis) - Undergraduate thesis at Universidad del Valle (2025): AI platform with FastAPI, React, Whisper and Llama 3 for oratory and critical-thinking training; 95% usability approval. Official record: https://hdl.handle.net/10893/39431 - Demo: https://trabajo-de-grado-2-front.vercel.app/

@@ -108,6 +108,46 @@
   color: #718096;
 }
 
+.pd-specs-table:has(.pd-specs-cell--team) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  & .pd-specs-cell:nth-child(3) {
+    border-right: none;
+  }
+}
+
+.pd-specs-cell--team {
+  grid-column: 1 / -1;
+  border-right: none;
+  border-top: 1px dashed #b0bec5;
+
+  & a {
+    color: #2d3748;
+    text-decoration: underline;
+    text-decoration-color: #b0bec5;
+    text-underline-offset: 2px;
+  }
+
+  & a:hover,
+  & a:focus-visible {
+    text-decoration-color: #2d3748;
+  }
+}
+
+.project-details__alt-name {
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.pd-metrics-note {
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-style: italic;
+  color: #718096;
+  text-align: center;
+  margin: -20px 0 0;
+}
+
 /* 🖼️ MAQUETA INTERACTIVA (BLUEPRINT TO REALITY) */
 .pd-visual-frame {
   position: relative;
@@ -835,9 +875,17 @@
     gap: 20px;
   }
 
+  .pd-specs-table:has(.pd-specs-cell--team) {
+    grid-template-columns: 1fr;
+  }
+
   .pd-specs-cell {
     border-right: none;
     border-bottom: 1px dashed #b0bec5;
+  }
+
+  .pd-specs-cell--team {
+    border-top: none;
   }
 
   .pd-specs-cell:last-child {
