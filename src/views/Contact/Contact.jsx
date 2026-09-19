@@ -14,6 +14,7 @@ export default function Contact() {
       <div className="contact__container">
         <div className="contact__title-wrapper">
           <h2 className="contact__title">Contact Me</h2>
+          <p className="contact__domain">juandamoreno.dev</p>
         </div>
 
         <div className="contact__notes-grid">

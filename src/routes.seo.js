@@ -22,6 +22,7 @@ const personSchema = {
     "Juanda Moreno",
     "heisjuanda",
     "soyjuandamoreno",
+    "juandamoreno",
   ],
   // The site is written in English. These Spanish equivalents are metadata
   // only — they help Spanish-speaking searchers and AI assistants resolve
