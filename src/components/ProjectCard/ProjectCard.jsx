@@ -75,7 +75,7 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
               <img
                 ref={realImageRef}
                 src={blueprintSrc}
-                alt=""
+                alt={`Blueprint sketch of ${name}`}
                 className="blueprint-card__img blueprint-card__img--real"
                 draggable={false}
                 loading="lazy"

@@ -20,18 +20,18 @@ import "./About.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const LAPTOP_DECORATIONS = [
-  { src: "images/about/aws.webp", top: "5%", left: "20%", rotate: -15 },
-  { src: "images/about/terraform.webp", top: "8%", left: "72%", rotate: 18 },
-  { src: "images/about/javascript.webp", top: "32%", left: "10%", rotate: -12 },
-  { src: "images/about/typescript.webp", top: "55%", left: "12%", rotate: 22 },
-  { src: "images/about/react.webp", top: "28%", left: "38%", rotate: 8 },
-  { src: "images/about/vue.webp", top: "50%", left: "42%", rotate: -20 },
-  { src: "images/about/python.webp", top: "30%", left: "75%", rotate: 14 },
-  { src: "images/about/golang.webp", top: "52%", left: "68%", rotate: -10 },
-  { src: "images/about/java.webp", top: "42%", left: "90%", rotate: 25 },
-  { src: "images/about/android.webp", top: "78%", left: "22%", rotate: -18 },
-  { src: "images/about/kotlin.webp", top: "82%", left: "48%", rotate: 12 },
-  { src: "images/about/shopify.webp", top: "76%", left: "78%", rotate: -8 },
+  { src: "images/about/aws.webp", name: "AWS", top: "5%", left: "20%", rotate: -15 },
+  { src: "images/about/terraform.webp", name: "Terraform", top: "8%", left: "72%", rotate: 18 },
+  { src: "images/about/javascript.webp", name: "JavaScript", top: "32%", left: "10%", rotate: -12 },
+  { src: "images/about/typescript.webp", name: "TypeScript", top: "55%", left: "12%", rotate: 22 },
+  { src: "images/about/react.webp", name: "React", top: "28%", left: "38%", rotate: 8 },
+  { src: "images/about/vue.webp", name: "Vue.js", top: "50%", left: "42%", rotate: -20 },
+  { src: "images/about/python.webp", name: "Python", top: "30%", left: "75%", rotate: 14 },
+  { src: "images/about/golang.webp", name: "Go", top: "52%", left: "68%", rotate: -10 },
+  { src: "images/about/java.webp", name: "Java", top: "42%", left: "90%", rotate: 25 },
+  { src: "images/about/android.webp", name: "Android", top: "78%", left: "22%", rotate: -18 },
+  { src: "images/about/kotlin.webp", name: "Kotlin", top: "82%", left: "48%", rotate: 12 },
+  { src: "images/about/shopify.webp", name: "Shopify", top: "76%", left: "78%", rotate: -8 },
 ];
 
 export default function About() {
@@ -165,12 +165,12 @@ export default function About() {
               My Tech Stack
             </span>
           </div>
-          <div className="about__scatter" aria-hidden="true">
+          <div className="about__scatter" role="group" aria-label="Tech stack">
             {LAPTOP_DECORATIONS.map((deco) => (
               <img
                 key={deco.src}
                 src={deco.src}
-                alt=""
+                alt={`${deco.name} logo`}
                 className="about__scatter-img"
                 style={{
                   top: deco.top,
