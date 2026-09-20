@@ -60,7 +60,7 @@ export default function Character({ isProjectView }) {
 
         idleTimer = setTimeout(() => {
           gsap.to(wrapper, {
-            opacity: 0.25,
+            opacity: 0.1,
             duration: 0.2,
             ease: "power2.out",
           });
