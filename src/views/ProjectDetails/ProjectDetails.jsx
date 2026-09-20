@@ -252,8 +252,8 @@ export default function ProjectDetails() {
               </div>
             </section>
 
-            <section className="pd-section pd-section--visual">
-              {heroFigure ? (
+            {heroFigure && (
+              <section className="pd-section pd-section--visual">
                 <Figure
                   figure={heroFigure}
                   index={1}
@@ -262,17 +262,8 @@ export default function ProjectDetails() {
                   onOpen={setLightbox}
                   className="pd-figure--hero"
                 />
-              ) : (
-                <div className="pd-visual-frame">
-                  <img
-                    className="pd-visual-image"
-                    src={`/${project.realSrc}`}
-                    alt={`${project.name} Production Interface`}
-                    loading="eager"
-                  />
-                </div>
-              )}
-            </section>
+              </section>
+            )}
 
             {/* Brief: problem, solution and, when known, the constraints. */}
             <section

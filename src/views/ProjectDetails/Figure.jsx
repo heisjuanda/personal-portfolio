@@ -1,5 +1,4 @@
 import IMAGES from "../data/projects.images.js";
-import useRevealOnView from "./useRevealOnView.js";
 
 const IMAGE_ROOT = "/images/projects";
 
@@ -19,11 +18,6 @@ export function imageSources(key) {
   };
 }
 
-/**
- * A screenshot pinned into the dossier. `frame` draws the device around it:
- * browser (title bar + url), phone (bezel + notch), terminal, or paper (none).
- * The image loads grey and turns to colour when it scrolls into view.
- */
 export default function Figure({
   figure,
   index,
@@ -32,7 +26,6 @@ export default function Figure({
   onOpen,
   className = "",
 }) {
-  const [ref, revealed] = useRevealOnView();
   const img = imageSources(figure.src);
   if (!img) return null;
 
@@ -40,10 +33,7 @@ export default function Figure({
   const label = `FIG. ${String(index).padStart(2, "0")}`;
 
   return (
-    <figure
-      ref={ref}
-      className={`pd-figure pd-figure--${frame}${revealed ? " is-revealed" : ""} ${className}`}
-    >
+    <figure className={`pd-figure pd-figure--${frame} ${className}`}>
       <div className="pd-tape pd-tape--top-left" />
       <div className="pd-tape pd-tape--top-right" />
 

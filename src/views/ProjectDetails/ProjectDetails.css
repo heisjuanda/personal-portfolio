@@ -310,36 +310,6 @@
   letter-spacing: 1px;
 }
 
-/* 🖼️ MAQUETA INTERACTIVA (BLUEPRINT TO REALITY) */
-.pd-visual-frame {
-  position: relative;
-  background: #1a365d;
-  /* Fondo azul interno */
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
-}
-
-.pd-visual-image {
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: contain;
-  display: block;
-
-  /* 🎨 EFECTO PATENTE: Monocromático azul inicialmente */
-  filter: grayscale(1) contrast(1.3);
-  mix-blend-mode: luminosity;
-  opacity: 0.8;
-  transition: filter 0.4s ease, mix-blend-mode 0.4s ease, opacity 0.4s ease;
-}
-
-.pd-visual-frame:hover .pd-visual-image {
-  filter: none;
-  mix-blend-mode: normal;
-  opacity: 1;
-}
-
 /* =========================================================
    📝 NARRATIVA (RECORTES DE PAPEL CON CINTA ADHESIVA)
    ========================================================= */
@@ -1420,14 +1390,6 @@
   display: block;
   width: 100%;
   height: auto;
-  filter: grayscale(1) contrast(1.15) sepia(0.25) hue-rotate(175deg) saturate(1.4);
-  opacity: 0.88;
-  transition: filter 0.9s ease, opacity 0.9s ease;
-}
-
-.pd-figure.is-revealed .pd-figure__zoom img {
-  filter: none;
-  opacity: 1;
 }
 
 .pd-figure__chrome {
