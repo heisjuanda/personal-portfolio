@@ -1,5 +1,23 @@
 import { LAST_MODIFIED } from "./build-info.js";
 import { PROJECTS_DATA } from "./views/data/projects.data.js";
+import PROJECT_IMAGES from "./views/data/projects.images.js";
+
+const HERO_SIZES = "(max-width: 768px) 100vw, min(1100px, 92vw)";
+
+function heroPreload(project) {
+  const key = project.gallery?.[0]?.src;
+  const entry = key && PROJECT_IMAGES[key];
+  if (!entry) return { href: `/${project.realSrc}`, type: "image/avif" };
+  const [id, name] = key.split("/");
+  const file = (w) => `/images/projects/${id}/${name}-${w}.avif`;
+  const preferred = entry.sizes.includes(1024) ? 1024 : entry.sizes.at(-1);
+  return {
+    href: file(preferred),
+    type: "image/avif",
+    srcset: entry.sizes.map((w) => `${file(w)} ${w}w`).join(", "),
+    sizes: HERO_SIZES,
+  };
+}
 
 export const BASE_URL = "https://juandamoreno.dev";
 
@@ -24,9 +42,6 @@ const personSchema = {
     "soyjuandamoreno",
     "juandamoreno",
   ],
-  // The site is written in English. These Spanish equivalents are metadata
-  // only — they help Spanish-speaking searchers and AI assistants resolve
-  // the same person, without translating or duplicating any page.
   jobTitle: [
     "Software Engineer",
     "Full Stack Software Engineer",
@@ -92,12 +107,7 @@ const personSchema = {
     responsibilities:
       "Leads projects end to end, interviews engineering candidates and mentors interns.",
   },
-  // alumniOf covers both education and past employers (schema.org allows
-  // Organization here), which is how Cressco stays in the graph without
-  // implying it is a current role.
   alumniOf: [
-    // Wrapped in OrganizationRole so the study period is machine-readable;
-    // the university itself is still a fully described node via @id.
     {
       "@type": "OrganizationRole",
       roleName: "Systems Engineering undergraduate",
@@ -266,6 +276,7 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
         "@type": "CreativeWork",
         "@id": `${canonical}#creative-work`,
         name: project.name,
+        ...(project.title && { headline: project.title }),
         ...(project.alternateName && { alternateName: project.alternateName }),
         description: project.seoDescription,
         url: canonical,
@@ -293,8 +304,6 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
 const projectSeoRoutes = PROJECTS_DATA.map((project) => {
   const path = `/projects/${project.id}`;
   const canonical = `${BASE_URL}${path}`;
-  // Prefer the generated 1200x630 JPEG card: social crawlers cannot decode
-  // the AVIF artwork the site itself displays.
   const ogImage = new URL(project.ogImage ?? project.realSrc, `${BASE_URL}/`)
     .href;
   const title = `${project.seoTitle ?? project.name} — Juan David Moreno`;
@@ -306,6 +315,7 @@ const projectSeoRoutes = PROJECTS_DATA.map((project) => {
       description: project.seoDescription,
       canonical,
       canonicalPath: path,
+      heroImage: heroPreload(project),
       ogImage,
       ogImageAlt: `${project.name} project by Juan David Moreno`,
       jsonLd: createProjectGraph(

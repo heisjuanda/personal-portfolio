@@ -61,14 +61,36 @@ function rewriteSeo(response, seo) {
     .on('meta[name="twitter:image"]', setContent(seo.ogImage))
     .on('meta[name="twitter:image:alt"]', setContent(seo.ogImageAlt));
 
-  if (seo.jsonLd) {
-    const jsonLd = JSON.stringify(seo.jsonLd).replaceAll("<", "\\u003c");
+  if (seo.heroImage) {
+    rewriter.on('link[rel="preload"][as="image"]', {
+      element(element) {
+        element.remove();
+      },
+    });
+  }
+
+  if (seo.jsonLd || seo.heroImage) {
+    const jsonLd = seo.jsonLd
+      ? JSON.stringify(seo.jsonLd).replaceAll("<", "\\u003c")
+      : null;
     rewriter.on("head", {
       element(element) {
-        element.append(
-          `<script type="application/ld+json">${jsonLd}</script>`,
-          { html: true },
-        );
+        if (seo.heroImage) {
+          const hero = seo.heroImage;
+          const responsive = hero.srcset
+            ? ` imagesrcset="${hero.srcset}" imagesizes="${hero.sizes}"`
+            : "";
+          element.append(
+            `<link rel="preload" href="${hero.href}" as="image" type="${hero.type}"${responsive} fetchpriority="high">`,
+            { html: true },
+          );
+        }
+        if (jsonLd) {
+          element.append(
+            `<script type="application/ld+json">${jsonLd}</script>`,
+            { html: true },
+          );
+        }
       },
     });
   }
@@ -83,7 +105,10 @@ function shellPathFor(status, seo) {
 
 async function serveAppShell(request, env, status, seo) {
   const shellUrl = new URL(shellPathFor(status, seo), request.url);
-  const indexResponse = await env.ASSETS.fetch(shellUrl);
+  let indexResponse = await env.ASSETS.fetch(shellUrl);
+  if (!indexResponse.ok) {
+    indexResponse = await env.ASSETS.fetch(new URL("/", request.url));
+  }
   const headers = new Headers(indexResponse.headers);
 
   if (status === 404) {

@@ -1,23 +1,10 @@
-/**
- * Builds the 1200x630 Open Graph cards from each project's hand-drawn artwork.
- *
- * Why: social crawlers (LinkedIn, X, Facebook, WhatsApp, Slack) do not decode
- * AVIF, so sharing a project page produced no preview image at all. The site
- * keeps using the original .avif files for display — these JPEGs exist only to
- * be referenced by og:image / twitter:image.
- *
- * The artwork is mounted at native-ish size on a blueprint sheet rather than
- * upscaled to fill the frame: the sources are only ~400px on the short side,
- * and social previews render around 500px wide anyway.
- *
- * Run: node scripts/make-og-images.mjs
- */
 import { mkdir } from "node:fs/promises";
 import { statSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
 import { PROJECTS_DATA } from "../src/views/data/projects.data.js";
+import PROJECT_IMAGES from "../src/views/data/projects.images.js";
 
 const OUT_DIR = "public/images/og";
 const PUBLIC_DIR = "public";
@@ -49,14 +36,19 @@ await mkdir(OUT_DIR, { recursive: true });
 const results = [];
 
 for (const project of PROJECTS_DATA) {
-  const source = project.blueprintSrc ?? project.realSrc;
+  const heroKey = project.gallery?.[0]?.src;
+  const heroSizes = heroKey ? PROJECT_IMAGES[heroKey]?.sizes : null;
+  const source = heroSizes
+    ? `images/projects/${heroKey}-${heroSizes.at(-1)}.avif`
+    : (project.blueprintSrc ?? project.realSrc);
   const src = path.join(PUBLIC_DIR, source);
   const out = path.join(OUT_DIR, `${project.id}.jpg`);
 
   const meta = await sharp(src).metadata();
+  const box = heroSizes ? { w: 1080, h: 540 } : { w: ART_BOX, h: ART_BOX };
 
   const art = await sharp(src)
-    .resize(ART_BOX, ART_BOX, { fit: "inside", withoutEnlargement: false })
+    .resize(box.w, box.h, { fit: "inside", withoutEnlargement: false })
     .extend({
       top: FRAME,
       bottom: FRAME,

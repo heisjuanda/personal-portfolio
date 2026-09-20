@@ -1,21 +1,3 @@
-/**
- * Pre-renders every indexable route into static HTML.
- *
- * Runs after `vite build` (client + Worker) and after the SSR build in
- * vite.prerender.config.js. For each route in SEO_ROUTES it renders the React
- * tree with react-dom/static and writes the result inside <div id="root"> of
- * the built dist/client/index.html, so crawlers that do not execute
- * JavaScript (Bingbot, GPTBot, ClaudeBot, PerplexityBot) receive the full
- * page, and Googlebot indexes it on the first pass instead of the render queue.
- *
- * Output, all under dist/client:
- *   /                      -> index.html            (served by the Worker for "/")
- *   /projects/<id>         -> projects/<id>.html    (served for /projects/<id>)
- *   404                    -> 404.html              (served with status 404)
- *
- * The Worker keeps rewriting <head> per route, so nothing here touches
- * title/description/canonical/JSON-LD.
- */
 import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { brotliCompressSync, constants as zlib, gzipSync } from "node:zlib";
@@ -44,11 +26,6 @@ if (!template.includes(ROOT_PLACEHOLDER)) {
   throw new Error(`index.html no longer contains ${ROOT_PLACEHOLDER}; cannot inject markup.`);
 }
 
-// Inline the stylesheet. The HTML is served from Cloudflare's edge cache, so
-// a separate render-blocking CSS request costs a full round trip that the
-// pre-rendered markup then waits on. Inlined, the first response already
-// carries everything needed to paint the hero. The lazy NotFound chunk keeps
-// its own CSS file; only the entry stylesheet is inlined.
 const STYLESHEET_LINK = /<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/;
 const linkMatch = template.match(STYLESHEET_LINK);
 if (!linkMatch) {
@@ -94,7 +71,8 @@ for (const pathname of targets) {
 
   markup = markup.replace(/<link rel="preload"[^>]*\/>/g, "");
 
-  if (/<(title|meta|link)\b/.test(markup)) {
+  const markupWithoutSvg = markup.replace(/<svg\b[\s\S]*?<\/svg>/g, "");
+  if (/<(title|meta|link)\b/.test(markupWithoutSvg)) {
     throw new Error(`Head tags found inside the body markup for ${pathname}`);
   }
 
