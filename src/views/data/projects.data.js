@@ -16,12 +16,16 @@
  *   metricsNote   caption under the metrics when they need a caveat
  *   related       ids of curated related case studies
  *   links         { live, liveLabel?, repo, paper }
+ *   order         position on the home list (1 = first)
+ *   hook          one line under the name on the home card: what it is and the payoff (≤ 70 chars)
  */
 export const PROJECTS_DATA = [
   {
     // project card data
     id: "josh-wood-colour",
     name: "Josh Wood Colour",
+    order: 3,
+    hook: "Headless Shopify store made ~20% faster for a UK brand",
     title: "Josh Wood Colour: a headless Shopify storefront rebuilt with Gatsby 5 and Storyblok",
     seoTitle: "Headless Shopify Store with Gatsby & Storyblok: Case Study",
     stack: "Gatsby • React • Shopify • Storyblok",
@@ -197,6 +201,8 @@ export const PROJECTS_DATA = [
     // project card data
     id: "juandabot",
     name: "Juanda Bot",
+    order: 2,
+    hook: "Telegram assistant for students, running 24/7 on n8n and Groq",
     title: "Juanda Bot: a Telegram AI assistant built with Python, n8n, Ollama and Groq",
     seoTitle: "Telegram AI Assistant: n8n, Ollama & Groq (How I Built It)",
     stack: "Python • Telegram API • Groq • n8n",
@@ -352,6 +358,8 @@ export const PROJECTS_DATA = [
     // project card data
     id: "lambda-lang",
     name: "Lambda Lang",
+    order: 6,
+    hook: "A small language and its interpreter, built from the grammar up",
     title: "Lambda Lang: an interpreter for a small language, built in Racket with EOPL and SLLGEN",
     seoTitle: "Building an Interpreter in Racket with EOPL & SLLGEN",
     stack: "Racket • EOPL • Interpreter Design",
@@ -497,6 +505,8 @@ export const PROJECTS_DATA = [
     // project card data
     id: "patitas-a-casa",
     name: "Patitas a Casa",
+    order: 4,
+    hook: "One adoption platform for shelters in Mendoza, Argentina",
     title: "Patitas a Casa: a volunteer-built pet adoption platform in React, Express and MongoDB",
     seoTitle: "Pet Adoption Platform in React, Node & MongoDB: Case Study",
     stack: "React • TypeScript • Node • MongoDB",
@@ -674,6 +684,8 @@ export const PROJECTS_DATA = [
     // project card data
     id: "portfolio",
     name: "My Portfolio",
+    order: 5,
+    hook: "This site: PageSpeed 100 without giving up the motion",
     title: "How I built this site at PageSpeed 100: React, GSAP, prerender and a Cloudflare Worker",
     nickname: "My Portfolio",
     seoTitle: "React + GSAP Portfolio at PageSpeed 100: How I Built It",
@@ -852,6 +864,8 @@ export const PROJECTS_DATA = [
     // project card data
     id: "thesis",
     name: "My Thesis",
+    order: 1,
+    hook: "AI trainer for public speaking and debate, 95% usability approval",
     title: "Building an AI public speaking and debate trainer with FastAPI, React, Whisper and Llama 3",
     nickname: "My Thesis",
     seoTitle: "AI Public Speaking & Debate Trainer (Thesis): Whisper + LLM",

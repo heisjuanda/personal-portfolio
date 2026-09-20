@@ -8,7 +8,7 @@ import "./ProjectCard.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) {
+export default function ProjectCard({ id, name, hook, stack, realSrc, blueprintSrc }) {
   const cardRef = useRef(null);
   const realImageRef = useRef(null);
   const revealRef = useRef(null);
@@ -86,12 +86,16 @@ export default function ProjectCard({ id, name, stack, realSrc, blueprintSrc }) 
       </div>
 
       <div className="project-spec-row__details">
-        <h3 className="project-spec-row__title" style={{ viewTransitionName: `project-title-${id}` }}>
-          {name}
-        </h3>
-        <PaperContainer className="project-spec-row__description-container">
-          <p className="project-spec-row__description">{stack}</p>
-        </PaperContainer>
+        <Link to={`/projects/${id}`} viewTransition className="project-spec-row__text-link">
+          <h3 className="project-spec-row__title" style={{ viewTransitionName: `project-title-${id}` }}>
+            {name}
+          </h3>
+          {hook && <p className="project-spec-row__hook">{hook}</p>}
+          <PaperContainer className="project-spec-row__description-container">
+            <p className="project-spec-row__description">{stack}</p>
+          </PaperContainer>
+          <span className="project-spec-row__hint" aria-hidden="true">&rarr; case study</span>
+        </Link>
       </div>
     </div>
   );
