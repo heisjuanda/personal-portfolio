@@ -78,11 +78,6 @@
   width: 100%;
 }
 
-/* =========================================================
-   🏷️ TITLE BLOCK (RÓTULO): role / timeline / status
-                             for  / stack (2 cols)
-                             team (full row, optional)
-   ========================================================= */
 .pd-specs-table {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -138,7 +133,6 @@
 .pd-specs-cell--stack { grid-area: stack; border-right: none; }
 .pd-specs-cell--team { grid-area: team; border-right: none; }
 
-/* Status stamp */
 .pd-status {
   display: inline-block;
   font-family: var(--font-sharpie) !important;
@@ -157,7 +151,6 @@
 .pd-status--archived { color: #a98055; }
 .pd-status--prototype { color: #b7791f; }
 
-/* Stack chips grouped by layer */
 .pd-stack-groups {
   display: flex;
   flex-wrap: wrap;
@@ -200,7 +193,6 @@
   box-shadow: 1px 2px 0 #2d3748;
 }
 
-/* Header extras: nickname stamp + official title */
 .project-details__title-row {
   display: flex;
   align-items: baseline;
@@ -215,7 +207,6 @@
   text-wrap: balance;
 }
 
-/* Sentence-length H1s (the searchable titles) step down again. */
 .project-details__title--xl {
   font-size: clamp(30px, 4.2vw, 44px);
   line-height: 1.15;
@@ -239,8 +230,10 @@
   font-style: italic;
 }
 
-/* Section index: folder tabs pinned to the right edge (desktop only) */
 .pd-index {
+  --tab-font: 0.9rem;
+  --tab-pad: 12px;
+  --tab-gap: 6px;
   position: fixed;
   right: 0;
   top: 50%;
@@ -248,24 +241,43 @@
   z-index: 60;
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--tab-gap);
+  max-height: calc(100vh - 24px);
 }
 
 .pd-index__tab {
   writing-mode: vertical-rl;
   font-family: var(--font-sharpie);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
+  font-size: var(--tab-font);
+  letter-spacing: 1.6px;
   text-transform: uppercase;
   text-decoration: none;
   color: #4a3728;
   background: #e6d3b3;
   border: 1px solid #a98055;
   border-right: none;
-  padding: 12px 7px;
+  padding: var(--tab-pad) 6px;
   border-radius: 6px 0 0 6px;
   box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.18);
   transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+@media (max-height: 760px) {
+  .pd-index {
+    --tab-font: 0.82rem;
+    --tab-pad: 9px;
+    --tab-gap: 4px;
+  }
+
+  .pd-index__tab {
+    letter-spacing: 1.2px;
+  }
+}
+
+@media (max-height: 600px) {
+  .pd-index {
+    display: none !important;
+  }
 }
 
 .pd-index__tab:hover,
@@ -281,7 +293,6 @@
   }
 }
 
-/* Impact caption + metric context */
 .pd-metrics-note {
   font-family: var(--font-text);
   font-size: 14px;
@@ -301,7 +312,6 @@
   line-height: 1.35;
 }
 
-/* Shared heading for the new sections */
 .pd-section-title {
   font-family: var(--font-sharpie);
   margin: 0 0 30px 0;
@@ -310,9 +320,6 @@
   letter-spacing: 1px;
 }
 
-/* =========================================================
-   📝 NARRATIVA (RECORTES DE PAPEL CON CINTA ADHESIVA)
-   ========================================================= */
 .pd-section--narrative {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -415,7 +422,6 @@
   margin: 0;
 }
 
-/* Third card: constraints on kraft paper, listed rather than narrated */
 .pd-section--narrative-3 {
   grid-template-columns: 1fr 1fr;
 }
@@ -534,9 +540,6 @@
   }
 }
 
-/* =========================================================
-   📊 MÉTRICAS E IMPACTO (CÍRCULOS DE MARCADOR LIBRES)
-   ========================================================= */
 .pd-section--impact {
   display: flex;
   flex-direction: column;
@@ -656,9 +659,6 @@
   }
 }
 
-/* =========================================================
-   📋 NOTAS DE CAMPO (STICKY NOTES RECTANGULARES - LEFT GLUE)
-   ========================================================= */
 .pd-highlights-title {
   font-family: var(--font-sharpie);
   margin: 0 0 30px 0;
@@ -776,9 +776,6 @@
   }
 }
 
-/* =========================================================
-   🎨 PALETA DE COLORES (ESTILO GARABATO DE NIÑO)
-   ========================================================= */
 .pd-design-title {
   font-family: var(--font-sharpie);
   font-size: 22px;

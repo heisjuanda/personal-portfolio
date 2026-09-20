@@ -50,10 +50,7 @@ const SECTION_INDEX = [
   { id: "gallery", label: "Gallery", when: hasGallery },
   { id: "impact", label: "Impact", when: (p) => p.metrics || p.impact },
   { id: "decisions", label: "Decisions", when: (p) => p.decisions?.length },
-  { id: "notes", label: "Notes", when: (p) => p.highlights?.length },
   { id: "learnings", label: "Learnings", when: (p) => p.learnings?.length },
-  { id: "palette", label: "Palette", when: (p) => p.designSystem?.palette },
-  { id: "links", label: "Links", when: () => true },
 ];
 
 export default function ProjectDetails() {
