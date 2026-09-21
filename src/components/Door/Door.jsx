@@ -72,7 +72,7 @@ export default function Door({ openImage, closedImage, label }) {
             alt="Door"
             className="door-image"
             draggable={false}
-            loading="eager"
+            loading="lazy"
             width={170}
             height={300}
           />

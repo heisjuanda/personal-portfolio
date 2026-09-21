@@ -67,7 +67,7 @@ export default function Contact() {
                   GitHub{"\u2197\uFE0E"}
                 </a>
                 <a
-                  href="https://www.instagram.com/soyjuandamoreno/"
+                  href="https://www.instagram.com/juanda.rar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Juan David Moreno on Instagram (opens in new tab)"

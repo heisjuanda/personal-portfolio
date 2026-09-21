@@ -131,6 +131,7 @@
 
   & .about__window-img {
     width: 310px;
+    height: auto;
     object-fit: contain;
     opacity: 0.8;
   }

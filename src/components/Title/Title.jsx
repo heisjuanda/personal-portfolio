@@ -33,23 +33,37 @@ export default function Title() {
       </div>
       <div className="title__img-wrapper">
         <picture>
-          <source media="(max-width: 550px)" srcSet="/images/title/juanda's--mobile.avif" />
+          <source
+            media="(max-width: 550px)"
+            srcSet="/images/title/juanda's--mobile.avif"
+            width="400"
+            height="102"
+          />
           <img
             className="title__img title__img--juanda"
             src="/images/title/juanda's.avif"
             alt="Juanda's paper collage style title"
             aria-label="Juanda's"
+            width="1000"
+            height="256"
             loading="eager"
             fetchPriority="high"
           />
         </picture>
         <picture>
-          <source media="(max-width: 550px)" srcSet="/images/title/adventure--mobile.avif" />
+          <source
+            media="(max-width: 550px)"
+            srcSet="/images/title/adventure--mobile.avif"
+            width="500"
+            height="111"
+          />
           <img
             className="title__img title__img--adventure"
             src="/images/title/adventure.avif"
             alt="Adventure paper collage style title"
             aria-label="Adventure"
+            width="1000"
+            height="221"
             loading="eager"
             fetchPriority="high"
           />

@@ -225,6 +225,8 @@ export default function About() {
               className="about__window-img"
               src="images/about/window.avif"
               alt=""
+              width="300"
+              height="323"
               loading="lazy"
               draggable={false}
             />

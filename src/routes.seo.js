@@ -149,7 +149,7 @@ const personSchema = {
   sameAs: [
     "https://github.com/heisjuanda",
     "https://www.linkedin.com/in/juandamoreno/",
-    "https://www.instagram.com/soyjuandamoreno/",
+    "https://www.instagram.com/juanda.rar/",
   ],
   contactPoint: {
     "@type": "ContactPoint",
