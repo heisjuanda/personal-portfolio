@@ -1,7 +1,7 @@
 .contact {
   width: 100%;
   min-height: 100vh;
-  background-image: url("/images/contact/kraft_paper.avif");
+  background-color: #bb8e5f;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -10,6 +10,16 @@
   padding: 80px 20px;
   box-sizing: border-box;
   position: relative;
+}
+
+.contact--paper {
+  background-image: url("/images/contact/kraft_paper.avif");
+}
+
+@media (scripting: none) {
+  .contact {
+    background-image: url("/images/contact/kraft_paper.avif");
+  }
 }
 
 .contact::before {

@@ -1,8 +1,39 @@
+import { useEffect, useRef, useState } from "react";
+
 import "./Contact.css";
 
 export default function Contact() {
+  const sectionRef = useRef(null);
+
+  const [paperLoaded, setPaperLoaded] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") {
+      setPaperLoaded(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setPaperLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "150% 0px" },
+    );
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="contact" id="contact">
+    <section
+      ref={sectionRef}
+      className={`contact${paperLoaded ? " contact--paper" : ""}`}
+      id="contact"
+    >
       <div className="contact__scraps" aria-hidden="true">
         <span className="contact__scrap contact__scrap--tape-tl" />
         <span className="contact__scrap contact__scrap--paper-bl" />
