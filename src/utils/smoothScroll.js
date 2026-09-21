@@ -1,16 +1,20 @@
 let activeLenis = null;
 
-/**
- * SmoothScroll owns the Lenis instance; this makes it reachable from the nav.
- * Anchor jumps fight Lenis (the browser jumps, Lenis eases back), so every
- * programmatic scroll has to go through the instance itself.
- */
 export function registerSmoothScroll(instance) {
   activeLenis = instance;
 
   return () => {
     if (activeLenis === instance) activeLenis = null;
   };
+}
+
+export function scrollToTop() {
+  if (activeLenis) {
+    activeLenis.scrollTo(0, { immediate: true, force: true });
+    return;
+  }
+
+  window.scrollTo(0, 0);
 }
 
 export function scrollToSection(sectionId) {

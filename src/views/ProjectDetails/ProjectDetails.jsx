@@ -8,7 +8,7 @@ import { getSeoForPath } from "../../routes.seo.js";
 import Character from "../../components/Character/Character.jsx";
 import SmoothScroll from "../../components/SmoothScroll/SmoothScroll.jsx"
 import PaperContainer from "../../components/PaperContainer/PaperContainer.jsx";
-import { scrollToSection } from "../../utils/smoothScroll.js";
+import { scrollToSection, scrollToTop } from "../../utils/smoothScroll.js";
 import Figure from "./Figure.jsx";
 import Diagram from "./Diagram.jsx";
 import CodeSheet from "./CodeSheet.jsx";
@@ -25,7 +25,6 @@ function formatDate(value) {
   return month ? `${MONTHS[Number(month) - 1]} ${year}` : year;
 }
 
-/** "2025-02".."2025-06" -> "Feb 2025 – Jun 2025"; same value -> once; null end -> "present". */
 function formatTimeline(timeline, fallbackYear) {
   if (!timeline?.start) return fallbackYear ?? null;
   const start = formatDate(timeline.start);
@@ -40,7 +39,6 @@ const STATUS_LABEL = {
   prototype: "Prototype",
 };
 
-/* Section anchors, in page order. A section is listed only when it renders. */
 const hasGallery = (p) =>
   (p.gallery?.length ?? 0) > 1 || Boolean(p.architecture) || Boolean(p.codeSample);
 
@@ -62,7 +60,7 @@ export default function ProjectDetails() {
   const lightboxRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTop();
   }, [id]);
 
   useEffect(() => {

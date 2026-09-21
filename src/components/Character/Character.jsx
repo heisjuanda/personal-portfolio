@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 
-import { PX_PER_HOP, CHARACTER_IMAGES } from "../../constants/constants";
+import { PX_PER_HOP, CHARACTER_IDLE_DELAY, CHARACTER_IMAGES } from "../../constants/constants";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
-import { loadMotion } from "../../utils/loadMotion.js";
 import "./Character.css";
 
 export default function Character({ isProjectView }) {
@@ -39,68 +38,71 @@ export default function Character({ isProjectView }) {
     let accum = 0;
     let idleTimer = null;
 
-    let cancelled = false;
-    let trigger = null;
+    const NAV_KEYS = new Set([
+      "ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " ", "Spacebar",
+    ]);
 
-    loadMotion().then(({ gsap, ScrollTrigger }) => {
-      if (cancelled) return;
+    const markActive = () => {
+      wrapper.classList.remove("character-wrapper--idle");
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        wrapper.classList.add("character-wrapper--idle");
+      }, CHARACTER_IDLE_DELAY);
+    };
 
-      trigger = ScrollTrigger.create({
-        onUpdate: (self) => {
-          const currentScrollY = self.scroll();
-          const rawDelta = Math.abs(currentScrollY - prevScrollY);
-          const scrollDirection = self.direction;
-          prevScrollY = currentScrollY;
+    const onNavKey = (event) => {
+      if (NAV_KEYS.has(event.key)) markActive();
+    };
 
-          if (idleTimer) clearTimeout(idleTimer);
+    const onScroll = () => {
+      markActive();
 
-          gsap.to(wrapper, {
-            opacity: 1,
-            duration: 0.15,
-            overwrite: "auto",
-          });
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - prevScrollY;
+      const rawDelta = Math.abs(delta);
+      prevScrollY = currentScrollY;
 
-          idleTimer = setTimeout(() => {
-            gsap.to(wrapper, {
-              opacity: 0.1,
-              duration: 0.2,
-              ease: "power2.out",
-            });
-          }, 500);
+      if (rawDelta === 0) return;
 
-          if (rawDelta === 0) return;
+      if (delta > 0) {
+        flipper.classList.remove("character-flipper--back");
+      } else {
+        flipper.classList.add("character-flipper--back");
+      }
 
-          if (scrollDirection === 1) {
-            flipper.classList.remove("character-flipper--back");
-          } else if (scrollDirection === -1) {
-            flipper.classList.add("character-flipper--back");
-          }
+      if (rawDelta < 0.5) {
+        accum = 0;
+        return;
+      }
 
-          if (rawDelta < 0.5) {
-            accum = 0;
-            return;
-          }
+      accum += rawDelta;
 
-          accum += rawDelta;
+      if (isHopping.current) {
+        accum = Math.min(accum, PX_PER_HOP * 2);
+        return;
+      }
 
-          if (isHopping.current) {
-            accum = Math.min(accum, PX_PER_HOP * 2);
-            return;
-          }
+      if (accum >= PX_PER_HOP) {
+        triggerHop();
+        accum -= PX_PER_HOP;
+      }
+    };
 
-          if (accum >= PX_PER_HOP) {
-            triggerHop();
-            accum -= PX_PER_HOP;
-          }
-        },
-      });
-    });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("wheel", markActive, { passive: true });
+    window.addEventListener("touchstart", markActive, { passive: true });
+    window.addEventListener("touchmove", markActive, { passive: true });
+    window.addEventListener("keydown", onNavKey);
 
     return () => {
-      cancelled = true;
-      trigger?.kill();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", markActive);
+      window.removeEventListener("touchstart", markActive);
+      window.removeEventListener("touchmove", markActive);
+      window.removeEventListener("keydown", onNavKey);
       hopper.removeEventListener("animationend", onHopEnd);
       if (idleTimer) clearTimeout(idleTimer);
+      wrapper.classList.remove("character-wrapper--idle");
     };
   }, [reducedMotion]);
 

@@ -13,6 +13,10 @@
   transition: opacity 0.3s ease; 
 }
 
+.character-wrapper--idle {
+  opacity: 0.1;
+}
+
 .character-hopper {
   transform-origin: center bottom;
   transform: translateZ(0);
