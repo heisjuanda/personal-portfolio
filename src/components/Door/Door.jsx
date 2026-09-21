@@ -1,14 +1,11 @@
 import { useEffect, useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 
 import PaperContainer from "../PaperContainer/PaperContainer.jsx";
 import { DOOR_MARGIN } from "../../constants/constants";
 import { playSound } from "../../utils/soundManager.js";
+import { loadMotion } from "../../utils/loadMotion.js";
 
 import "./Door.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Door({ openImage, closedImage, label }) {
   const doorRef = useRef(null);
@@ -17,45 +14,55 @@ export default function Door({ openImage, closedImage, label }) {
   useEffect(() => {
     if (!doorRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const wrapper = doorRef.current;
-      const img = imageRef.current;
+    let cancelled = false;
+    let ctx = null;
 
-      ScrollTrigger.create({
-        trigger: wrapper,
-        start: `top center+=${DOOR_MARGIN}`,
-        end: `bottom center-=${DOOR_MARGIN}`,
-        onToggle: (self) => {
-          if (self.isActive) {
-            wrapper.classList.add("is-open");
-            wrapper.classList.remove("is-closed");
-            if (img && openImage) img.src = openImage;
+    loadMotion().then(({ gsap, ScrollTrigger }) => {
+      if (cancelled || !doorRef.current) return;
 
-            playSound("door");
-          } else {
-            wrapper.classList.add("is-closed");
-            wrapper.classList.remove("is-open");
-            if (img && closedImage) img.src = closedImage;
-          }
-        },
-      });
+      ctx = gsap.context(() => {
+        const wrapper = doorRef.current;
+        const img = imageRef.current;
 
-      ScrollTrigger.create({
-        trigger: wrapper,
-        start: "bottom center",
-        onToggle: (self) => {
-          if (self.isActive) {
-            wrapper.classList.add("is-passed");
-            wrapper.classList.remove("is-approaching");
-          } else {
-            wrapper.classList.add("is-approaching");
-            wrapper.classList.remove("is-passed");
-          }
-        },
+        ScrollTrigger.create({
+          trigger: wrapper,
+          start: `top center+=${DOOR_MARGIN}`,
+          end: `bottom center-=${DOOR_MARGIN}`,
+          onToggle: (self) => {
+            if (self.isActive) {
+              wrapper.classList.add("is-open");
+              wrapper.classList.remove("is-closed");
+              if (img && openImage) img.src = openImage;
+
+              playSound("door");
+            } else {
+              wrapper.classList.add("is-closed");
+              wrapper.classList.remove("is-open");
+              if (img && closedImage) img.src = closedImage;
+            }
+          },
+        });
+
+        ScrollTrigger.create({
+          trigger: wrapper,
+          start: "bottom center",
+          onToggle: (self) => {
+            if (self.isActive) {
+              wrapper.classList.add("is-passed");
+              wrapper.classList.remove("is-approaching");
+            } else {
+              wrapper.classList.add("is-approaching");
+              wrapper.classList.remove("is-passed");
+            }
+          },
+        });
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, [openImage, closedImage]);
 
   return (

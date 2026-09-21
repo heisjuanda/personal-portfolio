@@ -1,10 +1,8 @@
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SCROLL_TIP_DELAY, SCROLL_TIP_THRESHOLD } from "../../constants/constants";
-import "./ScrollTip.css";
 
-gsap.registerPlugin(ScrollTrigger);
+import { SCROLL_TIP_DELAY, SCROLL_TIP_THRESHOLD } from "../../constants/constants";
+import { loadMotion } from "../../utils/loadMotion.js";
+import "./ScrollTip.css";
 
 export default function ScrollTip() {
   const chevronDownIcon = "/icons/chevron.webp";
@@ -45,22 +43,30 @@ export default function ScrollTip() {
       startIdleTimer();
     }
 
-    const st = ScrollTrigger.create({
-      onUpdate: (self) => {
-        const currentScroll = self.scroll();
+    let cancelled = false;
+    let st = null;
 
-        if (currentScroll > SCROLL_TIP_THRESHOLD) {
-          hideTip();
-        } else {
-          hideTip();
-          startIdleTimer();
-        }
-      },
+    loadMotion().then(({ ScrollTrigger }) => {
+      if (cancelled) return;
+
+      st = ScrollTrigger.create({
+        onUpdate: (self) => {
+          const currentScroll = self.scroll();
+
+          if (currentScroll > SCROLL_TIP_THRESHOLD) {
+            hideTip();
+          } else {
+            hideTip();
+            startIdleTimer();
+          }
+        },
+      });
     });
 
     return () => {
+      cancelled = true;
       if (timer) clearTimeout(timer);
-      st.kill();
+      st?.kill();
     };
   }, []);
 

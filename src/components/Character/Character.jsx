@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 
 import { PX_PER_HOP, CHARACTER_IMAGES } from "../../constants/constants";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
+import { loadMotion } from "../../utils/loadMotion.js";
 import "./Character.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Character({ isProjectView }) {
   const wrapperRef = useRef(null);
@@ -24,7 +21,6 @@ export default function Character({ isProjectView }) {
     if (!wrapper || !hopper || !shadow || !flipper) return;
 
     const triggerHop = () => {
-      // The character still tracks scroll direction, it just stops bouncing.
       if (reducedMotion || isHopping.current) return;
       isHopping.current = true;
       hopper.classList.add("character-hopper--hop");
@@ -43,58 +39,66 @@ export default function Character({ isProjectView }) {
     let accum = 0;
     let idleTimer = null;
 
-    const trigger = ScrollTrigger.create({
-      onUpdate: (self) => {
-        const currentScrollY = self.scroll();
-        const rawDelta = Math.abs(currentScrollY - prevScrollY);
-        const scrollDirection = self.direction;
-        prevScrollY = currentScrollY;
+    let cancelled = false;
+    let trigger = null;
 
-        if (idleTimer) clearTimeout(idleTimer);
+    loadMotion().then(({ gsap, ScrollTrigger }) => {
+      if (cancelled) return;
 
-        gsap.to(wrapper, {
-          opacity: 1,
-          duration: 0.15,
-          overwrite: "auto",
-        });
+      trigger = ScrollTrigger.create({
+        onUpdate: (self) => {
+          const currentScrollY = self.scroll();
+          const rawDelta = Math.abs(currentScrollY - prevScrollY);
+          const scrollDirection = self.direction;
+          prevScrollY = currentScrollY;
 
-        idleTimer = setTimeout(() => {
+          if (idleTimer) clearTimeout(idleTimer);
+
           gsap.to(wrapper, {
-            opacity: 0.1,
-            duration: 0.2,
-            ease: "power2.out",
+            opacity: 1,
+            duration: 0.15,
+            overwrite: "auto",
           });
-        }, 500);
 
-        if (rawDelta === 0) return;
+          idleTimer = setTimeout(() => {
+            gsap.to(wrapper, {
+              opacity: 0.1,
+              duration: 0.2,
+              ease: "power2.out",
+            });
+          }, 500);
 
-        if (scrollDirection === 1) {
-          flipper.classList.remove("character-flipper--back");
-        } else if (scrollDirection === -1) {
-          flipper.classList.add("character-flipper--back");
-        }
+          if (rawDelta === 0) return;
 
-        if (rawDelta < 0.5) {
-          accum = 0;
-          return;
-        }
+          if (scrollDirection === 1) {
+            flipper.classList.remove("character-flipper--back");
+          } else if (scrollDirection === -1) {
+            flipper.classList.add("character-flipper--back");
+          }
 
-        accum += rawDelta;
+          if (rawDelta < 0.5) {
+            accum = 0;
+            return;
+          }
 
-        if (isHopping.current) {
-          accum = Math.min(accum, PX_PER_HOP * 2);
-          return;
-        }
+          accum += rawDelta;
 
-        if (accum >= PX_PER_HOP) {
-          triggerHop();
-          accum -= PX_PER_HOP;
-        }
-      },
+          if (isHopping.current) {
+            accum = Math.min(accum, PX_PER_HOP * 2);
+            return;
+          }
+
+          if (accum >= PX_PER_HOP) {
+            triggerHop();
+            accum -= PX_PER_HOP;
+          }
+        },
+      });
     });
 
     return () => {
-      trigger.kill();
+      cancelled = true;
+      trigger?.kill();
       hopper.removeEventListener("animationend", onHopEnd);
       if (idleTimer) clearTimeout(idleTimer);
     };

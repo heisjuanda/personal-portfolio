@@ -1,12 +1,9 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PaperContainer from "../PaperContainer/PaperContainer";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
+import { loadMotion } from "../../utils/loadMotion.js";
 import "./ProjectCard.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectCard({ id, name, hook, stack, realSrc, blueprintSrc }) {
   const cardRef = useRef(null);
@@ -17,33 +14,39 @@ export default function ProjectCard({ id, name, hook, stack, realSrc, blueprintS
   useEffect(() => {
     if (!cardRef.current || !realImageRef.current || !revealRef.current) return;
 
-    if (reducedMotion) {
-      gsap.set([revealRef.current, realImageRef.current], { yPercent: 0 });
-      gsap.set(revealRef.current, { visibility: "visible" });
-      return;
-    }
+    if (reducedMotion) return;
 
-    const ctx = gsap.context(() => {
-      gsap.set(revealRef.current, { yPercent: -100, visibility: "visible" });
-      gsap.set(realImageRef.current, { yPercent: 100 });
+    let cancelled = false;
+    let ctx = null;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top bottom",
-          end: "center center",
-          scrub: 0.5,
-        },
+    loadMotion().then(({ gsap }) => {
+      if (cancelled || !cardRef.current) return;
+
+      ctx = gsap.context(() => {
+        gsap.set(revealRef.current, { yPercent: -100, visibility: "visible" });
+        gsap.set(realImageRef.current, { yPercent: 100 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top bottom",
+            end: "center center",
+            scrub: 0.5,
+          },
+        });
+
+        tl.to(revealRef.current, { yPercent: 0, ease: "none" }, 0).to(
+          realImageRef.current,
+          { yPercent: 0, ease: "none" },
+          0,
+        );
       });
-
-      tl.to(revealRef.current, { yPercent: 0, ease: "none" }, 0).to(
-        realImageRef.current,
-        { yPercent: 0, ease: "none" },
-        0,
-      );
     });
 
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, [reducedMotion]);
 
   return (

@@ -96,6 +96,13 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .blueprint-card__reveal {
+    visibility: visible;
+    transform: none;
+  }
+}
+
 .project-spec-row__details {
   width: calc(100% - 450px);
   display: flex;
