@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import PaperContainer from "../PaperContainer/PaperContainer.jsx";
 import { SCROLL_TIP_DELAY, SCROLL_TIP_THRESHOLD } from "../../constants/constants";
 import { loadMotion } from "../../utils/loadMotion.js";
 import "./ScrollTip.css";
@@ -72,9 +73,14 @@ export default function ScrollTip() {
 
   return (
     <div ref={wrapperRef} className="scroll-down-wrapper hidden">
-      <p>Scroll down</p>
-      <img src={chevronDownIcon} alt="Scroll down" loading="lazy" width={24} height={24} />
-      <img src={chevronDownIcon} alt="Scroll down" loading="lazy" width={24} height={24} />
+      <PaperContainer className="scroll-tip__note" tearScale={6} edgeTearScale={8}>
+        <span className="scroll-tip__tape" aria-hidden="true" />
+        <p className="scroll-tip__text">Scroll down</p>
+        <span className="scroll-tip__chevrons" aria-hidden="true">
+          <img src={chevronDownIcon} alt="" loading="lazy" width={24} height={24} />
+          <img src={chevronDownIcon} alt="" loading="lazy" width={24} height={24} />
+        </span>
+      </PaperContainer>
     </div>
   );
 }

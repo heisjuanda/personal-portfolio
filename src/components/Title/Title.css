@@ -1,325 +1,466 @@
 .title {
-    width: 100%;
-    height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  position: relative;
+  background-image: url("/images/title/hero.avif");
+  overflow: hidden;
+
+  & .title__img-wrapper {
     position: relative;
-    background-image: url('/images/title/hero.avif');
-    overflow: hidden;
+    margin-top: 10vw;
+    z-index: 102;
+  }
 
-    & .title__img-wrapper {
-        position: relative;
-        margin-top: 10vw;
-        z-index: 102;
+  & img {
+    min-width: 250px;
+
+    height: auto;
+
+    margin-inline: auto;
+    display: block;
+    will-change: transform;
+
+    filter: drop-shadow(0px 12px 20px rgba(35, 25, 15, 0.22))
+      drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.15));
+  }
+
+  & .title__img--juanda {
+    max-width: 600px;
+    width: 60vw;
+  }
+
+  & .title__img--adventure {
+    max-width: 800px;
+    width: 80vw;
+  }
+
+  & .title__text {
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  & .subtitle__text-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 2vw;
+    transform: translateY(1vw);
+
+    & a,
+    p {
+      font-size: 1rem;
+      font-family: var(--font-heading);
+      color: var(--color-bg);
     }
 
-    & img {
-        min-width: 250px;
+    & .subtitle__year {
+      padding: 0px;
+      margin: 0;
 
-        height: auto;
-
-        margin-inline: auto;
-        display: block;
-        will-change: transform;
-
-        filter: drop-shadow(0px 12px 20px rgba(35, 25, 15, 0.22)) drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.15));
+      & p {
+        color: var(--color-primary-font);
+        font-size: 1.1rem;
+      }
     }
-
-    & .title__img--juanda {
-        max-width: 600px;
-        width: 60vw;
-    }
-
-    & .title__img--adventure {
-        max-width: 800px;
-        width: 80vw;
-    }
-
-    & .title__text {
-        opacity: 0;
-        width: 1px;
-        height: 1px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
-
-    & .subtitle__text-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-inline: 2vw;
-        transform: translateY(1vw);
-
-        & a,
-        p {
-            font-size: 1rem;
-            font-family: var(--font-heading);
-            color: var(--color-bg);
-        }
-
-        & .subtitle__year {
-            padding: 0px;
-            margin: 0;
-
-            & p {
-                color: var(--color-primary-font);
-                font-size: 1.1rem;
-            }
-        }
-    }
+  }
 }
 
 .title .title__img {
-    animation-duration: 0.45s, 4s;
-    animation-fill-mode: both, none;
-    animation-iteration-count: 1, infinite;
-    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1), ease-in-out;
-    animation-timing-function: linear(0, 0.1734, 0.3278, 0.4641, 0.5833, 0.6866, 0.775, 0.8495, 0.9111, 0.9609, 1, 1.0293, 1.05, 1.063, 1.0694, 1.0703, 1.0667, 1.0595, 1.05, 1.0391, 1.0278, 1.0172, 1.0083, 1.0023, 1), ease-in-out;
+  animation-duration: 0.45s, 4s;
+  animation-fill-mode: both, none;
+  animation-iteration-count: 1, infinite;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1), ease-in-out;
+  animation-timing-function:
+    linear(
+      0,
+      0.1734,
+      0.3278,
+      0.4641,
+      0.5833,
+      0.6866,
+      0.775,
+      0.8495,
+      0.9111,
+      0.9609,
+      1,
+      1.0293,
+      1.05,
+      1.063,
+      1.0694,
+      1.0703,
+      1.0667,
+      1.0595,
+      1.05,
+      1.0391,
+      1.0278,
+      1.0172,
+      1.0083,
+      1.0023,
+      1
+    ),
+    ease-in-out;
 }
 
 .title .title__img--juanda {
-    animation-name: title-intro-left, float-juanda;
-    animation-delay: 0s, 0.45s;
+  animation-name: title-intro-left, float-juanda;
+  animation-delay: 0s, 0.45s;
 }
 
 .title .title__img--adventure {
-    animation-name: title-intro-right, float-adventure;
-    animation-delay: 0.2s, 0.65s;
+  animation-name: title-intro-right, float-adventure;
+  animation-delay: 0.2s, 0.65s;
 }
 
 @keyframes title-intro-left {
-    from {
-        transform: scale(1.25) rotate(-12deg);
-    }
+  from {
+    transform: scale(1.25) rotate(-12deg);
+  }
 
-    to {
-        transform: scale(1) rotate(-1deg);
-    }
+  to {
+    transform: scale(1) rotate(-1deg);
+  }
 }
 
 @keyframes title-intro-right {
-    from {
-        transform: scale(1.25) rotate(12deg);
-    }
+  from {
+    transform: scale(1.25) rotate(12deg);
+  }
 
-    to {
-        transform: scale(1) rotate(1deg);
-    }
+  to {
+    transform: scale(1) rotate(1deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .title .title__img {
-        animation: none;
-        opacity: 1;
-    }
+  .title .title__img {
+    animation: none;
+    opacity: 1;
+  }
 
-    .title .title__img--juanda {
-        transform: rotate(-1deg);
-    }
+  .title .title__img--juanda {
+    transform: rotate(-1deg);
+  }
 
-    .title .title__img--adventure {
-        transform: rotate(1deg);
-    }
+  .title .title__img--adventure {
+    transform: rotate(1deg);
+  }
 }
 
 @keyframes float-juanda {
+  0%,
+  100% {
+    transform: rotate(-1deg) translateY(0px);
+  }
 
-    0%,
-    100% {
-        transform: rotate(-1deg) translateY(0px);
-    }
-
-    50% {
-        transform: rotate(-1.5deg) translateY(-6px);
-    }
+  50% {
+    transform: rotate(-1.5deg) translateY(-6px);
+  }
 }
 
 @keyframes float-adventure {
+  0%,
+  100% {
+    transform: rotate(1deg) translateY(0px);
+  }
 
-    0%,
-    100% {
-        transform: rotate(1deg) translateY(0px);
-    }
-
-    50% {
-        transform: rotate(0.5deg) translateY(-10px);
-    }
+  50% {
+    transform: rotate(0.5deg) translateY(-10px);
+  }
 }
 
 .title__scraps {
-    display: none;
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .title__scrap {
-    position: absolute;
+  position: absolute;
 }
 
 .title__scrap--tape-l {
-    top: 22%;
-    left: 4%;
-    width: 130px;
-    height: 34px;
-    background: rgba(198, 40, 40, 0.78);
-    clip-path: polygon(1% 10%, 98% 0%, 100% 45%, 97% 100%, 3% 90%, 0% 50%);
-    transform: rotate(-24deg);
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.22);
+  top: 22%;
+  left: 4%;
+  width: 130px;
+  height: 34px;
+  background: rgba(198, 40, 40, 0.78);
+  clip-path: polygon(1% 10%, 98% 0%, 100% 45%, 97% 100%, 3% 90%, 0% 50%);
+  transform: rotate(-24deg);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.22);
 }
 
 .title__scrap--paper-l {
-    bottom: 18%;
-    left: 3%;
-    width: 200px;
-    height: 150px;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(40, 35, 30, 0.08) 0 1px,
-            transparent 1px 18px
-        ),
-        rgba(245, 238, 220, 0.72);
-    clip-path: polygon(0% 6%, 14% 0%, 100% 8%, 94% 100%, 6% 92%);
-    transform: rotate(-6deg);
-    box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.2);
+  bottom: 18%;
+  left: 3%;
+  width: 200px;
+  height: 150px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(40, 35, 30, 0.08) 0 1px,
+      transparent 1px 18px
+    ),
+    rgba(245, 238, 220, 0.72);
+  clip-path: polygon(0% 6%, 14% 0%, 100% 8%, 94% 100%, 6% 92%);
+  transform: rotate(-6deg);
+  box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .title__scrap--map-r {
-    top: 28%;
-    right: 3%;
-    width: 170px;
-    height: 200px;
-    background:
-        linear-gradient(135deg, rgba(120, 130, 110, 0.25), transparent 50%),
-        repeating-linear-gradient(
-            90deg,
-            rgba(60, 70, 55, 0.12) 0 1px,
-            transparent 1px 22px
-        ),
-        repeating-linear-gradient(
-            0deg,
-            rgba(60, 70, 55, 0.1) 0 1px,
-            transparent 1px 22px
-        ),
-        rgba(210, 205, 185, 0.55);
-    clip-path: polygon(8% 0%, 100% 4%, 92% 100%, 0% 88%);
-    transform: rotate(8deg);
-    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.18);
+  top: 28%;
+  right: 3%;
+  width: 170px;
+  height: 200px;
+  background:
+    linear-gradient(135deg, rgba(120, 130, 110, 0.25), transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(60, 70, 55, 0.12) 0 1px,
+      transparent 1px 22px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(60, 70, 55, 0.1) 0 1px,
+      transparent 1px 22px
+    ),
+    rgba(210, 205, 185, 0.55);
+  clip-path: polygon(8% 0%, 100% 4%, 92% 100%, 0% 88%);
+  transform: rotate(8deg);
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.18);
 }
 
 .title__scrap--tape-r {
-    top: 12%;
-    right: 8%;
-    width: 110px;
-    height: 28px;
-    background: rgba(255, 248, 220, 0.5);
-    clip-path: polygon(0% 20%, 100% 0%, 96% 80%, 2% 100%);
-    transform: rotate(18deg);
-    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.15);
+  top: 12%;
+  right: 8%;
+  width: 110px;
+  height: 28px;
+  background: rgba(255, 248, 220, 0.5);
+  clip-path: polygon(0% 20%, 100% 0%, 96% 80%, 2% 100%);
+  transform: rotate(18deg);
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .title__scrap--stamp {
-    bottom: 14%;
-    right: 6%;
-    width: 92px;
-    height: 92px;
-    border: 3px solid rgba(70, 55, 40, 0.4);
-    border-radius: 50%;
-    transform: rotate(14deg);
-    opacity: 0.65;
+  bottom: 14%;
+  right: 6%;
+  width: 92px;
+  height: 92px;
+  border: 3px solid rgba(70, 55, 40, 0.4);
+  border-radius: 50%;
+  transform: rotate(14deg);
+  opacity: 0.65;
 }
 
 .title__scrap--stamp::before {
-    content: "EXPLORE";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-sharpie);
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    color: rgba(70, 55, 40, 0.55);
+  content: "EXPLORE";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sharpie);
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: rgba(70, 55, 40, 0.55);
 }
 
 @media (min-width: 1000px) {
-    .title {
-        background-size: cover;
-        background-position: center top;
-        background-repeat: no-repeat;
+  .title {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+  .title__scraps {
+    display: block;
+  }
+
+  .title .title__img-wrapper {
+    margin-top: 8vw;
+  }
+
+  .title .title__img--juanda {
+    max-width: 820px;
+    width: 42vw;
+  }
+
+  .title .title__img--adventure {
+    max-width: 1100px;
+    width: 56vw;
+  }
+
+  .title .subtitle__text-wrapper {
+    margin-inline: 3vw;
+
+    & a,
+    p {
+      font-size: 1.15rem;
     }
 
-    .title__scraps {
-        display: block;
+    & .subtitle__year p {
+      font-size: 1.25rem;
     }
+  }
 
-    .title .title__img-wrapper {
-        margin-top: 8vw;
-    }
-
-    .title .title__img--juanda {
-        max-width: 820px;
-        width: 42vw;
-    }
-
-    .title .title__img--adventure {
-        max-width: 1100px;
-        width: 56vw;
-    }
-
-    .title .subtitle__text-wrapper {
-        margin-inline: 3vw;
-
-        & a,
-        p {
-            font-size: 1.15rem;
-        }
-
-        & .subtitle__year p {
-            font-size: 1.25rem;
-        }
-    }
-
-    .title .subtitle__handle.tape-button {
-        padding: 16px 52px;
-    }
+  .title .subtitle__handle.tape-button {
+    padding: 16px 52px;
+  }
 }
 
 @media (min-width: 1600px) {
+  .title__scrap--tape-l {
+    left: 6%;
+    width: 160px;
+    height: 40px;
+  }
 
-    .title__scrap--tape-l {
-        left: 6%;
-        width: 160px;
-        height: 40px;
-    }
+  .title__scrap--paper-l {
+    left: 5%;
+    width: 240px;
+    height: 180px;
+  }
 
-    .title__scrap--paper-l {
-        left: 5%;
-        width: 240px;
-        height: 180px;
-    }
+  .title__scrap--map-r {
+    right: 5%;
+    width: 210px;
+    height: 240px;
+  }
 
-    .title__scrap--map-r {
-        right: 5%;
-        width: 210px;
-        height: 240px;
-    }
+  .title__scrap--tape-r {
+    right: 10%;
+    width: 140px;
+  }
 
-    .title__scrap--tape-r {
-        right: 10%;
-        width: 140px;
-    }
+  .title__scrap--stamp {
+    right: 8%;
+    width: 110px;
+    height: 110px;
+  }
 
-    .title__scrap--stamp {
-        right: 8%;
-        width: 110px;
-        height: 110px;
-    }
+  .title__scrap--stamp::before {
+    font-size: 1rem;
+  }
+}
 
-    .title__scrap--stamp::before {
-        font-size: 1rem;
-    }
+.title__intro {
+  position: relative;
+  z-index: 102;
+
+  margin: 4vw auto 0;
+  max-width: min(680px, 88vw);
+  padding-inline: max(20px, 4vw);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  transform: rotate(-0.7deg);
+  color: var(--color-primary-font);
+  font-family: var(--font-sharpie);
+
+  animation: title-intro-note 0.5s ease-out 0.75s both;
+}
+
+.title__intro-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1.3;
+  font-size: 20px;
+  opacity: 0.78;
+}
+
+.title__intro-line--lead {
+  font-size: 28px;
+  opacity: 1;
+}
+
+.title__intro-chunk {
+  white-space: nowrap;
+}
+
+.title__intro-sep {
+  display: none;
+}
+
+.title__intro-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(198, 40, 40, 0.55);
+  text-underline-offset: 4px;
+
+  transition:
+    color 0.25s ease,
+    text-decoration-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  .title__intro-link:hover {
+    color: rgba(198, 40, 40, 0.95);
+    text-decoration-color: rgba(198, 40, 40, 0.95);
+  }
+}
+
+.title__intro-link:focus-visible {
+  outline: 2px dashed rgba(198, 40, 40, 0.9);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@keyframes title-intro-note {
+  from {
+    opacity: 0;
+    transform: rotate(-0.7deg) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-0.7deg) translateY(0);
+  }
+}
+
+@media (min-width: 700px) {
+  .title__intro-line {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.45ch;
+  }
+
+  .title__intro-sep {
+    display: inline;
+  }
+}
+
+@media (min-width: 1000px) {
+  .title__intro {
+    margin-top: 3vw;
+    padding-inline: 0;
+  }
+}
+
+@media (max-height: 560px) {
+  .title__intro {
+    margin-top: 2vh;
+    gap: 0;
+  }
+
+  .title__intro-line--lead {
+    font-size: 1rem;
+  }
+
+  .title__intro-line {
+    font-size: 0.85rem;
+  }
 }

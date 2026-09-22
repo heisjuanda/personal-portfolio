@@ -1,8 +1,12 @@
 import PaperContainer from "../PaperContainer/PaperContainer";
 
+import { CAREER_START_YEAR } from "../../constants/constants";
+
 import "./Title.css";
 
 export default function Title() {
+  const experienceYears = new Date().getFullYear() - CAREER_START_YEAR;
+
   return (
     <section className="title">
       <div className="title__scraps" aria-hidden="true">
@@ -69,6 +73,34 @@ export default function Title() {
           />
         </picture>
       </div>
+      <p className="title__intro">
+        <span className="title__intro-line title__intro-line--lead">
+          <span className="title__intro-chunk">
+            Software Engineer at{" "}
+            <a
+              className="title__intro-link"
+              href="https://www.truora.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Truora (opens in new tab)"
+            >
+              Truora
+            </a>
+          </span>
+          <span className="title__intro-sep" aria-hidden="true">
+            —
+          </span>
+          <span className="title__intro-chunk">Cali, Colombia</span>
+        </span>
+        <span className="title__intro-line">
+          <span className="title__intro-chunk">
+            +{experienceYears} years building web products,
+          </span>{" "}
+          <span className="title__intro-chunk">
+            APIs and cloud infrastructure
+          </span>
+        </span>
+      </p>
     </section>
   );
 }
