@@ -1756,3 +1756,35 @@
   .pd-codesheet__holes { width: 18px; background-size: 18px 26px; }
   .pd-codesheet__pre { font-size: 13px; }
 }
+
+.pd-all-studies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px dashed #b0bec5;
+  font-family: var(--font-text);
+  font-size: 15px;
+}
+
+.pd-all-studies__label {
+  font-family: var(--font-sharpie);
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #718096;
+}
+
+.pd-all-studies a {
+  color: #2d3748;
+  text-decoration: underline;
+  text-decoration-color: #b0bec5;
+  text-underline-offset: 3px;
+}
+
+.pd-all-studies a:hover,
+.pd-all-studies a:focus-visible {
+  text-decoration-color: #c53030;
+  color: #c53030;
+}

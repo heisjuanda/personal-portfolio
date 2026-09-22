@@ -16,6 +16,10 @@
  *   metricsNote   caption under the metrics when they need a caveat
  *   related       ids of curated related case studies
  *   links         { live, liveLabel?, repo, paper }
+ *   datePublished when the case study first went live (ISO date)
+ *   dateModified  bump this whenever the case study's content changes: it
+ *                 drives both the Article schema and the sitemap's lastmod,
+ *                 which Google only trusts while it stays accurate
  *   order         position on the home list (1 = first)
  *   hook          one line under the name on the home card: what it is and the payoff (≤ 70 chars)
  */
@@ -37,6 +41,8 @@ export const PROJECTS_DATA = [
 
     // project details
     year: "2023",
+    datePublished: "2026-06-20",
+    dateModified: "2026-09-22",
     timeline: { start: "2023", end: "2023" },
     status: "live",
     category: "E-commerce",
@@ -74,17 +80,17 @@ export const PROJECTS_DATA = [
     ],
     decisions: [
       {
-        title: "Josh Wood Colour: a headless Shopify storefront rebuilt with Gatsby 5 and Storyblok",
+        title: "Optimize the existing Gatsby build instead of migrating frameworks",
         why: "A rewrite would have frozen the store for weeks. Targeted frontend optimizations delivered the faster initial load with zero downtime.",
         alternative: "Rebuilding the storefront on another framework",
       },
       {
-        title: "Josh Wood Colour: a headless Shopify storefront rebuilt with Gatsby 5 and Storyblok",
+        title: "Repair the sending reputation and rewrite the templates instead of switching email provider",
         why: "Campaigns were hitting spam because of reputation and message content, not the platform. Fixing both restored inbox delivery without a migration.",
         alternative: "Moving campaigns to a new email provider",
       },
       {
-        title: "Josh Wood Colour: a headless Shopify storefront rebuilt with Gatsby 5 and Storyblok",
+        title: "One responsive layout system for mobile, tablet and desktop",
         why: "Device-specific patches had produced inconsistent experiences. A single responsive redesign gave one shopping flow on every screen.",
         alternative: "Keeping separate mobile fixes",
       },
@@ -214,6 +220,8 @@ export const PROJECTS_DATA = [
 
     // project details
     year: "2025",
+    datePublished: "2026-06-20",
+    dateModified: "2026-09-22",
     timeline: { start: "2025-05", end: "2025-05" },
     status: "live",
     category: "AI · Bot",
@@ -255,17 +263,17 @@ export const PROJECTS_DATA = [
     ],
     decisions: [
       {
-        title: "Juanda Bot: a Telegram AI assistant built with Python, n8n, Ollama and Groq",
+        title: "Groq's Llama 3 70B for the public build",
         why: "Sub-second responses at no cost fit an academic bot that had to stay online for a whole semester.",
         alternative: "A paid, single-provider setup",
       },
       {
-        title: "Juanda Bot: a Telegram AI assistant built with Python, n8n, Ollama and Groq",
+        title: "Flask and Gunicorn on Render as the always-on host",
         why: "A public HTTPS endpoint that Telegram can reach, on a free tier, with no personal machine to keep awake.",
         alternative: "Running the bot from a local machine",
       },
       {
-        title: "Juanda Bot: a Telegram AI assistant built with Python, n8n, Ollama and Groq",
+        title: "n8n workflows for the private build",
         why: "The provider chain, the RAG step and the fallbacks live in a visual workflow that changes without redeploying code. Ollama runs first for privacy and cost; OpenAI and Groq only when it fails.",
         alternative: "Hard-coding the provider chain in the bot",
       },
@@ -371,6 +379,8 @@ export const PROJECTS_DATA = [
 
     // project details
     year: "2023",
+    datePublished: "2026-06-20",
+    dateModified: "2026-09-22",
     timeline: { start: "2022", end: "2023" },
     status: "archived",
     category: "Programming Languages · Research",
@@ -408,17 +418,17 @@ export const PROJECTS_DATA = [
     ],
     decisions: [
       {
-        title: "Lambda Lang: an interpreter for a small language, built in Racket with EOPL and SLLGEN",
+        title: "#lang eopl with sllgen instead of a hand-written parser",
         why: "sllgen generates the scanner and parser from the grammar specification, so the effort went into semantics: environments, evaluation rules and objects.",
         alternative: "A recursive-descent parser written by hand",
       },
       {
-        title: "Lambda Lang: an interpreter for a small language, built in Racket with EOPL and SLLGEN",
+        title: "Environments with references to support assignment",
         why: "set needs mutable bindings. Storing values in vectors behind the environment keeps let, letrec and set consistent with each other.",
         alternative: "Immutable environments with no assignment",
       },
       {
-        title: "Lambda Lang: an interpreter for a small language, built in Racket with EOPL and SLLGEN",
+        title: "Objects as first-class values with send, update and clone",
         why: "It let us explore object semantics (state, dispatch, cloning) on top of the functional core without building a class system.",
         alternative: "Procedures and records only",
       },
@@ -454,7 +464,7 @@ export const PROJECTS_DATA = [
     },
     related: ["thesis"],
     codeSample: {
-      title: "Lambda Lang: an interpreter for a small language, built in Racket with EOPL and SLLGEN",
+      title: "REPL session · proyecto-final-flp.rkt",
       caption: "The interpreter's REPL: primitives, let, letrec, methods and objects",
       lang: "Racket · #lang eopl",
       prompt: "-->",
@@ -518,6 +528,8 @@ export const PROJECTS_DATA = [
 
     // project details
     year: "2023",
+    datePublished: "2026-06-20",
+    dateModified: "2026-09-22",
     timeline: { start: "2023-01", end: "2024-06" },
     status: "archived",
     category: "Social Impact · Web App",
@@ -556,17 +568,17 @@ export const PROJECTS_DATA = [
     ],
     decisions: [
       {
-        title: "Patitas a Casa: a volunteer-built pet adoption platform in React, Express and MongoDB",
+        title: "react-hook-form for the publication forms",
         why: "Adoption and lost-pet forms are long. Uncontrolled fields with schema validation kept them fast and consistent across views.",
         alternative: "Hand-rolled controlled state per field",
       },
       {
-        title: "Patitas a Casa: a volunteer-built pet adoption platform in React, Express and MongoDB",
+        title: "Cloudinary for pet photos",
         why: "Uploads, resizing and delivery are handled by the service, so the API never stores or processes images.",
         alternative: "Storing uploads on the server",
       },
       {
-        title: "Patitas a Casa: a volunteer-built pet adoption platform in React, Express and MongoDB",
+        title: "CSS Modules over a utility framework",
         why: "Scoped styles let ten contributors work on views in parallel without a shared design-token setup.",
         alternative: "Tailwind CSS",
       },
@@ -698,6 +710,8 @@ export const PROJECTS_DATA = [
 
     // project details
     year: "2026",
+    datePublished: "2026-06-20",
+    dateModified: "2026-09-22",
     timeline: { start: "2026-06", end: null },
     status: "live",
     category: "Frontend · Design",
@@ -729,22 +743,22 @@ export const PROJECTS_DATA = [
     ],
     decisions: [
       {
-        title: "How I built this site at PageSpeed 100: React, GSAP, prerender and a Cloudflare Worker",
+        title: "Prerender every route at build time and rewrite the head at the edge",
         why: "Crawlers that do not run JavaScript get the full page, and there is no server render per request. The Cloudflare Worker only swaps title, meta and JSON-LD per route.",
         alternative: "Server-side rendering on Workers",
       },
       {
-        title: "How I built this site at PageSpeed 100: React, GSAP, prerender and a Cloudflare Worker",
+        title: "Vanilla CSS with custom tokens",
         why: "The paper, tape and blueprint effects need clip-paths, masks and blend modes that no utility framework expresses well.",
         alternative: "Tailwind CSS or a component library",
       },
       {
-        title: "How I built this site at PageSpeed 100: React, GSAP, prerender and a Cloudflare Worker",
+        title: "AVIF-only images with preloaded LCP assets",
         why: "The smallest bytes for the hand-drawn artwork. Google Images has indexed AVIF since 2024, and preloads make the hero paint first.",
         alternative: "WebP with JPEG fallbacks",
       },
       {
-        title: "How I built this site at PageSpeed 100: React, GSAP, prerender and a Cloudflare Worker",
+        title: "Analytics only after consent",
         why: "Consent Mode v2 keeps GA4 unloaded until the visitor says yes, so nothing is stored on a visit that declined.",
         alternative: "Loading analytics by default",
       },
@@ -880,6 +894,8 @@ export const PROJECTS_DATA = [
 
     // project details
     year: "2025",
+    datePublished: "2026-06-20",
+    dateModified: "2026-09-22",
     timeline: { start: "2025-02", end: "2025-06" },
     status: "live",
     category: "AI · Web App",
@@ -921,22 +937,22 @@ export const PROJECTS_DATA = [
     ],
     decisions: [
       {
-        title: "Building an AI public speaking and debate trainer with FastAPI, React, Whisper and Llama 3",
+        title: "Whisper through Groq for transcription",
         why: "Server-side transcription gives consistent accuracy in Spanish and lets the evaluation run asynchronously after the recording.",
         alternative: "The browser's Web Speech API",
       },
       {
-        title: "Building an AI public speaking and debate trainer with FastAPI, React, Whisper and Llama 3",
+        title: "Two LLM providers: Llama 3.3 70B on Groq and GPT-4o mini",
         why: "Groq covers the volume at speed and no cost; GPT-4o mini is a second provider for topic generation and feedback when quality or availability calls for it.",
         alternative: "A single provider",
       },
       {
-        title: "Building an AI public speaking and debate trainer with FastAPI, React, Whisper and Llama 3",
+        title: "Asynchronous evaluation instead of a blocking request",
         why: "Transcription plus LLM feedback takes seconds. Running it in the background keeps the UI responsive and lets students move on and come back.",
         alternative: "Waiting on the request while the model answers",
       },
       {
-        title: "Building an AI public speaking and debate trainer with FastAPI, React, Whisper and Llama 3",
+        title: "Build on the existing soft-skills platform",
         why: "Reusing its auth, dashboard and database meant the semester went into the oratory, critical-thinking and debate modules instead of scaffolding.",
         alternative: "A greenfield application",
       },

@@ -510,6 +510,17 @@ export default function ProjectDetails() {
                   </div>
                 </div>
               )}
+
+              <nav className="pd-all-studies" aria-label="All case studies">
+                <span className="pd-all-studies__label">All case studies:</span>
+                {PROJECTS_DATA.filter(({ id: otherId }) => otherId !== project.id).map(
+                  (other) => (
+                    <Link key={other.id} to={`/projects/${other.id}`}>
+                      {other.name}
+                    </Link>
+                  ),
+                )}
+              </nav>
             </section>
 
           </div>

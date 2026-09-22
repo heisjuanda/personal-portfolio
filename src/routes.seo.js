@@ -227,6 +227,21 @@ const profileSchema = {
   ],
 };
 
+function galleryImageUrl(key) {
+  const entry = PROJECT_IMAGES[key];
+  if (!entry) return null;
+  const [id, name] = key.split("/");
+  return `${BASE_URL}/images/projects/${id}/${name}-${entry.sizes.at(-1)}.avif`;
+}
+
+export function projectImages(project) {
+  const urls = (project.gallery ?? [])
+    .map((figure) => galleryImageUrl(figure.src))
+    .filter(Boolean);
+  if (project.realSrc) urls.push(`${BASE_URL}/${project.realSrc}`);
+  return [...new Set(urls)];
+}
+
 function createProjectGraph(project, canonical, ogImage, title, description) {
   const sameAs = [
     project.links?.live,
@@ -238,6 +253,9 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
     name: credit.name,
     ...(credit.url && { url: credit.url }),
   }));
+
+  const images = [ogImage, ...projectImages(project)].slice(0, 4);
+  const languages = Object.values(project.stackGroups ?? {}).flat();
 
   return {
     "@context": "https://schema.org",
@@ -251,8 +269,29 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
         inLanguage: "en",
         isPartOf: { "@id": WEBSITE_ID },
         breadcrumb: { "@id": `${canonical}#breadcrumb` },
-        mainEntity: { "@id": `${canonical}#creative-work` },
+        mainEntity: { "@id": `${canonical}#article` },
         author: { "@id": PERSON_ID },
+        datePublished: project.datePublished,
+        dateModified: project.dateModified,
+      },
+      {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        name: "Juan David Moreno — Portfolio",
+        url: `${BASE_URL}/`,
+        inLanguage: "en",
+        publisher: { "@id": PERSON_ID },
+      },
+      {
+        "@type": "Person",
+        "@id": PERSON_ID,
+        name: "Juan David Moreno Alfonso",
+        url: `${BASE_URL}/`,
+        jobTitle: "Full Stack Software Engineer",
+        sameAs: [
+          "https://github.com/heisjuanda",
+          "https://www.linkedin.com/in/juandamoreno/",
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -273,29 +312,38 @@ function createProjectGraph(project, canonical, ogImage, title, description) {
         ],
       },
       {
-        "@type": "CreativeWork",
-        "@id": `${canonical}#creative-work`,
+        "@type": "Article",
+        "@id": `${canonical}#article`,
+        headline: project.title ?? project.name,
         name: project.name,
-        ...(project.title && { headline: project.title }),
         ...(project.alternateName && { alternateName: project.alternateName }),
         description: project.seoDescription,
         url: canonical,
-        image: ogImage,
+        mainEntityOfPage: { "@id": `${canonical}#webpage` },
+        image: images,
         inLanguage: "en",
-        author: {
-          "@type": "Person",
-          "@id": PERSON_ID,
-          name: "Juan David Moreno Alfonso",
-          url: `${BASE_URL}/`,
-        },
+        author: { "@id": PERSON_ID },
+        publisher: { "@id": PERSON_ID },
         creator: { "@id": PERSON_ID },
         isPartOf: { "@id": WEBSITE_ID },
-        dateCreated: project.year,
+        datePublished: project.datePublished,
+        dateModified: project.dateModified,
         genre: project.category,
         keywords: project.tags?.join(", "),
+        articleSection: "Case study",
         ...(project.role && { creditText: `${project.role} — ${project.name}` }),
         ...(contributors.length > 0 && { contributor: contributors }),
         ...(sameAs.length > 0 && { sameAs }),
+        about: {
+          "@type": "SoftwareSourceCode",
+          name: project.name,
+          description: project.seoDescription,
+          ...(project.links?.repo && { codeRepository: project.links.repo }),
+          ...(project.links?.live && { targetProduct: project.links.live }),
+          ...(languages.length > 0 && { programmingLanguage: languages }),
+          dateCreated: project.timeline?.start ?? project.year,
+          author: { "@id": PERSON_ID },
+        },
       },
     ],
   };
@@ -318,6 +366,9 @@ const projectSeoRoutes = PROJECTS_DATA.map((project) => {
       heroImage: heroPreload(project),
       ogImage,
       ogImageAlt: `${project.name} project by Juan David Moreno`,
+      ogType: "article",
+      lastmod: project.dateModified,
+      images: projectImages(project),
       jsonLd: createProjectGraph(
         project,
         canonical,
@@ -340,6 +391,9 @@ export const SEO_ROUTES = Object.freeze(
         canonicalPath: "/",
         ogImage: `${BASE_URL}/images/og-cover.jpg`,
         ogImageAlt: "Juan David Moreno — Software Engineer Portfolio",
+        ogType: "website",
+        lastmod: LAST_MODIFIED.slice(0, 10),
+        images: PROJECTS_DATA.map((p) => `${BASE_URL}/${p.realSrc}`),
         jsonLd: profileSchema,
       },
     ],

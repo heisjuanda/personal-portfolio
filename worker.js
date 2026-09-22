@@ -21,6 +21,7 @@ const NOT_FOUND_SEO = {
   noIndex: true,
   ogImage: `${SEO_ROUTES["/"].ogImage}`,
   ogImageAlt: SEO_ROUTES["/"].ogImageAlt,
+  ogType: "website",
   jsonLd: null,
 };
 
@@ -50,6 +51,7 @@ function rewriteSeo(response, seo) {
         else element.remove();
       },
     })
+    .on('meta[property="og:type"]', setContent(seo.ogType ?? "website"))
     .on('meta[property="og:url"]', setContent(pageUrl))
     .on('meta[property="og:title"]', setContent(seo.title))
     .on('meta[property="og:description"]', setContent(seo.description))

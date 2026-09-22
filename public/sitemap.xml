@@ -1,53 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://juandamoreno.dev/</loc>
     <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/josh_wood_colour.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/juandabot.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/lambda_lang.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/patitas_a_casa.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/portfolio.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/thesis.avif</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/josh-wood-colour</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-22</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/josh-wood-colour/jwc-home-hero-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/josh-wood-colour/jwc-home-quiz-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/josh-wood-colour/jwc-home-mobile-hero-780.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/josh-wood-colour/jwc-home-bestsellers-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/josh_wood_colour.avif</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/juandabot</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-22</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/juandabot/juandabot-telegram-start-command-1351.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/juandabot/juandabot-telegram-profile-n8n-replies-1342.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/juandabot/juandabot-telegram-bot-card-760.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/juandabot.avif</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/lambda-lang</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-22</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/lambda_lang.avif</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/patitas-a-casa</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-22</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/patitas-a-casa/patitas-adoptar-desktop-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/patitas-a-casa/patitas-home-hero-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/patitas-a-casa/patitas-adoptar-mobile-780.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/patitas-a-casa/patitas-perdidos-desktop-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/patitas_a_casa.avif</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/portfolio</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-22</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/portfolio/portfolio-projects-reveal-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/portfolio/portfolio-hero-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/portfolio/portfolio-about-desk-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/portfolio/portfolio-contact-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/portfolio.avif</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://juandamoreno.dev/projects/thesis</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-22</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/thesis/thesis-oratoria-module-hub-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/thesis/thesis-oratoria-new-speech-advanced-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/thesis/thesis-pensamiento-critico-module-hub-1600.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/thesis/thesis-debate-new-topic-mobile-594.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/thesis.avif</image:loc>
+    </image:image>
   </url>
 
 </urlset>

@@ -1,19 +1,3 @@
-/**
- * Stamps the SEO freshness dates so they cannot go stale by hand.
- *
- * Writes two things:
- *   - src/build-info.js  -> LAST_MODIFIED, consumed by routes.seo.js for
- *                           ProfilePage.dateModified
- *   - public/sitemap.xml -> generated from SEO_ROUTES, so adding a project can
- *                           never desync the sitemap again
- *
- * The stamp is the last *commit* date, not the build time. Google discards
- * `lastmod` when it is consistently inaccurate, and a build timestamp would
- * claim the content changed on every rebuild even when nothing did. Per-file
- * dates are used where a URL maps to a real file (the CV).
- *
- * Runs automatically as part of `npm run build`.
- */
 import { execFileSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
 
@@ -33,40 +17,28 @@ function gitDate(...paths) {
 
 const repoDate = gitDate();
 
-const projectsDate = gitDate(
-  "src/views/data/projects.data.js",
-  "src/views/ProjectDetails",
-  "src/routes.seo.js",
-);
-
-// URLs that are real files rather than app routes.
-const EXTRA_URLS = [];
-
-const entries = [
-  ...Object.keys(SEO_ROUTES).map((path) => ({
+const entries = Object.entries(SEO_ROUTES)
+  .map(([path, seo]) => ({
     loc: path === "/" ? `${BASE_URL}/` : `${BASE_URL}${path}`,
-    lastmod: (path === "/" ? repoDate : projectsDate).slice(0, 10),
-    changefreq: "monthly",
-    priority: path === "/" ? "1.0" : "0.8",
-  })),
-  ...EXTRA_URLS.map(({ loc, file, changefreq, priority }) => ({
-    loc,
-    lastmod: gitDate(file).slice(0, 10),
-    changefreq,
-    priority,
-  })),
-].sort((a, b) => a.loc.localeCompare(b.loc));
+    lastmod: (seo.lastmod ?? repoDate).slice(0, 10),
+    images: seo.images ?? [],
+  }))
+  .sort((a, b) => a.loc.localeCompare(b.loc));
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${entries
   .map(
     (e) => `
   <url>
     <loc>${e.loc}</loc>
-    <lastmod>${e.lastmod}</lastmod>
-    <changefreq>${e.changefreq}</changefreq>
-    <priority>${e.priority}</priority>
+    <lastmod>${e.lastmod}</lastmod>${e.images
+      .map((src) => `
+    <image:image>
+      <image:loc>${src}</image:loc>
+    </image:image>`)
+      .join("")}
   </url>
 `,
   )
@@ -86,5 +58,7 @@ writeFileSync(
 console.log(`  stamp: ${repoDate}`);
 console.log(`  sitemap.xml: ${entries.length} URLs`);
 for (const e of entries) {
-  console.log(`    ${e.lastmod}  ${e.loc.replace(BASE_URL, "")}`);
+  console.log(
+    `    ${e.lastmod}  ${(e.loc.replace(BASE_URL, "") || "/").padEnd(28)} ${e.images.length} images`,
+  );
 }
