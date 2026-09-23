@@ -9,6 +9,11 @@ function normalizePath(pathname) {
   return pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
 }
 
+function cleanHtmlPath(pathname) {
+  const clean = pathname.replace(/(?:\/index)?\.html$/, "") || "/";
+  return clean === pathname ? null : clean;
+}
+
 function isDocumentRequest(request) {
   return request.headers.get("Sec-Fetch-Mode") === "navigate"
     || request.headers.get("Accept")?.includes("text/html");
@@ -142,6 +147,11 @@ export default {
 
     if (isPageRequest && url.pathname !== pathname && VALID_PAGE_PATHS.has(pathname)) {
       return Response.redirect(new URL(pathname + url.search, url).href, 301);
+    }
+
+    const htmlTarget = isPageRequest && cleanHtmlPath(pathname);
+    if (htmlTarget && VALID_PAGE_PATHS.has(htmlTarget)) {
+      return Response.redirect(new URL(htmlTarget + url.search, url).href, 301);
     }
 
     if (isPageRequest && pathname === "/projects") {

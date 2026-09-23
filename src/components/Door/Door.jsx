@@ -68,7 +68,7 @@ export default function Door({ openImage, closedImage, label }) {
   return (
     <div ref={doorRef} className="door-wrapper is-closed is-approaching">
       <PaperContainer className="door__paper-container">
-        {label && <h2 className="door-label">{label}</h2>}
+        {label && <h3 className="door-label">{label}</h3>}
       </PaperContainer>
 
       <div className="door-frame">
