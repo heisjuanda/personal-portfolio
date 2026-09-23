@@ -1032,9 +1032,6 @@
   transform: scale(1.05) translateY(-3px);
 }
 
-/* =========================================================
-   DISEÑO ADAPTABLE (MÓVILES Y TABLETS)
-   ========================================================= */
 @media (max-width: 1024px) {
   .pd-dossier {
     gap: 40px;
@@ -1048,6 +1045,10 @@
 @media (max-width: 768px) {
   .project-details__header {
     padding: 60px 15px 30px 15px;
+  }
+
+  .project-details__content {
+    padding: 30px 16px;
   }
 
   .pd-dossier {
@@ -1105,12 +1106,10 @@
     box-sizing: border-box;
   }
 }
-/* =========================================================
-   🗂️ ENGINEERING DECISIONS (INDEX CARDS)
-   ========================================================= */
+
 .pd-decisions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 28px;
   align-items: stretch;
 }
@@ -1132,6 +1131,7 @@
   transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .pd-decision-card:nth-child(2n) {
@@ -1158,6 +1158,7 @@
 }
 
 .pd-decision-card__title {
+  overflow-wrap: break-word;
   font-family: var(--font-text);
   font-size: 18px;
   font-weight: 700;
@@ -1232,7 +1233,7 @@
 
 .pd-related__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 340px));
   gap: 24px;
 }
 
@@ -1246,6 +1247,7 @@
   border: 2px solid #2d3748;
   padding: 12px;
   box-shadow: 3px 4px 0 #2d3748;
+  min-width: 0;
   transform: rotate(-0.5deg);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
@@ -1283,6 +1285,7 @@
 }
 
 .pd-related-card__name {
+  overflow-wrap: break-word;
   font-family: var(--font-sharpie);
   font-size: 1.15rem;
   color: #2d3748;
@@ -1290,6 +1293,7 @@
 }
 
 .pd-related-card__stack {
+  overflow-wrap: break-word;
   font-family: var(--font-text);
   font-size: 0.9rem;
   color: #718096;
@@ -1314,8 +1318,26 @@
     padding: 24px 20px 28px 36px;
   }
 
+  .pd-decisions-grid {
+    gap: 22px;
+  }
+
+  .pd-decision-card {
+    padding: 18px 16px 20px;
+  }
+
   .pd-related__grid {
     grid-template-columns: 1fr;
+  }
+
+  .pd-related-card {
+    grid-template-columns: 76px 1fr;
+    gap: 12px;
+  }
+
+  .pd-related-card__img {
+    width: 76px;
+    height: 76px;
   }
 }
 
