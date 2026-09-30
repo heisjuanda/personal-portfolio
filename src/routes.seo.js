@@ -28,7 +28,7 @@ const UNIVALLE_ID = `${BASE_URL}/#univalle`;
 
 
 const HOME_DESCRIPTION =
-  "Juan David Moreno Alfonso (heisjuanda) is a Full Stack Software Engineer at Truora, based in Cali, Colombia, building fast, creative web products worldwide.";
+  "Juan David Moreno Alfonso (heisjuanda) is a Full Stack Software Engineer based in Cali, Colombia, open to new roles and building fast, creative web products worldwide.";
 
 const personSchema = {
   "@type": "Person",
@@ -50,7 +50,7 @@ const personSchema = {
     "Desarrollador Full Stack",
   ],
   description:
-    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces. At Truora he works end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS. He also interviews engineering candidates and mentors interns.",
+    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces. At Truora he worked end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS, and also interviewed engineering candidates and mentored interns. He is currently open to new roles.",
   url: `${BASE_URL}/`,
   mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
   image: {
@@ -82,17 +82,6 @@ const personSchema = {
       addressRegion: "Valle del Cauca",
       addressCountry: "CO",
     },
-  },
-  worksFor: {
-    "@type": "Organization",
-    name: "Truora",
-    url: "https://www.truora.com/",
-    description:
-      "Identity verification and fraud prevention platform for companies across Latin America.",
-    sameAs: [
-      "https://www.linkedin.com/company/truora/",
-      "https://www.ycombinator.com/companies/truora",
-    ],
   },
   hasOccupation: {
     "@type": "Occupation",
@@ -126,6 +115,17 @@ const personSchema = {
           addressCountry: "CO",
         },
       },
+    },
+    {
+      "@type": "Organization",
+      name: "Truora",
+      url: "https://www.truora.com/",
+      description:
+        "Identity verification and fraud prevention platform for companies across Latin America, where he worked as a Software Engineer.",
+      sameAs: [
+        "https://www.linkedin.com/company/truora/",
+        "https://www.ycombinator.com/companies/truora",
+      ],
     },
     {
       "@type": "Organization",
@@ -217,7 +217,7 @@ const profileSchema = {
       name: "Juan David Moreno Alfonso — Software Engineer in Colombia",
       url: `${BASE_URL}/`,
       description:
-        "Professional profile and portfolio of Juan David Moreno Alfonso, Software Engineer at Truora working on identity verification and fraud prevention, with earlier agency work on frontend architecture and infrastructure.",
+        "Professional profile and portfolio of Juan David Moreno Alfonso, Software Engineer open to new roles, with experience at Truora on identity verification and fraud prevention and earlier agency work at Cressco on frontend architecture and infrastructure.",
       inLanguage: "en",
       dateModified: LAST_MODIFIED,
       isPartOf: { "@id": WEBSITE_ID },

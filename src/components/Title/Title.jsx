@@ -76,15 +76,9 @@ export default function Title() {
       <p className="title__intro">
         <span className="title__intro-line title__intro-line--lead">
           <span className="title__intro-chunk">
-            Software Engineer at{" "}
-            <a
-              className="title__intro-link"
-              href="https://www.truora.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Truora (opens in new tab)"
-            >
-              Truora
+            Software Engineer,{" "}
+            <a className="title__intro-link" href="#contact">
+              open to new roles
             </a>
           </span>
           <span className="title__intro-sep" aria-hidden="true">

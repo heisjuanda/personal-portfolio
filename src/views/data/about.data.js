@@ -39,17 +39,17 @@ export const PAPER_CONTENT = {
     },
   },
   truora: {
-    title: "Truora (Current)",
+    title: "Truora",
     titleHref: "https://www.truora.com/",
     content:
-      "Truora checks identities and prevents fraud for companies across Latin America. I build the products that decide if a person really is who they say they are: web features, APIs in Go, Android SDK components and services on AWS.",
+      "Truora checks identities and prevents fraud for companies across Latin America. I built the products that decide if a person really is who they say they are: web features, APIs in Go, Android SDK components and services on AWS.",
     experience: {
       role: "Software Engineer",
       achievement: [
         "Cut review time in half (from 60 to 30 seconds per case) on the tool people use to check validations our models are unsure about, with the same quality of decisions.",
         "Designed Labeling Review, which turns those same validations into training data for Truora's internal AI models, reusing what we already had instead of building a new system.",
         "Rebuilt how we read and validate Colombian driver's licenses, a key requirement for one of Truora's biggest clients.",
-        "I also interview engineering candidates and mentor interns at Truora, and lead projects end to end.",
+        "I also interviewed engineering candidates, mentored interns and led projects end to end.",
       ],
     },
   },

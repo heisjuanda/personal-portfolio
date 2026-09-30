@@ -1,15 +1,15 @@
 # Juan David Moreno Alfonso | Software Engineer in Colombia
 
-> Juan David Moreno Alfonso, also known as Juanda and heisjuanda, is a Full Stack Software Engineer at Truora based in Cali, Colombia. He builds high-performance, creative web products for teams worldwide.
+> Juan David Moreno Alfonso, also known as Juanda and heisjuanda, is a Full Stack Software Engineer based in Cali, Colombia, currently open to new roles. He builds high-performance, creative web products for teams worldwide.
 
 ## Key Information
 - **Full name**: Juan David Moreno Alfonso
 - **Aliases**: Juan David Moreno, Juanda, Juanda Moreno, heisjuanda, soyjuandamoreno
 - **Job title**: Software Engineer & Creative Developer (es: Ingeniero de Software, Desarrollador Full Stack)
-- **Current employer**: Truora (https://www.truora.com/) — identity verification and conversational engagement for Latin America
-- **Previous employer**: Cressco — frontend architecture, technical SEO and DNS infrastructure
+- **Availability**: open to new roles (full-time or freelance) — contact heisjuanda@gmail.com
+- **Previous employers**: Truora (https://www.truora.com/) — identity verification and conversational engagement for Latin America; Cressco — frontend architecture, technical SEO and DNS infrastructure
 - **Experience**: 4+ years across frontend, backend, cloud architecture and motion design
-- **Also at Truora**: interviews engineering candidates, mentors interns and leads projects end to end
+- **Also at Truora**: interviewed engineering candidates, mentored interns and led projects end to end
 - **Location**: Cali, Valle del Cauca, Colombia
 - **Languages**: English, Spanish
 - **Domain**: https://juandamoreno.dev/
@@ -28,7 +28,7 @@ technical SEO, GSAP motion design, Retrieval-Augmented Generation.
 ## Selected Impact
 - At Truora: cut manual identity review time from 60s to 30s without lowering data quality; improved
   data extraction and validation for Colombian driver's licenses at InDrive, with an expected $500K in
-  Annual Recurring Revenue. Interviews engineering candidates and mentors interns on the team.
+  Annual Recurring Revenue. Interviewed engineering candidates and mentored interns on the team.
 - At Cressco: improved joshwoodcolour.com initial load time by ~20% and strengthened its SEO; built an
   autosave feature for Reddocares forms that eliminated user data loss.
 
