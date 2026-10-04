@@ -111,6 +111,10 @@ export default function About() {
 
   return (
     <section className="about" id="about" ref={contentRef}>
+      <h2 className="about__title" aria-label="About Juan David Moreno Alfonso">
+        About Juan David Moreno Alfonso
+      </h2>
+
       <AnimatedPaper
         isOpen={isPaperOpen}
         onClose={handlePaperClose}
@@ -123,9 +127,6 @@ export default function About() {
         openImage="images/door_open.avif"
         closedImage="images/door_close.avif"
       />
-      <h2 className="about__title" aria-label="About Juan David Moreno Alfonso">
-        About Juan David Moreno Alfonso
-      </h2>
 
       <div className="sr-only">
         {Object.entries(PAPER_CONTENT).map(([key, value]) => (
