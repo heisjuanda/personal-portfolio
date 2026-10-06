@@ -16,8 +16,8 @@ This portfolio is optimized for speed, accessibility, SEO, and best practices. I
 
 | Platform | Performance | Accessibility | Best Practices | SEO | Report Link |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **📱 Mobile** | 🟢 **96** | 🟢 **100** | 🟢 **100** | 🟢 **100** | [Check Mobile PageSpeed](https://pagespeed.web.dev/analysis/https-juandamoreno-dev/d26lgwz99r?form_factor=mobile) |
-| **💻 Desktop** | 🟢 **100** | 🟢 **100** | 🟢 **100** | 🟢 **100** | [Check Desktop PageSpeed](https://pagespeed.web.dev/analysis/https-juandamoreno-dev/d26lgwz99r?form_factor=desktop) |
+| **📱 Mobile** | 🟢 **93** | 🟢 **100** | 🟢 **100** | 🟢 **100** | [Check Mobile PageSpeed](https://pagespeed.web.dev/analysis/https-juandamoreno-dev/rfjc56i01b?form_factor=mobile) |
+| **💻 Desktop** | 🟢 **100** | 🟢 **100** | 🟢 **100** | 🟢 **100** | [Check Desktop PageSpeed](https://pagespeed.web.dev/analysis/https-juandamoreno-dev/rfjc56i01b?form_factor=desktop) |
 
 ### Optimization Techniques Implemented:
 - **Font & Asset Preloading**: Critical fonts (`collage_font`, `sharpie_font`) and LCP (Largest Contentful Paint) images are preloaded to eliminate Flash of Invisible Text (FOIT) and improve request discovery.

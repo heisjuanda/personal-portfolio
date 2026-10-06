@@ -777,7 +777,7 @@ export const PROJECTS_DATA = [
         context: "Google PageSpeed Insights: performance, accessibility, best practices and SEO",
       },
       {
-        value: "96",
+        value: "93",
         label: "PageSpeed mobile performance",
         context: "Accessibility, best practices and SEO at 100 on mobile",
       },
