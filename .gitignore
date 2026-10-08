@@ -35,3 +35,5 @@ dist-ssr
 
 # Untouched 2x screenshots that feed scripts/make-project-images.mjs
 raw/
+scratch/
+scripts/assets/fonts.conf

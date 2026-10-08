@@ -9,7 +9,8 @@
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
     "deploy:staging": "npm run build && wrangler deploy --name personal-portfolio-staging",
-    "doctor": "npx react-doctor@latest"
+    "doctor": "npx react-doctor@latest",
+    "generate:banners": "node scripts/generate-banners.mjs"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.43.0",
