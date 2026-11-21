@@ -232,12 +232,6 @@ export const PROJECTS_DATA = [
           usage: "Theme color, hero background, featured cards & banners",
         },
         {
-          hex: "#1F1A17",
-          name: "Tinta carbón / Ink (--ink)",
-          role: "neutral",
-          usage: "Primary typography, action buttons (CTA) & editorial blocks",
-        },
-        {
           hex: "#8B5E4F",
           name: "Terracota / Acento (--accent)",
           role: "accent",
