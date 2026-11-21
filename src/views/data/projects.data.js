@@ -227,19 +227,19 @@ export const PROJECTS_DATA = [
       palette: [
         {
           hex: "#EADFD9",
-          name: "Arena / Nude cálido (--sand)",
+          name: "Sand",
           role: "primary",
           usage: "Theme color, hero background, featured cards & banners",
         },
         {
           hex: "#8B5E4F",
-          name: "Terracota / Acento (--accent)",
+          name: "Terracotta",
           role: "accent",
           usage: "Brand highlights, eyebrows, active states & service badges",
         },
         {
           hex: "#F3EEEA",
-          name: "Crema base (--cream)",
+          name: "Base cream",
           role: "secondary",
           usage: "Alternating clean container backgrounds between sections",
         },
