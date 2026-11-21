@@ -134,6 +134,15 @@
   }
 }
 
+@media (min-width: 1000px) {
+  .scroll-down-wrapper {
+    width: auto;
+    left: clamp(20px, 3vw, 44px);
+    bottom: clamp(16px, 2.5vh, 32px);
+    justify-content: flex-start;
+  }
+}
+
 .visible {
   opacity: 1;
   visibility: visible;

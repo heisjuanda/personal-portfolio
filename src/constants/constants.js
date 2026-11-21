@@ -41,7 +41,7 @@ const CONSENT_NOTICE_DELAY = 6000;
 const CONSENT_NOTICE_EXIT = 400;
 
 // Constant for the year of career start
-const CAREER_START_YEAR = 2022;
+const CAREER_START_YEAR = 2021;
 
 const PLANE = {
     TIMEOUT: 5000,
