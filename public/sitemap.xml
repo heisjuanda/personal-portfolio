@@ -4,7 +4,10 @@
 
   <url>
     <loc>https://juandamoreno.dev/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/angie_nails.avif</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://juandamoreno.dev/images/projects/josh_wood_colour.avif</image:loc>
     </image:image>
@@ -22,6 +25,26 @@
     </image:image>
     <image:image>
       <image:loc>https://juandamoreno.dev/images/projects/thesis.avif</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://juandamoreno.dev/projects/angie-nails</loc>
+    <lastmod>2026-11-21</lastmod>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/angie-nails/angie_nail_hero-1107.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/angie-nails/angie_nail_hero_mobile-1000.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/angie-nails/angie_nails_about_me-1107.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/angie-nails/angie_nail_tablet_reservation-599.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://juandamoreno.dev/images/projects/angie_nails.avif</image:loc>
     </image:image>
   </url>
 

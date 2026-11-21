@@ -1567,9 +1567,13 @@
 
 .pd-diagram__edge-label {
   font-family: var(--font-sharpie);
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 0.5px;
   fill: #f6ac7c;
+  paint-order: stroke fill;
+  stroke: #0b1d30;
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
 }
 
 .pd-diagram__node rect {

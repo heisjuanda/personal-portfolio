@@ -1,6 +1,6 @@
 const NODE_W = 212;
 const NODE_H = 76;
-const COL_GAP = 78;
+const COL_GAP = 86;
 const ROW_GAP = 28;
 const PAD = 24;
 
@@ -78,20 +78,18 @@ export default function Diagram({ spec, index }) {
           </defs>
 
           <g className="pd-diagram__edges">
-            {spec.edges.map(([from, to, label], i) => {
+            {spec.edges.map(([from, to], i) => {
               const a = positions.get(from);
               const b = positions.get(to);
               if (!a || !b) return null;
-              const { d, mid, anchor = "middle" } = edgePath(a, b);
+              const { d } = edgePath(a, b);
               return (
-                <g key={`${from}-${to}-${i}`}>
-                  <path d={d} fill="none" markerEnd={`url(#arrow-${index})`} />
-                  {label && (
-                    <text x={mid[0]} y={mid[1]} textAnchor={anchor} className="pd-diagram__edge-label">
-                      {label}
-                    </text>
-                  )}
-                </g>
+                <path
+                  key={`${from}-${to}-${i}`}
+                  d={d}
+                  fill="none"
+                  markerEnd={`url(#arrow-${index})`}
+                />
               );
             })}
           </g>
@@ -123,6 +121,26 @@ export default function Diagram({ spec, index }) {
                 )}
               </g>
             ))}
+          </g>
+
+          <g className="pd-diagram__labels">
+            {spec.edges.map(([from, to, label], i) => {
+              const a = positions.get(from);
+              const b = positions.get(to);
+              if (!a || !b || !label) return null;
+              const { mid, anchor = "middle" } = edgePath(a, b);
+              return (
+                <text
+                  key={`label-${from}-${to}-${i}`}
+                  x={mid[0]}
+                  y={mid[1]}
+                  textAnchor={anchor}
+                  className="pd-diagram__edge-label"
+                >
+                  {label}
+                </text>
+              );
+            })}
           </g>
         </svg>
       </div>

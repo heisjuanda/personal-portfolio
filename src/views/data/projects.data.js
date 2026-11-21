@@ -26,9 +26,237 @@
 export const PROJECTS_DATA = [
   {
     // project card data
+    id: "angie-nails",
+    name: "AC Luxury Aesthetics",
+    nickname: "Angie Nails",
+    order: 3,
+    hook: "Serverless booking platform & catalog on Cloudflare Python Workers",
+    title: "AC Luxury Aesthetics: serverless booking platform and client portal on Cloudflare Workers and D1",
+    seoTitle: "Serverless Booking Platform with Cloudflare Python Workers & D1: Case Study",
+    stack: "Python • Cloudflare Workers • D1 • Vanilla JS • Turnstile",
+    seoDescription:
+      "Case study: serverless booking platform and interactive catalog for AC Luxury Aesthetics, built with Cloudflare Python Workers, D1 database, 2FA admin panel and Turnstile bot defense.",
+    realSrc: "images/projects/angie_nails.avif",
+    blueprintSrc: "images/projects/angie_nails_blueprint.avif",
+    ogImage: "images/og/angie-nails.jpg",
+
+    // project details
+    year: "2026",
+    datePublished: "2026-11-21",
+    dateModified: "2026-11-21",
+    timeline: { start: "2026-09", end: "2026-11" },
+    status: "live",
+    category: "Landing Page & Booking System",
+    tags: [
+      "Python",
+      "Cloudflare Workers",
+      "Cloudflare D1",
+      "SQLite",
+      "Turnstile",
+      "Serverless",
+      "Vanilla JavaScript",
+      "Two-Factor Authentication",
+      "TOTP",
+      "Resend",
+      "Rate Limiting",
+      "Web Performance",
+      "Automated Testing",
+    ],
+    role: "Full Stack Developer & UI Designer",
+    org: {
+      name: "AC Luxury Aesthetics",
+      url: "https://ac-luxury-aesthetics.heisjuanda.workers.dev/",
+      client: "AC Luxury Aesthetics (Cali, Colombia)",
+    },
+    context:
+      "Production website and automated appointment booking system for a beauty studio in Cali, built on serverless edge infrastructure",
+    alternateName: "Sitio web y sistema de agendamiento para estudio de estética y uñas",
+    stackGroups: {
+      backend: ["Cloudflare Python Workers", "Cloudflare D1 (SQLite)", "Workers-py"],
+      frontend: ["Vanilla JavaScript", "HTML5", "CSS3", "esbuild"],
+      security: ["Cloudflare Turnstile", "2FA (TOTP)", "Rate Limiting", "Idempotency", "CSRF auth"],
+      services: ["Resend (Email)", "CallMeBot (WhatsApp Alerts)"],
+    },
+    problem:
+      "AC Luxury Aesthetics managed all client inquiries, portfolio browsing and scheduling manually over WhatsApp. Coordinating multi-service combos (nails, lashes, brows) caused schedule overlaps, repetitive pricing and duration questions, high no-show risk, and friction for clients booking on mobile phones.",
+    solution:
+      "An edge-native booking platform and responsive storefront built on Cloudflare Python Workers and D1 database. Features 100% autonomous scheduling with dynamic combo duration calculations, deposit rules and multi-channel confirmations (WhatsApp + Resend email) to cut no-shows, Cloudflare Turnstile anti-bot defense with API rate limiting, automated client privacy data retention, and a secure studio control panel protected with 2FA (TOTP).",
+    constraints: [
+      "Zero recurring infrastructure costs: built strictly within Cloudflare free serverless tier limits",
+      "Ultra-lightweight mobile experience: fast load times on 3G/4G connections without framework bloat",
+      "Data protection & privacy: automated data retention policies and strict 2FA authentication without intrusive CAPTCHAs",
+    ],
+    decisions: [
+      {
+        title: "Cloudflare Python Workers at the edge instead of a traditional container VM",
+        why: "Running Python directly on Cloudflare Workers edge eliminated cold starts and fixed server costs while achieving global sub-millisecond response times.",
+        alternative: "Hosting a FastAPI server on Render or a dedicated cloud VM",
+      },
+      {
+        title: "Colocated Cloudflare D1 (SQLite) instead of external managed PostgreSQL",
+        why: "Querying SQLite directly at the edge eliminated database connection pool overheads and kept query latency under 15ms.",
+        alternative: "Connecting to an external cloud database (Supabase / Neon)",
+      },
+      {
+        title: "Dynamic combo duration algorithm on the backend instead of static time slots",
+        why: "Multi-service combos (nails, lashes, brows) require contiguous block calculations with buffer padding, which static slots could not accommodate without overlaps.",
+        alternative: "Restricting clients to single-service bookings or manual WhatsApp coordination",
+      },
+      {
+        title: "Cloudflare Turnstile, rate limiting and idempotency keys on public booking endpoints",
+        why: "Invisible bot protection and idempotency prevented duplicate and automated spam bookings without frustrating client checkout with visual CAPTCHAs.",
+        alternative: "Standard interactive CAPTCHA challenges",
+      },
+      {
+        title: "Vanilla JavaScript and CSS with esbuild minification instead of an SPA framework",
+        why: "Almost 100% of beauty salon clients browse on smartphones. Vanilla JS guaranteed instant page loads, a bundle under 50KB, and 100/100 Lighthouse performance.",
+        alternative: "A full React or Next.js SPA frontend",
+      },
+      {
+        title: "Single source of truth branding pipeline with automated synchronization",
+        why: "A centralized site_config.json with a synchronization script propagates branding to static HTML, Schema.org, PWA manifest and SEO tags at build time with zero runtime overhead.",
+        alternative: "Dynamic client-side rendering of all brand texts and assets",
+      },
+    ],
+    highlights: [
+      "100% booking automation: clients book autonomously with transparent pricing, exact durations, and real-time availability",
+      "Dynamic bundle algorithm: automatically calculates block durations for multi-service combos (nails, lashes, brows) preventing schedule overlaps",
+      "No-show reduction: integrated deposit rules with multi-channel confirmations via WhatsApp and transactional emails (Resend)",
+      "Zero fixed infrastructure cost: serverless implementation on global Cloudflare Python Workers and distributed SQLite (D1)",
+      "Mobile-first performance: sub-millisecond edge responses with esbuild-minified static assets, preloaded web fonts, and WebP/SVG optimization",
+      "Bot and abuse shielding: Cloudflare Turnstile verification, rate limiting, and idempotency keys on the public booking API",
+      "Secure studio control panel: appointment management, statuses, and manual schedule blocking protected by 2FA (TOTP / Google Authenticator) and CSRF tokens",
+      "Automated privacy & reliability: database sensitive data purging policies and an automated test suite (unit, integration, E2E, smoke tests)",
+    ],
+    impact:
+      "Automated 100% of studio scheduling with zero fixed hosting costs. Eliminated booking coordination friction, cut no-shows with automated WhatsApp/email confirmations, and delivered high mobile PageSpeed performance.",
+    metrics: [
+      {
+        value: "100%",
+        label: "Autonomous booking",
+        context: "Direct client scheduling with dynamic bundle calculation",
+      },
+      {
+        value: "$0",
+        label: "Fixed infra cost",
+        context: "Global serverless edge execution on Cloudflare Python Workers & D1",
+      },
+      {
+        value: "0MS",
+        label: "Cold start",
+        context: "Sub-millisecond global edge response with minified static assets",
+      },
+      {
+        value: "2fA",
+        label: "TOTP admin security",
+        context: "Protected control panel with CSRF tokens and Turnstile bot defense",
+      },
+    ],
+    learnings: [
+      "Serverless Python on Cloudflare Workers provides exceptional developer ergonomics and performance for production micro-apps.",
+      "For mobile-first local businesses, a zero-framework vanilla stack often delivers vastly superior conversion and UX compared to heavy SPAs.",
+      "Handling multi-service duration logic dynamically on the server creates a frictionless booking UX while protecting schedule integrity.",
+    ],
+
+    // project resources
+    image: null,
+    logo: null,
+    links: {
+      live: "https://ac-luxury-aesthetics.heisjuanda.workers.dev/",
+      liveLabel: "VISIT LIVE STUDIO",
+      repo: "https://github.com/heisjuanda/angie-nails",
+    },
+    images: [],
+    team: null,
+    related: ["josh-wood-colour", "patitas-a-casa"],
+    gallery: [
+      {
+        src: "angie-nails/angie_nail_hero",
+        frame: "browser",
+        url: "ac-luxury-aesthetics.heisjuanda.workers.dev",
+        alt: "AC Luxury Aesthetics desktop homepage hero: nail, lash and brow services with online booking CTA",
+        caption: "Desktop homepage hero highlighting studio services and the instant booking call to action",
+      },
+      {
+        src: "angie-nails/angie_nail_hero_mobile",
+        frame: "phone",
+        alt: "AC Luxury Aesthetics mobile homepage view on smartphone",
+        caption: "Mobile-first responsive layout tailored for smartphone clients on mobile connections",
+      },
+      {
+        src: "angie-nails/angie_nails_about_me",
+        frame: "browser",
+        url: "ac-luxury-aesthetics.heisjuanda.workers.dev/#estudio",
+        alt: "Specialist bio and studio introduction section",
+        caption: "Studio introduction, hygiene standards and specialist bio section",
+      },
+            {
+        src: "angie-nails/angie_nail_tablet_reservation",
+        frame: "browser",
+        url: "ac-luxury-aesthetics.heisjuanda.workers.dev/reservar",
+        alt: "Interactive step-by-step appointment booking flow",
+        caption: "Step-by-step reservation system with real-time slot calculation and Turnstile protection",
+      },
+    ],
+    architecture: {
+      title: "Edge-native booking platform: Python Workers, D1 and client notifications",
+      caption: "How appointment requests, real-time availability and notifications flow through the edge",
+      columns: [
+        [
+          { id: "client", label: "Client browser", sub: "vanilla JS · Turnstile", kind: "external" },
+          { id: "admin", label: "Studio Admin", sub: "session cookie · 2FA (TOTP)", kind: "external" },
+        ],
+        [{ id: "worker", label: "Cloudflare Python Worker", sub: "routing · availability · auth" }],
+        [
+          { id: "resend", label: "Resend", sub: "email notifications", kind: "external" },
+          { id: "d1", label: "Cloudflare D1 (SQLite)", sub: "appointments · services · blocks", kind: "store" },
+          { id: "whatsapp", label: "CallMeBot", sub: "instant WhatsApp alerts", kind: "external" },
+        ],
+      ],
+      edges: [
+        ["client", "worker", "booking request"],
+        ["admin", "worker", "admin & 2FA"],
+        ["worker", "resend", "confirmation email"],
+        ["worker", "d1", "SQL queries"],
+        ["worker", "whatsapp", "specialist alert"],
+      ],
+    },
+
+    designSystem: {
+      fonts: ["Cormorant Garamond", "Jost"],
+      palette: [
+        {
+          hex: "#EADFD9",
+          name: "Arena / Nude cálido (--sand)",
+          role: "primary",
+          usage: "Theme color, hero background, featured cards & banners",
+        },
+        {
+          hex: "#1F1A17",
+          name: "Tinta carbón / Ink (--ink)",
+          role: "neutral",
+          usage: "Primary typography, action buttons (CTA) & editorial blocks",
+        },
+        {
+          hex: "#8B5E4F",
+          name: "Terracota / Acento (--accent)",
+          role: "accent",
+          usage: "Brand highlights, eyebrows, active states & service badges",
+        },
+        {
+          hex: "#F3EEEA",
+          name: "Crema base (--cream)",
+          role: "secondary",
+          usage: "Alternating clean container backgrounds between sections",
+        },
+      ],
+    },
+  },
+  {
+    // project card data
     id: "josh-wood-colour",
     name: "Josh Wood Colour",
-    order: 3,
+    order: 4,
     hook: "Headless Shopify store made ~20% faster for a UK brand",
     title: "Josh Wood Colour: a headless Shopify storefront rebuilt with Gatsby 5 and Storyblok",
     seoTitle: "Headless Shopify Store with Gatsby & Storyblok: Case Study",
@@ -366,7 +594,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "lambda-lang",
     name: "Lambda Lang",
-    order: 6,
+    order: 7,
     hook: "A small language and its interpreter, built from the grammar up",
     title: "Lambda Lang: an interpreter for a small language, built in Racket with EOPL and SLLGEN",
     seoTitle: "Building an Interpreter in Racket with EOPL & SLLGEN",
@@ -515,7 +743,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "patitas-a-casa",
     name: "Patitas a Casa",
-    order: 4,
+    order: 5,
     hook: "One adoption platform for shelters in Mendoza, Argentina",
     title: "Patitas a Casa: a volunteer-built pet adoption platform in React, Express and MongoDB",
     seoTitle: "Pet Adoption Platform in React, Node & MongoDB: Case Study",
@@ -696,7 +924,7 @@ export const PROJECTS_DATA = [
     // project card data
     id: "portfolio",
     name: "My Portfolio",
-    order: 5,
+    order: 6,
     hook: "This site: PageSpeed 100 without giving up the motion",
     title: "How I built this site at PageSpeed 100: React, GSAP, prerender and a Cloudflare Worker",
     nickname: "My Portfolio",
