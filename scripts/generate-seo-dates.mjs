@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 
+import { getExperienceYears } from "../src/constants/constants.js";
 import { BASE_URL, SEO_ROUTES } from "../src/routes.seo.js";
 
 function gitDate(...paths) {
@@ -54,6 +55,20 @@ writeFileSync(
     `export const LAST_MODIFIED = "${repoDate}";\n`,
   "utf8",
 );
+
+const LLMS_PATH = "public/llms.txt";
+const llmsCurrent = readFileSync(LLMS_PATH, "utf8");
+const experiencePattern = /^(- \*\*Experience\*\*: )\d+\+ years/m;
+if (!experiencePattern.test(llmsCurrent)) {
+  throw new Error(`Could not find Experience line in ${LLMS_PATH}.`);
+}
+const llmsUpdated = llmsCurrent.replace(
+  experiencePattern,
+  `$1${getExperienceYears()}+ years`,
+);
+if (llmsUpdated !== llmsCurrent) {
+  writeFileSync(LLMS_PATH, llmsUpdated, "utf8");
+}
 
 console.log(`  stamp: ${repoDate}`);
 console.log(`  sitemap.xml: ${entries.length} URLs`);

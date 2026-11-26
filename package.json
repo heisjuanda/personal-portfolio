@@ -5,16 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-seo-dates.mjs && vite build && vite build --config vite.prerender.config.js && node scripts/prerender.mjs",
+    "build": "node scripts/generate-seo-dates.mjs && node scripts/generate-cv.mjs && vite build && vite build --config vite.prerender.config.js && node scripts/prerender.mjs",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
     "deploy:staging": "npm run build && wrangler deploy --name personal-portfolio-staging",
     "doctor": "npx react-doctor@latest",
-    "generate:banners": "node scripts/generate-banners.mjs"
+    "generate:banners": "node scripts/generate-banners.mjs",
+    "generate:cv": "node scripts/generate-cv.mjs"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.43.0",
     "@vitejs/plugin-react": "^4.5.2",
+    "pdfkit": "^0.21.0",
     "react-doctor": "^0.9.4",
     "vite": "^8.0.12",
     "vite-plugin-compression2": "^2.5.3",

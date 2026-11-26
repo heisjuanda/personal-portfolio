@@ -1,4 +1,8 @@
 import { LAST_MODIFIED } from "./build-info.js";
+import {
+  formatExperienceYearsWord,
+  getExperienceYears,
+} from "./constants/constants.js";
 import { PROJECTS_DATA } from "./views/data/projects.data.js";
 import PROJECT_IMAGES from "./views/data/projects.images.js";
 
@@ -50,7 +54,7 @@ const personSchema = {
     "Desarrollador Full Stack",
   ],
   description:
-    "Full Stack Software Engineer based in Cali, Colombia, with more than four years of experience building web applications, cloud infrastructure, and reliable user interfaces. At Truora he worked end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS, and also interviewed engineering candidates and mentored interns. He is currently open to new roles.",
+    `Full Stack Software Engineer based in Cali, Colombia, with more than ${formatExperienceYearsWord(getExperienceYears())} years of experience building web applications, cloud infrastructure, and polished, detail-driven user experiences. At Truora he worked end-to-end on identity verification and fraud prevention products: full-stack features, REST APIs in Go, Android SDK components, and serverless workflows on AWS, and also interviewed engineering candidates and mentored interns. He is currently open to new roles.`,
   url: `${BASE_URL}/`,
   mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
   image: {

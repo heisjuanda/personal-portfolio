@@ -8,7 +8,7 @@
 - **Job title**: Software Engineer & Creative Developer (es: Ingeniero de Software, Desarrollador Full Stack)
 - **Availability**: open to new roles (full-time or freelance) — contact heisjuanda@gmail.com
 - **Previous employers**: Truora (https://www.truora.com/) — identity verification and conversational engagement for Latin America; Cressco — frontend architecture, technical SEO and DNS infrastructure
-- **Experience**: 4+ years across frontend, backend, cloud architecture and motion design
+- **Experience**: 5+ years across frontend, backend, cloud architecture and motion design
 - **Also at Truora**: interviewed engineering candidates, mentored interns and led projects end to end
 - **Location**: Cali, Valle del Cauca, Colombia
 - **Languages**: English, Spanish

@@ -1,3 +1,5 @@
+import { getExperienceYears } from "../../constants/constants.js";
+
 /**
  * Content for the hand-drawn notes that open from the About canvas.
  *
@@ -11,7 +13,7 @@ export const PAPER_CONTENT = {
   laptop: {
     title: "CoDe & Architecture",
     content:
-      "I have +4 years of experience building web apps. I love working with React and creating clear, useful interfaces. I work well in a team, and I also enjoy focused solo work on full-stack features and cloud infrastructure.",
+      `I have +${getExperienceYears()} years of experience building web apps. I love working with React and crafting thoughtful, visually polished interfaces with keen attention to UX and detail. I work well in a team, and I also enjoy focused solo work on full-stack features and cloud infrastructure.`,
   },
   chair: {
     title: "ReMote headquarters",

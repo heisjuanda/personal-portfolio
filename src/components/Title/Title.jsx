@@ -1,11 +1,11 @@
 import PaperContainer from "../PaperContainer/PaperContainer";
 
-import { CAREER_START_YEAR } from "../../constants/constants";
+import { getExperienceYears } from "../../constants/constants";
 
 import "./Title.css";
 
 export default function Title() {
-  const experienceYears = new Date().getFullYear() - CAREER_START_YEAR;
+  const experienceYears = getExperienceYears();
 
   return (
     <section className="title">
